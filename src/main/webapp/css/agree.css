@@ -1,0 +1,51 @@
+@import url(default.css);
+
+.agree_box {
+    width: 800px;
+    padding: 30px 120px;
+    margin : 0 auto;
+    margin-top: 250px;
+    border-radius: 15px;
+    border: 1px solid #777;
+}
+.agree_link {
+    color: rgb(231, 148, 23);
+    font-weight: 500;
+    margin: 10px 0;
+}
+.agree_link:hover {
+    font-weight: 700;
+}
+.agree_wrap .agree_title {
+    text-align: center;
+    margin: 10px 0;
+}
+.agree_form input {
+    display: inline-block;
+    margin: 10px 0;
+}
+.agree_form > textarea {
+    width: 100%;
+    overflow-y: auto;
+    overflow-x: none;
+    min-height: 150px;
+    max-height: 150px;
+    resize: none;
+    margin-bottom: 5px;
+}
+.check_all {
+    text-align: center;
+    margin: 10px auto;
+}
+.agree_form #submit_btn {
+    display: block;
+    text-align: center;
+    margin: 10px auto;
+    font-size: 20px;
+    border: 1px solid #777;
+    border-radius: 10px;
+    padding: 5px;
+}
+.agree_form #submit_btn:hover {
+    background-color: rgb(112, 107, 107);
+}

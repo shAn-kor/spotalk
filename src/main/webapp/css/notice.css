@@ -1,0 +1,247 @@
+@import url(default.css);
+
+body{background-color: #fff0f3;}
+.container {
+    margin: 0 auto;
+    margin-top: 150px;
+    width: 1080px;
+}
+
+.container .item1 {
+    display: flex;
+    width: 100%;
+    height: 150px;
+    border-bottom: 2px solid #000;
+    /* overflow: hidden; */
+}
+
+
+
+
+/* ======= 글 작성하기 ======= */
+.first {
+    width: 30%;
+    margin-left: 10px;
+}
+
+.first .bigtitle {
+    font-size: 30px;
+    font-weight: 600;
+}
+
+.first .write {
+    display: inline-block;
+    border: 2px solid #777;
+    border-radius: 5px;
+    width: 120px;
+    height: 34px;
+    background-color: white;
+    margin-top: 60px;
+}
+.first .write > a > p {
+    display: inline;
+    color: #000;
+    font-size: 15px;
+}
+/* ======= 새로고침 ======= */
+.first .fixbtn {
+    display: inline-block;
+    border: 2px solid #777;
+    background-image: url(../img/boardicon/refresh.png);
+    background-repeat: no-repeat;
+    width: 24px;    
+    height: 24px;
+    text-indent: -9999px;
+    margin-top: 10px;
+}
+
+
+
+/* ======= 검색바 ======= */
+.second{
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+    height: 150px;
+    
+}
+.search-bar {
+    background-color: white;   
+    border: 1px solid #777;
+    border-radius: 10px;
+    width: 350px;
+    height: 40px;
+}
+.search-bar > .btn2 {
+    background-color: white;
+    width: 24px;
+    height: 24px;
+    background-image: url(../img/boardicon/search.png);  
+    background-repeat: no-repeat;
+    text-indent: -9999px;
+    margin: 7px 3px;
+}
+.search-bar #text-bar {
+    width: 250px;
+    height: 30px;
+    margin: 5px;
+}
+.search-bar #text-bar:focus {
+    box-shadow: none;
+}
+
+/* 상단 페이지 */
+.third {
+    width: 30%;
+    overflow: hidden;
+}
+
+.third .top-page {
+    float: right;
+    display: inline-block;
+    background-color: white;
+    border: 1px solid #777;
+    border-radius: 10px;
+    height: 24px;
+    width: 200px;
+    margin-right: 5px;
+    margin-top: 110px;
+    overflow: hidden;
+}
+.third .top-page-next {
+    float: left;
+    margin-left: 15px;
+}
+.third .top-page > ul > li {
+    display: inline;
+    margin-left: 5px;
+}
+
+
+/* ====item2-title==== */
+.item2-title{
+    border: 1px solid #777;
+    border-radius: 5px;
+    background-color: white;
+    color: #777;
+    width: 1080px;
+    height: 30px;
+    line-height: 30px;
+    margin-top: 5px;
+    
+}
+.item2-title > p {
+    display: inline-block;
+}
+.item2-title > .title {
+    width: 580px;
+    text-align: center;
+}
+.item2-title > :where(.writer,.time){
+    width: 100px;
+    text-align: center;
+}
+.item2-title > :where(.hit,.comment,.good){
+    width: 65px;
+    text-align: center;
+}
+
+
+/* ===== 게시글 ===== */
+.item2 {
+    width: 1080px;
+    height: 50px;
+    line-height: 50px;
+    border-bottom: 2px solid #000;
+    display: inline-block;
+    box-sizing: border-box;
+    font-size: 18px;
+
+}
+.item2 > .notice-title {
+    display: inline-block;
+    font-size: 20px;
+    width: 50%;
+    height: 50px;
+    margin-left: 20px;
+}
+.item2 > .notice-writer {
+    display: inline-block;
+    /* border: 1px solid green; */
+    height: 100%;
+    line-height: 48px;
+    margin-left: 20px;
+}
+.item2 > .notice-writer > img {
+    display: inline-block;
+    float: left;   
+    margin-top: 10px;
+    
+}
+.item2 .notice-writer > p {
+    display: inline-block;
+    margin-left: 10px;
+}
+.item2 .notice-writer > input {
+    display: inline-block;
+    background-color: #fff0f3;
+    font-size: 18px;
+    width: 150px;
+    text-align: center;
+}
+
+.item2 > .notice-reaction {
+    display: inline-block;
+    margin-left: 20px;
+    margin-right: 20px;
+    height: 100%;
+    line-height: 48px;
+}
+.notice-reaction>:where(.hits,.comments,.good) {
+    display: inline-block;
+    line-height: 48px;
+    margin-left: 20px;
+}
+
+
+/* 하단 페이지 */
+.bottom-page {
+    margin: 10px;     
+}
+
+/* 중앙 숫자 페이지 버튼 */
+.bottom-page > ul > p {
+    display: inline;
+    font-size: 20px;
+    margin: 0 7px 0 0;
+}
+.bottom-page > ul > button {
+    width: 32px;
+    height: 32px;
+    background-color: #fff0f3;
+}
+.bottom-page > ul > button > a {
+    color: #000;
+    font-size: 15px;
+}
+
+/* 이전, 다음 페이지 버튼 */
+.bottom-page ul {
+    /* border: 1px solid blue; */
+    display: flex;
+    justify-content: center;;
+}
+.bottom-page ul li {
+    margin: 10px;
+}
+.bottom-page ul li a {
+    color: black;
+}
+
+.bottom-page > ul > li > a:hover {
+    background-color: #fff0f3;
+    /* text-decoration: underline; */
+
+}

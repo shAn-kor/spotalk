@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--
+	모든 내용은 mapper 폴더 안으로 들어감
+	namespace 에는 구현인터페이스의 풀경로가 들어감
+	id 속성은 인터페이스의 함수명이 들어감
+	resultType 속성은 반환 받을 타입이 들어감(string, int, double, dto풀경로)
+	; 찍지 않음
+	마이바티스의 매개변수는 일단 꼭 1개여야만 함
+	parameterType에는 매개변수의 타입이 들어감(string, int, double, dto풀경로)
+	단 parameterType은 생략가능
+	?값 == #{DTO의 getter명}(대소문자 구분함)
+	?가 단일값인 경우는 #{매개변수명}
+-->
+<mapper namespace="com.myweb.user.model.SportMapper">
+
+</mapper>

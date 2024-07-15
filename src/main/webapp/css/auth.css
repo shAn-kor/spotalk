@@ -1,0 +1,139 @@
+@import url(default.css);
+
+.auth_box {
+    width: 800px;
+    padding: 30px 120px;
+    margin : 0 auto;
+    margin-top: 250px;
+    border-radius: 15px;
+    border: 1px solid #777;
+}
+.auth_link {
+    color: rgb(231, 148, 23);
+    font-weight: 500;
+    margin: 10px 0;
+}
+.auth_link:hover,
+.agree_link:hover {
+    font-weight: 700;
+}
+.auth_wrap .auth_title {
+    text-align: center;
+    margin: 10px 0;
+}
+.auth_form > div {
+    margin: 10px auto;
+    width: 100%;
+    height: 80px;
+    display: block;
+    overflow: hidden;
+    text-align: center;
+    align-items: center;
+}
+.auth_form > div #user_name,
+.auth_form > div > input[type=tel],
+.auth_form > div > input[type=number] {
+    font-size: 20px;
+    text-align: center;
+    outline: none;
+}
+.auth2, .auth3 {
+    border: 1px solid #777;
+    border-radius: 5px;
+    padding: 20px 10px;
+}
+.auth1 > .input_name {
+    float: left;
+    display: block;
+    width: 70%;
+    height: 100%;
+    border: 1px solid #777;
+    border-radius: 5px;
+    margin:0 auto;
+    text-align: center;
+}
+.auth1 > .input_name > #user_name {
+    display: inline;
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 0;
+    outline: none;
+    overflow: hidden;
+}
+.auth1 > .radio > input[type="radio"] {
+    display: none;
+}
+.auth1 > .radio {
+    float: left;
+    display: block;
+    width: 15%;
+    height: 100%;
+    text-align: center;
+    line-height: 5rem;
+}
+.auth1 > .radio > input[type="radio"] + label  {
+    cursor: pointer;
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: 1px solid #777;
+    border-radius: 5px;
+}
+.auth1 > .radio > input[type="radio"]:checked + label {
+    background-color: #666666;
+}
+.auth2 {
+    overflow: hidden;
+    white-space: nowrap;
+}
+.auth2 > .birth {
+    float: left;
+    height: 100%;
+    width: 33.3333%;
+    border: 1px solid #777;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+.auth3 {
+    padding-left: 140px;
+    padding-right: 60px;
+    overflow: hidden;
+}
+.auth3 > input{
+    height: 100%;
+    background-color: none;
+    margin: 0 auto;
+    float: left;
+}
+.auth3 > #phone {
+    width: 70%;
+    border: 1px solid #777;
+    border-radius: 5px;
+    display: inline;
+}
+.auth3 > .submit_btn {
+    width: 20%;
+    display: block;
+    background-color: white;
+    border-radius: 5px;
+    border: 1px solid #777;
+}
+.auth_result {
+    text-align: center;
+    width: 100%;
+}
+.auth_result > a,
+.auth_result > p {
+    margin: 20px auto;
+    padding: 10px;
+}
+.auth_result > a {
+    border: 1px solid #777;
+    border-radius: 5px;
+    width: 50%;
+}
+.auth_result > a:hover {
+    background-color: #666666;
+}

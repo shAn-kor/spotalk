@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SPOTALK</title>
+    <link rel="stylesheet" href="css/mypage.css">
+    <script defer src="js/join.js"></script>
+
+    <!-- 부트스트랩 css링크 -->
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+
+    <!-- 제이쿼리(부트스트랩보다 먼저 링크) -->
+    <script src="bootstrap/js/jquery-3.7.1.min.js"></script>
+    
+    <!-- 부트스트랩 js링크 -->
+    <link rel="stylesheet" href="bootstrap/js/bootstrap.min.js">
+</head>
+<body>
+    
+    <div class="main">
+        <div class="menu">
+            <ul>
+                <li><a href="#">HOME</a></li>
+                <li><a href="#">커뮤니티</a></li>
+                <li><a href="#">승부예측</a></li>
+                <li><a href="#">승부사랭킹</a></li>
+            </ul>
+        </div>
+
+        <div class="wrap">
+            <table class="mod_box">
+                <tr>
+                    <td>아 이 디</td>
+                    <td><input class="id" type="text" placeholder="${회원아이디}" id="user-id" name="user-id" required></td>
+                    <td><button type="button" class="id check">중복확인</button></td>
+                </tr>
+                <tr>
+                    <td>비 밀 번 호</td>
+                    <td><input type="text" name="pw" placeholder="${회원비밀번호}" value="" required></td>
+                </tr>
+                <tr>
+                    <td>닉 네 임</td>
+                    <td><input type="text" name="nick" placeholder="${닉네임}" id="user-name" name="user-name" required></td>
+                    <td><button type="button" class="nick check">중복확인</button></td>
+                </tr>
+            </table>
+
+            <div class="save">
+                <button type="button" class="btn btn-default" onclick="location.href='mypage.html';">저 장 하 기</button>
+            
+            </div>
+
+        </div>
+
+
+
+    </div>
+</body>
+</html>

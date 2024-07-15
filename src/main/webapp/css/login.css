@@ -1,0 +1,81 @@
+@import url(default.css);
+
+.login_box {
+    padding: 30px;
+    margin : 0 auto;
+    background-color: #e4ccff;
+    width: 500px;
+    text-align: center;
+    border-radius: 5px;
+    margin-top: 250px;
+    border-radius: 15px;
+}
+.login_box > .login_form {
+    padding: 10px;
+    overflow: hidden;
+}
+.login-area {
+    display: block;
+    margin-bottom: 10px;
+    border-radius: 15px;
+    height: 60px;
+}
+#user_login {
+    width: 100%;
+    margin-bottom: 10px;
+    border-radius: 15px;
+    height: 50px;
+    font-size: 20px;
+    font-weight: 600;
+}
+.login-area {
+    background-color: white;
+    text-align: left;
+    padding: 20px 10px 10px 10px;
+    box-sizing: border-box;
+    position: relative;
+}
+.p-login {
+    display: block;
+    font-size: 30px;
+    color: #777676;
+    position: absolute;
+    top : 10px;
+    transition: font-size 0.3s ease-in-out;
+}
+.user_input {
+    height: 30px;
+    position: absolute;
+    bottom:0px;
+    transition: height 0.3s ease-in-out;
+    margin-bottom: 5px;
+    z-index: 10;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out 0.1s;
+}
+.user_input:focus + .p-login {
+    font-size: 10px;
+}
+.user_input:focus {
+    height: 30px;
+    font-size: 30px;
+    outline: none;
+    opacity: 1;
+}
+.login_form > .join {
+    float: left;
+}
+.login_form > #user_login:hover {
+    background-color: rgba(87, 81, 74, 0.226);
+    color:white;
+    box-shadow: inset;
+}
+.login_form > .find {
+    float: right;
+}
+.login_form > .join:hover {
+    font-weight: 700;
+}
+.login_form > .find > a:hover {
+    font-weight: 700;
+}

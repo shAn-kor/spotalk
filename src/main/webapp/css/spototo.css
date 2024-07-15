@@ -1,0 +1,135 @@
+@import url(default.css);
+
+.spototo-box {
+    width: 1080px;
+    height: 800px;
+    background-color: #e4ccff;
+    text-align: center;
+    padding: 50px;
+}
+
+.spototo-match {
+    margin: 20px auto;
+    width: 80%;
+    overflow: hidden;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    padding: 10px;
+    background-color: white;
+    border-radius: 15px;
+    height: 70px;
+    transition: height 0.3s linear;
+}
+.spototo-match:hover {
+    height: 210px;
+}
+.spototo-match:hover > .spototo-basic > img {
+    transform: rotate(180deg);
+}
+
+.spototo-basic {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+}
+.spototo-basic > .match-time {
+    width: 20%;
+}
+.spototo-basic > .match {
+    width: 70%;
+    display: flex;
+    justify-content: space-between;
+}
+.spototo-basic > img {
+    width: 10%;
+    transition: 0.3s linear;
+}
+.match > div {
+    width: 33.3333%;
+    height: 50px;
+    border-radius: 5px;
+    display: flex;
+    line-height: 50px;
+    text-align: center;
+}
+.match > .spototo-a {
+    background-color: blue;
+    justify-content: flex-start;
+}
+.match > .spototo-a > p {
+    text-align: left;
+    margin-left: 10px;
+}
+.match > div > img {
+    display: block;
+    width: 10%;
+}
+.match > div > p {
+    width: 90%;
+}
+.match > .spototo-b {
+    background-color: red;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+}
+.match > .spototo-b > p {
+    text-align: right;
+    margin-right: 10px;
+}
+.match > .spototo-d {
+    background-color: gray;
+    font-size: 0;
+    text-align: center;
+    margin: 0 auto;
+}
+.spototo-match > .details {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-around;
+}
+.details > .detail-text {
+    width: 20%;
+    text-align: left;
+    padding-left: 30px;
+}
+.details > .detail-btn {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.detail-btn > .match-btns,
+.detail-btn > .user-point
+ {
+    width: 87%;
+    display: flex;
+    justify-content: space-between;
+    height: 40px;
+    margin: 10px 0;
+}
+.detail-btn > .match-btns > button {
+    width: 25%;
+    border-radius: 15px;
+    font-size: 1.2rem;
+    background-color: blueviolet;
+    color: white;
+}
+.detail-btn > .match-btns > button:hover {
+    background-color: rgb(76, 26, 122);
+}
+.detail-btn > .user-point > input {
+    border-radius: 15px;
+    font-size: 1.2rem;
+    background-color: black;
+    color: white;
+    text-align: center;
+}
+.detail-btn > .user-point > #user-p {
+    width: 35%;
+}
+.detail-btn > .user-point > #using-p {
+    width: 35%;
+}

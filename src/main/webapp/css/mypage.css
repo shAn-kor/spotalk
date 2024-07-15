@@ -1,0 +1,157 @@
+@import url(default.css);
+
+
+
+.main { 
+    /* border: 1px solid black;  */
+    background-color: rgb(194, 160, 235);
+    height: 700px;
+    width: 1080px;
+    margin: 0 auto;
+    margin-top: 100px;
+    display: flex; /*블록 컨테이너로 설정*/
+    flex-direction: row; /*왼 > 오 정렬*/
+}
+/* ===============사이드 메뉴 시작================ */
+.main .menu {
+    background-color: #fbfbfb;
+    position: sticky;
+    top: 200px;
+    border-radius: 10px;
+    width: 100px;
+    height: 300px;
+    margin-left: 20px;
+    margin-bottom: 40px;
+}
+.main .menu ul {
+    height: 200px;
+    line-height: 50px;
+    margin-top: 50px;
+}
+.main .menu ul li {
+    text-align: center;
+}
+.main .menu ul li a {
+    text-decoration: none;
+    color: black;
+    font-size: 15px;
+    font-family: 'GmarketSansMedium';
+}
+.main .menu ul li a:hover {
+    font-weight: bold;
+    color: white;
+    text-shadow: 
+    -1px -1px 0 black, 
+    1px -1px 0 black, 
+    -1px 1px 0 black, 
+    1px 1px 0 black; /* 텍스트 테두리 설정 */
+}
+/* ===============사이드 메뉴 끝================ */
+
+
+.wrap {
+    background-color: white;
+    border-radius: 10px;
+    width: 890px;
+    height: 600px;
+    margin-top: 50px;
+    margin-left: 20px;
+    position:relative;
+}
+
+.box {
+    margin: 0 auto;
+    /* border: 1px solid black; */
+    margin-left: 200px;
+    margin-top: 50px;
+    width: 490px;
+    height: 400px;
+    overflow: hidden;
+    font-family: 'GmarketSansMedium';
+}
+.box tr td input {
+    margin-left: 100px;
+    background-color: white;
+}
+.box tr td > .grade1 {
+    position: absolute;
+    width: 35px; 
+    border-radius: 10px;
+    bottom: 230px;
+    left: 490px;
+}
+.box tr td .allgrade {
+    /*  */
+    position: absolute;
+    display: none;
+    width: 100px;
+    left: 300px;
+    top: 200px;
+    margin-left: 250px;
+}
+.box tr td .grade1:active + .allgrade {
+    display: inline-block;
+}
+
+
+.btn {
+    margin-left: 200px;
+}
+
+.modify {
+    /* border: 1px solid green; */
+    margin-left: 100px;
+    margin-top: 50px;
+    width: 490px;
+    text-align: center;
+}
+.modify .btn {
+    font-size: 15px;
+    width: 100px;
+}
+
+/* ====mypage_modify==== */
+.wrap .mod_box {
+    margin: 0 auto;
+    /* border: 1px solid black; */
+    margin-left: 200px;
+    margin-top: 200px;
+    width: 490px;
+    height: 100px;
+    overflow: hidden;
+    font-family: 'GmarketSansMedium';
+}
+.wrap .check {
+    width: 60px;
+    font-size: 13px;
+    color: black;
+    /* border: 1px solid black; */
+    background-color: #e7e6e6;
+    border-radius: 5px;
+}
+
+.save {
+    /* border: 1px solid green; */
+    margin-left: 100px;
+    margin-top: 50px;
+    width: 490px;
+    text-align: center;
+}
+.save .btn {
+    font-size: 15px;
+    width: 100px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
