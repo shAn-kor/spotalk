@@ -15,6 +15,17 @@
 	?값 == #{DTO의 getter명}(대소문자 구분함)
 	?가 단일값인 경우는 #{매개변수명}
 -->
-<mapper namespace="com.myweb.user.model.BoardMapper">
+<mapper namespace="com.myweb.board.model.BoardMapper">
+
+<insert id="insertPost" parameterType="com.myweb.board.model.BoardDTO">
+	INSERT INTO POST(user_id, category, title, content, grade_id) VALUES(#{user_id}, #{category}, #{title}, #{content}, #{grade_id});
+</insert>
+<select id="getPostId" parameterType="string" resultType="long">
+	SELECT MAX(POST_ID) FROM POST WHERE USER_ID = #{user_id}; 
+</select>
+<select id="getPost" parameterType="string" resultType="com.myweb.board.model.BoardDTO">
+	SELECT * FROM POST WHERE POST_ID = #{post_id}; 
+</select>	
+
 
 </mapper>

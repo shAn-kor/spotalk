@@ -1,0 +1,117 @@
+@import url(default.css);
+@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Jua&display=swap');
+
+* {
+    font-family: "Do Hyeon", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+body{background-color: #fff0f3;}
+
+.container{width: 930px}
+
+.item {
+    width: 100%;
+    margin: 0 auto;
+}
+.item h3 {
+   font-weight: 900;
+   margin: 80px 0;
+}
+.category {
+    border: 1px solid #777;
+    border-radius: 5px;
+    width: 100%;
+    height: 34px;
+    background-color: white;
+    margin-bottom: 50px;
+}
+.category > button {
+    border: none;
+    background-color: white;
+    height: 30px;
+}
+.category > button:active {
+   box-shadow: none;
+}
+.category > ul {
+    min-width: 99%;
+    margin: 0;
+}
+
+
+/* 카테고리 */
+.category > button {overflow: hidden; width: 100%;}
+.category > button > p {
+    float: left;
+    color: #555;
+    font-size: 15px;
+}
+.category > button > img {
+    float: right;
+    margin-top: 5px;
+}
+
+/* 카테고리 메뉴 */
+.category > ul > li > a {
+    font-size: 15px;
+}
+
+
+/* 제목 */
+.item .title {
+    font-size: 15px;
+    border: 1px solid #777;
+    border-radius: 5px;
+    width: 100%;
+    height: 34px;
+    background-color: white;
+    margin-bottom: 50px;
+}
+.title > #text-bar {
+    border: none;
+    width: 100%;
+    height: 24px;
+    margin-top: 5px;
+}
+.title > #text-bar {
+    box-shadow: none;
+}
+
+
+/* 내용 */
+.item .content {
+    width: 100%;
+}
+
+.content > textarea {
+    width: 100%;
+    height: 300px;
+    border: 1px solid #777;
+    border-radius: 5px;
+    resize: none;
+    font-size: 15px;
+    padding: 10px;
+}
+
+/* 취소, 등록 버튼 */
+.item {overflow: hidden;}
+.item .right {
+    float: right;
+    margin: 30px 80px 0 0;
+}
+
+/* 취소 */
+.right > button:nth-child(1) {
+    background-color: #e5e5e5;
+    width: 100px;
+    height: 30px;
+}
+
+/* 등록 */
+.right > button:nth-child(2) {
+    background-color: #8ecae6;
+    width: 100px;
+    height: 30px;
+}
