@@ -10,3 +10,15 @@ img {max-width: 100%; height: auto;} /* height가 넓이에 따라 가도록 한
 input {border:none; outline: none;}
 button {border: none;}
 a {text-decoration: none; color: black}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox  */
+input[type='number'] {
+    -moz-appearance: textfield;
+}
