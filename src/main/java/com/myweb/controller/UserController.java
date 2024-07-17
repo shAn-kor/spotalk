@@ -38,37 +38,59 @@ public class UserController extends HttpServlet{
 		System.out.println(command);
 		
 		UserService service;
-		if(command.equals("/user/login/login.user")) {//로그인 페이지
+		//로그인
+		if(command.equals("/user/login.user")) {//로그인 페이지
 			request.getRequestDispatcher("login.jsp").forward(request, response);
 		}
-		if(command.equals("/user/findIdPw/findIdPw_Id.user")) {//아이디찾기 페이지
+		if(command.equals("/user/check.user")) {//로그인 페이지
+			service = new UserServiceImpl();
+			service.login(request, response);
+		}
+		
+		//회원가입
+		if(command.equals("/user/agree.user")) {//약관동의 페이지
+			request.getRequestDispatcher("join01.jsp").forward(request, response);
+		}
+		if(command.equals("/user/auth.user")) {//본인인증 페이지
+			request.getRequestDispatcher("join02.jsp").forward(request, response);
+		}
+		if(command.equals("/user/checkPhone.user")) {//본인인증 페이지
+			service = new UserServiceImpl();
+			service.checkPhone(request, response);
+		}
+		if(command.equals("/user/joinForm.user")) {//계정생성 페이지
+			request.getRequestDispatcher("join03.jsp").forward(request, response);
+		}
+		
+		//아이디 & 비밀번호 찾기
+		if(command.equals("/user/findIdPw_Id.user")) {//아이디찾기 페이지
 			request.getRequestDispatcher("findId01.jsp").forward(request, response);
 		}
-		if(command.equals("/user/findIdPw/findId.user")) {//아이디찾기
+		if(command.equals("/user/findId.user")) {//아이디찾기
 			service = new UserServiceImpl();
 			service.findId(request, response);
 		}
-		if(command.equals("/user/findIdPw/foundId.user")) {//아이디찾음 페이지
+		if(command.equals("/user/foundId.user")) {//아이디찾음 페이지
 			request.getRequestDispatcher("findId02.jsp").forward(request, response);
 		}
-		if(command.equals("/user/findIdPw/findIdPw_Pw.user")) {//비밀번호찾기 페이지
+		if(command.equals("/user/findIdPw_Pw.user")) {//비밀번호찾기 페이지
 			request.getRequestDispatcher("findPw01.jsp").forward(request, response);
 		}
-		if(command.equals("/user/findIdPw/findPw.user")) {//비밀번호찾기 페이지
+		if(command.equals("/user/findPw.user")) {//비밀번호찾기 페이지
 			service = new UserServiceImpl();
 			service.findPw(request, response);
 		}
-		if(command.equals("/user/findIdPw/pwQnA.user")) {//비밀번호QnA 페이지
+		if(command.equals("/user/pwQnA.user")) {//비밀번호QnA 페이지
 			request.getRequestDispatcher("findPw02.jsp").forward(request, response);
 		}
-		if(command.equals("/user/findIdPw/checkPwa.user")) {//비밀번호질문 답 확인
+		if(command.equals("/user/checkPwa.user")) {//비밀번호질문 답 확인
 			service = new UserServiceImpl();
 			service.checkPwa(request, response);
 		}
-		if(command.equals("/user/findIdPw/resetPw.user")) {//비밀번호재설정 페이지
+		if(command.equals("/user/resetPw.user")) {//비밀번호재설정 페이지
 			request.getRequestDispatcher("findPw03.jsp").forward(request, response);
 		}
-		if(command.equals("/user/findIdPw/updatePw.user")) {//비밀번호재설정 페이지
+		if(command.equals("/user/updatePw.user")) {//비밀번호재설정 페이지
 			service = new UserServiceImpl();
 			service.updatePw(request, response);
 		}

@@ -1,21 +1,24 @@
 package com.myweb.user.model;
 
+import java.sql.Date;
+
 public class UserDTO {
     String id;
     String pw;
     String pwq;
     String pwa;
     String name;
-    String b_date;
+    Date b_date;
+    String gender;
     String phone;
     String nick;
     String point;
     String grade_id;
-    String s_date;
+    Date s_date;
     
     public UserDTO() {    }    
     
-    public UserDTO(String id, String pw, String pwq, String pwa, String name, String b_date, String phone, String nick, String point, String grade_id, String s_date) {
+    public UserDTO(String id, String pw, String pwq, String pwa, String name, Date b_date, String phone, String nick, String point, String grade_id, Date s_date) {
         this.id = id;
         this.pw = pw;
         this.pwq = pwq;
@@ -69,14 +72,22 @@ public class UserDTO {
         this.name = name;
     }
 
-    public String getB_date() {
+    public Date getB_date() {
         return b_date;
     }
 
-    public void setB_date(String b_date) {
+    public void setB_date(Date b_date) {
         this.b_date = b_date;
     }
+    
+    public String getGender() {
+        return gender;
+    }
 
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+    
     public String getPhone() {
         return phone;
     }
@@ -109,11 +120,11 @@ public class UserDTO {
         this.grade_id = grade_id;
     }
 
-    public String getS_date() {
+    public Date getS_date() {
         return s_date;
     }
 
-    public void setS_date(String s_date) {
+    public void setS_date(Date s_date) {
         this.s_date = s_date;
     }
 
