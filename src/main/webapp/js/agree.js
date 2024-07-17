@@ -33,10 +33,7 @@ window.onload = function () {
     const submitBtn=document.getElementById('submit_btn');
     submitBtn.addEventListener('click', function(event) {
         if (checkAll.checked == true) {
-            var link = '../auth.html';
-            location.href=link;
-            location.replace(link);
-            window.open(link);
+            location.href="auth.user";
         } else {
             alert('약관에 모두 동의해 주세요!');
         }
