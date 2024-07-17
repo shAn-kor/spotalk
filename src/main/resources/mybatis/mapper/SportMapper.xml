@@ -15,6 +15,15 @@
 	?값 == #{DTO의 getter명}(대소문자 구분함)
 	?가 단일값인 경우는 #{매개변수명}
 -->
-<mapper namespace="com.myweb.user.model.SportMapper">
-
-</mapper>
+<mapper namespace="com.myweb.team.model.SportMapper">
+	<insert id="insertTeam" parameterType="com.myweb.team.model.SportDTO">
+		INSERT INTO TEAM(TEAM_NAME
+						,SPORTS
+						,GAME_CNT
+						,WIN_CNT
+						,DRAW_CNT
+						,LOSE_CNT
+						,WIN_RATE) 
+		VALUES (#{team_name}, #{sports}, #{game_cnt}, #{win_cnt} , #{draw_cnt}, #{lose_cnt}, #{win_rate})
+	</insert>
+</mapper>	
