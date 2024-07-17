@@ -16,20 +16,16 @@
 	?가 단일값인 경우는 #{매개변수명}
 -->
 <mapper namespace="com.myweb.user.model.UserMapper">
-	<select id="getMember" resultType="com.myweb.user.model.UserDTO">
-		SELECT * FROM MEMBER
-	</select>
-	<select id="getPw" parameterType="string" resultType="string">
-		SELECT PW FROM MEMBER WHERE ID=#{pw}
-	</select>
 	<select id="findId" parameterType="com.myweb.user.model.UserDTO" resultType="string">
 		SELECT ID FROM MEMBER WHERE NAME = #{name} AND PHONE = #{phone}
 	</select>
-	<select id="findPw" parameterType="string" resultType="com.myweb.user.model.UserDTO">
+	<select id="getUserById" parameterType="string" resultType="com.myweb.user.model.UserDTO">
 		SELECT * FROM MEMBER WHERE ID = #{id}
 	</select>
 	<update id="updatePw" parameterType="com.myweb.user.model.UserDTO">
 		UPDATE MEMBER SET PW = #{pw} WHERE ID = #{id}
 	</update>
-	
+	<select id="checkPhone" parameterType="string" resultType="com.myweb.user.model.UserDTO">
+		SELECT * FROM MEMBER WHERE PHONE = #{phone}
+	</select>
 </mapper>
