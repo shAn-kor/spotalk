@@ -18,29 +18,24 @@
     
 </head>
 <body>
- <div class="container box">
+  <div class="container box">
         
         <div class="item item1">
-            <div class="left">
                 <div class="write">
-                    <a href="board_write.jsp">
+                    <a href="board_write.board">
                         <img src="../img/pen.png" alt="글 작성">
                         <p>글 작성하기</p>
                     </a>
                 </div>
+
                 <div class="search">
-                <form action="#" method="post">                
                     <fieldset class="fieldset">
                         <div class="search-bar">
-                            <button type="submit"></button>
-                            <input name="search" type="text" placeholder="게시글 검색">
+                            <button type="button"></button>
+                            <input type="text" placeholder="게시글 검색">
                         </div>
                     </fieldset>  
-                </form>
                 </div>
-            </div>
-
-            <div class="right">
 
                 <div class="dropdown sort">
                     <img src="../img/sort.png" alt="글 정렬">
@@ -52,8 +47,21 @@
                       <li><a href="#"><img src="../img/eye.png" alt="조회순">조회순</a></li>
                     </ul>
                 </div>
-            </div>
+                
+    			
+    			<div class="category">
+    			 	<button type="button">전체글</button>
+	    			<button type="button">공지사항</button>
+	             	<button type="button"><img alt="축구" src="../img/soccer-icon.png">&nbsp축구</button>
+	             	<button type="button"><img alt="야구" src="../img/baseball-icon.png">&nbsp야구</button>
+	             	<button type="button"><img alt="농구" src="../img/basketball-icon.png">&nbsp농구</button>
+	             	
+    			</div>
+    			
+             
+             
         </div>
+
 
         <div class="item item2">
             <ul>
@@ -63,12 +71,170 @@
                         <a href="#">작성자</a>
                         <span>작성시간</span>
                     </div>
-                    <div class="mid">
-                        <a href="#"><strong>글 제목</strong></a>
+                    <div class="bottom">
+                        <div class="left">
+                            <a href="#">카테고리</a>
+                            <a href="#"><strong>글 제목</strong></a>
+                        </div>
+                        <div class="right">
+                            <div class="hits">
+                                <img src="../img/eye.png" alt="조회수">
+                                <span>1.5k</span>
+                            </div>
+                            <div class="comments">
+                                <img src="../img/comment.png" alt="댓글수">
+                                <span>4</span>
+                            </div>
+                            <div class="good">
+                                <img src="../img/up.png" alt="추천수">
+                                <span>3</span>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+           
+        </div>
+        <div class="item item2">
+            <ul>
+                <li>
+                    <div class="top">
+                        <a href="#"><img src="../img/profile.png" alt="작성자 프로필"></a>
+                        <a href="#">작성자</a>
+                        <span>작성시간</span>
                     </div>
                     <div class="bottom">
                         <div class="left">
                             <a href="#">카테고리</a>
+                            <a href="#"><strong>글 제목</strong></a>
+                        </div>
+                        <div class="right">
+                            <div class="hits">
+                                <img src="../img/eye.png" alt="조회수">
+                                <span>1.5k</span>
+                            </div>
+                            <div class="comments">
+                                <img src="../img/comment.png" alt="댓글수">
+                                <span>4</span>
+                            </div>
+                            <div class="good">
+                                <img src="../img/up.png" alt="추천수">
+                                <span>3</span>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+           
+        </div>  
+        <div class="item item2">
+            <ul>
+                <li>
+                    <div class="top">
+                        <a href="#"><img src="../img/profile.png" alt="작성자 프로필"></a>
+                        <a href="#">작성자</a>
+                        <span>작성시간</span>
+                    </div>
+                    <div class="bottom">
+                        <div class="left">
+                            <a href="#">카테고리</a>
+                            <a href="#"><strong>글 제목</strong></a>
+                        </div>
+                        <div class="right">
+                            <div class="hits">
+                                <img src="../img/eye.png" alt="조회수">
+                                <span>1.5k</span>
+                            </div>
+                            <div class="comments">
+                                <img src="../img/comment.png" alt="댓글수">
+                                <span>4</span>
+                            </div>
+                            <div class="good">
+                                <img src="../img/up.png" alt="추천수">
+                                <span>3</span>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+           
+        </div>  
+        <div class="item item2">
+            <ul>
+                <li>
+                    <div class="top">
+                        <a href="#"><img src="../img/profile.png" alt="작성자 프로필"></a>
+                        <a href="#">작성자</a>
+                        <span>작성시간</span>
+                    </div>
+                    <div class="bottom">
+                        <div class="left">
+                            <a href="#">카테고리</a>
+                            <a href="#"><strong>글 제목</strong></a>
+                        </div>
+                        <div class="right">
+                            <div class="hits">
+                                <img src="../img/eye.png" alt="조회수">
+                                <span>1.5k</span>
+                            </div>
+                            <div class="comments">
+                                <img src="../img/comment.png" alt="댓글수">
+                                <span>4</span>
+                            </div>
+                            <div class="good">
+                                <img src="../img/up.png" alt="추천수">
+                                <span>3</span>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+           
+        </div>  
+        <div class="item item2">
+            <ul>
+                <li>
+                    <div class="top">
+                        <a href="#"><img src="../img/profile.png" alt="작성자 프로필"></a>
+                        <a href="#">작성자</a>
+                        <span>작성시간</span>
+                    </div>
+                    <div class="bottom">
+                        <div class="left">
+                            <a href="#">카테고리</a>
+                            <a href="#"><strong>글 제목</strong></a>
+                        </div>
+                        <div class="right">
+                            <div class="hits">
+                                <img src="../img/eye.png" alt="조회수">
+                                <span>1.5k</span>
+                            </div>
+                            <div class="comments">
+                                <img src="../img/comment.png" alt="댓글수">
+                                <span>4</span>
+                            </div>
+                            <div class="good">
+                                <img src="../img/up.png" alt="추천수">
+                                <span>3</span>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+           
+        </div>  
+        <div class="item item2">
+            <ul>
+                <li>
+                    <div class="top">
+                        <a href="#"><img src="../img/profile.png" alt="작성자 프로필"></a>
+                        <a href="#">작성자</a>
+                        <span>작성시간</span>
+                    </div>
+                    <div class="bottom">
+                        <div class="left">
+                            <a href="#">카테고리</a>
+                            <a href="#"><strong>글 제목</strong></a>
                         </div>
                         <div class="right">
                             <div class="hits">
@@ -97,12 +263,10 @@
                         <a href="#">작성자</a>
                         <span>작성시간</span>
                     </div>
-                    <div class="mid">
-                        <a href="#"><strong>글 제목</strong></a>
-                    </div>
                     <div class="bottom">
                         <div class="left">
                             <a href="#">카테고리</a>
+                            <a href="#"><strong>글 제목</strong></a>
                         </div>
                         <div class="right">
                             <div class="hits">
@@ -122,7 +286,7 @@
                 </li>
             </ul>
            
-        </div>
+        </div>    
         <div class="item item2">
             <ul>
                 <li>
@@ -131,12 +295,10 @@
                         <a href="#">작성자</a>
                         <span>작성시간</span>
                     </div>
-                    <div class="mid">
-                        <a href="#"><strong>글 제목</strong></a>
-                    </div>
                     <div class="bottom">
                         <div class="left">
                             <a href="#">카테고리</a>
+                            <a href="#"><strong>글 제목</strong></a>
                         </div>
                         <div class="right">
                             <div class="hits">
@@ -156,7 +318,7 @@
                 </li>
             </ul>
            
-        </div>
+        </div>    
         <div class="item item2">
             <ul>
                 <li>
@@ -165,12 +327,10 @@
                         <a href="#">작성자</a>
                         <span>작성시간</span>
                     </div>
-                    <div class="mid">
-                        <a href="#"><strong>글 제목</strong></a>
-                    </div>
                     <div class="bottom">
                         <div class="left">
                             <a href="#">카테고리</a>
+                            <a href="#"><strong>글 제목</strong></a>
                         </div>
                         <div class="right">
                             <div class="hits">
@@ -190,7 +350,40 @@
                 </li>
             </ul>
            
-        </div>
+        </div>    
+        <div class="item item2">
+            <ul>
+                <li>
+                    <div class="top">
+                        <a href="#"><img src="../img/profile.png" alt="작성자 프로필"></a>
+                        <a href="#">작성자</a>
+                        <span>작성시간</span>
+                    </div>
+                    <div class="bottom">
+                        <div class="left">
+                            <a href="#">카테고리</a>
+                            <a href="#"><strong>글 제목</strong></a>
+                        </div>
+                        <div class="right">
+                            <div class="hits">
+                                <img src="../img/eye.png" alt="조회수">
+                                <span>1.5k</span>
+                            </div>
+                            <div class="comments">
+                                <img src="../img/comment.png" alt="댓글수">
+                                <span>4</span>
+                            </div>
+                            <div class="good">
+                                <img src="../img/up.png" alt="추천수">
+                                <span>3</span>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+           
+        </div>  
+   
         
         <div class="bottom-page">
             <ul class="pager">
