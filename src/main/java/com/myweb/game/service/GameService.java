@@ -7,7 +7,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 public interface GameService {
-	void scrapScheduleKBO();
+	void scrapScheduleKBO(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
 	void getGame(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
 
 }

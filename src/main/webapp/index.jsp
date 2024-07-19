@@ -10,6 +10,7 @@
     <script defer src="js/index.js"></script>
 </head>
 <body>
+    <a href="/spotalk/user/myPage.user">mypage</a>
 	${sessionScope.user_id}
 	${sessionScope.grade_id}
     <div class="index-box">

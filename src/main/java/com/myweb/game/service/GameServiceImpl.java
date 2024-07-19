@@ -1,7 +1,6 @@
 package com.myweb.game.service;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -28,7 +27,7 @@ public class GameServiceImpl implements GameService{
 	
 	// KBO 리그 일정 가져오기 by Selenium, Jsoup
 	//야구 결과 포함
-   public void scrapScheduleKBO() {
+   public void scrapScheduleKBO(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // Selenium WebDriver 설정 (ChromeDriver)
         System.setProperty("webdriver.chrome.driver", "src/main/webapp/WEB-INF/lib/chromedriver.exe");
 

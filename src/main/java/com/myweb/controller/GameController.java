@@ -48,7 +48,7 @@ public class GameController extends HttpServlet {
 		}
 		else if(command.equals("/schedule.game")) { //경기정보 insert
 			service = new GameServiceImpl();
-			service.scrapScheduleKBO();
+			service.scrapScheduleKBO(request, response);
 			
 		}
 	}
