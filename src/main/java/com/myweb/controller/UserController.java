@@ -94,6 +94,18 @@ public class UserController extends HttpServlet{
 			service = new UserServiceImpl();
 			service.updatePw(request, response);
 		}
+
+		// 마이페이지
+		if(command.equals("/user/myPage.user")) {
+			service = new UserServiceImpl();
+			service.getMyPage(request, response);
+		}
+
+		// 승부사 랭킹
+		if (command.equals("/user/rank.user")) {
+			service = new UserServiceImpl();
+			service.getUserRank(request, response);
+		}
 	}
 	
 }

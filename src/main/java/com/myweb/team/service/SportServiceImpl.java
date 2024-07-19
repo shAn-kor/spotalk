@@ -20,7 +20,7 @@ import util.mybatis.MybatisUtil;
 
 
 public class SportServiceImpl implements SportService {
-	private SqlSessionFactory sqlSessionFactory = MybatisUtil.getSqlSessionFactory();
+	private final SqlSessionFactory sqlSessionFactory = MybatisUtil.getSqlSessionFactory();
 	
 	@Override
 	public void insertTeam() {
