@@ -21,19 +21,15 @@
         <div class="item">
             <h3>글 쓰기</h3>
             <form action="write.board" method="post">
-            
-	            <div class="dropdown category">
-	                <button class="btn dropdown-toggle" type="button" data-toggle="dropdown">
-	                    <p>카테고리를 선택해주세요.</p>
-	                    <img src="../img/category.png" alt="카테고리">
-	                </button>
-	                <ul class="dropdown-menu">
-	                  <li><a href="#">축구 <img src="../img/soccer-icon.png" alt="축구"></a></li>
-	                  <li><a href="#">야구 <img src="../img/baseball-icon.png" alt="야구"></a></li>
-	                  <li><a href="#">농구 <img src="../img/basketball-icon.png" alt="농구"></a></li>
-	                </ul>
-	                <input type="hidden" name="category" value="soccer">
-	            </div>
+  				<div class="category">
+               		<select class="form-control" id="categorySelect" name="category">
+                    	<option value="">카테고리를 선택해주세요.</option>
+                    	<option value="축구">축구</option>
+                    	<option value="야구">야구</option>
+                    	<option value="농구">농구</option>
+                	</select>
+            	</div>
+            	
 	            <div class="title">
 	                <input type="text" class="form-control" name="title" id="text-bar" placeholder="제목을 입력해주세요.">
 	            </div>
@@ -41,7 +37,7 @@
 	              <textarea name="content" placeholder="내용을 입력해주세요."></textarea>
 	            </div>
 	            <div class="right">
-	                <button type="button" class="btn">취소</button>
+	                <input type="submit" class="btn" value="취소">
 	                <input type="submit" class="btn" value="등록">
 	            </div>
             </form>

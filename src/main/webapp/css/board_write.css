@@ -19,44 +19,27 @@ body{background-color: #fff0f3;}
    font-weight: 900;
    margin: 80px 0;
 }
+
+/* 카테고리 */
 .category {
     border: 1px solid #777;
     border-radius: 5px;
     width: 100%;
-    height: 34px;
+    height: 40px;
     background-color: white;
     margin-bottom: 50px;
 }
-.category > button {
-    border: none;
-    background-color: white;
-    height: 30px;
+.form-control {
+	height: 100%;
 }
-.category > button:active {
-   box-shadow: none;
+.form-control:focus {
+    border-color: #777;
+    box-shadow: none;
 }
-.category > ul {
-    min-width: 99%;
-    margin: 0;
+.form-control > option {
+	font-size: 15px;
 }
 
-
-/* 카테고리 */
-.category > button {overflow: hidden; width: 100%;}
-.category > button > p {
-    float: left;
-    color: #555;
-    font-size: 15px;
-}
-.category > button > img {
-    float: right;
-    margin-top: 5px;
-}
-
-/* 카테고리 메뉴 */
-.category > ul > li > a {
-    font-size: 15px;
-}
 
 
 /* 제목 */
@@ -99,18 +82,18 @@ body{background-color: #fff0f3;}
 .item {overflow: hidden;}
 .item .right {
     float: right;
-    margin: 30px 80px 0 0;
+    margin-top: 30px;
 }
 
 /* 취소 */
-.right > button:nth-child(1) {
+.right > input:nth-child(1) {
     background-color: #e5e5e5;
     width: 100px;
     height: 30px;
 }
 
 /* 등록 */
-.right > button:nth-child(2) {
+.right > input:nth-child(2) {
     background-color: #8ecae6;
     width: 100px;
     height: 30px;

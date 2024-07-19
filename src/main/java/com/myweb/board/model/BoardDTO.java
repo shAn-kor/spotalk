@@ -16,7 +16,7 @@ public class BoardDTO {
 	public BoardDTO() {
 		
 	}
-
+	
 	public BoardDTO(String post_id, String user_id, String category, String title, String content, String regdate,String hit, String post_like, String post_dislike, String grade_id) {
 		this.post_id = post_id;
 		this.user_id = user_id;
@@ -110,6 +110,8 @@ public class BoardDTO {
 		this.grade_id = grade_id;
 	}
 
+	
+	
 	
 
 }

@@ -44,7 +44,7 @@ public class BoardServiceImpl implements BoardService {
 		BoardMapper mapper = sql.getMapper(BoardMapper.class);
 		
 		mapper.insertPost(dto);
-		long post_id = mapper.getPostId(user_id);
+		String post_id = mapper.getPostId(user_id);
 		
 		
 		sql.close();

@@ -13,7 +13,7 @@
     <!-- 부트스트랩 js링크 -->
     <script src="../js/bootstrap.min.js" type="text/javascript"></script>
 
-    <link rel="stylesheet" href="../css/write_list.css" type="text/css">
+    <link rel="stylesheet" href="../css/board_post.css" type="text/css">
     
 </head>
 <body>
@@ -41,7 +41,7 @@
                 <h3>${dto.getTitle() }</h3>
             </div>
             <div class="content">
-            	${dto.getContent() })
+            	${dto.getContent() }
             </div>
             <div class="bottom">
                 <div class="right">

@@ -22,7 +22,7 @@
         
         <div class="item item1">
                 <div class="write">
-                    <a href="board_write.board">
+                    <a href="/board/board_write.board">
                         <img src="../img/pen.png" alt="글 작성">
                         <p>글 작성하기</p>
                     </a>

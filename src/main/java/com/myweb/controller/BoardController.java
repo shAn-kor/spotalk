@@ -43,6 +43,7 @@ public class BoardController extends HttpServlet {
 		//BoardService 선언
 		BoardService service;
 		
+		
 		if(command.equals("/board/board_write.board")) { //글 작성 메인화면
 			request.getRequestDispatcher("board_write.jsp").forward(request, response);
 		} 
@@ -55,7 +56,7 @@ public class BoardController extends HttpServlet {
 			service.getPost(request, response);
 		}
 		if(command.equals("/board/post.board")) { //글 상세 화면
-			request.getRequestDispatcher("post.jsp").forward(request, response);
+			request.getRequestDispatcher("board_post.jsp").forward(request, response);
 		}
 		
 		

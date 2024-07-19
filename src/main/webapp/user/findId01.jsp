@@ -11,7 +11,7 @@
             font-family: Arial, sans-serif;
             max-width: 1080px;
             margin: 0 auto; /* 페이지 중앙 정렬 */
-            padding: 20px; /* 내용과 외곽 사이의 간격 */
+            padding: 20px; /* 내용과 외곽 사이의 간격 */	
         }
         
         .wrap {
