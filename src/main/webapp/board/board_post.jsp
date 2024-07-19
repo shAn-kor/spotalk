@@ -38,17 +38,17 @@
             </div>
 
             <div class="title">
-                <h3>${dto.getTitle() }</h3>
+                <h3>${dto.getPostTitle() }</h3>
             </div>
             <div class="content">
-            	${dto.getContent() }
+            	${dto.getPostContent() }
             </div>
             <div class="bottom">
                 <div class="right">
                 	<button type="button" class="up"></button>
-                    <span>${dto.getPost_like() }</span>
+                    <span>${dto.getPostLike() }</span>
                     <button type="button" class="down"></button>
-                    <span>${dto.getPost_dislike() }</span>
+                    <span>${dto.getPostDislike() }</span>
                 </div>
             </div>
         </div>
@@ -102,8 +102,7 @@
             </div>
 
             <div class="comments">
-                댓글 내용 ~~~~~~ 😊<br>
-                댓글 내용 ~~~~~~ 😊<br>
+            
             </div>
         </div>
         <div class="item item4">

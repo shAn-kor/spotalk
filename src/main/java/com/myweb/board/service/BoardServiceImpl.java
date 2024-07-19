@@ -22,45 +22,45 @@ public class BoardServiceImpl implements BoardService {
 		
 		HttpSession session = request.getSession();
 		
-		String user_id = (String) session.getAttribute("user_id");
+		String userId = (String) session.getAttribute("user_id");
 		String category = request.getParameter("category");
-		String title = request.getParameter("title");
-		String content = request.getParameter("content");
-		String grade_id = (String) session.getAttribute("grade_id");
+		String postTitle = request.getParameter("post_title");
+		String postContent = request.getParameter("post_content");
+		String gradeId = (String) session.getAttribute("grade_id");
 		
-		System.out.println(user_id);
+		System.out.println(userId);
 		System.out.println(category);
-		System.out.println(title);
-		System.out.println(content);
-		System.out.println(grade_id);
+		System.out.println(postTitle);
+		System.out.println(postContent);
+		System.out.println(gradeId);
 		BoardDTO dto = new BoardDTO();
-		dto.setUser_id(user_id);
+		dto.setUserId(userId);
 		dto.setCategory(category);
-		dto.setTitle(title);
-		dto.setContent(content);
-		dto.setGrade_id(grade_id);
+		dto.setPostTitle(postTitle);
+		dto.setPostContent(postContent);
+		dto.setGradeId(gradeId);
 		
 		SqlSession sql = sqlSessionFactory.openSession(true);
 		BoardMapper mapper = sql.getMapper(BoardMapper.class);
 		
 		mapper.insertPost(dto);
-		String post_id = mapper.getPostId(user_id);
+		String postId = mapper.getPostId(userId);
 		
 		
 		sql.close();
 		
-		request.setAttribute("post_id", post_id);
+		request.setAttribute("postId", postId);
 		request.getRequestDispatcher("getPost.board").forward(request, response);
 		
 	}
 	@Override
 	public void getPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String post_id = (String) request.getAttribute("post_id");
+		String postId = (String) request.getAttribute("postId");
 		
 		SqlSession sql = sqlSessionFactory.openSession(true);
 		BoardMapper mapper = sql.getMapper(BoardMapper.class);
 		
-		BoardDTO dto = mapper.getPost(post_id);
+		BoardDTO dto = mapper.getPost(postId);
 		
 		sql.close();
 		
