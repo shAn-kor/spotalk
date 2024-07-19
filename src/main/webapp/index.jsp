@@ -14,6 +14,8 @@
 	${sessionScope.user_id}
 	${sessionScope.grade_id}
     <div class="index-box">
+    <a href="list.game">투표test</a>
+    <a href="schedule.game">야구경기일정test</a>
         <!-- 메인페이지 왼쪽 경기 파트 -->
         <div class="index-box-left">
             <div class="sport-schedule">
@@ -54,7 +56,7 @@
 
             <div class="mid-wrap">
                 <div class="main-sport">
-                    <p><a href="#">축구</a></p>
+                    <p><a href="#">축구</a><a href="list.game">바로가기</a></p>
                     <div class="main-match">
                         <div class="main-a" style="width: '${33.3333}%';">A</div>
                         <div class="main-c" style="width: '${33.3333}%';">D</div>
