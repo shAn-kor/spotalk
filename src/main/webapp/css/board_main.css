@@ -1,0 +1,213 @@
+@import url(default.css);
+@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Jua&display=swap');
+
+/* ======= 전체 폰트 ====== */
+* {
+    font-family: "Do Hyeon", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+body{background-color: #fff0f3;}
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 930px;
+    margin-top: 150px;
+}
+
+.item1 {
+    overflow: hidden;
+    width: 100%;
+    height: 130px;  
+    border-bottom: 3px solid #000;
+}
+
+
+
+/* ======= 글 작성하기 ======= */
+.write {
+    float: left;
+    border: 2px solid #777;
+    border-radius: 5px;
+    width: 125px;
+    height: 40px;
+    background-color: white;
+   
+}
+.write > a:hover {
+    color: white;
+}
+.write > a > img {
+    margin: 0 0 5px 5px;
+}
+.write > a > p {
+    display: inline;
+    color: #000;
+    font-size: 15px;
+    line-height: 40px;
+}
+
+
+
+/* ======= 검색바 ======= */
+.search {float: left; margin-left: 145px;}
+.search-bar {
+    overflow: hidden;
+    border: 2px solid #777;
+    border-radius: 10px;
+    width: 350px;
+    height: 40px;
+    background-color: white;
+}
+.search-bar > button {
+    float: left;
+    border: none;
+    width: 24px;
+    height: 24px;
+    background-image: url("../img/search.png");  
+    background-repeat: no-repeat;
+    text-indent: -9999px;
+    margin: 7px 3px;
+    background-color: white;
+}
+.search-bar > input {
+    float: left;
+    border: none;
+    width: 300px;
+    height: 30px;
+    margin-top: 5px;
+    padding: 5px;
+}
+
+/* ======= 글 정렬 ======= */
+.sort {
+    float: right;
+    border: 2px solid #777;
+    border-radius: 5px;
+    width: 125px;
+    height: 40px;
+    background-color: white;
+}
+.sort > img {
+    margin: 2px 0 0 5px;
+}
+.sort > button {
+    border: none;
+    background-color: white;
+    margin-left: 15px;
+}
+.sort > ul {
+    min-width: 120px;
+    margin: 0;
+}
+.sort > ul > li > a > img {
+   margin-right: 20px;
+}
+
+
+/* 카테고리 버튼 */
+.category {
+	width: 300px;
+	height: 50px;
+}
+.category > button {
+	margin-top: 30px;
+	border: 1px solid #777;
+	border-radius: 5px;
+	width: 50px; 
+	height: 30px;
+	background-color: white;
+	line-height: 30px;
+	text-align: center;
+	padding-right: 1px;
+}
+ 
+
+.category > button img {
+	width: 16px;
+	height: 16px;
+}
+
+
+
+
+/* ===== 게시글 ===== */
+.item2 {
+    overflow: hidden;
+    width: 100%;
+    height: 75px;
+    border-bottom: 3px solid #000;
+}
+
+.top {margin: 5px;}
+/* 작성자 이름 */
+.top > a:nth-child(2) {
+    color: #000;
+    font-size: 12px;
+} 
+/* 작성시간 */
+.top > span {
+    font-size: 12px;
+}
+
+
+.bottom {overflow: hidden; margin: 5px;}
+.bottom .left {float: left; margin: 5px;}
+.bottom .right {float: right; margin: 15px 5px;}
+
+/* 카테고리 */
+.bottom .left > a:nth-child(1) {
+    color: #000;
+    font-size: 12px;
+    margin-right: 10px;
+}
+
+/* 글 제목 */   
+.bottom .left > a:nth-child(2) {
+    color: #000;
+    font-size: 20px;
+}
+
+/* 조회수 */
+.bottom .right .hits {
+    display: inline;
+} 
+.bottom .right .comments {
+    display: inline;
+}
+.bottom .right .good {
+    display: inline;
+}
+
+
+/* 하단 페이지 */
+.bottom-page {margin: 10px;}
+
+/* 중앙 숫자 페이지 버튼 */
+.bottom-page > ul > p {
+    display: inline;
+    font-size: 20px;
+    margin: 0 7px 0 0;
+}
+.bottom-page > ul > button {
+    width: 32px;
+    height: 32px;
+    background-color: #fff0f3;
+}
+.bottom-page > ul > button > a {
+    color: #000;
+    font-size: 15px;
+}
+
+/* 이전, 다음 페이지 버튼 */
+.bottom-page > ul > li > a {
+    color: #000;
+    border: none;
+    background-color: #fff0f3;
+}
+.bottom-page > ul > li > a:hover {
+    background-color: #fff0f3;
+    text-decoration: underline;
+
+}

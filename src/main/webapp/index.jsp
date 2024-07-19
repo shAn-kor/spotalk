@@ -11,6 +11,7 @@
 </head>
 <body>
 	${sessionScope.user_id}
+	${sessionScope.grade_id}
     <div class="index-box">
         <!-- 메인페이지 왼쪽 경기 파트 -->
         <div class="index-box-left">

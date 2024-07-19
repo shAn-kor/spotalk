@@ -8,13 +8,13 @@ public class UserDTO {
     String pwq;
     String pwa;
     String name;
-    Date b_date;
+    Date bDate;
     String gender;
     String phone;
     String nick;
     String point;
-    String grade_id;
-    Date s_date;
+    String gradeId;
+    Date sDate;
     
     public UserDTO() {    }    
     
@@ -24,12 +24,12 @@ public class UserDTO {
         this.pwq = pwq;
         this.pwa = pwa;
         this.name = name;
-        this.b_date = b_date;
+        this.bDate = b_date;
         this.phone = phone;
         this.nick = nick;
         this.point = point;
-        this.grade_id = grade_id;
-        this.s_date = s_date;
+        this.gradeId = grade_id;
+        this.sDate = s_date;
     }
 
     public String getId() {
@@ -72,12 +72,12 @@ public class UserDTO {
         this.name = name;
     }
 
-    public Date getB_date() {
-        return b_date;
+    public Date getBDate() {
+        return bDate;
     }
 
-    public void setB_date(Date b_date) {
-        this.b_date = b_date;
+    public void setBDate(Date b_date) {
+        this.bDate = b_date;
     }
     
     public String getGender() {
@@ -112,20 +112,20 @@ public class UserDTO {
         this.point = point;
     }
 
-    public String getGrade_id() {
-        return grade_id;
+    public String getGradeId() {
+        return gradeId;
     }
 
-    public void setGrade_id(String grade_id) {
-        this.grade_id = grade_id;
+    public void setGradeId(String grade_id) {
+        this.gradeId = grade_id;
     }
 
-    public Date getS_date() {
-        return s_date;
+    public Date getSDate() {
+        return sDate;
     }
 
-    public void setS_date(Date s_date) {
-        this.s_date = s_date;
+    public void setSDate(Date s_date) {
+        this.sDate = s_date;
     }
 
     @Override
@@ -136,12 +136,12 @@ public class UserDTO {
                 ", pwq='" + pwq + '\'' +
                 ", pwa='" + pwa + '\'' +
                 ", name='" + name + '\'' +
-                ", b_date='" + b_date + '\'' +
+                ", b_date='" + bDate + '\'' +
                 ", phone='" + phone + '\'' +
                 ", nick='" + nick + '\'' +
                 ", point='" + point + '\'' +
-                ", grade_id='" + grade_id + '\'' +
-                ", s_date='" + s_date + '\'' +
+                ", grade_id='" + gradeId + '\'' +
+                ", s_date='" + sDate + '\'' +
                 '}';
     }
 }
