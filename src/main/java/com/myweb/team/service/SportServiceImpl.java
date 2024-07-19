@@ -1,10 +1,7 @@
 package com.myweb.team.service;
 
 import java.io.IOException;
-//
-//import jakarta.servlet.ServletException;
-//import jakarta.servlet.http.HttpServletRequest;
-//import jakarta.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -16,6 +13,9 @@ import org.jsoup.select.Elements;
 import com.myweb.team.model.SportDTO;
 import com.myweb.team.model.SportMapper;
 
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import util.mybatis.MybatisUtil;
 
 
@@ -126,14 +126,11 @@ public class SportServiceImpl implements SportService {
 			 }
 			 
 			 
-			 
-//			 	SqlSession sql = sqlSessionFactory.openSession(true);
-//			 	SportMapper sportmapper = sql.getMapper(SportMapper.class);
-//			 	sportmapper.insertTeam(sportDTO);
-			 	
 			 	
 		 } catch (IOException e) {
 			 e.printStackTrace();
+		 } finally {
+			 sql.close();
 		 }
 	}
 

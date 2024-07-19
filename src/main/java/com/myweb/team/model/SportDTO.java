@@ -1,5 +1,6 @@
 package com.myweb.team.model;
 
+
 public class SportDTO {
 	
 	private String team_name; //팀명
@@ -9,7 +10,7 @@ public class SportDTO {
 	private int draw_cnt; //무승부 수
 	private int lose_cnt; //진 수
 	private double win_rate; //(야구,농구: 승률/ 축구: 승점)
-	
+
 	
 	
 	@Override
@@ -28,6 +29,7 @@ public class SportDTO {
 		this.draw_cnt = draw_cnt;
 		this.lose_cnt = lose_cnt;
 		this.win_rate = win_rate;
+
 	}
 
 	public SportDTO() {
@@ -91,7 +93,6 @@ public class SportDTO {
 		this.win_rate = win_rate;
 	}
 
-	
 	
 	
 }

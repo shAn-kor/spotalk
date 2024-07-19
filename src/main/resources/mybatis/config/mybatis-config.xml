@@ -33,6 +33,8 @@
 		  <mapper resource="mybatis/mapper/UserMapper2.xml"/>
 		  <mapper resource="mybatis/mapper/BoardMapper.xml"/>
 		  <mapper resource="mybatis/mapper/SportMapper.xml"/>
+		  <mapper resource="mybatis/mapper/GameMapper.xml"/>
+		  
 	  </mappers>
 
 

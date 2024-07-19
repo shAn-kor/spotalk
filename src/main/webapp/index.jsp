@@ -52,7 +52,7 @@
 
             <div class="mid-wrap">
                 <div class="main-sport">
-                    <p><a href="#">축구</a></p>
+                    <p><a href="#">축구</a><a href="list.game">바로가기</a></p>
                     <div class="main-match">
                         <div class="main-a" style="width: '${33.3333}%';">A</div>
                         <div class="main-c" style="width: '${33.3333}%';">D</div>
