@@ -39,10 +39,17 @@ public class GameController extends HttpServlet {
 		
 		System.out.println(command);
 		
-		GameService gameservice;
-		if(command.equals("/list.game")) {
-			gameservice = new GameServiceImpl();
-			gameservice.getGame(request, response);
+		GameService service;
+		if(command.equals("/list.game")) { //경기정보 select
+			
+			service = new GameServiceImpl();
+			service.getGame(request, response);
+			
+		}
+		else if(command.equals("/schedule.game")) { //경기정보 insert
+			service = new GameServiceImpl();
+			service.scrapScheduleKBO();
+			
 		}
 	}
 }

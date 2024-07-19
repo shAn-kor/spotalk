@@ -1,7 +1,8 @@
 package com.myweb.game.model;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public interface GameMapper {
-	public ArrayList<GameDTO> getGame();
+	List<GameDTO> getGame();
+//	void scrapScheduleKBO(GameDTO gameDTO);
 }

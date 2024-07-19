@@ -9,6 +9,5 @@ import jakarta.servlet.http.HttpServletResponse;
 public interface SportService {
 	
 	void insertTeam();
-//	void getGame(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException;
 	
 }

@@ -24,7 +24,6 @@ public class SportServiceImpl implements SportService {
 	
 	@Override
 	public void insertTeam() {
-		
 		SqlSession sql = sqlSessionFactory.openSession(true);
 	 	SportMapper sportmapper = sql.getMapper(SportMapper.class); //실행시킬 인터페이스명
 		
@@ -86,8 +85,8 @@ public class SportServiceImpl implements SportService {
 		         String lose = columns.get(3).text().trim();
 		         String points = columns.get(5).text().trim();
 
-		         System.out.printf("[야구] Rank: %s, Team: %s, Played: %s, Win: %s, Draw: %s, Lose: %s, Points: %s%n",
-		        		 rank, team, played, win, draw, lose, points);
+//		         System.out.printf("[야구] Rank: %s, Team: %s, Played: %s, Win: %s, Draw: %s, Lose: %s, Points: %s%n",
+//		        		 rank, team, played, win, draw, lose, points);
 				
 		         int game_cnt=Integer.parseInt(played);
 		         int win_cnt=Integer.parseInt(win);
@@ -112,8 +111,8 @@ public class SportServiceImpl implements SportService {
 				 String lose = columns.get(4).text().trim();
 				 String points = columns.get(2).text().trim();
 				 
-				 System.out.printf("[농구] Rank: %s, Team: %s, Played: %s, Win: %s, Lose: %s, Points: %s%n",
-						 rank, team, played, win, lose, points);
+//				 System.out.printf("[농구] Rank: %s, Team: %s, Played: %s, Win: %s, Lose: %s, Points: %s%n",
+//						 rank, team, played, win, lose, points);
 				 
 				 int game_cnt=Integer.parseInt(played);
 				 int win_cnt=Integer.parseInt(win);

@@ -6,11 +6,14 @@ import oracle.sql.TIMESTAMP;
 
 public class GameDTO {
 	private String gameId;
-//	private TIMESTAMP gameDate;
 	private Date gameDate;
 	private String teamA;
 	private String teamB;
 	private String gameResult;
+	
+	public GameDTO() {
+		
+	}
 	
 	
 	
@@ -21,10 +24,6 @@ public class GameDTO {
 		this.teamA = teamA;
 		this.teamB = teamB;
 		this.gameResult = gameResult;
-	}
-	
-	public GameDTO() {
-		
 	}
 
 	public String getGameId() {
@@ -65,6 +64,12 @@ public class GameDTO {
 
 	public void setGameResult(String gameResult) {
 		this.gameResult = gameResult;
+	}
+
+	@Override
+	public String toString() {
+		return "GameDTO [gameId=" + gameId + ", gameDate=" + gameDate + ", teamA=" + teamA + ", teamB=" + teamB
+				+ ", gameResult=" + gameResult + "]";
 	}
 	
 	

@@ -13,6 +13,8 @@
 	${sessionScope.user_id}
 	${sessionScope.grade_id}
     <div class="index-box">
+    <a href="list.game">투표test</a>
+    <a href="schedule.game">야구경기일정test</a>
         <!-- 메인페이지 왼쪽 경기 파트 -->
         <div class="index-box-left">
             <div class="sport-schedule">
