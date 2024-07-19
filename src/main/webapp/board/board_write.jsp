@@ -17,30 +17,34 @@
     
 </head>
 <body>
-   <div class="container box">
+   <div class="container">
         <div class="item">
             <h3>글 쓰기</h3>
-            <div class="dropdown category">
-                <button class="btn dropdown-toggle" type="button" data-toggle="dropdown">
-                    <p>카테고리를 선택해주세요.</p>
-                    <img src="../img/category.png" alt="카테고리">
-                </button>
-                <ul class="dropdown-menu">
-                  <li><a href="#">축구 <img src="../img/soccer-icon.png" alt="축구"></a></li>
-                  <li><a href="#">야구 <img src="../img/baseball-icon.png" alt="야구"></a></li>
-                  <li><a href="#">농구 <img src="../img/basketball-icon.png" alt="농구"></a></li>
-                </ul>
-            </div>
-            <div class="title">
-                <input type="text" class="form-control" id="text-bar" placeholder="제목을 입력해주세요.">
-            </div>
-            <div class="comment">
-              <textarea placeholder="내용을 입력해주세요."></textarea>
-            </div>
-            <div class="right">
-                <button type="button" class="btn">취소</button>
-                <button type="button" class="btn">등록</button>
-            </div>
+            <form action="write.board" method="post">
+            
+	            <div class="dropdown category">
+	                <button class="btn dropdown-toggle" type="button" data-toggle="dropdown">
+	                    <p>카테고리를 선택해주세요.</p>
+	                    <img src="../img/category.png" alt="카테고리">
+	                </button>
+	                <ul class="dropdown-menu">
+	                  <li><a href="#">축구 <img src="../img/soccer-icon.png" alt="축구"></a></li>
+	                  <li><a href="#">야구 <img src="../img/baseball-icon.png" alt="야구"></a></li>
+	                  <li><a href="#">농구 <img src="../img/basketball-icon.png" alt="농구"></a></li>
+	                </ul>
+	                <input type="hidden" name="category" value="soccer">
+	            </div>
+	            <div class="title">
+	                <input type="text" class="form-control" name="title" id="text-bar" placeholder="제목을 입력해주세요.">
+	            </div>
+	            <div class="content">
+	              <textarea name="content" placeholder="내용을 입력해주세요."></textarea>
+	            </div>
+	            <div class="right">
+	                <button type="button" class="btn">취소</button>
+	                <input type="submit" class="btn" value="등록">
+	            </div>
+            </form>
         </div>
     </div>
 </body>

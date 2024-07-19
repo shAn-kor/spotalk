@@ -1,15 +1,20 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="en">
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="css/agree.css">
-    <script src="js/agree.js"></script>
+    <title>agree</title>
+    <link rel="stylesheet" href="../css/agree.css">
+    <script src="../js/agree.js"></script>
 </head>
 <body>
     <div class="agree_box">
-        <p><a href="agree.html" class="agree_link">약관 동의</a> > </p>
+        <p><a href="agree.user" class="agree_link">약관 동의</a> > </p>
         <div class="agree_wrap">
             <h3 class="agree_title">동의해주세요.</h3>
             <div class="agree_form">

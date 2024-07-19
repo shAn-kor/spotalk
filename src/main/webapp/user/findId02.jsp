@@ -9,6 +9,6 @@
 <body>
 		<h4>회원님의 아이디</h2>
 		${user_id }
-		<input type="button" value="로그인" onclick="location.href='../login/login.user';">
+		<input type="button" value="로그인" onclick="location.href='login.user';">
 </body>
 </html>
