@@ -8,4 +8,5 @@ public interface UserMapper {
     UserDTO getUserById(String id);
     void updatePw(UserDTO dto);
     UserDTO checkPhone(String phone);
+    List<UserDTO> getUserList();
 }

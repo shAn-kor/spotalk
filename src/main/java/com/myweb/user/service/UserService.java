@@ -13,4 +13,8 @@ public interface UserService {
     void updatePw(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
     void checkPhone(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
     void login(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
+
+    void getMyPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
+
+    void getUserRank(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
 }

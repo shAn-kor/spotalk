@@ -62,6 +62,12 @@
     outline: none;
     opacity: 1;
 }
+.focus {
+    height: 30px;
+    font-size: 30px;
+    outline: none;
+    opacity: 1;
+}
 .login_form > .join {
     float: left;
 }

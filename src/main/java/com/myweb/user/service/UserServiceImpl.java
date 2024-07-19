@@ -163,5 +163,23 @@ public class UserServiceImpl implements UserService{
 		}
 		
 	}
-	
+
+	@Override
+	public void getMyPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		SqlSession sql = sqlSessionFactory.openSession(true);
+		UserMapper mapper = sql.getMapper(UserMapper.class);
+		UserDTO dto = mapper.getUserById(request.getSession().getAttribute("user_id").toString());
+		request.setAttribute("dto", dto);
+		request.getRequestDispatcher("mypage.jsp").forward(request, response);
+	}
+
+	@Override
+	public void getUserRank(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		SqlSession sql = sqlSessionFactory.openSession(true);
+		UserMapper mapper = sql.getMapper(UserMapper.class);
+		List<UserDTO> list = mapper.getUserList();
+		request.setAttribute("list", list);
+		request.getRequestDispatcher("userRank.jsp").forward(request, response);
+	}
+
 }
