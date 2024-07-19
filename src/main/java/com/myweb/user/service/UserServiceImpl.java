@@ -126,7 +126,7 @@ public class UserServiceImpl implements UserService{
 			dto = new UserDTO();
 			dto.setName(name);
 			dto.setGender(gender);
-			dto.setB_date(b_date);
+			dto.setBDate(b_date);
 			dto.setPhone(phone);
 			
 			request.setAttribute("dto", dto);
@@ -155,7 +155,7 @@ public class UserServiceImpl implements UserService{
 				HttpSession session = request.getSession();
 				session.setAttribute("user_id", id);
 				session.setAttribute("user_nick", dto.getNick());
-				session.setAttribute("grade_id", dto.getGrade_id());
+				session.setAttribute("grade_id", dto.getGradeId());
 				session.setAttribute("point", dto.getPoint());
 				
 				response.sendRedirect("../index.jsp");
