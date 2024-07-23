@@ -27,9 +27,9 @@
 <select id="getPost" parameterType="string" resultType="com.myweb.board.model.BoardDTO">
 	SELECT * FROM POSTS WHERE POST_ID = #{postId}
 </select>	
-<!-- <insert id="insertComment" parameterType="com.myweb.board.model.BoardDTO">
-	INSERT INTO comments(comment_id, post_id, user_id, comment_content, comment_date, comment_like, comment_dislike)
-	VALUES ()
-</insert> -->
+<insert id="insertComment" parameterType="com.myweb.board.model.BoardDTO">
+	INSERT INTO comments(comment_id, post_id, user_id, comment_content)
+	VALUES (commnent_seq.nextval, #{postId}, #{userId}, #{commentContent})
+</insert>
 
 </mapper>

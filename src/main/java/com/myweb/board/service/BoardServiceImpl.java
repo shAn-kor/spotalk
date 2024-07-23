@@ -12,13 +12,14 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import jakarta.websocket.Session;
 import util.mybatis.MybatisUtil;
 
 public class BoardServiceImpl implements BoardService {
 
 	private final SqlSessionFactory sqlSessionFactory = MybatisUtil.getSqlSessionFactory();
 	@Override
-	public void write(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void postWrite(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		HttpSession session = request.getSession();
 		
@@ -33,6 +34,7 @@ public class BoardServiceImpl implements BoardService {
 		System.out.println(postTitle);
 		System.out.println(postContent);
 		System.out.println(gradeId);
+		
 		BoardDTO dto = new BoardDTO();
 		dto.setUserId(userId);
 		dto.setCategory(category);
@@ -53,6 +55,7 @@ public class BoardServiceImpl implements BoardService {
 		request.getRequestDispatcher("getPost.board").forward(request, response);
 		
 	}
+	
 	@Override
 	public void getPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String postId = (String) request.getAttribute("postId");
@@ -66,6 +69,35 @@ public class BoardServiceImpl implements BoardService {
 		
 		request.setAttribute("dto", dto);
 		request.getRequestDispatcher("post.board").forward(request, response);
+		
+	}
+	
+	@Override
+	public void commentWrite(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		HttpSession session = request.getSession();
+		
+		String postId = request.getParameter("post_id");
+		String userId = (String) session.getAttribute("user_id");
+		String commentContent = request.getParameter("comment_content");
+		
+		System.out.println(postId);
+		System.out.println(userId);
+		System.out.println(commentContent);
+		
+		BoardDTO dto = new BoardDTO();
+		dto.setPostId(postId);  
+		dto.setUserId(userId);
+		dto.setCommentContent(commentContent);
+
+	    SqlSession sql = sqlSessionFactory.openSession(true);
+	    BoardMapper mapper = sql.getMapper(BoardMapper.class);
+
+	    mapper.insertComment(dto);
+		
+		sql.close();
+		
+	
 		
 	}
 	
