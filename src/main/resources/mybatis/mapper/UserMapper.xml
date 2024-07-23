@@ -22,11 +22,14 @@
 	<select id="getUserById" parameterType="string" resultType="com.myweb.user.model.UserDTO">
 		SELECT * FROM MEMBER WHERE ID = #{id}
 	</select>
+	<select id="getUserByNick" parameterType="string" resultType="com.myweb.user.model.UserDTO">
+		SELECT * FROM MEMBER WHERE NICK = #{nick}
+	</select>
 	<select id="checkPhone" parameterType="string" resultType="com.myweb.user.model.UserDTO">
 		SELECT * FROM MEMBER WHERE PHONE = #{phone}
 	</select>
 	<select id="getUserList" resultType="com.myweb.user.model.UserDTO">
-		SELECT GRADE_ID, NICK, POINT FROM MEMBER ORDER BY POINT DESC
+		SELECT GRADE_ID, NICK, POINT FROM MEMBER WHERE GRADE_ID != 11 ORDER BY POINT DESC
 	</select>
 
 	<update id="updatePw" parameterType="com.myweb.user.model.UserDTO">

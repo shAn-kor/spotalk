@@ -8,6 +8,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
+import org.json.simple.JSONObject;
+
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import util.mybatis.MybatisUtil;
@@ -180,6 +182,44 @@ public class UserServiceImpl implements UserService{
 		List<UserDTO> list = mapper.getUserList();
 		request.setAttribute("list", list);
 		request.getRequestDispatcher("userRank.jsp").forward(request, response);
+	}
+
+	@Override
+	public void checkDuplicateNick(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		SqlSession sql = sqlSessionFactory.openSession(true);
+		UserMapper mapper = sql.getMapper(UserMapper.class);
+		UserDTO dto = mapper.getUserByNick(request.getParameter("nick"));
+
+		System.out.println(request.getParameter("nick"));
+
+		String msg = "";
+		if(dto == null) {
+			msg = "ok";
+		} else {
+			msg = "no";
+		}
+
+		response.setContentType("text/text");
+		response.setCharacterEncoding("utf-8");
+		response.getWriter().write(msg);
+	}
+
+	@Override
+	public void checkDuplicateId(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		SqlSession sql = sqlSessionFactory.openSession(true);
+		UserMapper mapper = sql.getMapper(UserMapper.class);
+		UserDTO dto = mapper.getUserById(request.getParameter("user_id"));
+
+		String msg = "";
+		if(dto == null) {
+			msg = "ok";
+		} else {
+			msg = "no";
+		}
+
+		response.setContentType("text/text");
+		response.setCharacterEncoding("utf-8");
+		response.getWriter().write(msg);
 	}
 
 }

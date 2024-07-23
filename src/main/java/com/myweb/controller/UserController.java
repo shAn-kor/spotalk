@@ -58,6 +58,14 @@ public class UserController extends HttpServlet{
 			service = new UserServiceImpl();
 			service.checkPhone(request, response);
 		}
+		if(command.equals("/user/checkDuplicateNick.user")) {//본인인증 페이지
+			service = new UserServiceImpl();
+			service.checkDuplicateNick(request, response);
+		}
+		if(command.equals("/user/checkDuplicateId.user")) {//본인인증 페이지
+			service = new UserServiceImpl();
+			service.checkDuplicateId(request, response);
+		}
 		if(command.equals("/user/joinForm.user")) {//계정생성 페이지
 			request.getRequestDispatcher("join03.jsp").forward(request, response);
 		}
