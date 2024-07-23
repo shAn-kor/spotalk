@@ -17,4 +17,8 @@ public interface UserService {
     void getMyPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
 
     void getUserRank(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
+
+    void checkDuplicateNick(HttpServletRequest request, HttpServletResponse response) throws IOException;
+
+    void checkDuplicateId(HttpServletRequest request, HttpServletResponse response) throws IOException;
 }

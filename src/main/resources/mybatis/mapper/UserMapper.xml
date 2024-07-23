@@ -22,6 +22,9 @@
 	<select id="getUserById" parameterType="string" resultType="com.myweb.user.model.UserDTO">
 		SELECT * FROM MEMBER WHERE ID = #{id}
 	</select>
+	<select id="getUserByNick" parameterType="string" resultType="com.myweb.user.model.UserDTO">
+		SELECT * FROM MEMBER WHERE NICK = #{nick}
+	</select>
 	<select id="checkPhone" parameterType="string" resultType="com.myweb.user.model.UserDTO">
 		SELECT * FROM MEMBER WHERE PHONE = #{phone}
 	</select>
