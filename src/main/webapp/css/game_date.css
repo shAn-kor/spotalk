@@ -1,0 +1,176 @@
+@import url(default.css);
+
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+.header{margin-top: 120px;}
+
+.header .wrap {
+    width: 1080px;
+    margin: 0 auto;
+    border-left: 1px solid #777;
+    border-right: 1px solid #777;
+    overflow: hidden;
+}   
+.header .wrap .left {float: left;}
+.header .wrap .right {float: right;}
+
+
+/* 좌상단 카테고리 버튼, 드롭다운 메뉴*/
+
+.top-left .dropdown {
+    position: relative;
+    display: inline-block;
+}
+.drop_btn {      
+    float: left;
+    border: 1px solid #777;
+    border-radius: 10px;
+    background-color: #f5f5f5;
+    font-size: 15px;
+    font-weight: bold;
+    width: 100px; 
+    height: 40px;
+    margin: 0 0 0 50px;
+    cursor: pointer;    
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 40px;
+    left: 50px;
+    z-index: 1;
+    border: 1px solid #777;
+    border-radius: 10px;
+    background-color: #f5f5f5;
+    width: 90px;
+    height: 80px;
+    text-align: center;
+    padding: 5px;
+}
+
+.dropdown-content .icon {
+    display: inline;
+    
+}
+
+.dropdown-content a {
+    display: block;
+    color: #000;
+    font-weight: 400;
+    border-bottom: 1px solid #777;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+/* --------------------------------------------- */
+
+
+
+/* 우상단 년도, 달 */
+.top-right {margin-right: 20px;}
+.top-right ul li {
+    float: left;
+    display: inline;
+    border: 1px solid #999;
+    border-radius: 15px;
+    width: 55px;
+    height: 40px;
+    margin-left: 10px;
+    background-color: #f49cbb;
+}   
+
+.top-right ul li button {
+    border-radius: 15px;
+    float: left;
+    width: 50px;
+    height: 35px;
+    background-color: #f49cbb;
+}
+.top-right button:hover {
+    cursor: pointer;
+}
+/* --------------------------------------------- */
+
+
+
+/* 좌측 홈, 커뮤니티, 승부예측, 승부사랭킹 박스 */
+.mid-left .box{
+    border: 1px solid #999;
+    border-radius: 60px;
+    width: 150px;
+    height: 400px;
+    margin: 100px 0 0 30px;
+    background-color: #edf2fb;
+}       
+
+.mid-left .box ul li:nth-child(1) {
+    margin-top: 100px;
+}
+
+.mid-left .box ul li {
+    list-style: inside;
+    margin: 30px 0 0 10px;
+}
+.mid-left .box ul li a {
+    color: black;
+    font-size: 15px;
+}
+/* --------------------------------------------- */
+
+
+
+.mid-right {margin-right: 20px;}
+/* 우측 경기날짜, 시간, 경기, 비고 박스 */
+.mid-right .mid-top {
+    display: inline-block;
+    border: 1px solid #999;
+    border-radius: 15px;
+    margin: 20px 20px 20px 40px;
+    height: 50px;
+    overflow: hidden;
+    background-color: white;
+}   
+
+.mid-right .mid-top ul li {
+    display: inline;
+    float: left;
+    width: 215px; 
+    text-align: center;
+    line-height: 50px;
+    font-size: 15px;
+    border-right: 1px solid #999; 
+    box-sizing: border-box;     
+}
+
+.mid-right .mid-top ul li:nth-child(4) {
+    width: 135px;
+    border: none;
+}
+/* ---------------------------------------------- */
+
+
+
+
+.mid-right .mid-bottom {
+    border: 1px solid #999;
+    border-radius: 15   px;
+    margin: 0 20px 20px 20px;
+    height: 400px;
+    overflow: scroll;
+    background-color: white;
+}
+/* 테이블 박스 */
+.mid-right .mid-bottom table tr td {
+    border: 1px solid #999;
+    width: 220px;
+    height: 60px;
+    text-align: center;
+    background-color: white;    
+   
+}
+.mid-right .mid-bottom table tr td:nth-child(4) {
+    width: 130px;
+}
+/* --------------------------------------------- */
