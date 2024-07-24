@@ -14,12 +14,11 @@
 	${sessionScope.user_id}
 	${sessionScope.grade_id}
     <div class="index-box">
-    <a href="list.game">투표test</a>
-    <a href="schedule.game">야구경기일정test</a>
+    
         <!-- 메인페이지 왼쪽 경기 파트 -->
         <div class="index-box-left">
             <div class="sport-schedule">
-                <p><a href="#">주요경기 일정</a></p>
+                <p><a href="/spotalk/game/soccerdate.game">주요경기 일정</a></p>
                 <div class="tab">
                     <ul class="tabnav">
                         <li><a href="#tab01">축구</a></li>
@@ -56,7 +55,7 @@
 
             <div class="mid-wrap">
                 <div class="main-sport">
-                    <p><a href="#">축구</a><a href="list.game">바로가기</a></p>
+                    <p><a href="/spotalk/game/soccerlist.game">축구</a></p>
                     <div class="main-match">
                         <div class="main-a" style="width: '${33.3333}%';">A</div>
                         <div class="main-c" style="width: '${33.3333}%';">D</div>
@@ -69,20 +68,7 @@
                     </div>
                 </div>
                 <div class="main-sport">
-                    <p><a href="#">야구</a></p>
-                    <div class="main-match">
-                        <div class="main-a" style="width: '${33.3333}%';">A</div>
-                        <div class="main-c" style="width: '${33.3333}%';">D</div>
-                        <div class="main-b" style="width: '${33.3333}%';">B</div>
-                    </div>
-                    <div class="main-match">
-                        <div class="main-a" style="width: '${33.3333}%';">A</div>
-                        <div class="main-c" style="width: '${33.3333}%';">D</div>
-                        <div class="main-b" style="width: '${33.3333}%';">B</div>
-                    </div>
-                </div>
-                <div class="main-sport">
-                    <p><a href="#">농구</a></p>
+                    <p><a href="/spotalk/game/baselist.game">야구</a></p>
                     <div class="main-match">
                         <div class="main-a" style="width: '${33.3333}%';">A</div>
                         <div class="main-c" style="width: '${33.3333}%';">D</div>
