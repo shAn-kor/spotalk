@@ -5,6 +5,7 @@ import java.io.IOException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import org.json.simple.parser.ParseException;
 
 public interface UserService {
     void findId(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
@@ -21,4 +22,8 @@ public interface UserService {
     void checkDuplicateNick(HttpServletRequest request, HttpServletResponse response) throws IOException;
 
     void checkDuplicateId(HttpServletRequest request, HttpServletResponse response) throws IOException;
+
+    void createUser(HttpServletRequest request, HttpServletResponse response) throws IOException;
+
+    void changeNick(HttpServletRequest request, HttpServletResponse response) throws IOException;
 }

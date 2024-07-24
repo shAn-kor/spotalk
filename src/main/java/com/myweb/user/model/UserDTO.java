@@ -1,6 +1,7 @@
 package com.myweb.user.model;
 
 import java.sql.Date;
+import java.util.Arrays;
 
 public class UserDTO {
     String id;
@@ -18,18 +19,18 @@ public class UserDTO {
     
     public UserDTO() {    }    
     
-    public UserDTO(String id, String pw, String pwq, String pwa, String name, Date b_date, String phone, String nick, String point, String grade_id, Date s_date) {
+    public UserDTO(String id, String pw, String pwq, String pwa, String name, Date bDate, String phone, String nick, String point, String gradeId, Date sDate) {
         this.id = id;
         this.pw = pw;
         this.pwq = pwq;
         this.pwa = pwa;
         this.name = name;
-        this.bDate = b_date;
+        this.bDate = bDate;
         this.phone = phone;
         this.nick = nick;
         this.point = point;
-        this.gradeId = grade_id;
-        this.sDate = s_date;
+        this.gradeId = gradeId;
+        this.sDate = sDate;
     }
 
     public String getId() {
@@ -136,12 +137,60 @@ public class UserDTO {
                 ", pwq='" + pwq + '\'' +
                 ", pwa='" + pwa + '\'' +
                 ", name='" + name + '\'' +
-                ", b_date='" + bDate + '\'' +
+                ", bDate='" + bDate + '\'' +
+                ", gender='" + gender + '\'' +
                 ", phone='" + phone + '\'' +
                 ", nick='" + nick + '\'' +
                 ", point='" + point + '\'' +
-                ", grade_id='" + gradeId + '\'' +
-                ", s_date='" + sDate + '\'' +
+                ", gradeId='" + gradeId + '\'' +
+                ", sDate='" + sDate + '\'' +
                 '}';
+    }
+
+    public String toJSONString() {
+        return "{" +
+                "'id':'" + id + "'" +
+                ", 'pw':'" + pw + "'" +
+                ", 'pwq':'" + pwq + "'" +
+                ", 'pwa':'" + pwa + "'" +
+                ", 'name':'" + name + "'" +
+                ", 'bDate':'" + bDate + "'" +
+                ", 'gender':'" + gender + "'" +
+                ", 'phone':'" + phone + "'" +
+                "', 'nick':'" + nick + "'" +
+                ", 'point':'" + point + "'" +
+                ", 'gradeId':'" + gradeId + "'" +
+                ", 'sDate':'" + sDate + "'" +
+                '}';
+    }
+
+    public static UserDTO parseJSONToUserDTO(String json) {
+        System.out.println(json);
+
+        UserDTO dto = new UserDTO();
+
+        String[] str = json.replace("{", "").replace("}", "").trim().split(", ");
+
+        System.out.println(Arrays.toString(str));
+        for (String s : str) {
+            s = s.replace("'", "");
+            String[] arr = s.split(":");
+            if (arr[1].equals("null")) continue;
+
+            if (arr[0].equals("id")) dto.setId(arr[1]);
+            if (arr[0].equals("pw")) dto.setPw(arr[1]);
+            if (arr[0].equals("pwq")) dto.setPwq(arr[1]);
+            if (arr[0].equals("pwa")) dto.setPwa(arr[1]);
+            if (arr[0].equals("name")) dto.setName(arr[1]);
+            if (arr[0].equals("bDate")) dto.setBDate(Date.valueOf(arr[1]));
+            if (arr[0].equals("gender")) dto.setGender(arr[1]);
+            if (arr[0].equals("phone")) dto.setPhone(arr[1]);
+            if (arr[0].equals("nick")) dto.setNick(arr[1]);
+            if (arr[0].equals("point")) dto.setPoint(arr[1]);
+            if (arr[0].equals("gradeId")) dto.setGradeId(arr[1]);
+            if (arr[0].equals("sDate")) dto.setId(arr[1]);
+        }
+
+        return dto;
     }
 }

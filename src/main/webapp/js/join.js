@@ -31,7 +31,7 @@ window.onload = function () {
 
   // 비밀번호 확인 체크조건
   function comparePwd() {
-    if (pwd != null && ckPwd != null && pwd.value != ckPwd.value) {
+    if (pwd != null && ckPwd != null && pwd.value !== ckPwd.value) {
       alert("비밀번호가 일치하지 않습니다 :)");
       document.querySelector("#user-pw2").value = "";
       ckPwd.focus();
@@ -48,40 +48,46 @@ window.onload = function () {
 
   let checkIdBtn = document.getElementById('check-id');
   let checkNickBtn = document.getElementById('check-nick');
-  let nick = document.getElementById('user-name');
+  let nick = document.getElementById('user-nick');
 
   let nickResult = false;
   let idResult = false;
 
   checkNickBtn.addEventListener('click', function() {
-    fetch("checkDuplicateNick.user?nick="+nick.value)
-        .then(function(response) {
-          response.text().then(data => {
-            if (data === 'ok') {
-              alert('사용 가능합니다.');
-              nickResult = true;
-            } else {
-              alert('중복되었습니다.');
-              nick.focus();
-              nick.value="";
-            }
-          })
-        })
+    fetch("checkDuplicateNick.user", {
+      method: 'POST',
+      contentType: 'application/json',
+      body: JSON.stringify({nick: nick.value})
+    })
+    .then(response => { return response.json()})
+    .then(data => {
+      if (data.msg === 'ok') {
+        alert('사용 가능합니다.');
+        nickResult = true;
+      } else {
+        alert('중복되었습니다.');
+        nick.focus();
+        nick.value="";
+      }
+    })
   });
 
   checkIdBtn.addEventListener('click', function() {
-    fetch("checkDuplicateId.user?user_id="+id.value)
-        .then(function(response) {
-          response.text().then(data => {
-            if (data === 'ok') {
-              alert('사용 가능합니다.');
-              idResult = true;
-            } else {
-              alert('중복되었습니다.');
-              id.focus();
-              id.value="";
-            }
-          })
+    fetch("checkDuplicateId.user", {
+      method: 'POST',
+      contentType: 'application/json',
+      body: JSON.stringify({id: id.value})
+    })
+        .then((response) => { return response.json()})
+        .then(data => {
+          if (data.msg === 'ok') {
+            alert('사용 가능합니다.');
+            idResult = true;
+          } else {
+            alert('중복되었습니다.');
+            id.focus();
+            id.value="";
+          }
         })
   });
 
@@ -103,13 +109,13 @@ window.onload = function () {
       return;
     }
 
-    if (!pwd.value) {
+    if (!pwd.value || !strongPassword(pwd.value)) {
       alert('비밀번호를 확인해주세요');
       pwd.focus();
       return;
     }
 
-    if (!ckPwd.value) {
+    if (!ckPwd.value || pwd.value !== ckPwd.value || !strongPassword(ckPwd.value)) {
       alert('비밀번호를 확인해주세요');
       ckPwd.focus();
       return;
@@ -126,6 +132,7 @@ window.onload = function () {
       form.hintAnswer.focus();
       return;
     }
+
     form.submit();
   })
 }
