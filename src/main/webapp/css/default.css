@@ -1,8 +1,18 @@
 /* 전체 공통적으로 적용될 디자인 정의 */
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Do+Hyeon&display=swap');
 * {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    
+    font-family: "Do Hyeon", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+body {
+    background-image: url(../img/balls.jpg);
 }
 
 ul, li, ol, dl, dd {list-style: none;}
