@@ -4,6 +4,8 @@ import java.io.IOException;
 
 import com.myweb.game.service.GameService;
 import com.myweb.game.service.GameServiceImpl;
+import com.myweb.user.service.UserService;
+import com.myweb.user.service.UserServiceImpl;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -40,15 +42,22 @@ public class GameController extends HttpServlet {
 		System.out.println(command);
 		
 		GameService service;
-		if(command.equals("/list.game")) { //경기정보 select
-			
+		if(command.equals("/game/soccerlist.game")) { //축구경기예측페이지
 			service = new GameServiceImpl();
-			service.getGame(request, response);
+			service.getSoccer(request, response);
 			
-		}
-		else if(command.equals("/schedule.game")) { //경기정보 insert
+			
+		}else if(command.equals("/game/baselist.game")) { //야구경기예측페이지
 			service = new GameServiceImpl();
-//			service.scrapeScheduleKLeague(request, response);
+			service.getBase(request, response);
+			
+		}else if(command.equals("/game/soccerdate.game")) { //축구경기일정
+			service = new GameServiceImpl();
+			service.getSoccerDate(request, response);
+			
+		}else if(command.equals("/game/basedate.game")) { //야구경기일정
+			service = new GameServiceImpl();
+			service.getBaseDate(request, response);
 			
 		}
 	}

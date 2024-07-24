@@ -7,7 +7,10 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 public interface GameService {
-//	void scrapScheduleKBO(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
-	void getGame(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
-// 	void scrapeScheduleKLeague(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
+	void getSoccer(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
+	void getBase(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
+
+	void getSoccerDate(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
+	void getBaseDate(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
+
 }

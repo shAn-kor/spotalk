@@ -11,8 +11,8 @@
     border-right: 1px solid #777;
     overflow: hidden;
 }   
-.header .wrap .left {float: left;}
-.header .wrap .right {float: right;}
+/* .header .wrap .left {float: left;}
+.header .wrap .right {float: right;} */
 
 
 /* 좌상단 카테고리 버튼, 드롭다운 메뉴*/
@@ -68,86 +68,34 @@
 
 
 
-/* 우상단 년도, 달 */
-.top-right {margin-right: 20px;}
-.top-right ul li {
-    float: left;
-    display: inline;
-    border: 1px solid #999;
-    border-radius: 15px;
-    width: 55px;
-    height: 40px;
-    margin-left: 10px;
-    background-color: #f49cbb;
-}   
-
-.top-right ul li button {
-    border-radius: 15px;
-    float: left;
-    width: 50px;
-    height: 35px;
-    background-color: #f49cbb;
+.mid-right {
+	width: 100%;
 }
-.top-right button:hover {
-    cursor: pointer;
-}
-/* --------------------------------------------- */
-
-
-
-/* 좌측 홈, 커뮤니티, 승부예측, 승부사랭킹 박스 */
-.mid-left .box{
-    border: 1px solid #999;
-    border-radius: 60px;
-    width: 150px;
-    height: 400px;
-    margin: 100px 0 0 30px;
-    background-color: #edf2fb;
-}       
-
-.mid-left .box ul li:nth-child(1) {
-    margin-top: 100px;
-}
-
-.mid-left .box ul li {
-    list-style: inside;
-    margin: 30px 0 0 10px;
-}
-.mid-left .box ul li a {
-    color: black;
-    font-size: 15px;
-}
-/* --------------------------------------------- */
-
-
-
-.mid-right {margin-right: 20px;}
 /* 우측 경기날짜, 시간, 경기, 비고 박스 */
 .mid-right .mid-top {
     display: inline-block;
     border: 1px solid #999;
     border-radius: 15px;
-    margin: 20px 20px 20px 40px;
+    margin : 20px;
+    margin-left: 50px;
+    width: 980px;
     height: 50px;
-    overflow: hidden;
     background-color: white;
 }   
 
 .mid-right .mid-top ul li {
-    display: inline;
-    float: left;
-    width: 215px; 
-    text-align: center;
+    display: inline-block;
+    width: 321px;
     line-height: 50px;
     font-size: 15px;
-    border-right: 1px solid #999; 
+    /* border-right: 1px solid #999; */ 
     box-sizing: border-box;     
+    text-align: center;
+}
+.mid-right .mid-top ul li:nth-child(3){
+	border: none;
 }
 
-.mid-right .mid-top ul li:nth-child(4) {
-    width: 135px;
-    border: none;
-}
 /* ---------------------------------------------- */
 
 
@@ -156,21 +104,21 @@
 .mid-right .mid-bottom {
     border: 1px solid #999;
     border-radius: 15   px;
-    margin: 0 20px 20px 20px;
-    height: 400px;
-    overflow: scroll;
+    margin-left: 50px;
+    margin-bottom: 20px;
+    width: 980px;
+    max-height: 370px;
+    overflow-y: auto;
     background-color: white;
 }
 /* 테이블 박스 */
 .mid-right .mid-bottom table tr td {
     border: 1px solid #999;
-    width: 220px;
+    width: 325px;
     height: 60px;
     text-align: center;
     background-color: white;    
    
 }
-.mid-right .mid-bottom table tr td:nth-child(4) {
-    width: 130px;
-}
+
 /* --------------------------------------------- */

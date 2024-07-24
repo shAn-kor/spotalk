@@ -21,13 +21,13 @@
         <div class="center">
             <div class="menu-wrap">
                 <div class="menu">
-                    <a href="#">승부예측</a>
+                    <a href="/spotalk/game/soccerlist.game">승부예측</a>
                 </div>
                 <div class="menu">
                     <a href="#">랭킹</a>
                 </div>
                 <div class="menu">
-                    <a href="#">경기일정</a>
+                    <a href="/spotalk/game/soccerdate.game">경기일정</a>
                 </div>
                 <div class="menu">
                     <a href="#">커뮤니티</a>
@@ -166,7 +166,7 @@
             </div>
         </div>
         <div class="sport-schedule">
-            <p><a href="#">주요경기 일정</a></p>
+            <p><a href="/spotalk/game/soccerdate.game">주요경기 일정</a></p>
             <div class="tab">
                 <ul class="tabnav">
                     <li><a href="#tab01">축구</a></li>
