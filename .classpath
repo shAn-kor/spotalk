@@ -114,7 +114,6 @@
 	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/selenium-java-4.22.0/selenium-http-4.22.0-sources.jar"/>
 	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/selenium-java-4.22.0/selenium-ie-driver-4.22.0.jar"/>
 	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/selenium-java-4.22.0/selenium-ie-driver-4.22.0-sources.jar"/>
-	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/selenium-java-4.22.0/selenium-java-4.22.0.jar"/>
 	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/selenium-java-4.22.0/selenium-java-4.22.0-sources.jar"/>
 	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/selenium-java-4.22.0/selenium-json-4.22.0.jar"/>
 	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/selenium-java-4.22.0/selenium-json-4.22.0-sources.jar"/>

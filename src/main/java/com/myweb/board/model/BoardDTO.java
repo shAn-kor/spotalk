@@ -2,48 +2,61 @@ package com.myweb.board.model;
 
 public class BoardDTO {
 	
-	String post_id; //자동
-	String user_id; //세션
+	String postId; //자동
+	String userId; //세션
 	String category;
-	String title;
-	String content;
-	String regdate; //디폴트 시스데이트
+	String postTitle;
+	String postContent;
+	String postDate; //디폴트 시스데이트
 	String hit; //디폴트 0
-	String post_like; //디폴트 0
-	String post_dislike; //디폴트 0
-	String grade_id; //세션
+	String postLike; //디폴트 0
+	String postDislike; //디폴트 0
+	String gradeId; //세션
+	
+	String commentId; //자동
+	String commentContent;
+	String commentDate; //디폴트 시스데이트
+	String commentLike; //디폴트 0
+	String commentDislike; //디폴트 0
 	
 	public BoardDTO() {
 		
 	}
 
-	public BoardDTO(String post_id, String user_id, String category, String title, String content, String regdate,String hit, String post_like, String post_dislike, String grade_id) {
-		this.post_id = post_id;
-		this.user_id = user_id;
+	public BoardDTO(String postId, String userId, String category, String postTitle, String postContent,
+			String postDate, String hit, String postLike, String postDislike, String gradeId, String commentId,
+			String commentContent, String commentDate, String commentLike, String commentDislike) {
+		this.postId = postId;
+		this.userId = userId;
 		this.category = category;
-		this.title = title;
-		this.content = content;
-		this.regdate = regdate;
+		this.postTitle = postTitle;
+		this.postContent = postContent;
+		this.postDate = postDate;
 		this.hit = hit;
-		this.post_like = post_like;
-		this.post_dislike = post_dislike;
-		this.grade_id = grade_id;
+		this.postLike = postLike;
+		this.postDislike = postDislike;
+		this.gradeId = gradeId;
+		this.commentId = commentId;
+		this.commentContent = commentContent;
+		this.commentDate = commentDate;
+		this.commentLike = commentLike;
+		this.commentDislike = commentDislike;
 	}
 
-	public String getPost_id() {
-		return post_id;
+	public String getPostId() {
+		return postId;
 	}
 
-	public void setPost_id(String post_id) {
-		this.post_id = post_id;
+	public void setPostId(String postId) {
+		this.postId = postId;
 	}
 
-	public String getUser_id() {
-		return user_id;
+	public String getUserId() {
+		return userId;
 	}
 
-	public void setUser_id(String user_id) {
-		this.user_id = user_id;
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 
 	public String getCategory() {
@@ -54,28 +67,28 @@ public class BoardDTO {
 		this.category = category;
 	}
 
-	public String getTitle() {
-		return title;
+	public String getPostTitle() {
+		return postTitle;
 	}
 
-	public void setTitle(String title) {
-		this.title = title;
+	public void setPostTitle(String postTitle) {
+		this.postTitle = postTitle;
 	}
 
-	public String getContent() {
-		return content;
+	public String getPostContent() {
+		return postContent;
 	}
 
-	public void setContent(String content) {
-		this.content = content;
+	public void setPostContent(String postContent) {
+		this.postContent = postContent;
 	}
 
-	public String getRegdate() {
-		return regdate;
+	public String getPostDate() {
+		return postDate;
 	}
 
-	public void setRegdate(String regdate) {
-		this.regdate = regdate;
+	public void setPostDate(String postDate) {
+		this.postDate = postDate;
 	}
 
 	public String getHit() {
@@ -86,30 +99,71 @@ public class BoardDTO {
 		this.hit = hit;
 	}
 
-	public String getPost_like() {
-		return post_like;
+	public String getPostLike() {
+		return postLike;
 	}
 
-	public void setPost_like(String post_like) {
-		this.post_like = post_like;
+	public void setPostLike(String postLike) {
+		this.postLike = postLike;
 	}
 
-	public String getPost_dislike() {
-		return post_dislike;
+	public String getPostDislike() {
+		return postDislike;
 	}
 
-	public void setPost_dislike(String post_dislike) {
-		this.post_dislike = post_dislike;
+	public void setPostDislike(String postDislike) {
+		this.postDislike = postDislike;
 	}
 
-	public String getGrade_id() {
-		return grade_id;
+	public String getGradeId() {
+		return gradeId;
 	}
 
-	public void setGrade_id(String grade_id) {
-		this.grade_id = grade_id;
+	public void setGradeId(String gradeId) {
+		this.gradeId = gradeId;
 	}
 
+	public String getCommentId() {
+		return commentId;
+	}
+
+	public void setCommentId(String commentId) {
+		this.commentId = commentId;
+	}
+
+	public String getCommentContent() {
+		return commentContent;
+	}
+
+	public void setCommentContent(String commentContent) {
+		this.commentContent = commentContent;
+	}
+
+	public String getCommentDate() {
+		return commentDate;
+	}
+
+	public void setCommentDate(String commentDate) {
+		this.commentDate = commentDate;
+	}
+
+	public String getCommentLike() {
+		return commentLike;
+	}
+
+	public void setCommentLike(String commentLike) {
+		this.commentLike = commentLike;
+	}
+
+	public String getCommentDislike() {
+		return commentDislike;
+	}
+
+	public void setCommentDislike(String commentDislike) {
+		this.commentDislike = commentDislike;
+	}
 	
-
+	
+	
+	
 }

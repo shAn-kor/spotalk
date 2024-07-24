@@ -1,4 +1,4 @@
-window.onload = function () {  
+window.onload = function () {
   let id = document.getElementById('user-id');
   let pwd = document.getElementById('user-pw1');
   let ckPwd = document.getElementById('user-pw2');
@@ -31,7 +31,7 @@ window.onload = function () {
 
   // 비밀번호 확인 체크조건
   function comparePwd() {
-    if (pwd != null && ckPwd != null && pwd.value != ckPwd.value) {
+    if (pwd != null && ckPwd != null && pwd.value !== ckPwd.value) {
       alert("비밀번호가 일치하지 않습니다 :)");
       document.querySelector("#user-pw2").value = "";
       ckPwd.focus();
@@ -45,4 +45,94 @@ window.onload = function () {
   function strongPassword (str) {
       return /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/.test(str);
   }
+
+  let checkIdBtn = document.getElementById('check-id');
+  let checkNickBtn = document.getElementById('check-nick');
+  let nick = document.getElementById('user-nick');
+
+  let nickResult = false;
+  let idResult = false;
+
+  checkNickBtn.addEventListener('click', function() {
+    fetch("checkDuplicateNick.user", {
+      method: 'POST',
+      contentType: 'application/json',
+      body: JSON.stringify({nick: nick.value})
+    })
+    .then(response => { return response.json()})
+    .then(data => {
+      if (data.msg === 'ok') {
+        alert('사용 가능합니다.');
+        nickResult = true;
+      } else {
+        alert('중복되었습니다.');
+        nick.focus();
+        nick.value="";
+      }
+    })
+  });
+
+  checkIdBtn.addEventListener('click', function() {
+    fetch("checkDuplicateId.user", {
+      method: 'POST',
+      contentType: 'application/json',
+      body: JSON.stringify({id: id.value})
+    })
+        .then((response) => { return response.json()})
+        .then(data => {
+          if (data.msg === 'ok') {
+            alert('사용 가능합니다.');
+            idResult = true;
+          } else {
+            alert('중복되었습니다.');
+            id.focus();
+            id.value="";
+          }
+        })
+  });
+
+  let submitBtn = document.getElementById('join-submit');
+
+  submitBtn.addEventListener('click', function() {
+    event.preventDefault();
+    let form = document.myForm;
+
+    if (!nickResult) {
+      alert('닉네임 중복검사를 해주세요');
+      nick.focus();
+      return;
+    }
+
+    if (!idResult) {
+      alert('아이디 중복검사를 해주세요');
+      id.focus();
+      return;
+    }
+
+    if (!pwd.value || !strongPassword(pwd.value)) {
+      alert('비밀번호를 확인해주세요');
+      pwd.focus();
+      return;
+    }
+
+    if (!ckPwd.value || pwd.value !== ckPwd.value || !strongPassword(ckPwd.value)) {
+      alert('비밀번호를 확인해주세요');
+      ckPwd.focus();
+      return;
+    }
+
+    if (form.hint.value === "") {
+      alert('비밀번호 힌트를 골라주세요');
+      form.hint.focus();
+      return;
+    }
+
+    if (!form.hintAnswer.value) {
+      alert('비밀번호 힌트 정답을 입력해주세요');
+      form.hintAnswer.focus();
+      return;
+    }
+
+    form.submit();
+  })
 }

@@ -1,5 +1,10 @@
+<%@ page import="com.myweb.user.model.UserDTO" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+         pageEncoding="UTF-8"%>
+
+<%
+    UserDTO dto = (UserDTO) request.getAttribute("dto");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,14 +23,14 @@
         </p>
         <div class="join_wrap">
             <h3 class="join_title">입력해주세요.</h3>
-            <form class="join_form" action="#">
+            <form class="join_form" action="create.user" name="myForm" method="post">
                 <div class="join-nick">
-                    <input type="text" name="user-name" id="user-name" placeholder="닉네임" required>
-                    <a href="#">중복확인</a>
+                    <input type="text" name="user-nick" id="user-nick" placeholder="닉네임" required>
+                    <a href="#" id="check-nick">중복확인</a>
                 </div>
                 <div class="join-id">
                     <input type="text" name="user-id" id="user-id" placeholder="아이디" required>
-                    <a href="#">중복확인</a>
+                    <a href="#" id="check-id">중복확인</a>
                 </div>
                 <div class="join-pw">
                     <input type="password" name="user-pw1" id="user-pw1" placeholder="비밀번호" required>
@@ -35,13 +40,18 @@
                 </div>
                 <div class="join-pw-hint">
                     <select name="hint" id="pw-hint">
-                        <option value="">비밀번호 힌트</option>
-                        <option value="">비밀번호 힌트</option>
+                        <option value="">비밀번호 찾기 질문</option>
+                        <option value="element">1. 내가 나온 초등학교는?</option>
+                        <option value="bestFriend">2. 제일 친한 친구 이름은?</option>
+                        <option value="nickname">3. 어릴 적 별명은?</option>
+                        <option value="celeb">4. 내가 닮은 연예인은?</option>
+                        <option value="food">5. 내가 제일 좋아하는 음식은?</option>
                     </select>
                 </div>
                 <div class="join-pw-hint-answer">
-                    <input type="text" name="hint-answer" id="hint-answer" placeholder="답">
+                    <input type="text" name="hintAnswer" id="hint-answer" placeholder="답">
                 </div>
+                <input type="hidden" id="dto" name="dto" value="<%=dto.toJSONString()%>">
                 <input type="submit" name="join-submit" id="join-submit" value="가입하기">
             </form>
         </div>

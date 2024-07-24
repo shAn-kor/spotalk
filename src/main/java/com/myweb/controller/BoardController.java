@@ -43,20 +43,29 @@ public class BoardController extends HttpServlet {
 		//BoardService 선언
 		BoardService service;
 		
-		if(command.equals("/board/board_write.board")) { //글 작성 메인화면
+		
+		if(command.equals("/board/boardWrite.board")) { //글 작성 메인화면
 			request.getRequestDispatcher("board_write.jsp").forward(request, response);
 		} 
-		if(command.equals("/board/write.board")) { //글 작성
+		if(command.equals("/board/postWrite.board")) { //글 작성
 			service = new BoardServiceImpl();
-			service.write(request, response);
+			service.postWrite(request, response);
 		} 
 		if(command.equals("/board/getPost.board")) { //글 상세 조회
 			service = new BoardServiceImpl();
 			service.getPost(request, response);
 		}
 		if(command.equals("/board/post.board")) { //글 상세 화면
-			request.getRequestDispatcher("post.jsp").forward(request, response);
+			service = new BoardServiceImpl();
+			request.getRequestDispatcher("board_post.jsp").forward(request, response);
 		}
+		if(command.equals("/board/commentWrite.board")) { // 댓글 작성 화면 & 글 상세 화면
+			service = new BoardServiceImpl();
+			request.getRequestDispatcher("board_post.jsp").forward(request, response);
+		}
+	
+	
+		
 		
 		
 	

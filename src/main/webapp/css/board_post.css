@@ -1,0 +1,253 @@
+@import url(default.css);
+@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Jua&display=swap');
+
+* {
+    font-family: "Do Hyeon", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+* {box-sizing: border-box;}
+  
+body{background-color: #fff0f3;}
+
+.container{width: 930px;}
+
+.item1 {
+	width: 100%;
+    margin-top: 100px;
+}
+.item1 a {
+    color: #000;
+}
+.item2 {
+    overflow: hidden;
+    width: 100%;
+    height: 450px;
+    border-top: 3px solid #000;
+    border-bottom: 3px solid #000;
+    padding: 10px;
+}
+/* 프로필, 작성자, 작성시간, 조회수 */
+.item2 > .top {
+    height: 100px;
+    padding: 5px;
+}
+.item2 > .top > .left,
+.item2 > .top > .right {
+    float: left;
+}
+.item2 > .top  a {
+    color: #000;
+}
+
+.item2 > .top > .right > a {
+    margin-left: 5px;
+}
+.item2 > .top > .right > .hits > span:nth-child(1) {
+    margin-left: 5px;
+    font-size: 13px;
+}
+
+/* 글 제목 */
+.item2 > .title {
+    height: 100px;
+    padding: 5px;
+}
+.item2 > .title > h3 {
+    font-weight: 900;
+}
+
+/* 글 내용 */
+.item2 > .content {
+    height: 200px;
+    padding: 10px;
+    font-size: 18px;
+}
+
+/* 추천 비추천 */
+.item2 > .bottom {
+    overflow: hidden;
+    height: 35px;
+}
+.item2 > .bottom > .right {
+    float: right;
+    padding: 5px;
+}
+
+/* 추천 */
+.item2 > .bottom > .right > .up {
+	background-image: url("../img/up.png");
+	background-color: #fff0f3;
+	width: 16px;
+	height: 16px;
+}
+/* 비추천 */
+.item2 > .bottom > .right > .down {
+	background-image: url("../img/down.png");
+	background-color: #fff0f3;
+	width: 16px;
+	height: 16px;
+}
+
+
+/* ================================== 댓글 작성 ==================================*/
+.item3 {
+    overflow: hidden;
+    width: 100%;
+    height: 250px;
+    padding: 10px;
+    margin-bottom: 50px;
+}
+
+.item3 > .box {
+    border: 1px solid #999;
+    border-radius: 5px;
+    background-color: white;
+    height: 200px;
+}
+
+.item3 > .box > .top {
+    overflow: hidden;
+    height: 70%;
+}
+.item3 > .box > .top > .left {
+    float: left;
+    margin: 15px 15px;
+}
+
+/* 프로필 */
+.item3 > .box > .top > .left > img {
+    margin-top: 20px;
+}
+
+.item3 > .box > .top > .right {
+    float: left;
+    width: 750px;
+    height: 100px;
+  
+    margin: 15px 10px;
+    padding: 5px;
+}
+
+.item3 > .box >.top > .right > textarea {
+    width: 100%;
+    height: 100%;
+    border: 1px solid #777;
+    border-radius: 5px;
+    resize: none;
+    font-size: 15px;
+    padding: 10px;
+}
+
+/* 물음표 */
+.item3 > .box >.top > .right > img {
+    margin: 15px;
+}
+.item3 > .box > .top > .right >.a {
+	color: blue;
+	text-decoration: underline;
+}
+
+
+
+/* 댓글 쓰기 */
+.item3 > .box > .bottom {overflow: hidden;}
+.item3 > .box > .bottom > input{
+    float: right;
+    width: 100px;
+    background-color: #ffc2d1;
+    margin-right: 50px;
+}
+.item3 > .box > .bottom > input:active {
+	box-shadow: none;
+}
+
+
+/* ================================== 댓글들 ================================== */
+.item4 {
+    overflow: hidden;
+    width: 100%;
+    height: 100px;
+    border-bottom: 2px solid #000;
+    padding: 10px;
+}
+
+/* 댓글 */
+/* 프로필 , 작성자, 작성시간 , 조회수 */
+.item4 .box {overflow: hidden;}
+.item4 > .box > .top {
+    float: left;
+}
+.item4 > .box > .bottom {
+    float: right;
+}
+
+.item4 > .box > .top > .left,
+.item4 > .box > .top > .right {
+    float: left;
+}
+
+.item4 > .box > .top > .right > a {
+    margin-left: 5px;
+}
+.item4 > .box > .top > .right > .hits > span:nth-child(1) {
+    margin-left: 5px;
+    font-size: 13px;
+}
+
+/* 댓글 내용 */
+.item4 > .comments {
+    height: 50px;
+    margin: 0 40px;
+}
+
+/* 추천 */
+.item4 > .box > .bottom > .right > .up {
+	background-image: url("../img/up.png");
+	background-color: #fff0f3;
+	width: 16px;
+	height: 16px;
+}
+/* 비추천 */
+.item4 > .box > .bottom > .right > .down {
+	background-image: url("../img/down.png");
+	background-color: #fff0f3;
+	width: 16px;
+	height: 16px;
+}
+
+
+/* 댓글 페이지 */
+/* 하단 페이지 */
+.comments-page {margin: 10px;}
+
+/* 중앙 숫자 페이지 버튼 */
+.comments-page > ul > p {
+    display: inline;
+    font-size: 20px;
+    margin: 0 7px 0 0;
+}
+.comments-page > ul > button {
+    width: 32px;
+    height: 32px;
+    background-color: #fff0f3;
+    border: none;
+}
+.comments-page > ul > button > a {
+    color: #000;
+    font-size: 15px;
+}
+
+/* 이전, 다음 페이지 버튼 */
+.comments-page > ul > li > a {
+    color: #000;
+    border: none;
+    background-color: #fff0f3;
+}
+.comments-page > ul > li > a:hover {
+    background-color: #fff0f3;
+    text-decoration: underline;
+
+}
+

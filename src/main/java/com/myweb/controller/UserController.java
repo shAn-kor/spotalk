@@ -11,6 +11,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import org.json.simple.parser.ParseException;
 
 @WebServlet("*.user")
 public class UserController extends HttpServlet{
@@ -58,8 +59,23 @@ public class UserController extends HttpServlet{
 			service = new UserServiceImpl();
 			service.checkPhone(request, response);
 		}
+		if(command.equals("/user/checkDuplicateNick.user")) {//본인인증 페이지
+			service = new UserServiceImpl();
+			service.checkDuplicateNick(request, response);
+        }
+		if(command.equals("/user/checkDuplicateId.user")) {//본인인증 페이지
+			service = new UserServiceImpl();
+			service.checkDuplicateId(request, response);
+        }
 		if(command.equals("/user/joinForm.user")) {//계정생성 페이지
 			request.getRequestDispatcher("join03.jsp").forward(request, response);
+		}
+		if(command.equals("/user/create.user")) { // 계정 생성
+			service = new UserServiceImpl();
+			service.createUser(request, response);
+		}
+		if (command.equals("/user/createSuccess.user")) { // 계정 생성 성공
+			request.getRequestDispatcher("join_success.jsp").forward(request, response);
 		}
 		
 		//아이디 & 비밀번호 찾기
@@ -100,6 +116,10 @@ public class UserController extends HttpServlet{
 			service = new UserServiceImpl();
 			service.getMyPage(request, response);
 		}
+		if(command.equals("/user/changeNick.user")) {
+			service = new UserServiceImpl();
+			service.changeNick(request, response);
+        }
 
 		// 승부사 랭킹
 		if (command.equals("/user/rank.user")) {

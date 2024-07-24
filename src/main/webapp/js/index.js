@@ -45,4 +45,8 @@ window.onload = function() {
     // 두 번째 탭 그룹 설정
     setupTabs('.tabnav2 a', '.tabcontent2 > div');
     setupTabs('.tabnav3 a', '.tabcontent3 > div');
+
+    let footballRank = document.getElementById('tab2-01');
+    let baseballRank = document.getElementById('tab2-02');
+    let basballRank = document.getElementById('tab2-03');
 }

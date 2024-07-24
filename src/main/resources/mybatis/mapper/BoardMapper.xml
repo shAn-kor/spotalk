@@ -18,14 +18,18 @@
 <mapper namespace="com.myweb.board.model.BoardMapper">
 
 <insert id="insertPost" parameterType="com.myweb.board.model.BoardDTO">
-	INSERT INTO POST(user_id, category, title, content, grade_id) VALUES(#{user_id}, #{category}, #{title}, #{content}, #{grade_id});
+	INSERT INTO POSTS(post_id, user_id, category, post_title, post_content, grade_id) 
+	VALUES(post_seq.nextval, #{userId}, #{category}, #{postTitle}, #{postContent}, #{gradeId})
 </insert>
-<select id="getPostId" parameterType="string" resultType="long">
-	SELECT MAX(POST_ID) FROM POST WHERE USER_ID = #{user_id}; 
+<select id="getPostId" parameterType="string" resultType="string">
+	SELECT MAX(POST_ID) FROM POSTS WHERE USER_ID = #{userId} 
 </select>
 <select id="getPost" parameterType="string" resultType="com.myweb.board.model.BoardDTO">
-	SELECT * FROM POST WHERE POST_ID = #{post_id}; 
+	SELECT * FROM POSTS WHERE POST_ID = #{postId}
 </select>	
-
+<insert id="insertComment" parameterType="com.myweb.board.model.BoardDTO">
+	INSERT INTO comments(comment_id, post_id, user_id, comment_content)
+	VALUES (commnent_seq.nextval, #{postId}, #{userId}, #{commentContent})
+</insert>
 
 </mapper>

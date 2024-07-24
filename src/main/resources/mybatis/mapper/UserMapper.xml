@@ -22,14 +22,26 @@
 	<select id="getUserById" parameterType="string" resultType="com.myweb.user.model.UserDTO">
 		SELECT * FROM MEMBER WHERE ID = #{id}
 	</select>
+	<select id="getUserByNick" parameterType="string" resultType="com.myweb.user.model.UserDTO">
+		SELECT * FROM MEMBER WHERE NICK = #{nick}
+	</select>
 	<select id="checkPhone" parameterType="string" resultType="com.myweb.user.model.UserDTO">
 		SELECT * FROM MEMBER WHERE PHONE = #{phone}
 	</select>
 	<select id="getUserList" resultType="com.myweb.user.model.UserDTO">
-		SELECT GRADE_ID, NICK, POINT FROM MEMBER ORDER BY POINT DESC
+		SELECT GRADE_ID, NICK, POINT FROM MEMBER WHERE GRADE_ID != 11 ORDER BY POINT DESC
 	</select>
+
+<!--	<select id="getPointList" parameterType="string" resultType="com.myweb.game.model"-->
 
 	<update id="updatePw" parameterType="com.myweb.user.model.UserDTO">
 		UPDATE MEMBER SET PW = #{pw} WHERE ID = #{id}
 	</update>
+	<update id="changeNick" parameterType="com.myweb.user.model.UserDTO">
+		UPDATE MEMBER SET NICK = #{nick} WHERE ID = #{id}
+	</update>
+
+	<insert id="createUser" parameterType="com.myweb.user.model.UserDTO">
+		INSERT INTO MEMBER VALUES (#{id}, #{pw}, #{pwq}, #{pwa}, #{name}, #{bDate}, #{gender}, #{phone}, #{nick}, #{point}, #{gradeId}, SYSDATE)
+	</insert>
 </mapper>

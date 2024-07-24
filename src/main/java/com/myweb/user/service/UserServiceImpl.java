@@ -8,14 +8,20 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
+import org.json.simple.JSONObject;
+
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 import util.mybatis.MybatisUtil;
 
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Date;
 import java.util.List;
+import java.util.Map;
 
 public class UserServiceImpl implements UserService{
     private final SqlSessionFactory sqlSessionFactory = MybatisUtil.getSqlSessionFactory();
@@ -45,11 +51,8 @@ public class UserServiceImpl implements UserService{
 	}
 	@Override
 	public void findPw(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String id = request.getParameter("id");
-		SqlSession sql = sqlSessionFactory.openSession(true);
-		UserMapper mapper = sql.getMapper(UserMapper.class);
-		UserDTO dto = mapper.getUserById(id);
-		sql.close();
+		UserDTO dto = getUserById(request.getParameter("id"));
+
 		if(dto == null) {
 			request.setAttribute("msg", "아이디가 존재하지 않습니다.");
 			request.getRequestDispatcher("findIdPw_Pw.user").forward(request, response);			
@@ -62,10 +65,8 @@ public class UserServiceImpl implements UserService{
 	public void checkPwa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String id = request.getParameter("id");
 		String answer = request.getParameter("answer");
-		SqlSession sql = sqlSessionFactory.openSession(true);
-		UserMapper mapper = sql.getMapper(UserMapper.class);
-		UserDTO dto = mapper.getUserById(id);
-		sql.close();
+		UserDTO dto = getUserById(id);
+
 		if(!dto.getPwa().equals(answer)) {
 			request.setAttribute("dto", dto);
 			request.setAttribute("msg", "답이 일치하지 않습니다.");
@@ -105,8 +106,8 @@ public class UserServiceImpl implements UserService{
 		String day = request.getParameter("day");
 		String phone = request.getParameter("phone");
 		          
-		String dateStr = year + "-" + month + "-" + day;         
-		Date b_date = Date.valueOf(dateStr);         
+		String dateStr = year + "-" + month + "-" + day;
+		Date bDate = Date.valueOf(dateStr);
 
 		SqlSession sql = sqlSessionFactory.openSession(true);
 		UserMapper mapper = sql.getMapper(UserMapper.class);
@@ -126,7 +127,7 @@ public class UserServiceImpl implements UserService{
 			dto = new UserDTO();
 			dto.setName(name);
 			dto.setGender(gender);
-			dto.setBDate(b_date);
+			dto.setBDate(bDate);
 			dto.setPhone(phone);
 			
 			request.setAttribute("dto", dto);
@@ -134,15 +135,39 @@ public class UserServiceImpl implements UserService{
 			
 		}
 	}
+
+	@Override
+	public void createUser(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		String nick = request.getParameter("user-nick");
+		String id = request.getParameter("user-id");
+		String pw = request.getParameter("user-pw1");
+		String pwq = request.getParameter("hint");
+		String pwa = request.getParameter("hintAnswer");
+		String dtoJSON = request.getParameter("dto");
+
+		UserDTO dto = UserDTO.parseJSONToUserDTO(dtoJSON);
+		dto.setNick(nick);
+		dto.setId(id);
+		dto.setPw(pw);
+		dto.setPwq(pwq);
+		dto.setPwa(pwa);
+		dto.setPoint("0");
+		dto.setGradeId("1");
+
+		SqlSession sql = sqlSessionFactory.openSession(true);
+		UserMapper mapper = sql.getMapper(UserMapper.class);
+		mapper.createUser(dto);
+		sql.close();
+
+		response.sendRedirect("createSuccess.user");
+	}
+
 	@Override
 	public void login(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String id = request.getParameter("user_id");
 		String pw = request.getParameter("user_pw");
 		
-		SqlSession sql = sqlSessionFactory.openSession(true);
-		UserMapper mapper = sql.getMapper(UserMapper.class);
-		UserDTO dto = mapper.getUserById(id);
-		sql.close();
+		UserDTO dto = getUserById(id);
 		
 		if(dto == null) {
 			request.setAttribute("msg", "아이디가 존재하지 않습니다.");
@@ -158,7 +183,7 @@ public class UserServiceImpl implements UserService{
 				session.setAttribute("grade_id", dto.getGradeId());
 				session.setAttribute("point", dto.getPoint());
 				
-				response.sendRedirect("../index.jsp");
+				response.sendRedirect("../spotalk.do");
 			}
 		}
 		
@@ -166,11 +191,40 @@ public class UserServiceImpl implements UserService{
 
 	@Override
 	public void getMyPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		SqlSession sql = sqlSessionFactory.openSession(true);
-		UserMapper mapper = sql.getMapper(UserMapper.class);
-		UserDTO dto = mapper.getUserById(request.getSession().getAttribute("user_id").toString());
+		UserDTO dto = getUserById(request.getSession().getAttribute("user_id").toString());
 		request.setAttribute("dto", dto);
 		request.getRequestDispatcher("mypage.jsp").forward(request, response);
+	}
+
+	@Override
+	public void changeNick(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        JSONObject json = null;
+        try {
+            json = getJSONSObjectByReader(request.getReader());
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
+        String nick = json.get("nick").toString();
+
+		HttpSession session = request.getSession();
+		String id = session.getAttribute("user_id").toString();
+		UserDTO dto = getUserById(id);
+
+		if(checkDuplicateNick(nick)) {
+			SqlSession sql = sqlSessionFactory.openSession(true);
+			UserMapper mapper = sql.getMapper(UserMapper.class);
+			dto.setNick(nick);
+			mapper.changeNick(dto);
+			sql.close();
+
+			json.put("msg", "ok");
+		} else {
+			json.put("msg", "no");
+		}
+
+		response.setContentType("application/json;charset=utf-8");
+		PrintWriter out = response.getWriter();
+		out.print(json.toJSONString());
 	}
 
 	@Override
@@ -178,8 +232,80 @@ public class UserServiceImpl implements UserService{
 		SqlSession sql = sqlSessionFactory.openSession(true);
 		UserMapper mapper = sql.getMapper(UserMapper.class);
 		List<UserDTO> list = mapper.getUserList();
+		sql.close();
+
 		request.setAttribute("list", list);
 		request.getRequestDispatcher("userRank.jsp").forward(request, response);
 	}
 
+	@Override
+	public void checkDuplicateNick(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        JSONObject json = null;
+        try {
+            json = getJSONSObjectByReader(request.getReader());
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
+        String nick = json.get("nick").toString();
+
+		if(checkDuplicateNick(nick)) {
+			json.put("msg", "ok");
+		} else {
+			json.put("msg", "no");
+		}
+
+		response.setContentType("application/json;charset=utf-8");
+		PrintWriter out = response.getWriter();
+		out.print(json.toJSONString());
+	}
+
+	@Override
+	public void checkDuplicateId(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        JSONObject json = null;
+        try {
+            json = getJSONSObjectByReader(request.getReader());
+        }  catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
+
+		System.out.println(json.get("id").toString());
+
+        if(getUserById(json.get("id").toString()) == null) {
+			json.put("msg", "ok");
+		} else {
+			json.put("msg", "no");
+		}
+
+		response.setContentType("application/json;charset=utf-8");
+		PrintWriter out = response.getWriter();
+		out.print(json.toJSONString());
+	}
+
+	private boolean checkDuplicateNick(String nick) throws IOException {
+		SqlSession sql = sqlSessionFactory.openSession(true);
+		UserMapper mapper = sql.getMapper(UserMapper.class);
+		UserDTO dto = mapper.getUserByNick(nick);
+		sql.close();
+
+        return dto == null;
+    }
+
+	private UserDTO getUserById (String id) {
+		SqlSession sql = sqlSessionFactory.openSession(true);
+		UserMapper mapper = sql.getMapper(UserMapper.class);
+		UserDTO dto = mapper.getUserById(id);
+		sql.close();
+
+		return dto;
+	}
+
+	private JSONObject getJSONSObjectByReader(BufferedReader reqReader) throws IOException, ParseException {
+		StringBuilder sb = new StringBuilder();
+        String line;
+		while ((line = reqReader.readLine()) != null) {
+			sb.append(line);
+		}
+		JSONParser parser = new JSONParser();
+        return new JSONObject((Map) parser.parse(sb.toString()));
+	}
 }
