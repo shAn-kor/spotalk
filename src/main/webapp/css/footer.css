@@ -1,0 +1,33 @@
+@import url(/default.css);
+@font-face {
+    font-family: 'Agency FB Bold';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Agency FB Bold'), url('AGENCYB.woff') format('woff');
+    }
+    
+.footer {
+    width: 1400px;
+    height: 140px;
+    box-sizing: border-box;
+    padding: 10px;
+    margin: 0 auto;
+    overflow: hidden;
+    background-color: antiquewhite;
+    overflow: hidden;
+    box-sizing: border-box;
+
+}
+.footer .left {
+    float: left;
+    font-family: 'Agency FB Bold';
+    font-size: 25px;
+}
+.footer .right {
+    width: 580px;
+    margin-top: 10px;
+    margin-right: 410px;
+    float: right;
+    text-align: center;
+    font-size: 14px;
+}
