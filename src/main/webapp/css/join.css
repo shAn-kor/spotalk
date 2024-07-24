@@ -46,7 +46,7 @@
 #join-id {
     overflow: hidden;
 }
-.join_form #user-name,
+.join_form #user-nick,
 .join_form #user-id {
     width: 80%;
     display: block;

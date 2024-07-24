@@ -18,7 +18,7 @@
     <!-- 부트스트랩 js링크 -->
     <script src="../bootstrap/js/bootstrap.min.js"></script>
 
-    <script src="../js/modify.js"></script>
+
 </head>
 <body>
     <!-- jsy test -->
@@ -41,7 +41,7 @@
                 </tr>
                 <tr>
                     <td>아 이 디</td>
-                    <td><input class="id" id="user-id" type="text" name="id" value="${dto.id}" disabled></td>
+                    <td><input class="id" type="text" name="id" value="${dto.id}" disabled></td>
                 </tr>
                 <tr>
                     <td>비 밀 번 호</td>
@@ -49,8 +49,7 @@
                 </tr>
                 <tr>
                     <td>닉 네 임</td>
-                    <td><input type="text" name="nick" value="${dto.nick}" id="nick"></td>
-                    <td><button type="button" class="btn-default change-nick">수정</button></td>
+                    <td><input type="text" name="nick" value="${dto.nick}"></td>
                 </tr>
                 <tr>
                     <td>회 원 등 급</td>
@@ -62,12 +61,21 @@
                 </tr>
                 <tr>
                     <td>포 인 트</td>
-                    <td><input class="point" type="number" name="point" value="${dto.point}" disabled></td>
+                    <td><input class="point" type="number" name="point" value="${dto.point}"  disabled></td>
                 </tr>
 
             </table>
             <button type="button" class="btn" onclick="location.href='pointlist.html';">포인트 내역</button>
+
+            <div class="modify">
+                <button type="button" class="btn btn-default">수 정 하 기</button>
+            
+            </div>
+
         </div>
+
+
+
     </div>
 </body>
 </html>

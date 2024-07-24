@@ -92,22 +92,12 @@
 .box tr td .grade1:active + .allgrade {
     display: inline-block;
 }
+.change-nick {
+    display: block;
+}
 
-
-.btn {
+.wrap > .btn {
     margin-left: 200px;
-}
-
-.modify {
-    /* border: 1px solid green; */
-    margin-left: 100px;
-    margin-top: 50px;
-    width: 490px;
-    text-align: center;
-}
-.modify .btn {
-    font-size: 15px;
-    width: 100px;
 }
 
 /* ====mypage_modify==== */

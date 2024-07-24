@@ -10,4 +10,7 @@ public interface UserMapper {
     void updatePw(UserDTO dto);
     UserDTO checkPhone(String phone);
     List<UserDTO> getUserList();
+    void createUser(UserDTO dto);
+
+    int changeNick(UserDTO dto);
 }
