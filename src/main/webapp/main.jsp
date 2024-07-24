@@ -97,8 +97,13 @@
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script>
         var swiper = new Swiper('.swiper-container', {
+          // Autoplay 모듈을 활성화합니다
+          autoplay: {
+            delay: 5000, // 자동으로 넘어가는 시간(밀리초 단위)
+          	disableOnInteraction: false, // 사용자가 상호작용해도 자동 재생이 멈추지 않도록 설정
+          },
           slidesPerView: 1,
-          spaceBetween: 30,
+          spaceBetween: 0,
           loop: true,
           pagination: {
             el: '.swiper-pagination',

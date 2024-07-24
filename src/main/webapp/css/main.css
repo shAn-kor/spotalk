@@ -40,16 +40,17 @@
 }
 .teamA, .teamB{
     position: absolute;
-    top: 150px;
-    width: 180px;
+    top: 100px;
+    width: 300px;
+    height: 300px;
+    display: flex; justify-content: center; align-items: center;
 }
 .teamA {
-    left: 300px;
+    left: 230px;
 }
 .teamB {
-    left: 920px;
+    right: 230px;
 }
-
 
 .swiper-pagination {
     position: absolute;

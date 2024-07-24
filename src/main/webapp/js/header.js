@@ -30,6 +30,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // 예시로 로그인/로그아웃 버튼 클릭 시 상태 변경 (실제 구현에서는 서버와의 통신 필요)
     loginButton.addEventListener('click', function() {
+		href="login.user";
         isLoggedIn = true;
         toggleButtons();
     });
