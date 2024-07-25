@@ -1,18 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>auth</title>
-    <link rel="stylesheet" href="../css/auth.css">
-    <!-- <script src="../js/auth.js"></script> -->
-</head>
-<body>
+
+<%@include file="../include/header.jsp"%>
+
     <div class="auth_box">
         <p>
             <a href="agree.user" class="agree_link">약관 동의</a> > 
@@ -74,5 +64,4 @@
             </form>
         </div>
     </div>
-</body>
-</html>
+<%@include file="../include/footer.jsp"%>

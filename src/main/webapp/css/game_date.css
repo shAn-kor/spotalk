@@ -2,9 +2,9 @@
 
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 
-.header{margin-top: 120px;}
+.game-date-header {margin: 0 auto; margin-top: 120px;}
 
-.header .wrap {
+.game-date-header > .wrap {
     width: 1080px;
     margin: 0 auto;
     border-left: 1px solid #777;

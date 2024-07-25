@@ -4,16 +4,10 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="../css/spototo.css">
+
+<%@ include file="../include/header.jsp"%>
+
     <script src="../js/spototo.js" defer></script>
-</head>
-<body>
 	<div class="overlay">
         <div class="imglay">
             <img src="../img/good.webp" alt="good">
@@ -62,10 +56,5 @@
             </div>
         </div>
  	</c:forEach>
-    	
     </div>
-
-	
-
-</body>
-</html>
+<%@ include file="../include/footer.jsp"%>

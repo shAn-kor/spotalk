@@ -1,15 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="../css/login.css">
-    <script type="text/javascript" src="../js/login.js"></script>
-</head>
-<body>
+<%@include file="../include/header.jsp"%>
+<script src="${pageContext.request.contextPath}/js/login.js"></script>
     <div class="login_box">
         <h3>승부하러 가기</h3>
         <form action="check.user" class="login_form" method="post">
@@ -28,5 +20,4 @@
             <p class="find"><a href="findIdPw_Id.user">아이디</a> / <a href="findIdPw_Pw.user">비밀번호 찾기</a></p>
         </form>
     </div>
-</body>
-</html>
+<%@include file="../include/footer.jsp"%>

@@ -1,31 +1,14 @@
-
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="f" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%
     long num = 1;
 %>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SPOTALK</title>
-    <link rel="stylesheet" href="../css/userlank.css">
-</head>
-<body>
-    
-    <div class="main">
-        <div class="menu">
-            <ul>
-                <li><a href="#">HOME</a></li>
-                <li><a href="#">커뮤니티</a></li>
-                <li><a href="#">승부예측</a></li>
-                <li><a href="#">승부사랭킹</a></li>
-            </ul>
-        </div>
 
-        <div class="wrap">
+<%@ include file="../include/header.jsp"%>
+        <div class="rankWrap">
 
             <div class="boxtitle">
                 <p>순위</p>
@@ -34,7 +17,7 @@
                 <p>포인트</p>
             </div>
 
-            <div class="box">
+            <div class="rank-box">
 
                 <div class="content">
                     <c:forEach var="dto" items="${list}">
@@ -60,8 +43,4 @@
 
             </div>
         </div>
-        
-    </div>
-
-</body>
-</html>
+<%@ include file="../include/footer.jsp"%>
