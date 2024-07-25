@@ -1,10 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>FindID</title>
+<%@include file="../include/header.jsp"%>>
 
 <style>
         body {
@@ -69,7 +65,7 @@
         }
     </style>
 </head>
-<body>
+
 	<div class="wrap">
 		<div>
 			<button type="button">아이디 찾기</button>
@@ -82,5 +78,4 @@
 			<input type="submit" value="찾기">
 		</form>	
 	</div>
-</body>
-</html>
+<%@include file="../include/footer.jsp"%>>

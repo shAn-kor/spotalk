@@ -3,11 +3,9 @@
 .login_box {
     padding: 30px;
     margin : 0 auto;
-    background-color: #e4ccff;
+    background-color: antiquewhite;
     width: 500px;
     text-align: center;
-    border-radius: 5px;
-    margin-top: 250px;
     border-radius: 15px;
 }
 .login_box > .login_form {

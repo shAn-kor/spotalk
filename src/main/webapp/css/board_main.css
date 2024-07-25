@@ -1,14 +1,5 @@
 @import url(default.css);
-@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Jua&display=swap');
 
-/* ======= 전체 폰트 ====== */
-* {
-    font-family: "Do Hyeon", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-}
-
-body{background-color: #fff0f3;}
 .container {
     display: flex;
     flex-direction: column;
@@ -19,7 +10,7 @@ body{background-color: #fff0f3;}
 .item1 {
     overflow: hidden;
     width: 100%;
-    height: 130px;  
+    height: 130px;
     border-bottom: 3px solid #000;
 }
 

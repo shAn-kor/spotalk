@@ -2,19 +2,11 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Game Date</title>
 
-<link rel="stylesheet" href="../css/game_date.css" type="text/css">
+<%@include file="../include/header.jsp"%>
+
 <script src="../js/game_date.js" defer></script>
-
-</head>
-<body>
-
-<header class="header">
+<header class="game-date-header">
     <div class="wrap">
         <div class="left">
             <div class="top-left">
@@ -80,6 +72,4 @@
         </div>
     </div>
 </header>
-
-</body>
-</html>
+<%@include file="../include/footer.jsp"%>

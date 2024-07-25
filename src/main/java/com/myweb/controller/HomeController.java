@@ -29,12 +29,13 @@ public class HomeController extends HttpServlet {
     }
 
     protected void doAction(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        
+
     	UserService userService = new UserServiceImpl();
     	GameService gameService = new GameServiceImpl();
     	
     	
     	
     	request.getRequestDispatcher("main.jsp").forward(request, response);
+
     }
 }

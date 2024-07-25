@@ -1,5 +1,36 @@
 @import url(default.css);
+@import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Do+Hyeon&display=swap');
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
 
+    font-family: "Do Hyeon", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+body {
+    background-image: url("../img/balls.jpg");
+}
+
+ul, li, ol, dl, dd {list-style: none;}
+img {max-width: 100%; height: auto;} /* height가 넓이에 따라 가도록 한다. */
+input {border:none; outline: none;}
+button {border: none;}
+a {text-decoration: none; color: black}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox  */
+input[type='number'] {
+    -moz-appearance: textfield;
+}
 .header {
     width: 1400px;
     height: 100px;
