@@ -20,9 +20,6 @@
     justify-content: center;
     font-size: 24px;
     position: relative;
-    background-image: url(../img/soccer.jpg);
-    /* background-image: url(../img/baseball.jpg); */
-    /* background-image: url(../img/basketball.jpg); */
 }
 .white-background{
     width: 1300px;

@@ -58,63 +58,25 @@
     <!-- Swiper -->
     <div class="swiper">
         <div class="swiper-container">
-                <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                    <div class="white-background"></div>
-                    <div class="vs">
-                        <img src="img/vs.png" alt="">
-                    </div>
-                    <div class="teamA">
-                        <img src="img/k_league/김천.png" alt="">
-                    </div>
-                    <div class="teamB">
-                        <img src="img/k_league/포항.png" alt="">
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="white-background"></div>
-                    <div class="vs">
-                        <img src="img/vs.png" alt="">
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="white-background"></div>
-                    <div class="vs">
-                        <img src="img/vs.png" alt="">
-                    </div>
-                </div>
-                <!-- 추가 슬라이드 -->
-                </div>
-                <!-- Add Pagination -->
-                <div class="swiper-pagination"></div>
-                <!-- Add Navigation -->
-                <div class="swiper-button-next"></div>
-                <div class="swiper-button-prev"></div>
+        	<div class="swiper-wrapper">
+        		<!-- slide -->
+         	</div>
+            <!-- Add Pagination -->
+            <div class="swiper-pagination"></div>
+            <!-- Add Navigation -->
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
         </div>
     </div>
-
+	
+	
     <!-- Swiper JS -->
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-    <script>
-        var swiper = new Swiper('.swiper-container', {
-          // Autoplay 모듈을 활성화합니다
-          autoplay: {
-            delay: 5000, // 자동으로 넘어가는 시간(밀리초 단위)
-          	disableOnInteraction: false, // 사용자가 상호작용해도 자동 재생이 멈추지 않도록 설정
-          },
-          slidesPerView: 1,
-          spaceBetween: 0,
-          loop: true,
-          pagination: {
-            el: '.swiper-pagination',
-            clickable: true,
-          },
-          navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-          },
-        });
-    </script>
+    <!-- 게임 데이터를 자바스크립트로 전달하기 위해 JSON으로 변환 -->
+ <!--    <script>
+        var games = [[${games}]];
+    </script> -->
+ 	<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="js/swiper.js"></script>
 
     <div class="box">
         <div class="main-community">
