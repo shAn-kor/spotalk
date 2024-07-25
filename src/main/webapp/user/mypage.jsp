@@ -5,7 +5,7 @@
 <script src="${pageContext.request.contextPath}/js/modify.js"></script>
 
         <div class="wrap">
-            <table class="box">
+            <table class="myPage-box">
 
                 <tr>
                     <td>이 름</td>

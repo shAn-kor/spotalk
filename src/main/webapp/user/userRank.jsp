@@ -17,7 +17,7 @@
                 <p>포인트</p>
             </div>
 
-            <div class="box">
+            <div class="rank-box">
 
                 <div class="content">
                     <c:forEach var="dto" items="${list}">

@@ -63,7 +63,7 @@
 }
 
 /* 경기일정, 리그순위 */
-.box {
+.main-box {
     width: 1400px;
     margin: 0 auto;
     background-color: white;
@@ -72,22 +72,22 @@
     padding: 20px;
 }
 /* 1층 */
-.box .main-community{
+.main-box .main-community{
     width: 670px;
 }
-.box .sport-rank{
+.main-box .sport-rank{
     width: 670px;
 }
 
 
 /* 2층 */
-.box .main-user-rank{
+.main-box .main-user-rank{
     width: 440px;
 }
-.box .podium{
+.main-box .podium{
     width: 440px;
 }
-.box .sport-schedule{
+.main-box .sport-schedule{
     width: 440px;
 }
 .user-rank-wrap {

@@ -7,7 +7,7 @@
     margin: 0 auto;
 }
 
-.box {
+.myPage-box {
     margin: 0 auto;
     /* border: 1px solid black; */
     margin-left: 200px;
@@ -17,18 +17,18 @@
     overflow: hidden;
     font-family: 'GmarketSansMedium';
 }
-.box tr td input {
+.myPage-box tr td input {
     margin-left: 100px;
     background-color: white;
 }
-.box tr td > .grade1 {
+.myPage-box tr td > .grade1 {
     position: absolute;
     width: 35px; 
     border-radius: 10px;
     bottom: 230px;
     left: 490px;
 }
-.box tr td .allgrade {
+.myPage-box tr td .allgrade {
     /*  */
     position: absolute;
     display: none;
@@ -37,7 +37,7 @@
     top: 200px;
     margin-left: 250px;
 }
-.box tr td .grade1:active + .allgrade {
+.myPage-box tr td .grade1:active + .allgrade {
     display: inline-block;
 }
 .change-nick {
@@ -49,7 +49,7 @@
 }
 
 /* ====mypage_modify==== */
-.wrap .mod_box {
+.wrap .mod_myPage-box {
     margin: 0 auto;
     /* border: 1px solid black; */
     margin-left: 200px;

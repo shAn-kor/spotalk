@@ -4,25 +4,15 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 
-<<<<<<< HEAD:src/main/webapp/spototo.jsp
-<%@ include file="include/header.jsp"%>
-=======
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="../css/spototo.css">
+
+<%@ include file="../include/header.jsp"%>
+
     <script src="../js/spototo.js" defer></script>
-</head>
-<body>
 	<div class="overlay">
         <div class="imglay">
             <img src="../img/good.webp" alt="good">
         </div>
     </div>
->>>>>>> master:src/main/webapp/game/spototo.jsp
 
     <div class="spototo-box">
 	<c:forEach var="game" items="${gamelist}">
@@ -66,15 +56,5 @@
             </div>
         </div>
  	</c:forEach>
-<<<<<<< HEAD:src/main/webapp/spototo.jsp
     </div>
-<%@ include file="include/footer.jsp"%>
-=======
-    	
-    </div>
-
-	
-
-</body>
-</html>
->>>>>>> master:src/main/webapp/game/spototo.jsp
+<%@ include file="../include/footer.jsp"%>

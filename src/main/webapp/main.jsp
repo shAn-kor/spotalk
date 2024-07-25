@@ -60,7 +60,7 @@
     });
 </script>
 
-<div class="box">
+<div class="main-box">
     <div class="main-community">
         <p><a href="#">커뮤니티</a></p>
         <div class="tab">
@@ -92,7 +92,7 @@
     </div>
 </div>
 
-<div class="box">
+<div class="main-box">
     <div class="main-user-rank">
         <p><a href="#">승부사 랭킹</a></p>
         <div class="user-rank-wrap">
@@ -115,7 +115,7 @@
         </div>
     </div>
     <div class="sport-schedule">
-        <p><a href="#">주요경기 일정</a></p>
+        <p><a href="/spotalk/game/soccerdate.game">주요경기 일정</a></p>
         <div class="tab">
             <ul class="tabnav">
                 <li><a href="#tab01">축구</a></li>

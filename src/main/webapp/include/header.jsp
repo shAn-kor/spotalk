@@ -46,18 +46,18 @@
 <!-- header -->
 <div class="header">
     <div class="left">
-        <a href="#" id="logo">logo</a>
+        <a href="${pageContext.request.contextPath}/spotalk.do" id="logo">logo</a>
     </div>
     <div class="center">
         <div class="menu-wrap">
             <div class="menu">
-                <a href="#">승부예측</a>
+                <a href="${pageContext.request.contextPath}/game/soccerlist.game">승부예측</a>
             </div>
             <div class="menu">
-                <a href="#">랭킹</a>
+                <a href="${pageContext.request.contextPath}/user/rank.user">랭킹</a>
             </div>
             <div class="menu">
-                <a href="#">경기일정</a>
+                <a href="${pageContext.request.contextPath}/game/soccerdate.game">경기일정</a>
             </div>
             <div class="menu">
                 <a href="#">커뮤니티</a>

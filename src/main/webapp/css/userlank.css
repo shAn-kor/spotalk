@@ -38,25 +38,25 @@
     font-size: 30px;
     width: 32%;
 }
-.rankWrap .boxtitle > p:nth-child(1){width: 10%;} 
-.rankWrap .boxtitle > p:nth-child(3){width: 20%;} 
+.rankWrap .boxtitle > p:nth-child(1){width: 10%;}
+.rankWrap .boxtitle > p:nth-child(3){width: 20%;}
 
 
-.box {
+.rank-box {
     /* border: 1px solid blue; */
     margin: 50px 20px 0px 20px;
-    width: 760px; 
+    width: 760px;
     height: 90%;
     overflow: hidden;
 }
-.box .content {
+.rank-box .content {
     /* border: 1px solid black; */
     height: 50px;
     margin-bottom: 20px;
     font-family: 'KCC-Hanbit';
 }
 
-.box .content > p {
+.rank-box .content > p {
     display: inline-block;
     font-size: 20px;
     border-radius: 10px;
@@ -66,8 +66,8 @@
     line-height: 50px;
     text-align: center;
     font-family: 'KCC-Hanbit';
-} 
-.box .content .user {
+}
+.rank-box .content .user {
     display: inline-block;
     padding: 10px;
     margin-left: 20px;
@@ -76,20 +76,20 @@
     height: 50px;
     width: 84%;
 }
-.box .content .user > input {
+.rank-box .content .user > input {
     background-color: #fbfbfb;
     color: black;
     width: 32.4%;
     font-size: 20px;
     font-family: 'KCC-Hanbit';
 }
-.box .content .user > input:nth-child(1) {
+.rank-box .content .user > input:nth-child(1) {
     text-align: left;
 }
-.box .content .user > input:nth-child(2) {
+.rank-box .content .user > input:nth-child(2) {
     text-align: center;
 }
-.box .content .user > input:nth-child(3) {
+.rank-box .content .user > input:nth-child(3) {
     text-align: right;
 }
 
