@@ -44,4 +44,8 @@
 	<insert id="createUser" parameterType="com.myweb.user.model.UserDTO">
 		INSERT INTO MEMBER VALUES (#{id}, #{pw}, #{pwq}, #{pwa}, #{name}, #{bDate}, #{gender}, #{phone}, #{nick}, #{point}, #{gradeId}, SYSDATE)
 	</insert>
+
+	<delete id="deleteUser" parameterType="string">
+		DELETE FROM MEMBER WHERE ID=#{id}
+	</delete>
 </mapper>

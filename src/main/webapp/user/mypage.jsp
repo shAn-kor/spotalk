@@ -39,6 +39,7 @@
 
             </table>
             <button type="button" class="btn" onclick="location.href='pointlist.html';">포인트 내역</button>
+            <button type="button" class="btn" onclick="location.href='outMember.user';">회원탈퇴</button>
         </div>
     </div>
 <%@include file="../include/footer.jsp"%>
