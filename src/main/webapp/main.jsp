@@ -20,10 +20,9 @@
 	
 	
     <!-- Swiper JS -->
-    <!-- 게임 데이터를 자바스크립트로 전달하기 위해 JSON으로 변환 -->
- <!--    <script>
-        var games = [[${games}]];
-    </script> -->
+ 	<script>
+        var games = '${games}';
+    </script>
  	<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script src="js/swiper.js"></script>
 

@@ -1,15 +1,15 @@
 document.addEventListener("DOMContentLoaded", function() {
     var swiperWrapper = document.querySelector(".swiper-wrapper");
 
-    function addSlide() {
+    function addSlide(games) {
         var str = "";
-        for (var i = 0; i < 3; i++) {
+        for (var i = 0; i < JSON.parse(games).length; i++) {
             var sport = '';
-            var teamA = '서울';
-            var teamB = '인천';
+            var teamA = JSON.parse(games)[i].teamA;
+            var teamB = JSON.parse(games)[i].teamB;
 			
-			var soccerTeam = ['서울', '인천', '강원', '광주', '김천', '대구', '대전', '울산', '전북', '제주', '포항'];
-			var baseballTeam = ['KIA', 'NC', 'KT', 'LG', 'SSG', '두산', '삼성', '키움', '한화'];
+			var soccerTeam = ['서울', '인천', '강원', '광주', '김천', '대구', '대전', '울산', '전북', '제주', '포항', '수원FC'];
+			var baseballTeam = ['KIA', 'NC', 'KT', 'LG', 'SSG', '두산', '삼성', '키움', '한화', '롯데'];
 			var basketballTeam = ['고양 소노', '대구 한국가스공사', '부산 KCC', '서울 SK', '서울 삼성', '수원 KT', '울산 현대모비스', '원주 DB', '창원 LG'];
 			
 			if(soccerTeam.includes(teamA)){
@@ -54,5 +54,5 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
-    addSlide();
+    addSlide(games);
 });
