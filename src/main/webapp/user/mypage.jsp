@@ -1,36 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SPOTALK</title>
-    <link rel="stylesheet" href="../css/mypage.css">
-
-    <!-- 부트스트랩 css링크 -->
-    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
-
-    <!-- 제이쿼리(부트스트랩보다 먼저 링크) -->
-    <script src="../bootstrap/js/jquery-3.7.1.min.js"></script>
-    
-    <!-- 부트스트랩 js링크 -->
-    <script src="../bootstrap/js/bootstrap.min.js"></script>
-
-    <script src="../js/modify.js"></script>
-</head>
-<body>
-    <!-- jsy test -->
-    <div class="main">
-        <div class="menu">
-            <ul>
-                <li><a href="#">HOME</a></li>
-                <li><a href="#">커뮤니티</a></li>
-                <li><a href="#">승부예측</a></li>
-                <li><a href="#">승부사랭킹</a></li>
-            </ul>
-        </div>
+<%@include file="../include/header.jsp"%>
+<script src="${pageContext.request.contextPath}/js/modify.js"></script>
 
         <div class="wrap">
             <table class="box">
@@ -69,5 +41,4 @@
             <button type="button" class="btn" onclick="location.href='pointlist.html';">포인트 내역</button>
         </div>
     </div>
-</body>
-</html>
+<%@include file="../include/footer.jsp"%>

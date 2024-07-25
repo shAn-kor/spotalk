@@ -1,11 +1,11 @@
 @import url(default.css);
 .join-box {
     width: 800px;
-    padding: 30px 120px;
+    padding: 30px 60px;
     margin : 0 auto;
-    margin-top: 250px;
     border-radius: 15px;
     border: 1px solid #777;
+    background-color: antiquewhite;
 }
 .join_link {
     color: rgb(231, 148, 23);

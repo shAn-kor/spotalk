@@ -47,6 +47,13 @@ public class UserController extends HttpServlet{
 			service = new UserServiceImpl();
 			service.login(request, response);
 		}
+
+		// 로그아웃
+		if(command.equals("/user/logout.user")) {
+			HttpSession session = request.getSession();
+			session.invalidate();
+			response.sendRedirect(request.getContextPath() + "/spotalk.do"); // 메인 화면으로
+		}
 		
 		//회원가입
 		if(command.equals("/user/agree.user")) {//약관동의 페이지

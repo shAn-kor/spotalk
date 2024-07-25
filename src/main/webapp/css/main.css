@@ -1,6 +1,5 @@
-@import url(default.css);
 @import url('https://fonts.googleapis.com/css2?family=Dokdo&family=Gugi&display=swap');
-
+@import "default.css";
 /* 스와이퍼 */
 .swiper {
     width: 1400px; /* 가로길이 1400px */

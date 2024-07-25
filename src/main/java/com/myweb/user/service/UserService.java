@@ -26,4 +26,5 @@ public interface UserService {
     void createUser(HttpServletRequest request, HttpServletResponse response) throws IOException;
 
     void changeNick(HttpServletRequest request, HttpServletResponse response) throws IOException;
+
 }

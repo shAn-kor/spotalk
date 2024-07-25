@@ -24,6 +24,6 @@ public class HomeController extends HttpServlet {
     }
 
     protected void doAction(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("index.jsp").forward(request, response);
+        request.getRequestDispatcher("main.jsp").forward(request, response);
     }
 }
