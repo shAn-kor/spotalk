@@ -1,6 +1,9 @@
 package com.myweb.game.service;
 
 import java.io.IOException;
+import java.util.List;
+
+import com.myweb.game.model.GameDTO;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -15,6 +18,6 @@ public interface GameService {
 	void getBaseDate(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
 	void getBasketDate(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
 
-	void getGaming(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
+	List<String> getGaming(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
 
 }

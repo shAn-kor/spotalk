@@ -3,9 +3,12 @@
 
 <%@include file="../include/header.jsp"%>
 <script src="${pageContext.request.contextPath}/js/agree.js"></script>
-
+<div class="agree-wrap">
+	<div class=white-background></div>
     <div class="agree_box">
-        <p><a href="agree.user" class="agree_link">약관 동의</a> > </p>
+        <p><a href="agree.user" class="agree_link">약관 동의</a> 
+            <span style="color: #777"> > 본인인증</span>
+            <span style="color: #777"> > 계정 생성</span></p>
         <div class="agree_wrap">
             <h3 class="agree_title">동의해주세요.</h3>
             <div class="agree_form">
@@ -167,4 +170,6 @@
             </div>
         </div>
     </div>
+	
+</div>
 <%@include file="../include/footer.jsp"%>

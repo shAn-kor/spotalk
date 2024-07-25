@@ -5,60 +5,26 @@
 <!-- body -->
 <!-- Swiper -->
 <script src="${pageContext.request.contextPath}/js/main.js"></script>
-<div class="swiper">
-    <div class="swiper-container">
-        <div class="swiper-wrapper">
-            <div class="swiper-slide">
-                <div class="white-background"></div>
-                <div class="vs">
-                    <img src="img/vs.png" alt="">
-                </div>
-                <div class="teamA">
-                    <img src="img/k_league/김천.png" alt="">
-                </div>
-                <div class="teamB">
-                    <img src="img/k_league/포항.png" alt="">
-                </div>
-            </div>
-            <div class="swiper-slide">
-                <div class="white-background"></div>
-                <div class="vs">
-                    <img src="img/vs.png" alt="">
-                </div>
-            </div>
-            <div class="swiper-slide">
-                <div class="white-background"></div>
-                <div class="vs">
-                    <img src="img/vs.png" alt="">
-                </div>
-            </div>
-            <!-- 추가 슬라이드 -->
+    <div class="swiper">
+        <div class="swiper-container">
+        	<div class="swiper-wrapper">
+        		<!-- slide -->
+         	</div>
+            <!-- Add Pagination -->
+            <div class="swiper-pagination"></div>
+            <!-- Add Navigation -->
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
         </div>
-        <!-- Add Pagination -->
-        <div class="swiper-pagination"></div>
-        <!-- Add Navigation -->
-        <div class="swiper-button-next"></div>
-        <div class="swiper-button-prev"></div>
     </div>
-</div>
-
-<!-- Swiper JS -->
-<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-<script>
-    var swiper = new Swiper('.swiper-container', {
-        slidesPerView: 1,
-        spaceBetween: 30,
-        loop: true,
-        pagination: {
-            el: '.swiper-pagination',
-            clickable: true,
-        },
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-        },
-    });
-</script>
+	
+	
+    <!-- Swiper JS -->
+ 	<script>
+        var games = '${games}';
+    </script>
+ 	<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="js/swiper.js"></script>
 
 <div class="main-box">
     <div class="main-community">

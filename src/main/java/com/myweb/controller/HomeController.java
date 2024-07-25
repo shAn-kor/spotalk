@@ -7,6 +7,14 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
+import java.util.List;
+
+import com.google.gson.Gson;
+import com.myweb.game.model.GameDTO;
+import com.myweb.game.service.GameService;
+import com.myweb.game.service.GameServiceImpl;
+import com.myweb.user.service.UserService;
+import com.myweb.user.service.UserServiceImpl;
 
 public class HomeController extends HttpServlet {
     private static final long serialVersionUID = 1L;
@@ -24,6 +32,14 @@ public class HomeController extends HttpServlet {
     }
 
     protected void doAction(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("main.jsp").forward(request, response);
+
+    	UserService userService = new UserServiceImpl();
+    	GameService gameService = new GameServiceImpl();
+    	List<String> games = gameService.getGaming(request, response);
+    	request.setAttribute("games", games);
+    	
+    	
+    	request.getRequestDispatcher("main.jsp").forward(request, response);
+
     }
 }
