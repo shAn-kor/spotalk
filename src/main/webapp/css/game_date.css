@@ -11,62 +11,35 @@
     border-right: 1px solid #777;
     overflow: hidden;
 }   
-/* .header .wrap .left {float: left;}
-.header .wrap .right {float: right;} */
 
+/* 축/야/농 메뉴 */
 
-/* 좌상단 카테고리 버튼, 드롭다운 메뉴*/
-
-.top-left .dropdown {
-    position: relative;
-    display: inline-block;
+.sportMenu{
+   width: 100px;
+   height: 40px;
+   margin-left: 50px;
+   background-color: #f5f5f5;
+   border: 1px solid #777;
+   overflow: hidden;
 }
-.drop_btn {      
-    float: left;
-    border: 1px solid #777;
-    border-radius: 10px;
-    background-color: #f5f5f5;
-    font-size: 15px;
-    font-weight: bold;
-    width: 100px; 
-    height: 40px;
-    margin: 0 0 0 50px;
-    cursor: pointer;    
+.sportMenu > ul {
+   width: 310px;
+   height: 40px;
 }
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-    top: 40px;
-    left: 50px;
-    z-index: 1;
-    border: 1px solid #777;
-    border-radius: 10px;
-    background-color: #f5f5f5;
-    width: 90px;
-    height: 80px;
-    text-align: center;
-    padding: 5px;
+.sportMenu > ul > li {
+   display: inline-block;
+   width: 100px;
+   height:40px;
+   line-height: 40px;
+   text-align: center;
+}
+.sportMenu:hover {
+   width: 310px;
+   transition: 0.5s ease-in-out;
 }
 
-.dropdown-content .icon {
-    display: inline;
-    
-}
 
-.dropdown-content a {
-    display: block;
-    color: #000;
-    font-weight: 400;
-    border-bottom: 1px solid #777;
-}
-
-.dropdown:hover .dropdown-content {
-    display: block;
-}
-/* --------------------------------------------- */
-
-
+/* --------------------------- */
 
 .mid-right {
 	width: 100%;
