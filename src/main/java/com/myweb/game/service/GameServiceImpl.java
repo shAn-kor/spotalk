@@ -52,7 +52,23 @@ public class GameServiceImpl implements GameService{
 		request.getRequestDispatcher("spototo.jsp").forward(request, response);
 		
 	}
-
+	
+	
+	@Override
+	public void getBasket(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		SqlSession sql = sqlSessionFactory.openSession(true);
+		GameMapper mapper = sql.getMapper(GameMapper.class);
+		
+		 List<GameDTO> gamelist = mapper.getBasket();
+		 System.out.println(gamelist);
+		
+		sql.close();
+		
+		request.setAttribute("gamelist", gamelist);
+		request.getRequestDispatcher("spototo.jsp").forward(request, response);
+		
+	}
 
 
 	@Override
@@ -86,6 +102,46 @@ public class GameServiceImpl implements GameService{
 		request.setAttribute("gamelist", gamelist);
 		request.getRequestDispatcher("game_date.jsp").forward(request, response);		
 	}
+
+
+	@Override
+	public void getBasketDate(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		SqlSession sql = sqlSessionFactory.openSession(true);
+		GameMapper mapper = sql.getMapper(GameMapper.class);
+		
+		 List<GameDTO> gamelist = mapper.getBasket();
+		 System.out.println("농구일정은 " + gamelist);
+		 if(gamelist.size()==0) {
+				System.out.println("농구는 경기없음");
+			}
+		sql.close();
+		
+		
+		request.setAttribute("gamelist", gamelist);
+		request.getRequestDispatcher("game_date.jsp").forward(request, response);	
+		
+	}
+
+
+	//진행 중인 승부
+	@Override
+	public void getGaming(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		SqlSession sql = sqlSessionFactory.openSession(true);
+		GameMapper mapper = sql.getMapper(GameMapper.class);
+		
+		 List<GameDTO> gamelist = mapper.getGaming();
+		 System.out.println("getGaming은 "+ gamelist);
+		sql.close();
+		
+		
+		request.setAttribute("gamelist", gamelist);
+		request.getRequestDispatcher("main.jsp").forward(request, response);	
+	}
+
+
+	
 
 
 

@@ -10,7 +10,7 @@
     <script src="../js/spototo.js" defer></script>
 	<div class="overlay">
         <div class="imglay">
-            <img src="../img/good.webp" alt="good">
+            <img src="../img/good.gif" alt="good">
         </div>
     </div>
 
@@ -56,5 +56,6 @@
             </div>
         </div>
  	</c:forEach>
+    	
     </div>
 <%@ include file="../include/footer.jsp"%>
