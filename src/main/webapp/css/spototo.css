@@ -1,5 +1,32 @@
 @import url(default.css);
 
+.overlay{
+	display:none;
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0,0,0,0.7);
+	animation: fadeIn 1s ease-in-out;
+	z-index: 100;
+}
+.overlay > .imglay {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+@keyframes fadeIn {
+     from{
+     	opacity: 0;
+     }to{
+        opacity: 1;
+     }
+}
+
 .spototo-box {
     width: 1080px;
     height: 800px;
@@ -58,6 +85,7 @@
 .match > .spototo-a {
     background-color: blue;
     justify-content: flex-start;
+    overflow: hidden;
 }
 .match > .spototo-a > p {
     text-align: left;
@@ -74,6 +102,7 @@
     background-color: red;
     flex-direction: row-reverse;
     justify-content: flex-end;
+    overflow: hidden;
 }
 .match > .spototo-b > p {
     text-align: right;

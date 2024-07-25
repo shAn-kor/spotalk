@@ -13,9 +13,14 @@
 		VALUES (#{gameId}, #{gameDate}, #{teamA}, #{teamB}, #{gameResult}) 
 	</insert> 
 	
-	<select id="getGame" resultType="com.myweb.game.model.GameDTO">
-		SELECT * FROM GAME
+	<select id="getSoccer" resultType="com.myweb.game.model.GameDTO">
+		SELECT * FROM GAMES WHERE (GAME_ID LIKE '1%') AND (GAME_DATE >= SYSDATE)
 	</select>
+	<select id="getBase" resultType="com.myweb.game.model.GameDTO">
+		SELECT * FROM GAMES WHERE (GAME_ID LIKE '2%') AND (GAME_DATE >= SYSDATE)
+	</select>
+	
+
 	
 	
 </mapper>

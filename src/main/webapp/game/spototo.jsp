@@ -4,33 +4,52 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 
+<<<<<<< HEAD:src/main/webapp/spototo.jsp
 <%@ include file="include/header.jsp"%>
+=======
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/spototo.css">
+    <script src="../js/spototo.js" defer></script>
+</head>
+<body>
+	<div class="overlay">
+        <div class="imglay">
+            <img src="../img/good.webp" alt="good">
+        </div>
+    </div>
+>>>>>>> master:src/main/webapp/game/spototo.jsp
 
     <div class="spototo-box">
 	<c:forEach var="game" items="${gamelist}">
+	
 		<div class="spototo-match">
             <div class="spototo-basic">
                 <p class="match-time"> 
                 ${game.gameDate }
                 </p>
                 <div class="match">
-                    <div class="spototo-a" style="width: '${33.3333}%';">
+                    <div class="spototo-a">
                         <img src="" alt="icon">
                         <p>${game.teamA}</p>
                     </div>
-                    <div class="spototo-d" style="width: '${33.3333}%';">D</div>
-                    <div class="spototo-b" style="width: '${33.3333}%';">
+                    <div class="spototo-d" ></div>
+                    <div class="spototo-b" >
                         <img src="" alt="icon">
                         <p>${game.teamB}</p>
                         
                     </div>
                 </div>
-                <img src="img/arrow_drop.svg" alt="">
+                <img src="../img/arrow_drop.svg" alt="">
             </div>
             <div class="details">
                 <div class="detail-text">
                     <p>예측 종료까지</p>
-                    <fmt:formatDate value="${game.gameDate}" pattern="yyyy-MM-dd hh:mm:ss"/>
+                    <p class="Timer"></p>
                 </div>
                 <div class="detail-btn">
                     <div class="match-btns">
@@ -39,7 +58,7 @@
                         <button class="win-b">${game.teamB}팀 승리</button>
                     </div>
                     <div class="user-point">
-                        <input type="text" name="user-p" id="user-p" value=${user_point} readonly>
+                        <input type="text" name="user-p" id="user-p" value="${sessionScope.point}" readonly>
                         <input type="text" name="using-p" id="using-p" placeholder="사용할 포인트">
                         <input type="button" name="toto-ok" id="toto-ok" value="확인">
                     </div>
@@ -47,5 +66,15 @@
             </div>
         </div>
  	</c:forEach>
+<<<<<<< HEAD:src/main/webapp/spototo.jsp
     </div>
 <%@ include file="include/footer.jsp"%>
+=======
+    	
+    </div>
+
+	
+
+</body>
+</html>
+>>>>>>> master:src/main/webapp/game/spototo.jsp

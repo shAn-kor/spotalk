@@ -21,28 +21,72 @@ import util.mybatis.MybatisUtil;
 public class GameServiceImpl implements GameService{
 	private SqlSessionFactory sqlSessionFactory = MybatisUtil.getSqlSessionFactory();
 
-	
-	// KBO 리그 일정 가져오기 by Selenium, Jsoup
-	//야구 결과 포함
-
-	
-	
-	//경기정보 select
 	@Override
-	public void getGame(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void getSoccer(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		SqlSession sql = sqlSessionFactory.openSession(true);
-		GameMapper gamemapper = sql.getMapper(GameMapper.class);
+		GameMapper mapper = sql.getMapper(GameMapper.class);
 		
-
-		
-		 List<GameDTO> gamelist = gamemapper.getGame();
+		 List<GameDTO> gamelist = mapper.getSoccer();
 		 System.out.println(gamelist);
 		
 		sql.close();
 		
 		request.setAttribute("gamelist", gamelist);
 		request.getRequestDispatcher("spototo.jsp").forward(request, response);
-
+		
 	}
+
+
+	@Override
+	public void getBase(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		SqlSession sql = sqlSessionFactory.openSession(true);
+		GameMapper mapper = sql.getMapper(GameMapper.class);
+		
+		 List<GameDTO> gamelist = mapper.getBase();
+		 System.out.println(gamelist);
+		
+		sql.close();
+		
+		request.setAttribute("gamelist", gamelist);
+		request.getRequestDispatcher("spototo.jsp").forward(request, response);
+		
+	}
+
+
+
+	@Override
+	public void getSoccerDate(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		SqlSession sql = sqlSessionFactory.openSession(true);
+		GameMapper mapper = sql.getMapper(GameMapper.class);
+		
+		 List<GameDTO> gamelist = mapper.getSoccer();
+		 System.out.println("축구경기일정"+gamelist);
+		
+		sql.close();
+		
+		request.setAttribute("gamelist", gamelist);
+		request.getRequestDispatcher("game_date.jsp").forward(request, response);
+		
+	}
+
+
+	@Override
+	public void getBaseDate(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		SqlSession sql = sqlSessionFactory.openSession(true);
+		GameMapper mapper = sql.getMapper(GameMapper.class);
+		
+		 List<GameDTO> gamelist = mapper.getBase();
+		 System.out.println(gamelist);
+		
+		sql.close();
+		
+		request.setAttribute("gamelist", gamelist);
+		request.getRequestDispatcher("game_date.jsp").forward(request, response);		
+	}
+
+
 
 }
