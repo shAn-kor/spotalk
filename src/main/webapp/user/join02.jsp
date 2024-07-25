@@ -2,11 +2,14 @@
     pageEncoding="UTF-8"%>
 
 <%@include file="../include/header.jsp"%>
-
+<div class="auth-wrap">
+	<div class=white-background></div>
     <div class="auth_box">
         <p>
-            <a href="agree.user" class="agree_link">약관 동의</a> > 
-            <a href="auth.user" class="auth_link">본인인증</a> > 
+            <a href="agree.user" class="agree_link" style="color: #777">약관 동의</a>
+            <span style="color: #777"> > </span> 
+            <a href="auth.user" class="auth_link">본인인증</a> 
+            <span style="color: #777"> > 계정 생성</span>
         </p>
         <div class="auth_wrap">
             <h3 class="auth_title">입력해주세요.</h3>
@@ -64,4 +67,5 @@
             </form>
         </div>
     </div>
+</div>
 <%@include file="../include/footer.jsp"%>

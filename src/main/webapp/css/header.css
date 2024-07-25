@@ -104,7 +104,8 @@ input[type='number'] {
     color: black;
 }
 #myInfo {
-    margin-top: 22px;
+    margin-top: 18px;
+    margin-right: 12px;
     height: 40px;
     overflow: hidden;
 
@@ -123,6 +124,7 @@ input[type='number'] {
 #myInfo .float p{
     height: 20px;
     font-size: 15px;
+    margin: 0;
 }
 #myInfo .name{
     text-align: center;

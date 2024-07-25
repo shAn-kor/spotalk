@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-
+    
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
 
     <%--  custom css  --%>
@@ -22,23 +22,8 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/mypage.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/userlank.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/spototo.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/board_main.css" type="text/css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/board_post.css" type="text/css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/board_write.css" type="text/css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/game_date.css" type="text/css">
-
-    <!-- 부트스트랩 css링크 -->
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/bootstrap/css/bootstrap.min.css">
-
-    <%--  custom js  --%>
-
-
-    <!-- 제이쿼리(부트스트랩보다 먼저 링크) -->
-    <script src="${pageContext.request.contextPath}/bootstrap/js/jquery-3.7.1.min.js"></script>
-
-    <!-- 부트스트랩 js링크 -->
-    <script src="${pageContext.request.contextPath}/bootstrap/js/bootstrap.min.js"></script>
-
+    
 
 
 </head>
@@ -81,13 +66,14 @@
             <c:when test="${sessionScope.user_id!=null}">
                 <div id="myInfo">
                     <div class="float">
-                        <p class="name">닉네임최대10byte에요</p>
-                        <p class="point">1,000,000pt</p>
+                        <p class="name">${sessionScope.user_nick }</p>
+                        <p class="point">${sessionScope.point }</p>
                     </div>
                     <div class="float">
-                        <p class="grade">등급</p>
+                        <p class="grade" data-grade="${sessionScope.grade_id}">등급</p>
                     </div>
                 </div>
+                <script src="${pageContext.request.contextPath}/js/header.js"></script>
             </c:when>
         </c:choose>
     </div>
