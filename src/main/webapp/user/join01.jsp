@@ -165,7 +165,7 @@
 위 개인정보의 수집 및 이용에 대한 동의를 거부할 수 있으나, 동의를 거부할 경우 회원 가입이 제한됩니다.
                 </textarea>
 
-                <div class="check_all"><input type="checkbox" name="all" id="all_check">모두 동의</div>
+                <div class="check_all"><input type="checkbox" name="all" id="all_check"> 모두 동의</div>
                 <input type="button" name="next" value="다음" id="submit_btn">
             </div>
         </div>
