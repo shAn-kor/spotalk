@@ -18,11 +18,10 @@
 	position: absolute;
 	top: 15px;
 	left: 300px;
-	
+
     width: 800px;
     height: 620px;
     padding: 30px 60px;
-    border: 1px solid #777;
     background-color: antiquewhite;
 }
 .auth_link {
@@ -34,13 +33,24 @@
 .agree_link:hover {
     font-weight: 700;
 }
+.auth_wrap {
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+}
 .auth_wrap .auth_title {
     text-align: center;
     margin: 10px 0;
 }
+.auth-form {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
 .auth_form > div {
-    margin: 10px auto;
-    width: 100%;
+    margin: 20px auto;
+    width: 80%;
     height: 80px;
     display: block;
     overflow: hidden;
@@ -49,14 +59,14 @@
 }
 .auth_form > div #user_name,
 .auth_form > div > input[type=tel],
+.auth_form > div > select,
 .auth_form > div > input[type=number] {
-    font-size: 20px;
+    font-size: 25px;
     text-align: center;
     outline: none;
 }
 .auth2, .auth3 {
-    border: 1px solid #777;
-    padding: 20px 10px;
+    padding: 5x 10px;
 }
 .auth1 > .input_name {
     float: left;
@@ -88,6 +98,7 @@
     line-height: 5rem;
 }
 .auth1 > .radio > input[type="radio"] + label  {
+    font-size: 25px;
     cursor: pointer;
     display: block;
     width: 100%;
@@ -98,30 +109,37 @@
     background-color: #666666;
 }
 .auth2 {
-    overflow: hidden;
-    white-space: nowrap;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: nowrap;
 }
-.auth2 > .birth {
-    float: left;
+.auth2 > select {
+    flex: 1;
     height: 100%;
-    width: 33.3333%;
-    border: 1px solid #777;
+    width: 30%;
     border-radius: 5px;
-    box-sizing: border-box;
+    text-align: center;
+}
+.auth2 > #year{
+    margin-left: 0;
+}
+.auth2 > #month {
+    margin: 0 22px;
+}
+.auth2 > #dat{
+    margin-right: 0;
 }
 .auth3 {
-    padding-left: 140px;
-    padding-right: 60px;
-    overflow: hidden;
+    align-items: center;
+    text-align: center;
 }
-.auth3 > input{
+
+.auth3 > #phone {
     height: 100%;
     background-color: none;
     margin: 0 auto;
-    float: left;
-}
-.auth3 > #phone {
-    width: 70%;
+    width: 100%;
     border: 1px solid #777;
     border-radius: 5px;
     display: inline;
@@ -149,4 +167,13 @@
 }
 .auth_result > a:hover {
     background-color: #666666;
+}
+.auth_form > .submit_btn {
+    display: block;
+    text-align: center;
+    margin: 10px auto;
+    font-size: 20px;
+    border: 1px solid #777;
+    border-radius: 10px;
+    padding: 5px;
 }

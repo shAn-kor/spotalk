@@ -118,7 +118,7 @@ input[type='number'] {
     height: 40px;
     background-image: url(../img/grade.png);
     background-repeat: no-repeat;
-    background-position: 5px 0px;
+    background-position: 5px 0;
     text-indent: -999px;
 }
 #myInfo .float p{

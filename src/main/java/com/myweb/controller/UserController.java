@@ -139,7 +139,7 @@ public class UserController extends HttpServlet{
 		// 승부사 랭킹
 		if (command.equals("/user/rank.user")) {
 			service = new UserServiceImpl();
-			service.getUserRank(request, response);
+			service.getUserRankPage(request, response);
 		}
 	}
 	
