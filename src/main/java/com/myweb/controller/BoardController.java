@@ -22,6 +22,7 @@ public class BoardController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		doAction(req, resp);
+		
 	}
 	
 	@Override
@@ -44,7 +45,10 @@ public class BoardController extends HttpServlet {
 		BoardService service;
 		
 		
-		if(command.equals("/board/boardWrite.board")) { //글 작성 메인화면
+		if(command.equals("/board/boardMain.board")) { //게시판 글 목록 화면 
+			request.getRequestDispatcher("board_main.jsp").forward(request, response);
+		}
+		if(command.equals("/board/boardWrite.board")) { //글 작성 화면
 			request.getRequestDispatcher("board_write.jsp").forward(request, response);
 		} 
 		if(command.equals("/board/postWrite.board")) { //글 작성
@@ -56,13 +60,25 @@ public class BoardController extends HttpServlet {
 			service.getPost(request, response);
 		}
 		if(command.equals("/board/post.board")) { //글 상세 화면
-			service = new BoardServiceImpl();
 			request.getRequestDispatcher("board_post.jsp").forward(request, response);
 		}
-		if(command.equals("/board/commentWrite.board")) { // 댓글 작성 화면 & 글 상세 화면
+		if(command.equals("/board/category.board")) { //카테고리 조회
 			service = new BoardServiceImpl();
-			request.getRequestDispatcher("board_post.jsp").forward(request, response);
+			service.listPostsByCategory(request, response);
 		}
+		if(command.equals("/board/sort.board")) { //글 정렬
+			service = new BoardServiceImpl();
+			service.listPostsByCategory(request, response);
+		}
+		if(command.equals("/board/commentWrite.board")) { //댓글 작성
+			service = new BoardServiceImpl();
+			service.commentWrite(request, response);
+		}
+		
+
+		
+	
+		
 	
 	
 		

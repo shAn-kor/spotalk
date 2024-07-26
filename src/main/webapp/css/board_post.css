@@ -6,18 +6,21 @@
     font-weight: 400;
     font-style: normal;
 }
-
-* {box-sizing: border-box;}
   
-body{background-color: #fff0f3;}
 
-.container{width: 930px;}
+
+.container{
+	width: 930px;
+	background-color: antiquewhite;
+	border-top: 1px solid #777;
+	border-bottom: 1px solid #777;
+	}
 
 .item1 {
 	width: 100%;
-    margin-top: 100px;
+    margin-top: 20px;
 }
-.item1 a {
+.item1 > a {
     color: #000;
 }
 .item2 {
@@ -36,8 +39,9 @@ body{background-color: #fff0f3;}
 .item2 > .top > .left,
 .item2 > .top > .right {
     float: left;
+    margin: 0;
 }
-.item2 > .top  a {
+.item2 >	 .top  a {
     color: #000;
 }
 
@@ -78,14 +82,14 @@ body{background-color: #fff0f3;}
 /* 추천 */
 .item2 > .bottom > .right > .up {
 	background-image: url("../img/up.png");
-	background-color: #fff0f3;
+	background-color: antiquewhite;
 	width: 16px;
 	height: 16px;
 }
 /* 비추천 */
 .item2 > .bottom > .right > .down {
 	background-image: url("../img/down.png");
-	background-color: #fff0f3;
+	background-color: antiquewhite;
 	width: 16px;
 	height: 16px;
 }
@@ -156,7 +160,7 @@ body{background-color: #fff0f3;}
 .item3 > .box > .bottom > input{
     float: right;
     width: 100px;
-    background-color: #ffc2d1;
+    background-color: antiquewhite;
     margin-right: 50px;
 }
 .item3 > .box > .bottom > input:active {
@@ -205,14 +209,14 @@ body{background-color: #fff0f3;}
 /* 추천 */
 .item4 > .box > .bottom > .right > .up {
 	background-image: url("../img/up.png");
-	background-color: #fff0f3;
+	background-color: antiquewhite;
 	width: 16px;
 	height: 16px;
 }
 /* 비추천 */
 .item4 > .box > .bottom > .right > .down {
 	background-image: url("../img/down.png");
-	background-color: #fff0f3;
+	background-color: antiquewhite;
 	width: 16px;
 	height: 16px;
 }
@@ -231,7 +235,7 @@ body{background-color: #fff0f3;}
 .comments-page > ul > button {
     width: 32px;
     height: 32px;
-    background-color: #fff0f3;
+    background-color: antiquewhite;
     border: none;
 }
 .comments-page > ul > button > a {
@@ -243,10 +247,10 @@ body{background-color: #fff0f3;}
 .comments-page > ul > li > a {
     color: #000;
     border: none;
-    background-color: #fff0f3;
+    background-color: antiquewhite;
 }
 .comments-page > ul > li > a:hover {
-    background-color: #fff0f3;
+    background-color: antiquewhite;
     text-decoration: underline;
 
 }
