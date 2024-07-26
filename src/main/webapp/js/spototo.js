@@ -66,6 +66,62 @@ document.addEventListener('DOMContentLoaded', function() {
     	});
     	
     	
+    	/*포인트 차감하기*/
+    	
+    	
+    	
+    	function usePoint(){
+			
+			var userP = document.getElementById("user-p").value;
+	    	var usingP = document.getElementById("using-p").value;
+	    	
+	    	console.log(userP);
+	    	console.log(usingP);
+	    	
+	    	var userPoint = parseInt(userP);
+	    	var usingPoint = parseInt(usingP);
+	    	
+	    	var id="user2";
+			var point=usingPoint;
+			
+	    	if(usingPoint > userPoint ){
+				alert("포인트가 부족합니다.");
+				return;
+			}
+			
+			var data = {id: id , point: point};
+			console.log(data);
+			fetch("/spotalk/game/soccerlist.game",{
+				method: "POST", //post방식 요청
+				headers: {
+					"Content-Type":"application/json" //데이터 타입
+				},
+				body: JSON.stringify(data)
+			})
+			.then(function(response){
+				if (!response.ok) {
+            		throw new Error('response 오류남');
+        		}
+    			return response.json();
+			})
+			.then(function(data){
+				console.log(data);
+			})
+			.catch(function(error){
+				alert("Error"+error);
+			})
+			
+		}
+    	
+    	
+    	/*확인 클릭하면 usePoint실행*/
+    	var ok = document.getElementById("toto-ok");
+    	ok.addEventListener("click", function(){
+			//event.preventDefault();
+			
+			usePoint();
+		})
+    	
     	
     	
     	

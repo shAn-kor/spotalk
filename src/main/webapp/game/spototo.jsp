@@ -3,8 +3,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-
-
 <%@ include file="../include/header.jsp"%>
 
     <script src="../js/spototo.js" defer></script>
@@ -100,7 +98,7 @@
                                  <button class="win-b">${game.teamB}팀 승리</button>
                              </div>
                              <div class="user-point">
-                                 <input type="text" name="user-p" id="user-p" value="나의 포인트 ${sessionScope.point}점" readonly>
+                                 <input type="text" name="user-p" id="user-p" value="5000" readonly>
                                  <input type="text" name="using-p" id="using-p" placeholder="사용할 포인트">
                                  <input type="button" name="toto-ok" id="toto-ok" value="확인">
                              </div>
