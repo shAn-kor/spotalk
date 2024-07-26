@@ -26,6 +26,7 @@ window.onload = function() {
       event.target.nextElementSibling.style.fontSize = "10px";
     } else pwdResult = false;
   }
+  
   let loginForm = document.loginForm;
   let loginBtn = document.getElementById("user_login");
   loginBtn.addEventListener('click', function() {

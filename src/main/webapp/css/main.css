@@ -58,7 +58,7 @@
 .swiper-button-next,
 .swiper-button-prev {
     color: white; /* 버튼 색상 설정 */
-    opacity: 0.4;
+    opacity: 0.6;
 }
 
 /* 경기일정, 리그순위 */

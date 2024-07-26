@@ -1,6 +1,6 @@
 @import url(default.css);
 
-.login_wrap{
+.findId-wrap{
 	width: 1400px;
 	height: 650px;
 	margin: 0 auto;
@@ -14,28 +14,41 @@
 	background-color: white;
 	opacity: 0.4;	
 }
-.login_box {
+.findId_wrap{
 	position: absolute;
 	top: 160px;
 	left: 450px;
-    
-    padding: 30px;
-    background-color: rgb(241, 215, 181);
-    width: 500px;
-    height: 330px;
-    text-align: center;
+	
+	padding: 30px;
+	width: 500px;
+	height: 330px;
+	background-color: rgb(241, 215, 181);
+	
+	text-align: center;
 }
-.login_box > .login_form {
-    padding: 10px;
+.toggle-btn{
+	display: flex;
+	justify-content: space-between;
+}
+.toggle-btn button{
+	width: 50%;
+	height: 30px;
+	font-size: large;
+}
+.toggle-btn button:hover{
+	color: goldenrod;
+}
+.findId_wrap > .findId_form {
+	padding: 10px;
     overflow: hidden;
 }
-.login-area {
+.findId-area {
     display: block;
     margin-bottom: 10px;
     border-radius: 15px;
     height: 60px;
 }
-#user_login {
+#findId_find {
     width: 100%;
     margin-bottom: 10px;
     border-radius: 15px;
@@ -43,14 +56,14 @@
     font-size: 20px;
     font-weight: 600;
 }
-.login-area {
+.findId-area {
     background-color: white;
     text-align: left;
     padding: 20px 10px 10px 10px;
     box-sizing: border-box;
     position: relative;
 }
-.p-login {
+.p-findId {
     display: block;
     font-size: 30px;
     color: #777676;
@@ -58,7 +71,7 @@
     top : 10px;
     transition: font-size 0.3s ease-in-out;
 }
-.user_input {
+.findId_input {
     height: 30px;
     position: absolute;
     bottom:0px;
@@ -68,10 +81,10 @@
     opacity: 0;
     transition: opacity 0.3s ease-in-out 0.1s;
 }
-.user_input:focus + .p-login {
+.findId_input:focus + .p-findId {
     font-size: 10px;
 }
-.user_input:focus {
+.findId_input:focus {
     height: 30px;
     font-size: 30px;
     outline: none;
@@ -83,20 +96,12 @@
     outline: none;
     opacity: 1;
 }
-.login_form > .join {
-    float: left;
-}
-.login_form > #user_login:hover {
+.findId_form > #findId_find:hover {
     background-color: rgba(87, 81, 74, 0.226);
     color:white;
     box-shadow: inset;
 }
-.login_form > .find {
-    float: right;
-}
-.login_form > .join:hover {
-    font-weight: 700;
-}
-.login_form > .find > a:hover {
-    font-weight: 700;
-}
+
+
+
+
