@@ -33,7 +33,10 @@ import java.io.PrintWriter;
 
         // game controller
         "/game/soccerlist.game",
-        "/game/baselist.game"
+        "/game/baselist.game",
+
+        // predict controller
+        "/predict/pointList.predict"
 })
 public class AuthenticationFilter implements Filter {
     @Override
