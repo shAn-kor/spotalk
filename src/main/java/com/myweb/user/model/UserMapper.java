@@ -13,4 +13,6 @@ public interface UserMapper {
     void createUser(UserDTO dto);
 
     int changeNick(UserDTO dto);
+
+    void deleteUser(String id);
 }
