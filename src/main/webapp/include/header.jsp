@@ -19,6 +19,8 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/join.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/join_success.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/login.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/findId.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/findPw.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/mypage.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/userlank.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/spototo.css">

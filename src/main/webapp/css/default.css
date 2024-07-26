@@ -9,14 +9,15 @@
     font-style: normal;
 }
 
-body {
+/* body {
     background-image: url("../img/balls.jpg");
-}
+} */
 
 ul, li, ol, dl, dd {list-style: none;}
 img {max-width: 100%; height: auto;} /* height가 넓이에 따라 가도록 한다. */
 input {border:none; outline: none;}
-button {border: none;}
+input[type="submit"] {cursor: pointer;}
+button {border: none; cursor: pointer;}
 a {text-decoration: none; color: black}
 
 /* Chrome, Safari, Edge, Opera */
