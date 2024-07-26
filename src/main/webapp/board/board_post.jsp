@@ -1,6 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../include/header.jsp"%>
+
+  <!-- 부트스트랩 css링크 -->
+  <link rel="stylesheet" href="../css/bootstrap.min.css" type="text/css">
+  <!-- 제이쿼리(부스트랩보다 먼저 링크) -->
+  <script src="../js/jquery-3.7.1.min.js" type="text/javascript"></script>
+  <!-- 부트스트랩 js링크 -->
+  <script src="../js/bootstrap.min.js" type="text/javascript"></script>
+
+  <link rel="stylesheet" href="../css/board_post.css" type="text/css">
+  
 <div class="container">
         <div class="item item1">
             <p>커뮤니티 / <a href="#">${dto.getCategory() }</a></p>
@@ -12,11 +22,11 @@
                     <img src="../img/profile32.png" alt="프로필">
                 </div>
                 <div class="right">
-                    <a href="#">작성자</a>
+                    <a href="#">${dto.userId }</a>
+                    <img src="../img/eye.png" alt="조회수">
+                    <span>${dto.getHit()}</span>
                     <div class="hits">
-                        <span>작성시간</span>
-                        <img src="../img/eye.png" alt="조회수">
-                        <span>${dto.getHit()}</span>
+                        <span>${dto.postDate }</span>
                     </div>
                 </div>
             </div>
@@ -55,23 +65,6 @@
 	                         <a href="#">로그인</a>
 	                         이 필요합니다. -->
 	                         <textarea name="comment_content" placeholder="댓글을 입력해주세요."></textarea>
-	                          
-						<%--     <% 
-					            Boolean isLoggedIn = (Boolean) session.getAttribute("isLoggedIn");
-					            
-					            if (isLoggedIn != null && isLoggedIn) {
-					        %>
-					            <textarea name="comment_content" placeholder="댓글을 입력해주세요."></textarea>
-					        <% 
-					            } else {
-					        %>
-					            <img src="../img/question.png" alt="물음표">
-					            댓글을 쓰려면
-					            <a href="login.jsp">로그인</a>
-					            이 필요합니다.
-					        <% 
-					            }
-					        %> --%>
 	                    </div>
 	
 	                </div>
@@ -80,74 +73,8 @@
 	                </div>
 	            </div>
         	</div>
-        
-
- 
-        <div class="item item4">
-            <div class="box">
-                <div class="top">
-                    <div class="left">
-                        <img src="../img/profile32.png" alt="프로필">
-                    </div>
-                    <div class="right">
-                        <a href="#"></a>
-                        <div class="hits">
-                            <span>작성시간</span>
-                            <img src="../img/eye.png" alt="조회수">
-                            <span>1.5k</span>
-                        </div>
-                    </div>
-                </div>
-    
-                <div class="bottom">
-                    <div class="right">
-                      	<button type="button" class="up"></button>
-                    	<span>5</span>
-                    	<button type="button" class="down"></button>
-                    	<span>3</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="comments">
-               ${dto.getCommentContent() }
-            </div>
-        </div>
-        
-        
-        <div class="item item4">
-            <div class="box">
-                <div class="top">
-                    <div class="left">
-                        <img src="../img/profile32.png" alt="프로필">
-                    </div>
-                    <div class="right">
-                        <a href="#">작성자</a>
-                        <div class="hits">
-                            <span>작성시간</span>
-                            <img src="../img/eye.png" alt="조회수">
-                            <span>1.5k</span>
-                        </div>
-                    </div>
-                </div>
-    
-                <div class="bottom">
-                    <div class="right">
-                      	<button type="button" class="up"></button>
-                    	<span>5</span>
-                    	<button type="button" class="down"></button>
-                    	<span>3</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="comments">
-                댓글 내용 ~~~~~~ 😊<br>
-                댓글 내용 ~~~~~~ 😊<br>
-            </div>
-        </div>
-        
         </form>
+       
         
         
         <div class="item item4">
@@ -157,12 +84,7 @@
                         <img src="../img/profile32.png" alt="프로필">
                     </div>
                     <div class="right">
-                        <a href="#">작성자</a>
-                        <div class="hits">
-                            <span>작성시간</span>
-                            <img src="../img/eye.png" alt="조회수">
-                            <span>1.5k</span>
-                        </div>
+                        <a href="#">${dto.userId }</a>
                     </div>
                 </div>
     
@@ -177,197 +99,14 @@
             </div>
 
             <div class="comments">
-                댓글 내용 ~~~~~~ 😊<br>
-                댓글 내용 ~~~~~~ 😊<br>
-            </div>
-        </div>
-        <div class="item item4">
-            <div class="box">
-                <div class="top">
-                    <div class="left">
-                        <img src="../img/profile32.png" alt="프로필">
-                    </div>
-                    <div class="right">
-                        <a href="#">작성자</a>
-                        <div class="hits">
-                            <span>작성시간</span>
-                            <img src="../img/eye.png" alt="조회수">
-                            <span>1.5k</span>
-                        </div>
-                    </div>
-                </div>
-    
-                <div class="bottom">
-                    <div class="right">
-                      	<button type="button" class="up"></button>
-                    	<span>5</span>
-                    	<button type="button" class="down"></button>
-                    	<span>3</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="comments">
-                댓글 내용 ~~~~~~ 😊<br>
-                댓글 내용 ~~~~~~ 😊<br>
-            </div>
-        </div>
-        <div class="item item4">
-            <div class="box">
-                <div class="top">
-                    <div class="left">
-                        <img src="../img/profile32.png" alt="프로필">
-                    </div>
-                    <div class="right">
-                        <a href="#">작성자</a>
-                        <div class="hits">
-                            <span>작성시간</span>
-                            <img src="../img/eye.png" alt="조회수">
-                            <span>1.5k</span>
-                        </div>
-                    </div>
-                </div>
-    
-                <div class="bottom">
-                    <div class="right">
-                      	<button type="button" class="up"></button>
-                    	<span>5</span>
-                    	<button type="button" class="down"></button>
-                    	<span>3</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="comments">
-                댓글 내용 ~~~~~~ 😊<br>
-                댓글 내용 ~~~~~~ 😊<br>
-            </div>
-        </div>
-        <div class="item item4">
-            <div class="box">
-                <div class="top">
-                    <div class="left">
-                        <img src="../img/profile32.png" alt="프로필">
-                    </div>
-                    <div class="right">
-                        <a href="#">작성자</a>
-                        <div class="hits">
-                            <span>작성시간</span>
-                            <img src="../img/eye.png" alt="조회수">
-                            <span>1.5k</span>
-                        </div>
-                    </div>
-                </div>
-    
-                <div class="bottom">
-                    <div class="right">
-                      	<button type="button" class="up"></button>
-                    	<span>5</span>
-                    	<button type="button" class="down"></button>
-                    	<span>3</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="comments">
-                댓글 내용 ~~~~~~ 😊<br>
-                댓글 내용 ~~~~~~ 😊<br>
-            </div>
-        </div>
-        <div class="item item4">
-            <div class="box">
-                <div class="top">
-                    <div class="left">
-                        <img src="../img/profile32.png" alt="프로필">
-                    </div>
-                    <div class="right">
-                        <a href="#">작성자</a>
-                        <div class="hits">
-                            <span>작성시간</span>
-                            <img src="../img/eye.png" alt="조회수">
-                            <span>1.5k</span>
-                        </div>
-                    </div>
-                </div>
-    
-                <div class="bottom">
-                    <div class="right">
-                      	<button type="button" class="up"></button>
-                    	<span>5</span>
-                    	<button type="button" class="down"></button>
-                    	<span>3</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="comments">
-                댓글 내용 ~~~~~~ 😊<br>
-                댓글 내용 ~~~~~~ 😊<br>
-            </div>
-        </div>
-        <div class="item item4">
-            <div class="box">
-                <div class="top">
-                    <div class="left">
-                        <img src="../img/profile32.png" alt="프로필">
-                    </div>
-                    <div class="right">
-                        <a href="#">작성자</a>
-                        <div class="hits">
-                            <span>작성시간</span>
-                            <img src="../img/eye.png" alt="조회수">
-                            <span>1.5k</span>
-                        </div>
-                    </div>
-                </div>
-    
-                <div class="bottom">
-                    <div class="right">
-                      	<button type="button" class="up"></button>
-                    	<span>5</span>
-                    	<button type="button" class="down"></button>
-                    	<span>3</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="comments">
-                댓글 내용 ~~~~~~ 😊<br>
-                댓글 내용 ~~~~~~ 😊<br>
-            </div>
-        </div>
-        <div class="item item4">
-            <div class="box">
-                <div class="top">
-                    <div class="left">
-                        <img src="../img/profile32.png" alt="프로필">
-                    </div>
-                    <div class="right">
-                        <a href="#">작성자</a>
-                        <div class="hits">
-                            <span>작성시간</span>
-                            <img src="../img/eye.png" alt="조회수">
-                            <span>1.5k</span>
-                        </div>
-                    </div>
-                </div>
-    
-                <div class="bottom">
-                    <div class="right">
-                      	<button type="button" class="up"></button>
-                    	<span>5</span>
-                    	<button type="button" class="down"></button>
-                    	<span>3</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="comments">
-                댓글 내용 ~~~~~~ 😊<br>
-                댓글 내용 ~~~~~~ 😊<br>
+              ${dto.commentContent }
             </div>
         </div>
         
+        
+        
+        
+       
         
         <div class="comments-page">
             <ul class="pager">
@@ -377,8 +116,6 @@
                 <button type="button"><a href="#">3</a></button>
                 <button type="button"><a href="#">4</a></button>
                 <button type="button"><a href="#">5</a></button>
-                <p>...</p>
-                <button type="button"><a href="#">5768</a></button>
                 <li class="next"><a href="#">Next</a></li>
             </ul>
         </div>

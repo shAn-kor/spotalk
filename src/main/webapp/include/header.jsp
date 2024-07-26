@@ -22,23 +22,7 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/mypage.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/userlank.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/spototo.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/board_main.css" type="text/css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/board_post.css" type="text/css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/board_write.css" type="text/css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/game_date.css" type="text/css">
-
-    <!-- 부트스트랩 css링크 -->
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/bootstrap/css/bootstrap.min.css">
-
-    <%--  custom js  --%>
-
-
-    <!-- 제이쿼리(부트스트랩보다 먼저 링크) -->
-    <script src="${pageContext.request.contextPath}/bootstrap/js/jquery-3.7.1.min.js"></script>
-
-    <!-- 부트스트랩 js링크 -->
-    <script src="${pageContext.request.contextPath}/bootstrap/js/bootstrap.min.js"></script>
-
 
 
 </head>
@@ -60,7 +44,7 @@
                 <a href="${pageContext.request.contextPath}/game/soccerdate.game">경기일정</a>
             </div>
             <div class="menu">
-                <a href="#">커뮤니티</a>
+                <a href="${pageContext.request.contextPath}/board/category.board?category=전체글">커뮤니티</a>
             </div>
         </div>
     </div>
