@@ -65,13 +65,14 @@
             <c:when test="${sessionScope.user_id!=null}">
                 <div id="myInfo">
                     <div class="float">
-                        <p class="name">닉네임최대10byte에요</p>
-                        <p class="point">1,000,000pt</p>
+                        <p class="name">${sessionScope.user_nick }</p>
+                        <p class="point">${sessionScope.point }</p>
                     </div>
                     <div class="float">
-                        <p class="grade">등급</p>
+                        <p class="grade" data-grade="${sessionScope.grade_id}">등급</p>
                     </div>
                 </div>
+                <script src="${pageContext.request.contextPath}/js/header.js"></script>
             </c:when>
         </c:choose>
     </div>

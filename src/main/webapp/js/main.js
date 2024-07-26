@@ -1,4 +1,5 @@
 window.onload = function() {
+	
     // 모든 탭 내용을 숨김
     function setupTabs(tabLinksSelector, tabContentsSelector) {
         // 모든 탭 내용을 숨김
@@ -46,7 +47,7 @@ window.onload = function() {
     setupTabs('.tabnav2 a', '.tabcontent2 > div');
     setupTabs('.tabnav3 a', '.tabcontent3 > div');
 
-
+	//명예의전당 별떨구기
     const starField = document.getElementById('podium-background');
 
     function createStar() {

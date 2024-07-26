@@ -190,6 +190,37 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
+	public void deleteUser(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		HttpSession session = request.getSession();
+		String id = session.getAttribute("user_id").toString();
+		String pw = request.getParameter("user-pw");
+
+		UserDTO dto = getUserById(id);
+
+		System.out.println(id);
+		System.out.println(dto.toString());
+		System.out.println(pw);
+
+		if (dto.getPw().equals(pw)) {
+			session.invalidate();
+			deleteUser(id);
+			response.setContentType("text/html;charset=utf-8");
+			PrintWriter out = response.getWriter();
+			out.println("<script>");
+			out.println("alert('계정 삭제 되었습니다.');");
+			out.println("location.href='/spotalk/spotalk.do';");
+			out.println("</script>");
+		} else {
+			response.setContentType("text/html;charset=utf-8");
+			PrintWriter out = response.getWriter();
+			out.println("<script>");
+			out.println("alert('비밀번호가 일치하지 않습니다.');");
+			out.println("location.href='/spotalk/user/outMember.user';");
+			out.println("</script>");
+		}
+	}
+
+	@Override
 	public void getMyPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		UserDTO dto = getUserById(request.getSession().getAttribute("user_id").toString());
 		request.setAttribute("dto", dto);
@@ -307,5 +338,12 @@ public class UserServiceImpl implements UserService{
 		}
 		JSONParser parser = new JSONParser();
         return new JSONObject((Map) parser.parse(sb.toString()));
+	}
+
+	private void deleteUser (String id) {
+		SqlSession sql = sqlSessionFactory.openSession(true);
+		UserMapper mapper = sql.getMapper(UserMapper.class);
+		mapper.deleteUser(id);
+		sql.close();
 	}
 }

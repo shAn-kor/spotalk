@@ -2,15 +2,19 @@
     pageEncoding="UTF-8"%>
 
 <%@include file="../include/header.jsp"%>
-
+<script src = "../js/checkPhone.js"></script>
+<div class="auth-wrap">
+	<div class=white-background></div>
     <div class="auth_box">
         <p>
-            <a href="agree.user" class="agree_link">약관 동의</a> > 
-            <a href="auth.user" class="auth_link">본인인증</a> > 
+            <a href="agree.user" class="agree_link" style="color: #777">약관 동의</a>
+            <span style="color: #777"> > </span> 
+            <a href="auth.user" class="auth_link">본인인증</a> 
+            <span style="color: #777"> > 계정 생성</span>
         </p>
         <div class="auth_wrap">
             <h3 class="auth_title">입력해주세요.</h3>
-            <form action="checkPhone.user" method="post" class="auth_form">
+            <form action="checkPhone.user" method="post" class="auth_form" name="authForm">
                 <div class="auth1">
                     <div class="input_name">
                         <input type="text" name="name" id="user_name" placeholder="이름" value="${name }">
@@ -29,7 +33,7 @@
             			<option value="${year }">년 선택</option>
             			<!-- 1900년부터 2024년까지 선택할 수 있게 -->
             			<script>
-                		for (let i = 1900; i <= new Date().getFullYear(); i++) {
+                		for (let i = new Date().getFullYear(); i >= 1900; i--) {
                     	document.write('<option value="' + i + '">' + i + '</option>');
                 		}
             			</script>
@@ -64,4 +68,5 @@
             </form>
         </div>
     </div>
+</div>
 <%@include file="../include/footer.jsp"%>

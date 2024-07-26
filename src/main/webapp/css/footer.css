@@ -1,4 +1,4 @@
-@import "default.css";
+
 @font-face {
     font-family: 'Agency FB Bold';
     font-style: normal;
@@ -13,7 +13,7 @@
     padding: 10px;
     margin: 0 auto;
     overflow: hidden;
-    background-color: antiquewhite;
+    background-color: antiquewhite;;
     overflow: hidden;
     box-sizing: border-box;
 

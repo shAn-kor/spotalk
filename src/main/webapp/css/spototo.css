@@ -1,50 +1,84 @@
 @import url(default.css);
 
 .overlay{
-	display:none;
-	position: fixed;
-	left: 0;
-	top: 0;
-	width: 100%;
-	height: 100%;
-	background-color: rgba(0,0,0,0.7);
-	animation: fadeIn 1s ease-in-out;
-	z-index: 100;
+   display:none;
+   position: fixed;
+   left: 0;
+   top: 0;
+   width: 100%;
+   height: 100%;
+   background-color: rgba(0,0,0,0.6);
+   animation: fadeIn 1s ease-in-out;
+   z-index: 100;
 }
 .overlay > .imglay {
-	width: 100%;
-	height: 100%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+   width: 100%;
+   height: 100%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+.overlay > .imglay > img {
+   width: 400px;
+   height:400px;
 }
 
 @keyframes fadeIn {
      from{
-     	opacity: 0;
+        opacity: 0;
      }to{
         opacity: 1;
      }
 }
 
+
+
 .spototo-box {
-    width: 1080px;
-    height: 800px;
-    background-color: #e4ccff;
+   margin:0 auto;
+    width: 1400px;
+    min-height: 800px;
+    background-color: white;
     text-align: center;
     padding: 50px;
 }
 
+/* 축/야/농 메뉴 */
+
+.spototo-box > .miniMenu{
+   width: 110px;
+   height: 50px;
+   overflow: hidden;
+   font-size: 20px;
+}
+.spototo-box > .miniMenu > ul {
+   width: 450px;
+   height: 50px;
+}
+.spototo-box > .miniMenu > ul > li {
+   display: inline-block;
+   width: 32%;
+   height:50px;
+   line-height: 50px;
+   text-align: center;
+}
+.spototo-box > .miniMenu:hover {
+   width: 450px;
+   font-size:30px;
+   transition: 0.5s ease-in-out; 
+}
+
+/* --------------------------- */
+
 .spototo-match {
     margin: 20px auto;
-    width: 80%;
+    width: 1300px;
     overflow: hidden;
     display: flex;
     justify-content: space-around;
     flex-direction: column;
     padding: 10px;
     background-color: white;
-    border-radius: 15px;
+    border-top: 1px solid #999;
     height: 70px;
     transition: height 0.3s linear;
 }
@@ -83,9 +117,10 @@
     text-align: center;
 }
 .match > .spototo-a {
-    background-color: blue;
+    background-color: rgb(16, 92, 16);
     justify-content: flex-start;
     overflow: hidden;
+    border-radius: 0px;
 }
 .match > .spototo-a > p {
     text-align: left;
@@ -99,10 +134,11 @@
     width: 90%;
 }
 .match > .spototo-b {
-    background-color: red;
+    background-color: rgb(151,31,31);
     flex-direction: row-reverse;
     justify-content: flex-end;
     overflow: hidden;
+    border-radius: 0px;
 }
 .match > .spototo-b > p {
     text-align: right;
@@ -113,6 +149,7 @@
     font-size: 0;
     text-align: center;
     margin: 0 auto;
+    border-radius: 0px;
 }
 .spototo-match > .details {
     margin-top: 20px;
@@ -141,24 +178,33 @@
 }
 .detail-btn > .match-btns > button {
     width: 25%;
-    border-radius: 15px;
     font-size: 1.2rem;
-    background-color: blueviolet;
     color: white;
+}
+.detail-btn > .match-btns > button:nth-child(1){
+   background-color: rgb(16, 92, 16); 
+}
+.detail-btn > .match-btns > button:nth-child(2){
+   background-color: gray;
+}
+.detail-btn > .match-btns > button:nth-child(3){
+   background-color: rgb(151,31,31);
 }
 .detail-btn > .match-btns > button:hover {
-    background-color: rgb(76, 26, 122);
+    background-color: black;
+    cursor: pointer;
 }
 .detail-btn > .user-point > input {
-    border-radius: 15px;
     font-size: 1.2rem;
-    background-color: black;
-    color: white;
+    border: 1px solid black;
+    color: black;
     text-align: center;
-}
-.detail-btn > .user-point > #user-p {
     width: 35%;
 }
-.detail-btn > .user-point > #using-p {
-    width: 35%;
+.detail-btn > .user-point > #toto-ok{
+   width: 50px;
+   border-radius: 50px;
+}
+.detail-btn > .user-point > #toto-ok:hover {
+   cursor: pointer;
 }

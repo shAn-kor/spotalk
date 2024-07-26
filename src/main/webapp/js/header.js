@@ -1,41 +1,78 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // 로그인 상태를 확인하는 변수 (예시)
-    let isLoggedIn = false; // 로그인 상태 (예시로 false로 설정)
-
-    const loginButton = document.getElementById('loginButton');
-    const signupButton = document.getElementById('signupButton');
-    const myPageButton = document.getElementById('myPageButton');
-    const logoutButton = document.getElementById('logoutButton');
-    const myInfo = document.getElementById('myInfo');
-
-    // 로그인 상태에 따른 버튼 토글 함수
-    function toggleButtons() {
-        if (isLoggedIn) {
-            loginButton.style.display = 'none';
-            signupButton.style.display = 'none';
-            myPageButton.style.display = 'inline-block';
-            logoutButton.style.display = 'inline-block';
-            myInfo.style.display = 'block';
-        } else {
-            loginButton.style.display = 'inline-block';
-            signupButton.style.display = 'inline-block';
-            myPageButton.style.display = 'none';
-            logoutButton.style.display = 'none';
-            myInfo.style.display = 'none';
-        }
+	// point 형변환
+	// .point 요소를 가져옵니다.
+	var pointElement = document.querySelector('#myInfo .float .point');
+	    
+	// 데이터에서 포인트 값을 가져옵니다.
+	var pointValue = pointElement.textContent.trim();
+	   
+	// 숫자와 문자열 분리
+	var numericValue = parseInt(pointValue.replace(/,/g, ''), 10);
+   
+	// 포맷팅 함수
+   function formatNumber(value) {
+       if (value >= 1e12) { // 1 조 이상
+           return (value / 1e12).toFixed(2) + 'T'; // Trillion
+       } else if (value >= 1e9) { // 10억 이상
+           return (value / 1e9).toFixed(2) + 'B'; // Billion
+       } else if (value >= 1e6) { // 100만 이상
+           return (value / 1e6).toFixed(2) + 'M'; // Million
+       } else if (value >= 1e3) { // 1000 이상
+           return (value / 1e3).toFixed(2) + 'K'; // Thousand
+       } else {
+           return value.toString(); // 1000 미만
+       }
+   }
+   
+   // 포맷팅된 포인트 값을 설정
+   var formattedPointValue = formatNumber(numericValue) + ' pt';
+   pointElement.textContent = formattedPointValue;
+	
+	
+   	//grade 이미지 변환
+	// .grade 요소를 가져옵니다.
+	var gradeElement = document.querySelector('#myInfo > .float > .grade');
+	
+	// data-grade 속성에서 grade_id 값을 가져옵니다.
+	var gradeId = gradeElement.getAttribute('data-grade');
+	
+	// grade_id 값에 따라 background-position을 설정합니다.
+	switch (gradeId) {
+	    case '1':
+	        gradeElement.style.backgroundPosition = '5px 0px';
+	        break;
+	    case '2':
+	        gradeElement.style.backgroundPosition = '-36px 0px';
+	        break;
+	    case '3':
+	        gradeElement.style.backgroundPosition = '-76px 0px';
+	        break;
+	    case '4':
+	        gradeElement.style.backgroundPosition = '-117px 0px';
+	        break;
+	    case '5':
+	        gradeElement.style.backgroundPosition = '-157px 0px';
+	        break;
+	    case '6':
+	        gradeElement.style.backgroundPosition = '2px -40px';
+	        break;
+	    case '7':
+	        gradeElement.style.backgroundPosition = '-38px -40px';
+	        break;
+	    case '8':
+	        gradeElement.style.backgroundPosition = '-78px -40px';
+	        break;
+	    case '9':
+	        gradeElement.style.backgroundPosition = '-118px -40px';
+	        break;
+	    case '10':
+	        gradeElement.style.backgroundPosition = '-157px -40px';
+	        break;
+	    case '11':
+	        gradeElement.style.backgroundPosition = '-157px -40px';
+	        break;
+	    default:
+	        gradeElement.style.backgroundPosition = '5px 0px'; // 기본값 설정
+	        break;
     }
-
-    // 초기 상태 설정
-    toggleButtons();
-
-    // 예시로 로그인/로그아웃 버튼 클릭 시 상태 변경 (실제 구현에서는 서버와의 통신 필요)
-    loginButton.addEventListener('click', function() {
-        isLoggedIn = true;
-        toggleButtons();
-    });
-
-    logoutButton.addEventListener('click', function() {
-        isLoggedIn = false;
-        toggleButtons();
-    });
 });

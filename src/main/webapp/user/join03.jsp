@@ -9,8 +9,10 @@
 <script src="${pageContext.request.contextPath}/js/join.js"></script>
     <div class="join-box">
         <p>
-            <a href="agree.user" class="agree_link">약관 동의</a> > 
-            <a href="auth.user" class="auth_link">본인인증</a> > 
+            <a href="agree.user" class="agree_link" style="color: #777">약관 동의</a> 
+            <span style="color: #777"> > </span> 
+            <a href="auth.user" class="auth_link" style="color: #777">본인인증</a>
+            <span style="color: #777"> > </span> 
             <a href="join.user" class="join_link">계정 생성</a>
         </p>
         <div class="join_wrap">
