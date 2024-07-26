@@ -53,7 +53,7 @@ public class GameController extends HttpServlet {
 			
 		}else if(command.equals("/game/basketlist.game")) { //농구경기예측페이지
 			service = new GameServiceImpl();
-			service.getBase(request, response);
+			service.getBasket(request, response);
 			
 		}else if(command.equals("/game/soccerdate.game")) { //축구경기일정
 			service = new GameServiceImpl();

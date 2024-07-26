@@ -8,19 +8,6 @@ public class PredictDTO {
     String choice;
     Long betPoint;
     String pResult;
-
-    @Override
-    public String toString() {
-        return "PredictDTO{" +
-                "userId='" + userId + '\'' +
-                ", gameId='" + gameId + '\'' +
-                ", choice='" + choice + '\'' +
-                ", betPoint=" + betPoint +
-                ", pResult='" + pResult + '\'' +
-                ", cDate=" + cDate +
-                '}';
-    }
-
     Timestamp cDate;
 
     public PredictDTO(String userId, String gameId, String choice, Long betPoint, String pResult, Timestamp cDate) {
@@ -79,4 +66,17 @@ public class PredictDTO {
     public void setcDate(Timestamp cDate) {
         this.cDate = cDate;
     }
+
+    @Override
+    public String toString() {
+        return "PredictDTO{" +
+                "userId='" + userId + '\'' +
+                ", gameId='" + gameId + '\'' +
+                ", choice='" + choice + '\'' +
+                ", betPoint=" + betPoint +
+                ", pResult='" + pResult + '\'' +
+                ", cDate=" + cDate +
+                '}';
+    }
+
 }

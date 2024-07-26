@@ -7,6 +7,8 @@
     UserDTO dto = (UserDTO) request.getAttribute("dto");
 %>
 <script src="${pageContext.request.contextPath}/js/join.js"></script>
+<div class="join-wrap">
+    <div class=white-background></div>
     <div class="join-box">
         <p>
             <a href="agree.user" class="agree_link" style="color: #777">약관 동의</a> 
@@ -50,4 +52,5 @@
             </form>
         </div>
     </div>
+</div>
 <%@ include file="../include/footer.jsp"%>

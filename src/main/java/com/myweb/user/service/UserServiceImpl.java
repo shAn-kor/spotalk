@@ -259,14 +259,20 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
-	public void getUserRank(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void getUserRankPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		List<UserDTO> list = getUserRank(request, response);
+
+		request.setAttribute("list", list);
+		request.getRequestDispatcher("userRank.jsp").forward(request, response);
+	}
+
+	@Override
+	public List<UserDTO> getUserRank(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		SqlSession sql = sqlSessionFactory.openSession(true);
 		UserMapper mapper = sql.getMapper(UserMapper.class);
 		List<UserDTO> list = mapper.getUserList();
 		sql.close();
-
-		request.setAttribute("list", list);
-		request.getRequestDispatcher("userRank.jsp").forward(request, response);
+		return list;
 	}
 
 	@Override

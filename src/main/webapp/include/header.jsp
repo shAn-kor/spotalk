@@ -46,7 +46,7 @@
                 <a href="${pageContext.request.contextPath}/game/soccerdate.game">경기일정</a>
             </div>
             <div class="menu">
-                <a href="#">커뮤니티</a>
+                <a href="${pageContext.request.contextPath}/board/category.board?category=전체글">커뮤니티</a>
             </div>
         </div>
     </div>
