@@ -117,7 +117,7 @@
     text-align: center;
 }
 .match > .spototo-a {
-    background-color: rgb(16, 92, 16);
+    background-color: #226f54;
     justify-content: flex-start;
     overflow: hidden;
     border-radius: 0px;
@@ -128,13 +128,13 @@
 }
 .match > div > img {
     display: block;
-    width: 10%;
+    max-width: 60px;
 }
 .match > div > p {
     width: 90%;
 }
 .match > .spototo-b {
-    background-color: rgb(151,31,31);
+    background-color: #da2c38;
     flex-direction: row-reverse;
     justify-content: flex-end;
     overflow: hidden;
@@ -182,13 +182,13 @@
     color: white;
 }
 .detail-btn > .match-btns > button:nth-child(1){
-   background-color: rgb(16, 92, 16); 
+   background-color: #226f54; 
 }
 .detail-btn > .match-btns > button:nth-child(2){
    background-color: gray;
 }
 .detail-btn > .match-btns > button:nth-child(3){
-   background-color: rgb(151,31,31);
+   background-color: #da2c38;
 }
 .detail-btn > .match-btns > button:hover {
     background-color: black;
@@ -207,4 +207,5 @@
 }
 .detail-btn > .user-point > #toto-ok:hover {
    cursor: pointer;
+   background-color: black;
 }
