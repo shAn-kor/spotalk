@@ -7,13 +7,14 @@ window.onload = function() {
   id.addEventListener('change', checkId);
   pwd.addEventListener('change', checkPwd);
 
+
   // 아이디 체크조건
   function checkId() {
     if (id.value.length >= 1) {
 		idResult = true;
       id.style.opacity = "1";
       id.className += ' focus';
-      event.target.nextElementSibling.style.fontSize = "10px";
+      id.nextElementSibling.style.fontSize = "10px";
     } else idResult = false;
   }
 
@@ -37,8 +38,10 @@ window.onload = function() {
 	
 	if (!idResult) {
 		alert('아이디를 입력해주세요.');
+		id.focus();
 	} else if (!pwdResult) {
 		alert('비밀번호를 입력해주세요.');
+		pwd.focus();
 	}
 	
 	if (idResult && pwdResult) {

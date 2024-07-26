@@ -7,7 +7,7 @@
 	<div class="findId_wrap">
 		<div class="toggle-btn">
 			<button type="button">아이디 찾기</button>
-			<button type="button" onclick="location.href='findIdPw_Pw.user';">비밀번호 찾기</button>
+			<button type="button" onclick="location.href='findIdPw_Pw.user';" style="background-color: antiquewhite;">비밀번호 찾기</button>
 		</div>
 		<form action="findId.user" method="post" class="findId_form" name="findIdForm">
 			<div class="findId-area">

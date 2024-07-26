@@ -27,6 +27,9 @@
 	text-align: center;
 }
 .toggle-btn{
+	position: absolute;
+	top: 0; left: 0;
+	width: 100%;
 	display: flex;
 	justify-content: space-between;
 }
@@ -34,11 +37,14 @@
 	width: 50%;
 	height: 30px;
 	font-size: large;
+	background-color: rgb(241, 215, 181);
+	line-height: 35px;
 }
 .toggle-btn button:hover{
 	color: goldenrod;
 }
 .findId_wrap > .findId_form {
+	margin-top: 35px;
 	padding: 10px;
     overflow: hidden;
 }
@@ -102,6 +108,39 @@
     box-shadow: inset;
 }
 
-
+/* findid02 */
+.findId_wrap h1 {
+	margin-top: 30px;
+}
+.id_area{
+	width: 420px;
+	margin: 0 auto;
+	margin-top: 30px;
+	height: 50px;
+	overflow: hidden;
+	display: flex;
+	justify-content: space-between;
+}
+.id_area input, .id_area button{
+	height: 100%;
+	border-radius: 15px;
+	text-align: center;
+	font-size: 20px;
+	
+}
+.id_area input{
+	width: 355px;
+}
+.id_area button {
+	width: 60px;
+}
+.btnToLogin{
+	width: 420px;
+    margin-top: 30px;
+    border-radius: 15px;
+    height: 50px;
+    font-size: 20px;
+    font-weight: 600;
+}
 
 

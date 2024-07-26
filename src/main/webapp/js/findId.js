@@ -3,6 +3,7 @@ window.onload = function() {
   let phone = document.getElementById('user_phone');
   let nameResult = false;
   let phoneResult = false;
+  let phoneReg = /^01([0|1|6|7|8|9])-?([0-9]{4})-?([0-9]{4})$/;
   // 각 태그에 변화 시 체크 조건 실행
   name.addEventListener('change', checkName);
   phone.addEventListener('change', checkPhone);
@@ -37,11 +38,19 @@ window.onload = function() {
 	
 	if (!nameResult) {
 		alert('이름을 입력해주세요.');
+		name.focus();
 	} else if (!phoneResult) {
 		alert('전화번호를 입력해주세요.');
-	}
+		phone.focus();
+	} else if (!phoneReg.test(phone.value)) {
+		alert('유효한 전화번호 형식이 아닙니다.');
+        phone.focus();
+        phone.value = "";
+        return;
+    }
 	
 	if (nameResult && phoneResult) {
+		phone.value = phone.value.replaceAll('-', '');
 		findIdForm.submit();
 	}
   });
