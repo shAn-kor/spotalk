@@ -53,6 +53,15 @@ public class UserController extends HttpServlet{
 			session.invalidate();
 			response.sendRedirect(request.getContextPath() + "/spotalk.do"); // 메인 화면으로
 		}
+
+		// 회원 탈퇴
+		if(command.equals("/user/outMember.user")) {
+			request.getRequestDispatcher("outMember.jsp").forward(request, response);
+		}
+		if(command.equals("/user/delete.user")) {
+			service = new UserServiceImpl();
+			service.deleteUser(request, response);
+		}
 		
 		//회원가입
 		if(command.equals("/user/agree.user")) {//약관동의 페이지

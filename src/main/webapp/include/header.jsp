@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    
+
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
 
     <%--  custom css  --%>
@@ -25,7 +25,6 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/userlank.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/spototo.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/game_date.css" type="text/css">
-    
 
 
 </head>
