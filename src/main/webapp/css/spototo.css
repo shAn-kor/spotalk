@@ -117,6 +117,7 @@
     text-align: center;
 }
 .match > .spototo-a {
+
     background-color: #226f54;
     justify-content: flex-start;
     overflow: hidden;
@@ -134,6 +135,7 @@
     width: 90%;
 }
 .match > .spototo-b {
+
     background-color: #da2c38;
     flex-direction: row-reverse;
     justify-content: flex-end;
@@ -182,12 +184,14 @@
     color: white;
 }
 .detail-btn > .match-btns > button:nth-child(1){
+
    background-color: #226f54; 
 }
 .detail-btn > .match-btns > button:nth-child(2){
    background-color: gray;
 }
 .detail-btn > .match-btns > button:nth-child(3){
+
    background-color: #da2c38;
 }
 .detail-btn > .match-btns > button:hover {
@@ -207,5 +211,6 @@
 }
 .detail-btn > .user-point > #toto-ok:hover {
    cursor: pointer;
+
    background-color: black;
 }

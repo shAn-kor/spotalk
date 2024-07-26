@@ -5,6 +5,7 @@
 
 <%@ include file="../include/header.jsp"%>
 
+
     <script src="${pageContext.request.contextPath}/js/spototo.js" defer></script>
    <div class="overlay">
         <div class="imglay">
@@ -74,6 +75,7 @@
                          </p>
                          <div class="match">
                              <div class="spototo-a">
+
                                  <img src="" alt="icon" class="imgA">
                                  <p class="a">${game.teamA}</p>
                              </div>
@@ -98,8 +100,10 @@
                                  <button class="win-b">${game.teamB}팀 승리</button>
                              </div>
                              <div class="user-point">
+
                                  <input type="text" name="user-p" id="user-p" value="나의 포인트 ${sessionScope.point}" readonly>
                                  <input type="text" name="using-p" id="using-p" placeholder="사용할 포인트" >
+
                                  <input type="button" name="toto-ok" id="toto-ok" value="확인">
                              </div>
                          </div>
