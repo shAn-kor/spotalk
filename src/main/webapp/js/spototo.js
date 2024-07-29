@@ -92,10 +92,10 @@ window.onload = function() {
 
 				console.log(graphLength / totalCnt * teamACnt);
 				// teamAGraph.display = 'inline-block';
-				teamAGraph.style.width = Math.round(graphLength / totalCnt * teamACnt).toString() + 'px';
+				teamAGraph.style.width = Math.round((graphLength / totalCnt * teamACnt) < 100 ? 100 : (graphLength / totalCnt * teamACnt)).toString() + 'px';
 
 				// teamBGraph.display = 'inline-block';
-				teamBGraph.style.width = Math.round(graphLength / totalCnt * teamBCnt).toString() + 'px';
+				teamBGraph.style.width = Math.round((graphLength / totalCnt * teamBCnt) < 100 ? 100 : (graphLength / totalCnt * teamBCnt)).toString() + 'px';
 
 				// drawGraph.display = 'inline-block';
 				drawGraph.style.width = Math.round(graphLength / totalCnt * drawCnt).toString() + 'px';

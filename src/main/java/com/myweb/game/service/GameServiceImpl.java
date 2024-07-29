@@ -149,22 +149,33 @@ public class GameServiceImpl implements GameService{
 
 	//진행 중인 승부
 	@Override
-	public List<String> getGaming(HttpServletRequest request, HttpServletResponse response)
+	public List<GameDTO> getGames(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		SqlSession sql = sqlSessionFactory.openSession(true);
 		GameMapper mapper = sql.getMapper(GameMapper.class);
 		
-		 List<GameDTO> gamelist = mapper.getGaming();
-		 
-		 List<String> games = new ArrayList<>();
-		 for(GameDTO dto : gamelist) {
-			 Gson gson = new Gson();
-			 games.add(gson.toJson(dto));
-		 }
-		 
-		 System.out.println("getGaming은 "+ gamelist);
+		return mapper.getGames();
+	}
 
-		return games;	
+	@Override
+	public List<String> getGaming(List<GameDTO> list) {
+
+		List<String> games = new ArrayList<>();
+		for(GameDTO dto : list) {
+
+			if (
+					dto.getGameDate().getTime() > (System.currentTimeMillis() + (86400000*4)) ||
+					dto.getGameDate().getTime() < (System.currentTimeMillis() + (86400000))
+			) {
+				continue;
+			}
+			Gson gson = new Gson();
+			games.add(gson.toJson(dto));
+		}
+
+		System.out.println("getGaming은 "+ games);
+
+		return games;
 	}
 
 	public void closeGameSqlSession() {

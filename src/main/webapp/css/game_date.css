@@ -64,7 +64,7 @@
     display: inline-block;
     border-top: 1px solid #999; 
     border-bottom: 1px solid #999; 
-    margin : 20px 0;
+    margin-bottom: 20px;
     /* margin-left: 50px; */
     width: 100%;
     height: 50px;
@@ -89,11 +89,12 @@
 
 
 .mid-right .mid-bottom {
-    border: 1px solid #999;
     /* margin-left: 50px; */
     margin-bottom: 20px;
     width: 100%;
-    max-height: 370px;
+    min-height: 650px;
+    max-height: 650px;
+    overflow-x: none;
     overflow-y: auto;
     background-color: white;
     
@@ -107,11 +108,18 @@
     background-color: white;    
    line-height:60px;
 }
-
+.game-match {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2px 0;
+    box-sizing: content-box;
+}
 .mid-right .mid-bottom table tr td:nth-child(3) > img {
+    display: inline-block;
    width: 50px;
    height: 50px;
-   
+   margin: 0 5px;
 }
 
 /* --------------------------------------------- */

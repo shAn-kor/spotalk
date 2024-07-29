@@ -86,14 +86,23 @@
                          <div class="match">
 
                              <div class="spototo-a" id="${game.gameId}-teamA-graph">
-                                 <img src="" alt="icon">
-                                 <p id="${game.gameId}-teamA">${game.teamA}</p>
+                                 <div style="width: 120px;">
+                                     <img src="" alt="icon">
+                                     <p id="${game.gameId}-teamA">${game.teamA}</p>
+                                 </div>
                              </div>
                              <div class="spototo-d" id="${game.gameId}-draw-graph"></div>
                              <div class="spototo-b" id="${game.gameId}-teamB-graph">
+<<<<<<< HEAD
                                  <img src="" alt="icon">
                                  <p id="${game.gameId}-teamB">${game.teamB}</p>
 
+=======
+                                 <div style="width: 120px;">
+                                     <p id="${game.gameId}-teamB">${game.teamB}</p>
+                                     <img src="" alt="icon">
+                                 </div>
+>>>>>>> master
                              </div>
                          </div>
                          <img src="../img/arrow_drop.svg" alt="">

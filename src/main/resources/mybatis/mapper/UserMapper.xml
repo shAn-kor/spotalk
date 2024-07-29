@@ -29,7 +29,11 @@
 		SELECT * FROM MEMBER WHERE PHONE = #{phone}
 	</select>
 	<select id="getUserList" resultType="com.myweb.user.model.UserDTO">
-		SELECT GRADE_ID, NICK, POINT FROM MEMBER WHERE GRADE_ID != 11 ORDER BY POINT DESC
+		SELECT * FROM MEMBER WHERE GRADE_ID != 11 ORDER BY POINT DESC
+	</select>
+
+	<select id="getDateByAttendance" parameterType="string" resultType="date">
+		SELECT A_DATE FROM ATTENDANCE WHERE NICK=#{nick}
 	</select>
 
 <!--	<select id="getPointList" parameterType="string" resultType="com.myweb.game.model"-->
@@ -42,6 +46,9 @@
 	</update>
 	<update id="setPoint" parameterType="com.myweb.user.model.UserDTO">
 		UPDATE MEMBER SET POINT = #{point} WHERE ID = #{id}
+	</update>
+	<update id="updateGrade" parameterType="com.myweb.user.model.UserDTO">
+		UPDATE MEMBER SET POINT = #{gradeId} WHERE ID = #{id}
 	</update>
 
 	<insert id="createUser" parameterType="com.myweb.user.model.UserDTO">

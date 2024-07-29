@@ -151,37 +151,68 @@
     text-align: center;
      color: white;
 }
+.match > div > div {
+    text-align: center;
+    align-items: center;
+}
 .match > .spototo-a {
+<<<<<<< HEAD
     /* background-color: #226f54; */
     background-color: rgb(9, 10, 41);
     justify-content: flex-start;
+=======
+    background-color: rgb(16, 92, 16);
+>>>>>>> master
     overflow: hidden;
     border-radius: 0px;
+    justify-content: flex-start;
 }
-.match > .spototo-a > p {
+.match > .spototo-a > div {
+    display: flex;
+    justify-content: flex-start;
+    padding-left: 5px;
+}
+.match > .spototo-a > div > p {
+    float: left;
     text-align: left;
     margin-left: 10px;
     font-size: 20px;
 }
+<<<<<<< HEAD
 .match > div > img {
     display: block;
     max-width: 60px;
+=======
+.match > .spototo-a > div > img {
+    float: left;
+>>>>>>> master
 }
-.match > div > p {
-    width: 90%;
+.match > div > div > img {
+    display: block;
+    width: 30%;
 }
 .match > .spototo-b {
     /* background-color: #da2c38; */
     background-color: rgb(194, 40, 40);
     flex-direction: row-reverse;
-    justify-content: flex-end;
+    display: flex;
+    justify-content: flex-start;
     overflow: hidden;
     border-radius: 0px;
 }
-.match > .spototo-b > p {
+.match > .spototo-b > div {
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 5px;
+}
+.match > .spototo-b > div > p {
+    float: right;
     text-align: right;
     margin-right: 10px;
     font-size: 20px;
+}
+.match > .spototo-b > div > img {
+    float: right;
 }
 .match > .spototo-d {
 	background-color: #777;

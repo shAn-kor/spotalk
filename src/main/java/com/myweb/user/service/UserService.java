@@ -29,6 +29,11 @@ public interface UserService {
 
     void changeNick(HttpServletRequest request, HttpServletResponse response) throws IOException;
 
+
     void deleteUser(HttpServletRequest request, HttpServletResponse response) throws IOException;
-    void closeGameSqlSession();
+    void closeSqlSession();
+
+    void updateGrade();
+
+    void checkAttendance(HttpServletRequest request, HttpServletResponse response) throws IOException;
 }

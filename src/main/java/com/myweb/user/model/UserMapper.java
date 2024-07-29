@@ -1,5 +1,6 @@
 package com.myweb.user.model;
 
+import java.sql.Date;
 import java.util.List;
 
 public interface UserMapper {
@@ -17,4 +18,8 @@ public interface UserMapper {
     void deleteUser(String id);
 
     void setPoint(UserDTO dto);
+
+    void updateGrade(UserDTO dto);
+
+    Date getDateByAttendance(String nick);
 }
