@@ -5,7 +5,7 @@
 
 <%@ include file="../include/header.jsp"%>
 
-    <script src="../js/spototo.js" defer></script>
+    <script src="${pageContext.request.contextPath}/js/spototo.js" defer></script>
    <div class="overlay">
         <div class="imglay">
             <img src="../img/good.gif" alt="good">
@@ -54,6 +54,15 @@
             </c:choose>
          </ul>
       </div>
+      
+      
+      
+      <div class="title">
+      		<ul>
+      			<li>경 기 일 시</li>
+      			<li>경 기 팀</li>
+      		</ul>
+      </div>
     
       
    
@@ -74,13 +83,13 @@
                          </p>
                          <div class="match">
                              <div class="spototo-a">
-                                 <img src="" alt="icon">
-                                 <p>${game.teamA}</p>
+                                 <img src="" alt="icon" class="imgA">
+                                 <p class="a">${game.teamA}</p>
                              </div>
                              <div class="spototo-d" ></div>
                              <div class="spototo-b" >
-                                 <img src="" alt="icon">
-                                 <p>${game.teamB}</p>
+                                 <img src="" alt="icon" class="imgB">
+                                 <p class="b">${game.teamB}</p>
                                  
                              </div>
                          </div>
@@ -88,7 +97,7 @@
                      </div>
                      <div class="details">
                          <div class="detail-text">
-                             <p>예측 종료까지</p>
+                             <p>남은시간</p>
                              <p class="Timer"></p>
                          </div>
                          <div class="detail-btn">
@@ -98,8 +107,8 @@
                                  <button class="win-b">${game.teamB}팀 승리</button>
                              </div>
                              <div class="user-point">
-                                 <input type="text" name="user-p" id="user-p" value="5000" readonly>
-                                 <input type="text" name="using-p" id="using-p" placeholder="사용할 포인트">
+                                 <input type="text" name="user-p" id="user-p" value="나의 포인트 ${sessionScope.point}" readonly>
+                                 <input type="text" name="using-p" id="using-p" placeholder="사용할 포인트" >
                                  <input type="button" name="toto-ok" id="toto-ok" value="확인">
                              </div>
                          </div>

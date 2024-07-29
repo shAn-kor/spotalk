@@ -18,6 +18,13 @@ document.addEventListener('DOMContentLoaded', function() {
 	        var seconds = Math.floor(diff / 1000 - (days * 24 * 60 * 60 + hours * 60 * 60 + minutes * 60));
 	        
 	        timer.textContent = days + "일 " + hours + "시간 " + minutes + "분 " + seconds + "초";
+        
+        /*예측 진행 중인 게임만 보이기*/
+        	if((days>=3 && seconds>0) || (days<0) ){
+				match.style.display= "none";
+			}
+        
+        
         }
         
         updateTime();
@@ -52,75 +59,73 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         
         
+        /*팀 이미지*/
+        var A = match.querySelector(".match > .spototo-a > .a").innerHTML;
+        var B = match.querySelector(".match > .spototo-b > .b").innerHTML;
+        var imgA = match.querySelector(".imgA");
+        var imgB = match.querySelector(".imgB");
+        
+        var location = window.location.href;
+        if(location.includes("soccer")){
+			imgA.src="../img/soccer/"+A+".png";
+        	imgB.src="../img/soccer/"+B+".png";
+        	
+		}else if(location.includes("baseball")){
+			imgA.src="../img/baseball/"+A+".png";
+        	imgB.src="../img/baseball/"+B+".png";
+        	
+		}else if(location.includes("basketball")){
+			imgA.src="../img/basketball/"+A+".png";
+        	imgB.src="../img/basketball/"+B+".png";
+		}
+        
+        
+        
+        
+        
+        
+        
         
         var overlay = document.querySelector(".overlay");
     	var ok = match.querySelector("#toto-ok");
 
-    	ok.addEventListener("click", function(){
+    	ok.addEventListener("click", function(event){
 
         	overlay.style.display="block";
         
         	setTimeout(function(){ // 2초뒤 사라짐
             	overlay.style.display="none";
         	},2000); 
+        	
+        	
+        	/*포인트 차감하기*/
+	    	var userP = document.getElementById("user-p").value;
+	    	var usingP = document.getElementById("using-p").value;
+    	
+			fetch('soccerlist.game',{
+				method: 'POST',
+				headers: {
+                    'Content-Type': 'application/json'
+                },
+				body: JSON.stringify({userpoint: userP, usingpoint: usingP}) 
+			})
+			.then(function(response) {
+				 return response.json() 
+			})
+			.then(function(data) {
+    			
+				if(data.userPoint > data.usingPoint){
+					alert("확인");
+				}else{
+					alert("안됨");
+				}
+			})
+			.catch(function(error){
+				alert("error 남");
+			})
     	});
     	
     	
-    	/*포인트 차감하기*/
-    	
-    	
-    	
-    	function usePoint(){
-			
-			var userP = document.getElementById("user-p").value;
-	    	var usingP = document.getElementById("using-p").value;
-	    	
-	    	console.log(userP);
-	    	console.log(usingP);
-	    	
-	    	var userPoint = parseInt(userP);
-	    	var usingPoint = parseInt(usingP);
-	    	
-	    	var id="user2";
-			var point=usingPoint;
-			
-	    	if(usingPoint > userPoint ){
-				alert("포인트가 부족합니다.");
-				return;
-			}
-			
-			var data = {id: id , point: point};
-			console.log(data);
-			fetch("/spotalk/game/soccerlist.game",{
-				method: "POST", //post방식 요청
-				headers: {
-					"Content-Type":"application/json" //데이터 타입
-				},
-				body: JSON.stringify(data)
-			})
-			.then(function(response){
-				if (!response.ok) {
-            		throw new Error('response 오류남');
-        		}
-    			return response.json();
-			})
-			.then(function(data){
-				console.log(data);
-			})
-			.catch(function(error){
-				alert("Error"+error);
-			})
-			
-		}
-    	
-    	
-    	/*확인 클릭하면 usePoint실행*/
-    	var ok = document.getElementById("toto-ok");
-    	ok.addEventListener("click", function(){
-			//event.preventDefault();
-			
-			usePoint();
-		})
     	
     	
     	
