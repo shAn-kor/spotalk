@@ -36,10 +36,17 @@ public class PredictController extends HttpServlet {
 
         System.out.println(command);
 
-        PredictService service;
         if (command.equals("/predict/pointList.predict")) {
-            service = new PredictServiceImpl();
+            PredictService service = new PredictServiceImpl();
             service.getPointList(request, response);
+        }
+        if (command.equals("/game/betPoint.predict")) {
+            PredictService service = new PredictServiceImpl();
+            service.betPoint(request, response);
+        }
+        if (command.equals("/game/getPredictStatus.predict")) {
+            PredictService service = new PredictServiceImpl();
+            service.getPredictStatus(request, response);
         }
     }
 }

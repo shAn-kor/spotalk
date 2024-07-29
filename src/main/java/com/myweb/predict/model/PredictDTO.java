@@ -10,6 +10,8 @@ public class PredictDTO {
     String pResult;
     Timestamp cDate;
 
+    public PredictDTO() {}
+
     public PredictDTO(String userId, String gameId, String choice, Long betPoint, String pResult, Timestamp cDate) {
         this.userId = userId;
         this.gameId = gameId;

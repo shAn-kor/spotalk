@@ -43,16 +43,18 @@ public class HomeController extends HttpServlet {
     	List<GameDTO> soccerGames = gameService.getSoccerList(request, response);
     	List<GameDTO> baseballGames = gameService.getBaseballList(request, response);
     	List<GameDTO> basketballGames = gameService.getBasketList(request, response);
+        gameService.closeGameSqlSession();
 
-        SportService sportService = new SportServiceImpl();
-        List<SportDTO> footballRank = sportService.getFootballRak(request, response);
-        List<SportDTO> baseballRank = sportService.getBaseballRak(request, response);
-        List<SportDTO> basketballRank = sportService.getBasketballRak(request, response);
+//        SportService sportService = new SportServiceImpl();
+//        List<SportDTO> footballRank = sportService.getFootballRak(request, response);
+//        List<SportDTO> baseballRank = sportService.getBaseballRak(request, response);
+//        List<SportDTO> basketballRank = sportService.getBasketballRak(request, response);
+//        sportService.closeGameSqlSession();
 
         request.setAttribute("userRank", userRank);
-        request.setAttribute("footballRank", footballRank);
-        request.setAttribute("baseballRank", baseballRank);
-        request.setAttribute("basketballRank", basketballRank);
+//        request.setAttribute("footballRank", footballRank);
+//        request.setAttribute("baseballRank", baseballRank);
+//        request.setAttribute("basketballRank", basketballRank);
         request.setAttribute("soccerGames", soccerGames);
         request.setAttribute("baseballGames", baseballGames);
         request.setAttribute("basketballGames", basketballGames);

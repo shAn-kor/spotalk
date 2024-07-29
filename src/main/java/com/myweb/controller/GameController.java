@@ -41,36 +41,34 @@ public class GameController extends HttpServlet {
 		
 		System.out.println(command);
 		
-		GameService service;
+
 		if(command.equals("/game/soccerlist.game")) { //축구경기예측페이지
-			service = new GameServiceImpl();
+			GameService service = new GameServiceImpl();
 			service.getSoccer(request, response);
-			
-			
 		}else if(command.equals("/game/baselist.game")) { //야구경기예측페이지
-			service = new GameServiceImpl();
+			GameService service = new GameServiceImpl();
 			service.getBase(request, response);
-			
+
 		}else if(command.equals("/game/basketlist.game")) { //농구경기예측페이지
-			service = new GameServiceImpl();
+			GameService service = new GameServiceImpl();
 			service.getBasket(request, response);
-			
+
 		}else if(command.equals("/game/soccerdate.game")) { //축구경기일정
-			service = new GameServiceImpl();
+			GameService service = new GameServiceImpl();
 			service.getSoccerDate(request, response);
 			
 		}else if(command.equals("/game/basedate.game")) { //야구경기일정
-			service = new GameServiceImpl();
+			GameService service = new GameServiceImpl();
 			service.getBaseDate(request, response);
 			
-		}else if(command.equals("/game/basketdate.game")) { //농구경기예측페이지
-			service = new GameServiceImpl();
+		}else if(command.equals("/game/basketdate.game")) { //농구경기일정
+			GameService service = new GameServiceImpl();
 			service.getBasketDate(request, response);
 			
 		}
 		
 		else if(command.equals("/game/gaming.game")) { //진행중인 승부
-			service = new GameServiceImpl();
+			GameService service = new GameServiceImpl();
 			service.getGaming(request, response);
 			
 		}
