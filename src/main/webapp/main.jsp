@@ -5,26 +5,26 @@
 <!-- body -->
 <!-- Swiper -->
 <script src="${pageContext.request.contextPath}/js/main.js"></script>
-    <div class="swiper">
-        <div class="swiper-container">
-        	<div class="swiper-wrapper">
-        		<!-- slide -->
-         	</div>
-            <!-- Add Pagination -->
-            <div class="swiper-pagination"></div>
-            <!-- Add Navigation -->
-            <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div>
+<div class="swiper">
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <!-- slide -->
         </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination"></div>
+        <!-- Add Navigation -->
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
     </div>
-	
-	
-    <!-- Swiper JS -->
- 	<script>
-        var games = '${games}';
-    </script>
- 	<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-    <script src="js/swiper.js"></script>
+</div>
+
+
+<!-- Swiper JS -->
+<script>
+    var games = '${games}';
+</script>
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<script src="js/swiper.js"></script>
 
 <div class="main-box">
     <div class="main-community">
@@ -50,9 +50,48 @@
                 <li><a href="#tab2-03">농구</a></li>
             </ul>
             <div class="tabcontent2">
-                <div id="tab2-01">tab1 content</div>
-                <div id="tab2-02">tab2 content</div>
-                <div id="tab2-03">tab3 content</div>
+                <div id="tab2-01">
+                    <% int soccerRankNum = 1; %>
+                    <c:forEach var="soccerDTO" items="${footballRank}">
+                        <div class="team-rank">
+                            <span><%=soccerRankNum++%></span>
+                            <input type="text" name="teamName" value="${soccerDTO.teamName}" disabled>
+                            <input type="text" name="teamName" value="${soccerDTO.gameCnt}" disabled>
+                            <input type="text" name="teamName" value="${soccerDTO.winCnt}" disabled>
+                            <input type="text" name="teamName" value="${soccerDTO.drawCnt}" disabled>
+                            <input type="text" name="teamName" value="${soccerDTO.loseCnt}" disabled>
+                            <input type="text" name="teamName" value="${soccerDTO.winRate}" disabled>
+                        </div>
+                    </c:forEach>
+                </div>
+                <div id="tab2-02">
+                    <% int baseballRankNum = 1; %>
+                    <c:forEach var="baseballDTO" items="${baseballRank}">
+                        <div class="team-rank">
+                            <span><%=baseballRankNum++%></span>
+                            <input type="text" name="teamName" value="${baseballDTO.teamName}" disabled>
+                            <input type="text" name="teamName" value="${baseballDTO.gameCnt}" disabled>
+                            <input type="text" name="teamName" value="${baseballDTO.winCnt}" disabled>
+                            <input type="text" name="teamName" value="${baseballDTO.drawCnt}" disabled>
+                            <input type="text" name="teamName" value="${baseballDTO.loseCnt}" disabled>
+                            <input type="text" name="teamName" value="${baseballDTO.winRate}" disabled>
+                        </div>
+                    </c:forEach>
+                </div>
+                <div id="tab2-03">
+                    <% int basketballRankNum = 1; %>
+                    <c:forEach var="basketballDTO" items="${basketballRank}">
+                        <div class="team-rank">
+                            <span><%=basketballRankNum++%></span>
+                            <input type="text" name="teamName" value="${basketballDTO.teamName}" disabled>
+                            <input type="text" name="teamName" value="${basketballDTO.gameCnt}" disabled>
+                            <input type="text" name="teamName" value="${basketballDTO.winCnt}" disabled>
+                            <input type="text" name="teamName" value="${basketballDTO.drawCnt}" disabled>
+                            <input type="text" name="teamName" value="${basketballDTO.loseCnt}" disabled>
+                            <input type="text" name="teamName" value="${basketballDTO.winRate}" disabled>
+                        </div>
+                    </c:forEach>
+                </div>
             </div>
         </div>
     </div>
@@ -62,11 +101,16 @@
     <div class="main-user-rank">
         <p><a href="#">승부사 랭킹</a></p>
         <div class="user-rank-wrap">
-            <div class="ranker-user">
-                <img src="" alt="grade">
-                <p>${user_name}</p>
-                <p>${user_point}</p>
-            </div>
+            <% int userRankNum = 1; %>
+            <c:forEach var="userDTO" items="${userRank}">
+                <div class="main-ranker-user">
+                    <span><%=userRankNum++%></span>
+                    <p class="grade" data-grade="${userDTO.gradeId}">등급</p>
+                    <input class="user-grade-id" type="text" name="grade" value="${userDTO.gradeId}" disabled>
+                    <input type="text" name="nick" value="${userDTO.nick}" disabled>
+                    <input type="text" name="point" value="${userDTO.point}" disabled>
+                </div>
+            </c:forEach>
         </div>
     </div>
     <div class="podium">
@@ -89,9 +133,39 @@
                 <li><a href="#tab03">농구</a></li>
             </ul>
             <div class="tabcontent">
-                <div id="tab01">tab1 content</div>
-                <div id="tab02">tab2 content</div>
-                <div id="tab03">tab3 content</div>
+                <div id="tab01">
+                    <% int soccerGameListNum = 1; %>
+                    <c:forEach var="soccerGameDTO" items="${soccerGames}">
+                        <div class="team-rank">
+                            <span><%=soccerGameListNum++%></span>
+                            <input type="text" name="teamName" value="${soccerGameDTO.gameDate}" disabled>
+                            <input type="text" name="teamName" value="${soccerGameDTO.teamA}" disabled>
+                            <input type="text" name="teamName" value="${soccerGameDTO.teamB}" disabled>
+                        </div>
+                    </c:forEach>
+                </div>
+                <div id="tab02">
+                    <% int baseGameListNum = 1; %>
+                    <c:forEach var="baseGameDTO" items="${baseballGames}">
+                        <div class="team-rank">
+                            <span><%=baseGameListNum++%></span>
+                            <input type="text" name="teamName" value="${baseGameDTO.gameDate}" disabled>
+                            <input type="text" name="teamName" value="${baseGameDTO.teamA}" disabled>
+                            <input type="text" name="teamName" value="${baseGameDTO.teamB}" disabled>
+                        </div>
+                    </c:forEach>
+                </div>
+                <div id="tab03">
+                    <% int basketGameListNum = 1; %>
+                    <c:forEach var="basketGameDTO" items="${basketballGames}">
+                        <div class="team-rank">
+                            <span><%=basketGameListNum++%></span>
+                            <input type="text" name="teamName" value="${basketGameDTO.gameDate}" disabled>
+                            <input type="text" name="teamName" value="${basketGameDTO.teamA}" disabled>
+                            <input type="text" name="teamName" value="${basketGameDTO.teamB}" disabled>
+                        </div>
+                    </c:forEach>
+                </div>
             </div>
         </div>
     </div>

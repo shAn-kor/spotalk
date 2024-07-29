@@ -13,14 +13,6 @@ import java.io.PrintWriter;
         // user controller
         "/user/myPage.user",
         "/user/changeNick.user",
-        "/user/findIdPw_Id.user",
-        "/user/findId.user",
-        "/user/foundId.user",
-        "/user/findIdPw_Pw.user",
-        "/user/findPw.user",
-        "/user/pwQnA.user",
-        "/user/checkPwa.user",
-        "/user/resetPw.user",
         "/user/updatePw.user",
         "/user/logout.user",
         "/user/outMember.user",
@@ -36,7 +28,9 @@ import java.io.PrintWriter;
         "/game/baselist.game",
 
         // predict controller
-        "/predict/pointList.predict"
+        "/predict/pointList.predict",
+        "/game/betPoint.predict",
+        "/game/getPredictStatus.predict"
 })
 public class AuthenticationFilter implements Filter {
     @Override

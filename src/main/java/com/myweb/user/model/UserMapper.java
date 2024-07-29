@@ -15,4 +15,6 @@ public interface UserMapper {
     int changeNick(UserDTO dto);
 
     void deleteUser(String id);
+
+    void setPoint(UserDTO dto);
 }

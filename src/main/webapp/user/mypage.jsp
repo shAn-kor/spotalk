@@ -3,43 +3,45 @@
 
 <%@include file="../include/header.jsp"%>
 <script src="${pageContext.request.contextPath}/js/modify.js"></script>
-
-        <div class="wrap">
-            <table class="myPage-box">
-
-                <tr>
-                    <td>이 름</td>
-                    <td><input type="text" name="name" value="${dto.name}" disabled></td>
-                </tr>
-                <tr>
-                    <td>아 이 디</td>
-                    <td><input class="id" id="user-id" type="text" name="id" value="${dto.id}" disabled></td>
-                </tr>
-                <tr>
-                    <td>비 밀 번 호</td>
-                    <td><input type="password" name="pw" value="${dto.pw}" disabled></td>
-                </tr>
-                <tr>
-                    <td>닉 네 임</td>
-                    <td><input type="text" name="nick" value="${dto.nick}" id="nick"></td>
-                    <td><button type="button" class="btn-default change-nick">수정</button></td>
-                </tr>
-                <tr>
-                    <td>회 원 등 급</td>
-                    <td>
-                        <input class="grade" type="text" name="grade" value="${dto.gradeId}" style="width: 90px;" disabled>
-                        <img src="../img/iron.png" class="grade1" alt="회원등급">
-                        <img src="../img/AllGrade.jpg" class="allgrade" alt="모든등급">
-                    </td>
-                </tr>
-                <tr>
-                    <td>포 인 트</td>
-                    <td><input class="point" type="number" name="point" value="${dto.point}" disabled></td>
-                </tr>
-
-            </table>
-            <button type="button" class="btn" onclick="location.href='${pageContext.request.contextPath}/predict/pointList.predict';">포인트 내역</button>
-            <button type="button" class="btn" onclick="location.href='outMember.user';">회원탈퇴</button>
+<div class="white-wrap">
+    <div class=white-background></div>
+    <div class="myPage-wrap">
+        <div class="myPage-box">
+                <div>
+                    <p class="left">이 름</p>
+                    <input class="right" type="text" name="name" value="${dto.name}" disabled>
+                </div>
+                <div>
+                    <p class="left">아 이 디</p>
+                    <input class="id right" id="user-id" type="text" name="id" value="${dto.id}" disabled>
+                </div>
+                <div>
+                    <p class="left">비 밀 번 호</p>
+                    <input class="right" type="password" name="pw" value="${dto.pw}" disabled></td>
+                </div>
+                <div>
+                    <p class="left">닉 네 임</p>
+                    <div class="right">
+                        <input type="text" name="nick" value="${dto.nick}" id="nick">
+                        <button type="button" class="btn-default change-nick">수정</button>
+                    </div>
+                </div>
+                <div>
+                    <p class="left">회 원 등 급</p>
+                    <div class="user-grade right">
+                        <input id="data-grade" class="grade-id" type="text" name="grade" value="${dto.gradeId}" disabled>
+                        <p class="grade" data-grade="${sessionScope.grade_id}">등급</p>
+                    </div>
+                </div>
+                <div>
+                    <p class="left">포 인 트</p>
+                    <input class="point" type="number" name="point" value="${dto.point}" disabled>
+                </div>
+        </div>
+        <div class="myPage-btn-box">
+            <button type="button" class="btn left" onclick="location.href='${pageContext.request.contextPath}/predict/pointList.predict';">포인트 내역</button>
+            <button type="button" class="btn right" onclick="location.href='outMember.user';">회원탈퇴</button>
         </div>
     </div>
+</div>
 <%@include file="../include/footer.jsp"%>

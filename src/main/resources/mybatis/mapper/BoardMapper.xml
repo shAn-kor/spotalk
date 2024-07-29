@@ -27,9 +27,78 @@
 <select id="getPost" parameterType="string" resultType="com.myweb.board.model.BoardDTO">
 	SELECT * FROM POSTS WHERE POST_ID = #{postId}
 </select>	
-<insert id="insertComment" parameterType="com.myweb.board.model.BoardDTO">
-	INSERT INTO comments(comment_id, post_id, user_id, comment_content)
-	VALUES (commnent_seq.nextval, #{postId}, #{userId}, #{commentContent})
-</insert>
+
+ <select id="getPosts" parameterType="com.myweb.board.model.BoardCheck" resultType="com.myweb.board.model.BoardDTO">
+	SELECT *
+	FROM (
+	    SELECT p.*, 
+	           COALESCE(c.comment_count, 0) AS comment_count
+	           
+	           <if test="order == 최신순">
+	           	
+	           </if>
+	           
+	           <if test="order == '인기순' ">
+	           ,ROW_NUMBER() OVER (ORDER BY (p.post_like - p.post_dislike + COALESCE(c.comment_count, 0)) DESC) AS rn
+			    FROM POSTS p
+			    LEFT JOIN (
+			        SELECT post_id, COUNT(*) AS comment_count
+			        FROM COMMENTS
+			        GROUP BY post_id
+			    ) c ON p.post_id = c.post_id
+	           </if>
+	           
+	           <if test="category == '조회순' ">
+	           ,ROW_NUMBER() OVER (ORDER BY #{order} DESC, p.post_id) AS rn
+	           </if>
+	           
+	           <if test="dto에getter == '~~~' ">
+	           ,ROW_NUMBER() OVER (ORDER BY #{order} DESC, p.post_id) AS rn
+	           </if>
+	           
+	           
+	           
+	    FROM POSTS p
+	    LEFT JOIN (
+	        SELECT post_id, COUNT(*) AS comment_count
+	        FROM COMMENTS
+	        GROUP BY post_id
+	    ) c ON p.post_id = c.post_id
+	    where
+	) 
+	WHERE rn BETWEEN #{params.offset} AND #{params.offset} + #{params.limit} - 1
+</select>
+
+<select id="getAnnPosts" parameterType="map" resultType="com.myweb.board.model.BoardDTO">
+	SELECT * FROM (
+	SELECT POSTS.*, ROW_NUMBER() OVER (#{order}) AS rn
+	FROM POSTS WHERE CATEGORY = '공지사항'
+	) WHERE rn BETWEEN #{params.offset} AND #{params.offset} + #{params.limit} - 1
+</select>
+<select id="getSoccerPosts" parameterType="map" resultType="com.myweb.board.model.BoardDTO">
+	SELECT * FROM (
+	SELECT POSTS.*, ROW_NUMBER() OVER (#{order}) AS rn
+	FROM POSTS WHERE CATEGORY = '축구'
+	) WHERE rn BETWEEN #{params.offset} AND #{params.offset} + #{params.limit} - 1
+</select>
+<select id="getBaseballPosts" parameterType="map" resultType="com.myweb.board.model.BoardDTO">
+	SELECT * FROM (
+	SELECT POSTS.*, ROW_NUMBER() OVER (#{order}) AS rn
+	FROM POSTS WHERE CATEGORY = '야구'
+	) WHERE rn BETWEEN #{params.offset} AND #{params.offset} + #{params.limit} - 1
+								 <!-- 한 페이지에 표시할 글 수 -->
+</select>
+<select id="getBasketballPosts" parameterType="map" resultType="com.myweb.board.model.BoardDTO">
+	SELECT * FROM (
+	SELECT POSTS.*, ROW_NUMBER() OVER (#{order}) AS rn
+	FROM POSTS WHERE CATEGORY = '농구'
+	) WHERE rn BETWEEN #{params.offset} AND #{params.offset} + #{params.limit} - 1
+</select>
+
+    
+<select id="getTotalPosts" resultType="int">
+	SELECT COUNT(*) FROM POSTS
+</select>
+
 
 </mapper>

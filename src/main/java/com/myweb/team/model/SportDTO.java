@@ -3,32 +3,32 @@ package com.myweb.team.model;
 
 public class SportDTO {
 	
-	private String team_name; //팀명
+	private String teamName; //팀명
 	private String sports; //종목
-	private int game_cnt; //경기수
-	private int win_cnt; //이긴 수
-	private int draw_cnt; //무승부 수
-	private int lose_cnt; //진 수
-	private double win_rate; //(야구,농구: 승률/ 축구: 승점)
+	private int gameCnt; //경기수
+	private int winCnt; //이긴 수
+	private int drawCnt; //무승부 수
+	private int loseCnt; //진 수
+	private double winRate; //(야구,농구: 승률/ 축구: 승점)
 
 	
 	
 	@Override
 	public String toString() {
-		return "SportDTO [team_name=" + team_name + ", sports=" + sports + ", game_cnt=" + game_cnt + ", win_cnt="
-				+ win_cnt + ", draw_cnt=" + draw_cnt + ", lose_cnt=" + lose_cnt + ", win_rate=" + win_rate + "]";
+		return "SportDTO [team_name=" + teamName + ", sports=" + sports + ", game_cnt=" + gameCnt + ", win_cnt="
+				+ winCnt + ", draw_cnt=" + drawCnt + ", lose_cnt=" + loseCnt + ", win_rate=" + winRate + "]";
 	}
 
-	public SportDTO(String team_name, String sports, int game_cnt, 
-					int win_cnt, int draw_cnt, int lose_cnt, double win_rate) {
+	public SportDTO(String teamName, String sports, int gameCnt,
+					int winCnt, int drawCnt, int loseCnt, double winRate) {
 		super();
-		this.team_name = team_name;
+		this.teamName = teamName;
 		this.sports = sports;
-		this.game_cnt = game_cnt;
-		this.win_cnt = win_cnt;
-		this.draw_cnt = draw_cnt;
-		this.lose_cnt = lose_cnt;
-		this.win_rate = win_rate;
+		this.gameCnt = gameCnt;
+		this.winCnt = winCnt;
+		this.drawCnt = drawCnt;
+		this.loseCnt = loseCnt;
+		this.winRate = winRate;
 
 	}
 
@@ -37,12 +37,12 @@ public class SportDTO {
 	}
 	
 	//getter,setter
-	public String getTeam_name() {
-		return team_name;
+	public String getTeamName() {
+		return teamName;
 	}
 
-	public void setTeam_name(String team_name) {
-		this.team_name = team_name;
+	public void setTeamName(String teamName) {
+		this.teamName = teamName;
 	}
 
 	public String getSports() {
@@ -53,44 +53,44 @@ public class SportDTO {
 		this.sports = sports;
 	}
 
-	public int getGame_cnt() {
-		return game_cnt;
+	public int getGameCnt() {
+		return gameCnt;
 	}
 
-	public void setGame_cnt(int game_cnt) {
-		this.game_cnt = game_cnt;
+	public void setGameCnt(int gameCnt) {
+		this.gameCnt = gameCnt;
 	}
 
-	public int getWin_cnt() {
-		return win_cnt;
+	public int getWinCnt() {
+		return winCnt;
 	}
 
-	public void setWin_cnt(int win_cnt) {
-		this.win_cnt = win_cnt;
+	public void setWinCnt(int winCnt) {
+		this.winCnt = winCnt;
 	}
 
-	public int getDraw_cnt() {
-		return draw_cnt;
+	public int getDrawCnt() {
+		return drawCnt;
 	}
 
-	public void setDraw_cnt(int draw_cnt) {
-		this.draw_cnt = draw_cnt;
+	public void setDrawCnt(int drawCnt) {
+		this.drawCnt = drawCnt;
 	}
 
-	public int getLose_cnt() {
-		return lose_cnt;
+	public int getLoseCnt() {
+		return loseCnt;
 	}
 
-	public void setLose_cnt(int lose_cnt) {
-		this.lose_cnt = lose_cnt;
+	public void setLoseCnt(int loseCnt) {
+		this.loseCnt = loseCnt;
 	}
 
-	public double getWin_rate() {
-		return win_rate;
+	public double getWinRate() {
+		return winRate;
 	}
 
-	public void setWin_rate(double win_rate) {
-		this.win_rate = win_rate;
+	public void setWinRate(double winRate) {
+		this.winRate = winRate;
 	}
 
 	

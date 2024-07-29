@@ -23,6 +23,8 @@ import java.sql.Date;
 import java.util.List;
 import java.util.Map;
 
+import static util.constant.JSONObjectUtil.getJSONSObjectByReader;
+
 public class UserServiceImpl implements UserService{
     private final SqlSessionFactory sqlSessionFactory = MybatisUtil.getSqlSessionFactory();
     
@@ -38,7 +40,8 @@ public class UserServiceImpl implements UserService{
 		SqlSession sql = sqlSessionFactory.openSession(true);
 		UserMapper mapper = sql.getMapper(UserMapper.class);
 		String id = mapper.findId(dto);
-		sql.close();
+
+		sqlSessionFactory.openSession(true).close();
 		
 		if(id == null) {
 			request.setAttribute("msg", "아이디를 찾을 수 없습니다.");
@@ -86,9 +89,10 @@ public class UserServiceImpl implements UserService{
 		SqlSession sql = sqlSessionFactory.openSession(true);
 		UserMapper mapper = sql.getMapper(UserMapper.class);
 		mapper.updatePw(dto);
-		sql.close();
 		HttpSession session = request.getSession();
 		if(session != null) session.invalidate();
+
+		sqlSessionFactory.openSession(true).close();
 		
 		response.setContentType("text/html;charset=utf-8");
         PrintWriter out = response.getWriter();
@@ -112,7 +116,8 @@ public class UserServiceImpl implements UserService{
 		SqlSession sql = sqlSessionFactory.openSession(true);
 		UserMapper mapper = sql.getMapper(UserMapper.class);
 		UserDTO dto = mapper.checkPhone(phone);
-		sql.close();
+
+		sqlSessionFactory.openSession(true).close();
 		
 		response.setContentType("text/html;charset=utf-8");
         PrintWriter out = response.getWriter();
@@ -157,7 +162,8 @@ public class UserServiceImpl implements UserService{
 		SqlSession sql = sqlSessionFactory.openSession(true);
 		UserMapper mapper = sql.getMapper(UserMapper.class);
 		mapper.createUser(dto);
-		sql.close();
+
+		sqlSessionFactory.openSession(true).close();
 
 		response.sendRedirect("createSuccess.user");
 	}
@@ -168,6 +174,8 @@ public class UserServiceImpl implements UserService{
 		String pw = request.getParameter("user_pw");
 		
 		UserDTO dto = getUserById(id);
+
+		sqlSessionFactory.openSession(true).close();
 		
 		if(dto == null) {
 			request.setAttribute("msg", "아이디가 존재하지 않습니다.");
@@ -197,6 +205,8 @@ public class UserServiceImpl implements UserService{
 
 		UserDTO dto = getUserById(id);
 
+		sqlSessionFactory.openSession(true).close();
+
 		System.out.println(id);
 		System.out.println(dto.toString());
 		System.out.println(pw);
@@ -223,6 +233,8 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public void getMyPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		UserDTO dto = getUserById(request.getSession().getAttribute("user_id").toString());
+
+		sqlSessionFactory.openSession(true).close();
 		request.setAttribute("dto", dto);
 		request.getRequestDispatcher("mypage.jsp").forward(request, response);
 	}
@@ -246,12 +258,13 @@ public class UserServiceImpl implements UserService{
 			UserMapper mapper = sql.getMapper(UserMapper.class);
 			dto.setNick(nick);
 			mapper.changeNick(dto);
-			sql.close();
 
 			json.put("msg", "ok");
 		} else {
 			json.put("msg", "no");
 		}
+
+		sqlSessionFactory.openSession(true).close();
 
 		response.setContentType("application/json;charset=utf-8");
 		PrintWriter out = response.getWriter();
@@ -259,14 +272,21 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
-	public void getUserRank(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		SqlSession sql = sqlSessionFactory.openSession(true);
-		UserMapper mapper = sql.getMapper(UserMapper.class);
-		List<UserDTO> list = mapper.getUserList();
-		sql.close();
+	public void getUserRankPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		List<UserDTO> list = getUserRank(request, response);
+
+		sqlSessionFactory.openSession(true).close();
 
 		request.setAttribute("list", list);
 		request.getRequestDispatcher("userRank.jsp").forward(request, response);
+	}
+
+	@Override
+	public List<UserDTO> getUserRank(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		SqlSession sql = sqlSessionFactory.openSession(true);
+		UserMapper mapper = sql.getMapper(UserMapper.class);
+		List<UserDTO> list = mapper.getUserList();
+		return list;
 	}
 
 	@Override
@@ -284,6 +304,8 @@ public class UserServiceImpl implements UserService{
 		} else {
 			json.put("msg", "no");
 		}
+
+		sqlSessionFactory.openSession(true).close();
 
 		response.setContentType("application/json;charset=utf-8");
 		PrintWriter out = response.getWriter();
@@ -307,6 +329,8 @@ public class UserServiceImpl implements UserService{
 			json.put("msg", "no");
 		}
 
+		sqlSessionFactory.openSession(true).close();
+
 		response.setContentType("application/json;charset=utf-8");
 		PrintWriter out = response.getWriter();
 		out.print(json.toJSONString());
@@ -316,7 +340,6 @@ public class UserServiceImpl implements UserService{
 		SqlSession sql = sqlSessionFactory.openSession(true);
 		UserMapper mapper = sql.getMapper(UserMapper.class);
 		UserDTO dto = mapper.getUserByNick(nick);
-		sql.close();
 
         return dto == null;
     }
@@ -325,25 +348,17 @@ public class UserServiceImpl implements UserService{
 		SqlSession sql = sqlSessionFactory.openSession(true);
 		UserMapper mapper = sql.getMapper(UserMapper.class);
 		UserDTO dto = mapper.getUserById(id);
-		sql.close();
 
 		return dto;
-	}
-
-	private JSONObject getJSONSObjectByReader(BufferedReader reqReader) throws IOException, ParseException {
-		StringBuilder sb = new StringBuilder();
-        String line;
-		while ((line = reqReader.readLine()) != null) {
-			sb.append(line);
-		}
-		JSONParser parser = new JSONParser();
-        return new JSONObject((Map) parser.parse(sb.toString()));
 	}
 
 	private void deleteUser (String id) {
 		SqlSession sql = sqlSessionFactory.openSession(true);
 		UserMapper mapper = sql.getMapper(UserMapper.class);
 		mapper.deleteUser(id);
-		sql.close();
+	}
+
+	public void closeGameSqlSession() {
+		sqlSessionFactory.openSession(true).close();
 	}
 }

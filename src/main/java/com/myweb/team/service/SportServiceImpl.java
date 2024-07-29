@@ -2,6 +2,7 @@ package com.myweb.team.service;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -133,5 +134,29 @@ public class SportServiceImpl implements SportService {
 		 }
 	}
 
+	@Override
+	public List<SportDTO> getFootballRak(HttpServletRequest request, HttpServletResponse response) {
+		SqlSession sql = sqlSessionFactory.openSession(true);
+		SportMapper mapper = sql.getMapper(SportMapper.class);
+		return mapper.getFootballRank();
+	}
+
+	@Override
+	public List<SportDTO> getBaseballRak(HttpServletRequest request, HttpServletResponse response) {
+		SqlSession sql = sqlSessionFactory.openSession(true);
+		SportMapper mapper = sql.getMapper(SportMapper.class);
+		return mapper.getBaseballRank();
+	}
+
+	@Override
+	public List<SportDTO> getBasketballRak(HttpServletRequest request, HttpServletResponse response) {
+		SqlSession sql = sqlSessionFactory.openSession(true);
+		SportMapper mapper = sql.getMapper(SportMapper.class);
+		return mapper.getBasketballRank();
+	}
+
+	public void closeGameSqlSession() {
+		sqlSessionFactory.openSession(true).close();
+	}
 }
 

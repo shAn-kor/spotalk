@@ -15,77 +15,101 @@
 <script src="${pageContext.request.contextPath}/bootstrap/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/pointlist.css">
 
-<div class="wrap">
-    <div class="top">
-        <div class="top-title">
-            <p><strong>SPO</strong>TALK 포인트</p>
+<div class="pointList-wrap">
+    <div class=white-background></div>
+    <div class="pointList-box">
+        <div class="top">
+            <div class="top-title">
+                <p><strong>SPO</strong>TALK 포인트</p>
+            </div>
+            <div class="top-bottom">
+                <p><span>${sessionScope.point}</span> P</p>
+                <button type="button" class="btn btn-default" onclick="location.href='${pageContext.request.contextPath}/user/myPage.user';">마이페이지</button>
+            </div>
         </div>
-        <div class="top-bottom">
-            <p><span>${sessionScope.point}</span> P</p>
-        </div>
-    </div>
 
-    <div class="list">
-        <ul class="nav nav-tabs">
+        <div class="list">
 
             <select>
                 <option value="2024">2024년</option>
                 <option value="2023">2023년</option>
             </select>
+            <ul class="nav nav-tabs">
 
-            <li class="active"><a data-toggle="tab" href="#all">전체</a></li>
-            <li><a data-toggle="tab" href="#success">성공 내역</a></li>
-            <li><a data-toggle="tab" href="#fail">실패 내역</a></li>
-        </ul>
+                <li class="active"><a data-toggle="tab" href="#all">전체</a></li>
+                <li><a data-toggle="tab" href="#success">성공 내역</a></li>
+                <li><a data-toggle="tab" href="#fail">실패 내역</a></li>
+            </ul>
 
-        <div class="tab-content">
-            <!-- 전체 -->
-            <div id="all" class="tab-pane in active">
-                <table class="all-box">
-                    <c:forEach var="dto" items="${dto}">
-                        <tr class="column s" id="2020">
+            <div class="tab-content">
+                <!-- 전체 -->
+                <div id="all" class="tab-pane in active">
+                    <table class="all-box">
+                        <tr class="column s" id="2024">
                             <div class="user">
-                                <input type="text" name="grade" value="${dto.cDate}" disabled>
-                                <input type="text" name="nick" value="${dto.pResult}" disabled>
-                                <input type="number" name="point" value="${dto.betPoint}" disabled>
+                                <input class="p-date" type="text" name="grade" value="날짜" disabled>
+                                <input class="p-team" type="text" name="nick" value="예측 승팀" disabled>
+                                <input class="p-point" type="text" name="point" value="배팅 포인트" disabled>
                             </div>
                         </tr>
-                    </c:forEach>
-                </table>
+                        <c:forEach var="dto" items="${dto}">
+                            <tr class="column s" id="2024">
+                                <div class="user">
+                                    <input class="p-date" type="text" name="grade" value="${dto.cDate}" disabled>
+                                    <input class="p-team" type="text" name="nick" value="${dto.pResult}" disabled>
+                                    <input class="p-point" type="number" name="point" value="${dto.betPoint}" disabled>
+                                </div>
+                            </tr>
+                        </c:forEach>
+                    </table>
 
-            </div>
-            <!-- 성공 내역 -->
-            <div id="success" class="tab-pane ">
-                <table class="success-box">
-                    <c:forEach var="plusDTO" items="${plusDTO}">
-                        <tr class="column s" id="2020">
+                </div>
+                <!-- 성공 내역 -->
+                <div id="success" class="tab-pane">
+                    <table class="p-success-box">
+                        <tr class="column s" id="2024">
                             <div class="user">
-                                <input type="text" name="grade" value="${plusDTO.cDate}" disabled>
-                                <input type="text" name="nick" value="${plusDTO.pResult}" disabled>
-                                <input type="number" name="point" value="${plusDTO.betPoint}" disabled>
+                                <input class="p-date" type="text" name="grade" value="날짜" disabled>
+                                <input class="p-team" type="text" name="nick" value="예측 승팀" disabled>
+                                <input class="p-point" type="text" name="point" value="배팅 포인트" disabled>
                             </div>
                         </tr>
-                    </c:forEach>
-                </table>
-            </div>
-            <!-- 실패 내역 -->
-            <div id="fail" class="tab-pane ">
-                <table class="fail-box">
-                    <c:forEach var="minusDTO" items="${minusDTO}">
-                        <tr class="column s" id="2020">
+                        <c:forEach var="plusDTO" items="${plusDTO}">
+                            <tr class="column s" id="2024">
+                                <div class="user">
+                                    <input class="p-date" type="text" name="grade" value="${plusDTO.cDate}" disabled>
+                                    <input class="p-team" type="text" name="nick" value="${plusDTO.pResult}" disabled>
+                                    <input class="p-point" type="number" name="point" value="${plusDTO.betPoint}" disabled>
+                                </div>
+                            </tr>
+                        </c:forEach>
+                    </table>
+                </div>
+                <!-- 실패 내역 -->
+                <div id="fail" class="tab-pane ">
+                    <table class="p-fail-box">
+                        <tr class="column s" id="2024">
                             <div class="user">
-                                <input type="text" name="grade" value="${minusDTO.cDate}" disabled>
-                                <input type="text" name="nick" value="${minusDTO.pResult}" disabled>
-                                <input type="number" name="point" value="${minusDTO.betPoint}" disabled>
+                                <input class="p-date" type="text" name="grade" value="날짜" disabled>
+                                <input class="p-team" type="text" name="nick" value="예측 승팀" disabled>
+                                <input class="p-point" type="text" name="point" value="배팅 포인트" disabled>
                             </div>
                         </tr>
-                    </c:forEach>
-                </table>
-            </div>
+                        <c:forEach var="minusDTO" items="${minusDTO}">
+                            <tr class="column s" id="2020">
+                                <div class="user">
+                                    <input class="p-date" type="text" name="grade" value="${minusDTO.cDate}" disabled>
+                                    <input class="p-team" type="text" name="nick" value="${minusDTO.pResult}" disabled>
+                                    <input class="p-point" type="number" name="point" value="${minusDTO.betPoint}" disabled>
+                                </div>
+                            </tr>
+                        </c:forEach>
+                    </table>
+                </div>
 
+            </div>
         </div>
-    </div>
-    <button type="button" class="btn btn-default" onclick="location.href='mypage.html';">완 료</button>
 
+    </div>
 </div>
 <%@ include file="../include/footer.jsp"%>

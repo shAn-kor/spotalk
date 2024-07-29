@@ -25,4 +25,11 @@
     <select id="getMinusPointList" parameterType="string" resultType="com.myweb.predict.model.PredictDTO">
         SELECT * FROM PREDICT WHERE USER_ID = #{id} AND CHOICE != P_RESULT
     </select>
+    <select id="getTeamChoice" parameterType="string" resultType="com.myweb.predict.model.PredictDTO">
+        SELECT CHOICE FROM PREDICT WHERE GAME_ID = #{gameId}
+    </select>
+
+    <insert id="insertBatting" parameterType="com.myweb.predict.model.PredictDTO">
+        INSERT INTO PREDICT (USER_ID, GAME_ID, CHOICE, BET_POINT) VALUES (#{userId}, #{gameId}, #{choice}, #{betPoint})
+    </insert>
 </mapper>

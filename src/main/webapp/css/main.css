@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Dokdo&family=Gugi&display=swap');
-
+@import "default.css";
 /* 스와이퍼 */
 .swiper {
     width: 1400px; /* 가로길이 1400px */
@@ -58,7 +58,7 @@
 .swiper-button-next,
 .swiper-button-prev {
     color: white; /* 버튼 색상 설정 */
-    opacity: 0.4;
+    opacity: 0.6;
 }
 
 /* 경기일정, 리그순위 */
@@ -98,26 +98,26 @@
     resize: none;
     padding: 10px;
 }
-.user-rank-wrap > .ranker-user {
+.user-rank-wrap > .main-ranker-user {
     background-color: white;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 5px 10px;
 }
-.ranker-user > img {
+.main-ranker-user > img {
     display: block;
     width: 20%;
 }
-.ranker-user > p {
+.main-ranker-user > p {
     display: block;
     width: 40%;
     font-size: 1.2rem;
 }
-.ranker-user > p:nth-child(1) {
+.main-ranker-user > p:nth-child(1) {
     text-align: left;
 }
-.ranker-user > p:nth-child(2) {
+.main-ranker-user > p:nth-child(2) {
     text-align: right;
 }
 .podium-wrap{
@@ -244,11 +244,61 @@
     color:white; 
     font-weight: 600;
 }
-.tabcontent, .tabcontent2, .tabcontent3 {
+.main-box .tabcontent, .main-box .tabcontent2, .main-box .tabcontent3 {
     padding: 20px; 
-    min-height: 250px; 
+    max-height: 250px;
+    min-height: 250px;
     background-color: white;
     overflow-y: auto;
     overflow-x: none;
     resize: none;
+}
+.main-box .tabcontent > div, .main-box .tabcontent2 > div, .main-box .tabcontent3 > div {
+    overflow-y: auto;
+    overflow-x: none;
+    resize: none;
+    margin: 2px auto;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+}
+.sport-rank .tabcontent2 .team-rank > span,
+.sport-rank .tabcontent2 .team-rank > input {
+    display: inline-block;
+    font-size: 2rem;
+    background-color: none;
+    outline: none;
+    width: 60px;
+    text-align: center;
+}
+.sport-rank .tabcontent2 .team-rank > input:last-child {
+    width: 90px;
+}
+.main-user-rank .user-rank-wrap {
+    overflow-x: none;
+    overflow-y: auto;
+    resize: none;
+    margin: 2px auto;
+}
+.main-user-rank .user-rank-wrap .main-ranker-user{
+
+    width: 100%;
+}
+.main-user-rank .user-rank-wrap .main-ranker-user > span,
+.main-user-rank .user-rank-wrap .main-ranker-user > input {
+    background-color: none;
+    outline: none;
+    width: 60px;
+    text-align: center;
+}
+.main-user-rank > .user-rank-wrap > .main-ranker-user > .grade {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    background-image: url(../img/grade.png);
+    background-repeat: no-repeat;
+    background-position: 5px 0;
+    text-indent: -999px;
+    font-size: 0;
 }

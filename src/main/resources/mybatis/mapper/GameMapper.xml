@@ -9,7 +9,7 @@
 
  	<insert id="scrapScheduleKBO" parameterType="com.myweb.game.model.GameDTO">
 		INSERT 
-		INTO GAME(GAME_ID, GAME_DATE, TEAM_A, TEAM_B, GAME_RESULT) 
+		INTO GAMES(GAME_ID, GAME_DATE, TEAM_A, TEAM_B, GAME_RESULT)
 		VALUES (#{gameId}, #{gameDate}, #{teamA}, #{teamB}, #{gameResult}) 
 	</insert> 
 	
