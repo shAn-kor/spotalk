@@ -125,15 +125,15 @@ public class PredictServiceImpl implements PredictService{
         PredictMapper mapper = sql.getMapper(PredictMapper.class);
 
         List<PredictDTO> list = mapper.getTeamChoice(gameId);
-        Map<String, Integer> map = new HashMap<>();
+        Map<String, Long> map = new HashMap<>();
 
         System.out.println(list);
 
         for (PredictDTO dto : list) {
             if (map.containsKey(dto.getChoice())) {
-                map.put(dto.getChoice(), map.get(dto.getChoice()) + 1);
+                map.put(dto.getChoice(), map.get(dto.getChoice()) + dto.getBetPoint());
             } else {
-                map.put(dto.getChoice(), 1);
+                map.put(dto.getChoice(), dto.getBetPoint());
             }
         }
 

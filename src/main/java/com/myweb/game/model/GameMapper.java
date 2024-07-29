@@ -6,5 +6,5 @@ public interface GameMapper {
 	List<GameDTO> getSoccer();
 	List<GameDTO> getBase();
 	List<GameDTO> getBasket();
-	List<GameDTO> getGaming();
+	List<GameDTO> getGames();
 }

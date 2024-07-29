@@ -22,8 +22,8 @@
 	<select id="getBasket" resultType="com.myweb.game.model.GameDTO">
 		SELECT * FROM GAMES WHERE (GAME_ID LIKE '4%') AND (GAME_DATE >= SYSDATE)
 	</select>
-	<select id="getGaming"> <!-- 경기일자 4일 전 <= 오늘 날짜 <= 1일 전 (=예측 진행 중인 경기), 해당 경기 모두 가져오기 -->
-		SELECT * FROM GAMES WHERE SYSDATE BETWEEN GAME_DATE-4 AND GAME_DATE-1
+	<select id="getGames" resultType="com.myweb.game.model.GameDTO"> <!-- 경기일자 4일 전 <= 오늘 날짜 <= 1일 전 (=예측 진행 중인 경기), 해당 경기 모두 가져오기 -->
+		SELECT * FROM GAMES
 	</select> 
 
 	

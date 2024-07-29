@@ -11,6 +11,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.myweb.game.service.GameService;
@@ -37,15 +38,30 @@ public class HomeController extends HttpServlet {
 
     	UserService userService = new UserServiceImpl();
         List<UserDTO> userRank = userService.getUserRank(request, response);
+        userService.updateGrade();
+        userService.closeSqlSession();
 
     	GameService gameService = new GameServiceImpl();
-        List<String> games = gameService.getGaming(request, response);
-    	List<GameDTO> soccerGames = gameService.getSoccerList(request, response);
-    	List<GameDTO> baseballGames = gameService.getBaseballList(request, response);
-    	List<GameDTO> basketballGames = gameService.getBasketList(request, response);
+        List<GameDTO> gameList = gameService.getGames(request, response);
+    	List<String> games = gameService.getGaming(gameList);
         gameService.closeGameSqlSession();
-        System.out.println("농구" + basketballGames.isEmpty());
-        System.out.println(basketballGames == null);
+        List<GameDTO> soccerGames = new ArrayList<>();
+        List<GameDTO> baseballGames = new ArrayList<>();
+        List<GameDTO> basketballGames = new ArrayList<>();
+
+        for (GameDTO gameDTO : gameList) {
+            if (Integer.parseInt(gameDTO.getGameId()) < 101) {
+                basketballGames.add(gameDTO);
+            } else if (Integer.parseInt(gameDTO.getGameId()) < 201) {
+                soccerGames.add(gameDTO);
+            } else {
+                baseballGames.add(gameDTO);
+            }
+        }
+
+        System.out.println(games);
+
+
 //        SportService sportService = new SportServiceImpl();
 //        List<SportDTO> footballRank = sportService.getFootballRak(request, response);
 //        List<SportDTO> baseballRank = sportService.getBaseballRak(request, response);

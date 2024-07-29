@@ -75,4 +75,127 @@ document.addEventListener('DOMContentLoaded', function() {
 	        gradeElement.style.backgroundPosition = '5px 0px'; // 기본값 설정
 	        break;
     }
+
+
+	let nick = document.querySelector('#myInfo > .float > .name');
+	let randomModal = document.querySelector('.right > #random-modal');
+	let resultModal = document.querySelector('.right > #random-result-modal');
+
+	let canvas = document.querySelector('.modal .modal_popup #menu canvas');
+	let ctx = canvas.getContext('2d');
+	let points = ["50", "100", "50", "100", "150", "200", "500", "1000"];
+	let colors = [];
+	let randomBtn = document.getElementById('random-btn');
+	let modalCloseBtn = document.getElementById('modal-close-btn');
+	let resultNum = 0;
+	let isAttendance = false;
+
+
+	fetch('checkIsAttendance.user', {
+		method: 'POST',
+		contentType: 'application/json',
+		body: JSON.stringify({nick: nick.value})
+	}).then(response => { return response.json(); })
+		.then(data => {
+			if (data.msg === 'ok') isAttendance = true;
+		})
+
+	if (isAttendance) {
+		randomModal.classList.add('on');
+
+		console.log(Date.now());
+
+		let obj = {
+			value: nick.innerHTML,
+			expire: Date.now()
+		};
+		localStorage.setItem('nick', JSON.stringify(obj));
+
+		newMake();
+	}
+
+	function newMake() {
+		let [cw, ch] = [canvas.width/2, canvas.height/2];
+		let arc = Math.PI / (points.length / 2);
+
+		for (let i = 0; i < points.length; i++) {
+			ctx.beginPath();
+			if(colors.length === 0){
+				for(var l=0; l<points.length; l++){
+					let r = Math.floor(Math.random() * 256);
+					let g = Math.floor(Math.random() * 256);
+					let b = Math.floor(Math.random() * 256);
+					colors.push("rgb(" + r + "," + g + "," + b + ")");
+				}
+			}
+			ctx.fillStyle = colors[i % (colors.length)];
+			ctx.moveTo(cw, ch);
+			ctx.arc(cw, ch, cw, arc * (i - 1), arc * i);
+			ctx.fill();
+			ctx.closePath();
+		}
+
+		ctx.fillStyle = "#fff";
+		ctx.font = "18px Pretendard";
+		ctx.textAlign = "center";
+
+		for (let i = 0; i < points.length; i++) {
+			const angle = (arc * i) + (arc / 2);
+
+			ctx.save();
+
+			ctx.translate(
+				cw + Math.cos(angle) * (cw - 50),
+				ch + Math.sin(angle) * (ch - 50)
+			);
+
+			ctx.rotate(angle + Math.PI / 2);
+
+			points[i].split(' ').forEach((text, j) => {
+				ctx.fillText(text, 0, 30 * j);
+			});
+
+			ctx.restore();
+		}
+	}
+
+	randomBtn.addEventListener('click', rotate);
+
+	function rotate() {
+
+		canvas.style.transform = 'initial';
+		canvas.style.transition = 'initial';
+		let alpha = Math.floor(Math.random()*100);
+
+		setTimeout(() => {
+			let ran = Math.floor(Math.random() * points.length);
+			let arc = 360 / points.length;
+			let rotate = (ran * arc) + 3600 + (arc * 3) - (arc/4) + alpha;
+
+			console.log(ran);
+			console.log(arc);
+			console.log(rotate);
+
+			resultNum = points[ran-1];
+			console.log(resultNum);
+
+			canvas.style.transform = `rotate(-${rotate}deg`;
+			canvas.style.transition = '2s';
+
+			setTimeout(() => {
+				resultModal.classList.add('on');
+
+				let resultMessage = document.getElementById('random-result');
+				resultMessage.innerText += ' ' + resultNum + ' 포인트 당첨!!!!!!';
+			}, 3000);
+		}, 1);
+	}
+
+	modalCloseBtn.addEventListener('click', function() {
+		resultModal.classList.remove('on');
+		randomModal.classList.remove('on');
+
+		resultModal.display='none';
+		randomModal.display='none';
+	});
 });

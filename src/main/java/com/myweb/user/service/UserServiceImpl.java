@@ -20,6 +20,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
 
@@ -156,7 +157,7 @@ public class UserServiceImpl implements UserService{
 		dto.setPw(pw);
 		dto.setPwq(pwq);
 		dto.setPwa(pwa);
-		dto.setPoint("0");
+		dto.setPoint("500");
 		dto.setGradeId("1");
 
 		SqlSession sql = sqlSessionFactory.openSession(true);
@@ -347,9 +348,8 @@ public class UserServiceImpl implements UserService{
 	private UserDTO getUserById (String id) {
 		SqlSession sql = sqlSessionFactory.openSession(true);
 		UserMapper mapper = sql.getMapper(UserMapper.class);
-		UserDTO dto = mapper.getUserById(id);
 
-		return dto;
+        return mapper.getUserById(id);
 	}
 
 	private void deleteUser (String id) {
@@ -358,7 +358,79 @@ public class UserServiceImpl implements UserService{
 		mapper.deleteUser(id);
 	}
 
-	public void closeGameSqlSession() {
+	@Override
+	public void closeSqlSession() {
 		sqlSessionFactory.openSession(true).close();
+	}
+
+	@Override
+	public void updateGrade() {
+		SqlSession sql = sqlSessionFactory.openSession(true);
+		UserMapper mapper = sql.getMapper(UserMapper.class);
+
+		List<UserDTO> list = mapper.getUserList();
+
+		for (UserDTO dto : list) {
+			long point = Long.parseLong(dto.getPoint());
+			String grade = dto.getGradeId();
+
+			if (point >= 1000000000) {
+				dto.setGradeId("10");
+			} else if (point >= 500000000) {
+				dto.setGradeId("9");
+			} else if (point >= 100000000) {
+				dto.setGradeId("8");
+			} else if (point >= 50000000) {
+				dto.setGradeId("7");
+			} else if (point >= 10000000) {
+				dto.setGradeId("6");
+			} else if (point >= 5000000) {
+				dto.setGradeId("5");
+			} else if (point >= 1000000) {
+				dto.setGradeId("4");
+			} else if (point >= 500000) {
+				dto.setGradeId("3");
+			} else if (point >= 100000) {
+				dto.setGradeId("2");
+			} else {
+				dto.setGradeId("1");
+			}
+			dto.setGradeId(grade);
+
+			mapper.updateGrade(dto);
+		}
+	}
+
+	@Override
+	public void checkAttendance(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		JSONObject json = null;
+		try {
+			json = getJSONSObjectByReader(request.getReader());
+		} catch (ParseException | IOException e) {
+			throw new RuntimeException(e);
+		}
+		String nick = json.get("nick").toString();
+
+		SqlSession sql = sqlSessionFactory.openSession(true);
+		UserMapper mapper = sql.getMapper(UserMapper.class);
+		Date date = mapper.getDateByAttendance(nick);
+
+		LocalDate localDate = LocalDate.now();
+
+		String jsonStr = "";
+
+		if (date == null) {
+			jsonStr = "{'msg':'ok'}";
+		}
+
+		if (date.equals(localDate)) {
+			jsonStr = "{'msg':'no'}";
+		}
+
+		sql.close();
+
+		response.setContentType("application/json;charset=utf-8");
+		PrintWriter out = response.getWriter();
+		out.print(json.toJSONString());
 	}
 }

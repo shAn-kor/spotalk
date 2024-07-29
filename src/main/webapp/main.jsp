@@ -119,7 +119,7 @@
             <div id="podium-background">
                 <div class="nametag">
                     <img src="img/frame.png" alt="">
-                    <p class="podium-nick">양재동찍신강림</p>
+                    <p class="podium-nick">${userRank[0].nick}</p>
                 </div>
             </div>
         </div>
