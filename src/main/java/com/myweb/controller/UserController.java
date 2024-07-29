@@ -37,13 +37,13 @@ public class UserController extends HttpServlet{
 				
 		System.out.println(command);
 		
-		UserService service;
+
 		//로그인
 		if(command.equals("/user/login.user")) {//로그인 페이지
 			request.getRequestDispatcher("login.jsp").forward(request, response);
 		}
 		if(command.equals("/user/check.user")) {//로그인 페이지
-			service = new UserServiceImpl();
+			UserService service = new UserServiceImpl();
 			service.login(request, response);
 		}
 
@@ -59,7 +59,7 @@ public class UserController extends HttpServlet{
 			request.getRequestDispatcher("outMember.jsp").forward(request, response);
 		}
 		if(command.equals("/user/delete.user")) {
-			service = new UserServiceImpl();
+			UserService service = new UserServiceImpl();
 			service.deleteUser(request, response);
 		}
 		
@@ -71,22 +71,22 @@ public class UserController extends HttpServlet{
 			request.getRequestDispatcher("join02.jsp").forward(request, response);
 		}
 		if(command.equals("/user/checkPhone.user")) {//본인인증 페이지
-			service = new UserServiceImpl();
+			UserService service = new UserServiceImpl();
 			service.checkPhone(request, response);
 		}
 		if(command.equals("/user/checkDuplicateNick.user")) {//본인인증 페이지
-			service = new UserServiceImpl();
+			UserService service = new UserServiceImpl();
 			service.checkDuplicateNick(request, response);
         }
 		if(command.equals("/user/checkDuplicateId.user")) {//본인인증 페이지
-			service = new UserServiceImpl();
+			UserService service = new UserServiceImpl();
 			service.checkDuplicateId(request, response);
         }
 		if(command.equals("/user/joinForm.user")) {//계정생성 페이지
 			request.getRequestDispatcher("join03.jsp").forward(request, response);
 		}
 		if(command.equals("/user/create.user")) { // 계정 생성
-			service = new UserServiceImpl();
+			UserService service = new UserServiceImpl();
 			service.createUser(request, response);
 		}
 		if (command.equals("/user/createSuccess.user")) { // 계정 생성 성공
@@ -98,7 +98,7 @@ public class UserController extends HttpServlet{
 			request.getRequestDispatcher("findId01.jsp").forward(request, response);
 		}
 		if(command.equals("/user/findId.user")) {//아이디찾기
-			service = new UserServiceImpl();
+			UserService service = new UserServiceImpl();
 			service.findId(request, response);
 		}
 		if(command.equals("/user/foundId.user")) {//아이디찾음 페이지
@@ -108,37 +108,37 @@ public class UserController extends HttpServlet{
 			request.getRequestDispatcher("findPw01.jsp").forward(request, response);
 		}
 		if(command.equals("/user/findPw.user")) {//비밀번호찾기 페이지
-			service = new UserServiceImpl();
+			UserService service = new UserServiceImpl();
 			service.findPw(request, response);
 		}
 		if(command.equals("/user/pwQnA.user")) {//비밀번호QnA 페이지
 			request.getRequestDispatcher("findPw02.jsp").forward(request, response);
 		}
 		if(command.equals("/user/checkPwa.user")) {//비밀번호질문 답 확인
-			service = new UserServiceImpl();
+			UserService service = new UserServiceImpl();
 			service.checkPwa(request, response);
 		}
 		if(command.equals("/user/resetPw.user")) {//비밀번호재설정 페이지
 			request.getRequestDispatcher("findPw03.jsp").forward(request, response);
 		}
 		if(command.equals("/user/updatePw.user")) {//비밀번호재설정 페이지
-			service = new UserServiceImpl();
+			UserService service = new UserServiceImpl();
 			service.updatePw(request, response);
 		}
 
 		// 마이페이지
 		if(command.equals("/user/myPage.user")) {
-			service = new UserServiceImpl();
+			UserService service = new UserServiceImpl();
 			service.getMyPage(request, response);
 		}
 		if(command.equals("/user/changeNick.user")) {
-			service = new UserServiceImpl();
+			UserService service = new UserServiceImpl();
 			service.changeNick(request, response);
         }
 
 		// 승부사 랭킹
 		if (command.equals("/user/rank.user")) {
-			service = new UserServiceImpl();
+			UserService service = new UserServiceImpl();
 			service.getUserRankPage(request, response);
 		}
 	}

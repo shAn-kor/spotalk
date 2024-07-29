@@ -15,7 +15,8 @@
     <div class="spototo-box">
     
        <c:set var="selectedSport" value="${param.sport}" />
-   
+
+    <input type="text" id="user-id-spototo" name="user-id" value="${sessionScope.user_id}" hidden="hidden">
       <div class="miniMenu">
           <ul>
            <c:choose>
@@ -68,19 +69,20 @@
            <c:otherwise>
               <c:forEach var="game" items="${gamelist}">
                  <div class="spototo-match">
+                  <input type="text" id="game-id" name="game-id" value="${game.gameId}" hidden="hidden">
                      <div class="spototo-basic">
                          <p class="match-time"> 
                          ${game.gameDate }
                          </p>
                          <div class="match">
-                             <div class="spototo-a">
+                             <div class="spototo-a" id="${game.gameId}-teamA-graph">
                                  <img src="" alt="icon">
-                                 <p>${game.teamA}</p>
+                                 <p id="${game.gameId}-teamA">${game.teamA}</p>
                              </div>
-                             <div class="spototo-d" ></div>
-                             <div class="spototo-b" >
+                             <div class="spototo-d" id="${game.gameId}-draw-graph"></div>
+                             <div class="spototo-b" id="${game.gameId}-teamB-graph">
                                  <img src="" alt="icon">
-                                 <p>${game.teamB}</p>
+                                 <p id="${game.gameId}-teamB">${game.teamB}</p>
                                  
                              </div>
                          </div>
@@ -93,13 +95,13 @@
                          </div>
                          <div class="detail-btn">
                              <div class="match-btns">
-                                 <button class="win-a">${game.teamA}팀 승리</button>
-                                 <button class="win-d">무승부</button>
-                                 <button class="win-b">${game.teamB}팀 승리</button>
+                                 <button id="btn-${game.gameId}-${game.teamA}" class="win-a">${game.teamA}팀 승리</button>
+                                 <button id="btn-${game.gameId}-draw" class="win-d">무승부</button>
+                                 <button id="btn-${game.gameId}-${game.teamB}" class="win-b">${game.teamB}팀 승리</button>
                              </div>
                              <div class="user-point">
-                                 <input type="text" name="user-p" id="user-p" value="5000" readonly>
-                                 <input type="text" name="using-p" id="using-p" placeholder="사용할 포인트">
+                                 <input type="number" name="user-p" id="user-p" value="${sessionScope.point}" readonly>
+                                 <input type="number" name="using-p" id="using-p" placeholder="사용할 포인트">
                                  <input type="button" name="toto-ok" id="toto-ok" value="확인">
                              </div>
                          </div>

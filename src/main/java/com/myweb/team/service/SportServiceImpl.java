@@ -155,5 +155,8 @@ public class SportServiceImpl implements SportService {
 		return mapper.getBasketballRank();
 	}
 
+	public void closeGameSqlSession() {
+		sqlSessionFactory.openSession(true).close();
+	}
 }
 

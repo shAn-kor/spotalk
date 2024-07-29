@@ -17,4 +17,6 @@ public interface SportService {
     List<SportDTO> getBaseballRak(HttpServletRequest request, HttpServletResponse response);
 
     List<SportDTO> getBasketballRak(HttpServletRequest request, HttpServletResponse response);
+
+    void closeGameSqlSession();
 }

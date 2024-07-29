@@ -40,6 +40,9 @@
 	<update id="changeNick" parameterType="com.myweb.user.model.UserDTO">
 		UPDATE MEMBER SET NICK = #{nick} WHERE ID = #{id}
 	</update>
+	<update id="setPoint" parameterType="com.myweb.user.model.UserDTO">
+		UPDATE MEMBER SET POINT = #{point} WHERE ID = #{id}
+	</update>
 
 	<insert id="createUser" parameterType="com.myweb.user.model.UserDTO">
 		INSERT INTO MEMBER VALUES (#{id}, #{pw}, #{pwq}, #{pwa}, #{name}, #{bDate}, #{gender}, #{phone}, #{nick}, #{point}, #{gradeId}, SYSDATE)

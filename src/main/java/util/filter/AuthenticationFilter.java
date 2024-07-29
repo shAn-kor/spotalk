@@ -28,7 +28,9 @@ import java.io.PrintWriter;
         "/game/baselist.game",
 
         // predict controller
-        "/predict/pointList.predict"
+        "/predict/pointList.predict",
+        "/game/betPoint.predict",
+        "/game/getPredictStatus.predict"
 })
 public class AuthenticationFilter implements Filter {
     @Override
