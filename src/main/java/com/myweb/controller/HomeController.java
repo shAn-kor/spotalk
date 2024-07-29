@@ -44,7 +44,8 @@ public class HomeController extends HttpServlet {
     	List<GameDTO> baseballGames = gameService.getBaseballList(request, response);
     	List<GameDTO> basketballGames = gameService.getBasketList(request, response);
         gameService.closeGameSqlSession();
-
+        System.out.println("농구" + basketballGames.isEmpty());
+        System.out.println(basketballGames == null);
 //        SportService sportService = new SportServiceImpl();
 //        List<SportDTO> footballRank = sportService.getFootballRak(request, response);
 //        List<SportDTO> baseballRank = sportService.getBaseballRak(request, response);

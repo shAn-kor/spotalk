@@ -27,8 +27,6 @@ import java.io.IOException;
         "/user/findPw.user",
         "/user/pwQnA.user",
         "/user/checkPwa.user",
-        "/user/resetPw.user",
-        "/user/updatePw.user"
 })
 public class IsLoginFilter implements Filter {
     @Override
