@@ -156,13 +156,9 @@
     align-items: center;
 }
 .match > .spototo-a {
-<<<<<<< HEAD
-    /* background-color: #226f54; */
+
     background-color: rgb(9, 10, 41);
-    justify-content: flex-start;
-=======
-    background-color: rgb(16, 92, 16);
->>>>>>> master
+
     overflow: hidden;
     border-radius: 0px;
     justify-content: flex-start;
@@ -178,14 +174,10 @@
     margin-left: 10px;
     font-size: 20px;
 }
-<<<<<<< HEAD
-.match > div > img {
-    display: block;
-    max-width: 60px;
-=======
+
 .match > .spototo-a > div > img {
     float: left;
->>>>>>> master
+
 }
 .match > div > div > img {
     display: block;

@@ -14,47 +14,47 @@
 
     <div class="spototo-box">
     
-       <c:set var="selectedSport" value="${param.sport}" />
+       	<c:set var="selectedSport" value="${param.sport}" />
 
-    <input type="text" id="user-id-spototo" name="user-id" value="${sessionScope.user_id}" hidden="hidden">
-      <div class="miniMenu">
-          <ul>
-           <c:choose>
-              <c:when test="${selectedSport == 'soccer'}">
-                  <li>
-                      <img src="../img/soccer-icon.png" alt="soccer">
-                  <a href="/spotalk/game/soccerlist.game?sport=soccer">축 구</a>
-               </li>
-               <li><a href="/spotalk/game/baselist.game?sport=baseball">야 구</a></li>
-               <li><a href="/spotalk/game/basketlist.game?sport=basketball">농 구</a></li>
-            </c:when>
-            <c:when test="${selectedSport == 'baseball'}">
-               <li>
-                  <img src="../img/baseball-icon.png" alt="baseball">
-                  <a href="/spotalk/game/baselist.game?sport=baseball">야 구</a>
-               </li>
-               <li><a href="/spotalk/game/soccerlist.game?sport=soccer">축 구</a></li>
-               <li><a href="/spotalk/game/basketlist.game?sport=basketball">농 구</a></li>
-            </c:when>
-            <c:when test="${selectedSport == 'basketball'}">
-               <li>
-                  <img src="../img/basketball-icon.png" alt="basketball">
-                  <a href="/spotalk/game/basketlist.game?sport=basketball">농 구</a>
-               </li>
-               <li><a href="/spotalk/game/soccerlist.game?sport=soccer">축 구</a></li>
-               <li><a href="/spotalk/game/baselist.game?sport=baseball">야 구</a></li>
-            </c:when>
-            <c:otherwise>
-               <li>
-                  <img src="../img/soccer-icon.png" alt="soccer">
-                  <a href="/spotalk/game/soccerlist.game?sport=soccer">축 구</a>
-               </li>
-               <li><a href="/spotalk/game/baselist.game?sport=baseball">야 구</a></li>
-               <li><a href="/spotalk/game/basketlist.game?sport=basketball">농 구</a></li>
-            </c:otherwise>
-            </c:choose>
-         </ul>
-      </div>
+    	<input type="text" id="user-id-spototo" name="user-id" value="${sessionScope.user_id}" hidden="hidden">
+        <div class="miniMenu">
+	          <ul>
+	           <c:choose>
+	              <c:when test="${selectedSport == 'soccer'}">
+	                  <li>
+	                      <img src="../img/soccer-icon.png" alt="soccer">
+	                  <a href="/spotalk/game/soccerlist.game?sport=soccer">축 구</a>
+	               </li>
+	               <li><a href="/spotalk/game/baselist.game?sport=baseball">야 구</a></li>
+	               <li><a href="/spotalk/game/basketlist.game?sport=basketball">농 구</a></li>
+	            </c:when>
+	            <c:when test="${selectedSport == 'baseball'}">
+	               <li>
+	                  <img src="../img/baseball-icon.png" alt="baseball">
+	                  <a href="/spotalk/game/baselist.game?sport=baseball">야 구</a>
+	               </li>
+	               <li><a href="/spotalk/game/soccerlist.game?sport=soccer">축 구</a></li>
+	               <li><a href="/spotalk/game/basketlist.game?sport=basketball">농 구</a></li>
+	            </c:when>
+	            <c:when test="${selectedSport == 'basketball'}">
+	               <li>
+	                  <img src="../img/basketball-icon.png" alt="basketball">
+	                  <a href="/spotalk/game/basketlist.game?sport=basketball">농 구</a>
+	               </li>
+	               <li><a href="/spotalk/game/soccerlist.game?sport=soccer">축 구</a></li>
+	               <li><a href="/spotalk/game/baselist.game?sport=baseball">야 구</a></li>
+	            </c:when>
+	            <c:otherwise>
+	               <li>
+	                  <img src="../img/soccer-icon.png" alt="soccer">
+	                  <a href="/spotalk/game/soccerlist.game?sport=soccer">축 구</a>
+	               </li>
+	               <li><a href="/spotalk/game/baselist.game?sport=baseball">야 구</a></li>
+	               <li><a href="/spotalk/game/basketlist.game?sport=basketball">농 구</a></li>
+	            </c:otherwise>
+	            </c:choose>
+	         </ul>
+        </div>
       
       
       
@@ -66,6 +66,9 @@
       </div>
     
       
+   
+   <div class="matchBox">
+   
    
    
       <!-- gamelist가 비어있으면 경기없음 -->
@@ -93,16 +96,11 @@
                              </div>
                              <div class="spototo-d" id="${game.gameId}-draw-graph"></div>
                              <div class="spototo-b" id="${game.gameId}-teamB-graph">
-<<<<<<< HEAD
-                                 <img src="" alt="icon">
-                                 <p id="${game.gameId}-teamB">${game.teamB}</p>
-
-=======
                                  <div style="width: 120px;">
                                      <p id="${game.gameId}-teamB">${game.teamB}</p>
                                      <img src="" alt="icon">
                                  </div>
->>>>>>> master
+
                              </div>
                          </div>
                          <img src="../img/arrow_drop.svg" alt="">
@@ -132,7 +130,7 @@
            </c:otherwise>
         </c:choose>
       
-    
+    </div>
        
     </div>
 <%@ include file="../include/footer.jsp"%>

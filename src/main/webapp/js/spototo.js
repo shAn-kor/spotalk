@@ -7,25 +7,26 @@ window.onload = function() {
 	}
 	
 	//쿠키 확인하기
-        function findCookie(name){
+    function findCookie(name){
 
-            var cookies = document.cookie;
-            var arr = cookies.split("; ");
+        var cookies = document.cookie;
+    	var arr = cookies.split("; ");
 
-            for( var i in arr ){
-                if(arr[i].indexOf(name + "=") != -1){
-                    return true; //값이 존재함
-                }
+        for( var i in arr ){
+        	if(arr[i].indexOf(name + "=") != -1){
+            	return true; //값이 존재함
             }
-
-            return false;
         }
+
+        return false;
+    }
 	
 	
     // 모든 항목 선택
     let matches = document.querySelectorAll('.spototo-match');
 	let userId = document.getElementById('user-id-spototo');
 	
+	var cnt=0; //진행 중인 승부가 있느냐?
     matches.forEach(function(match) {
 
         let matchTime = match.querySelector('.match-time');
@@ -125,6 +126,7 @@ window.onload = function() {
 			
 		});
 
+		
 
 		/*투표 남은 시간 계산*/
         function updateTime(){
@@ -138,15 +140,20 @@ window.onload = function() {
 	        let seconds = Math.floor(diff / 1000 - (days * 24 * 60 * 60 + hours * 60 * 60 + minutes * 60));
 	        
 	        timer.textContent = days + "일 " + hours + "시간 " + minutes + "분 " + seconds + "초";
-	        
-	        /*예측 진행 중인 게임만 보이기*/
-        	if((days>=3 && seconds>0) || (days<0) ){
+/*	        
+	        예측 진행 중인 게임만 보이기
+        	if((days>=3 && seconds>0) || (days<0) ){ //진행 안하는 승부는 none
 				match.style.display= "none";
-			}
+			} else { //진행 중인 승부 cnt가 0이면 nogame.jsp보이기
+				cnt++;
+			}*/
+			
         }
-        
+      
         updateTime();
 		setInterval(updateTime,1000);
+		
+		
 		
 		
         
@@ -219,4 +226,16 @@ window.onload = function() {
 			},2000);
 		}
     });
-}
+    
+    
+/*    var matchBox = document.querySelector(".matchBox");
+
+	// 진행 중인 승부 cnt
+	if(cnt == 0) {
+	    $.get('/game/nogame.jsp', function(data) {
+	        matchBox.innerHTML = data;
+	    });
+	}*/
+
+    
+};
