@@ -78,8 +78,8 @@
                                   <tr>
                                       <td>${game.gameDate}</td>
                                       <td><fmt:formatDate value="${game.gameDate}" pattern="HH    :    mm" /></td>
-                                      <td>
-                                      
+                                      <td class="game-match">
+
                                          <c:choose>
 	                                        <c:when test="${selectedSport == 'soccer'}">
 	                                           <img src="../img/soccer/${game.teamA}.png" alt="${game.teamA }">

@@ -18,7 +18,8 @@ public interface GameService {
 	void getBaseDate(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
 	void getBasketDate(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
 
-	List<String> getGaming(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
+	List<GameDTO> getGames(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
+	List<String> getGaming(List<GameDTO> list) throws IOException;
 	List<GameDTO> getSoccerList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
 	List<GameDTO> getBaseballList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
 	List<GameDTO> getBasketList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
