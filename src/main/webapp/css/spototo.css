@@ -1,4 +1,10 @@
 @import url(default.css);
+@font-face {
+    font-family: 'SDSamliphopangche_Outline';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts-20-12@1.0/SDSamliphopangche_Outline.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
 
 .overlay{
    display:none;
@@ -36,7 +42,7 @@
 .spototo-box {
    margin:0 auto;
     width: 1400px;
-    min-height: 800px;
+    min-height: 650px;
     background-color: white;
     text-align: center;
     padding: 50px;
@@ -60,6 +66,10 @@
    height:50px;
    line-height: 50px;
    text-align: center;
+   
+}
+.spototo-box > .miniMenu > ul > li > a {
+	font-family: 'SDSamliphopangche_Outline';
 }
 .spototo-box > .miniMenu:hover {
    width: 450px;
@@ -78,6 +88,7 @@
 	border-bottom: 2px solid #999;
 	font-size: 20px;
 	line-height: 50px;
+	margin-top: 20px;
 }
 .title > ul > li {
 	display: inline-block;
@@ -120,6 +131,7 @@
 }
 .spototo-basic > .match-time {
     width: 20%;
+    font-size: 20px;
 }
 .spototo-basic > .match {
     width: 70%;
@@ -137,9 +149,11 @@
     display: flex;
     line-height: 50px;
     text-align: center;
+     color: white;
 }
 .match > .spototo-a {
-    background-color: #226f54;
+    /* background-color: #226f54; */
+    background-color: rgb(9, 10, 41);
     justify-content: flex-start;
     overflow: hidden;
     border-radius: 0px;
@@ -147,6 +161,7 @@
 .match > .spototo-a > p {
     text-align: left;
     margin-left: 10px;
+    font-size: 20px;
 }
 .match > div > img {
     display: block;
@@ -156,7 +171,8 @@
     width: 90%;
 }
 .match > .spototo-b {
-    background-color: #da2c38;
+    /* background-color: #da2c38; */
+    background-color: rgb(194, 40, 40);
     flex-direction: row-reverse;
     justify-content: flex-end;
     overflow: hidden;
@@ -165,10 +181,10 @@
 .match > .spototo-b > p {
     text-align: right;
     margin-right: 10px;
+    font-size: 20px;
 }
 .match > .spototo-d {
-    background-color: gray;
-    font-size: 0;
+	background-color: #777;
     text-align: center;
     margin: 0 auto;
     border-radius: 0px;
@@ -179,9 +195,12 @@
     justify-content: space-around;
 }
 .details > .detail-text {
-	border: 1px solid red;
+	display: inline-block;
     width: 20%;
+    height: 50px;
+    line-height: 50px;
     text-align: center;
+    
     /* padding-left: 30px; */
 }
 .details > .detail-btn {
@@ -199,23 +218,31 @@
     height: 40px;
     margin: 10px 0;
 }
+
 .detail-btn > .match-btns > button {
     width: 25%;
     font-size: 1.2rem;
     color: white;
 }
 .detail-btn > .match-btns > button:nth-child(1){
-   background-color: #226f54; 
+   background-color: rgb(9, 10, 41);
 }
 .detail-btn > .match-btns > button:nth-child(2){
-   background-color: gray;
+   background-color: #777;
 }
 .detail-btn > .match-btns > button:nth-child(3){
-   background-color: #da2c38;
+   background-color: rgb(194, 40, 40);
 }
 .detail-btn > .match-btns > button:hover {
-    background-color: black;
+    background-color: white;
+    color: black;
+    border: 3px solid black;
     cursor: pointer;
+}
+.detail-btn > .user-point > p {
+	font-size: 1.2rem;
+	margin-left: 50px;
+	line-height: 40px;
 }
 .detail-btn > .user-point > input {
     font-size: 1.2rem;
@@ -224,6 +251,7 @@
     text-align: center;
     width: 35%;
 }
+
 .detail-btn > .user-point > #toto-ok{
    width: 50px;
    border-radius: 50px;

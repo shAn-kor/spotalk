@@ -60,7 +60,7 @@
       
       <div class="title">
       		<ul>
-      			<li>경 기 일 시</li>
+      			<li>경 기 날 짜</li>
       			<li>경 기 팀</li>
       		</ul>
       </div>
@@ -84,16 +84,7 @@
                          ${game.gameDate }
                          </p>
                          <div class="match">
-<<<<<<< HEAD
-                             <div class="spototo-a">
-                                 <img src="" alt="icon" class="imgA">
-                                 <p class="a">${game.teamA}</p>
-                             </div>
-                             <div class="spototo-d" ></div>
-                             <div class="spototo-b" >
-                                 <img src="" alt="icon" class="imgB">
-                                 <p class="b">${game.teamB}</p>
-=======
+
                              <div class="spototo-a" id="${game.gameId}-teamA-graph">
                                  <img src="" alt="icon">
                                  <p id="${game.gameId}-teamA">${game.teamA}</p>
@@ -102,31 +93,27 @@
                              <div class="spototo-b" id="${game.gameId}-teamB-graph">
                                  <img src="" alt="icon">
                                  <p id="${game.gameId}-teamB">${game.teamB}</p>
->>>>>>> master
-                                 
+
                              </div>
                          </div>
                          <img src="../img/arrow_drop.svg" alt="">
                      </div>
                      <div class="details">
                          <div class="detail-text">
-                             <p>남은시간</p>
+                             <p>승부 종료까지</p>
                              <p class="Timer"></p>
                          </div>
                          <div class="detail-btn">
                              <div class="match-btns">
-                                 <button id="btn-${game.gameId}-${game.teamA}" class="win-a">${game.teamA}팀 승리</button>
-                                 <button id="btn-${game.gameId}-draw" class="win-d">무승부</button>
-                                 <button id="btn-${game.gameId}-${game.teamB}" class="win-b">${game.teamB}팀 승리</button>
+                                 <button id="btn-${game.gameId}-${game.teamA}" class="win">${game.teamA}팀 승리</button>
+                                 <button id="btn-${game.gameId}-draw" class="win">무승부</button>
+                                 <button id="btn-${game.gameId}-${game.teamB}" class="win">${game.teamB}팀 승리</button>
                              </div>
                              <div class="user-point">
-<<<<<<< HEAD
-                                 <input type="text" name="user-p" id="user-p" value="나의 포인트 ${sessionScope.point}" readonly>
-                                 <input type="text" name="using-p" id="using-p" placeholder="사용할 포인트" >
-=======
+								<p>나의 포인트 </p>
                                  <input type="number" name="user-p" id="user-p" value="${sessionScope.point}" readonly>
                                  <input type="number" name="using-p" id="using-p" placeholder="사용할 포인트">
->>>>>>> master
+
                                  <input type="button" name="toto-ok" id="toto-ok" value="확인">
                              </div>
                          </div>

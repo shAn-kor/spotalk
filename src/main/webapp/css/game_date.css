@@ -15,29 +15,32 @@
 /* 축/야/농 메뉴 */
 
 .sportMenu{
-   width: 100px;
+   width: 110px;
    height: 50px;
    margin-top: 50px;
-   margin-left: 70px;
+   margin-left: 50px;
    overflow: hidden;
    font-size:20px;
    
 }
 .sportMenu > ul {
-   width: 400px;
+   width: 450px;
    height: 50px;
    
 }
 .sportMenu > ul > li {
    display: inline-block;
-   width: 100px;
+   width: 32%;
    height:50px;
    line-height: 50px;
    text-align: center;
    
 }
+.sportMenu > ul > li > a {
+	font-family: 'SDSamliphopangche_Outline';	
+}
 .sportMenu:hover {
-   width: 400px;
+   width: 450px;
    font-size:30px;
    /* border:1px solid black; */
     transition: 0.5s ease-in-out; 
@@ -66,7 +69,7 @@
     width: 100%;
     height: 50px;
     background-color: white;
-
+	
     
 }   
 
@@ -80,7 +83,6 @@
     text-align: center;
     margin:0;
 }
-
 /* ---------------------------------------------- */
 
 
