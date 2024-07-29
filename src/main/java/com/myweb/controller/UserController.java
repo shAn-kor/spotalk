@@ -141,6 +141,12 @@ public class UserController extends HttpServlet{
 			UserService service = new UserServiceImpl();
 			service.getUserRankPage(request, response);
 		}
+
+		// 출석부 확인
+		if (command.equals("/checkIsAttendance.user")) {
+			UserService service = new UserServiceImpl();
+			service.checkAttendance(request, response);
+		}
 	}
 	
 }

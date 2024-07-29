@@ -116,33 +116,53 @@
     line-height: 50px;
     text-align: center;
 }
+.match > div > div {
+    text-align: center;
+    align-items: center;
+}
 .match > .spototo-a {
     background-color: rgb(16, 92, 16);
-    justify-content: flex-start;
     overflow: hidden;
     border-radius: 0px;
+    justify-content: flex-start;
 }
-.match > .spototo-a > p {
+.match > .spototo-a > div {
+    display: flex;
+    justify-content: flex-start;
+    padding-left: 5px;
+}
+.match > .spototo-a > div > p {
+    float: left;
     text-align: left;
     margin-left: 10px;
 }
-.match > div > img {
-    display: block;
-    width: 10%;
+.match > .spototo-a > div > img {
+    float: left;
 }
-.match > div > p {
-    width: 90%;
+.match > div > div > img {
+    display: block;
+    width: 30%;
 }
 .match > .spototo-b {
     background-color: rgb(151,31,31);
     flex-direction: row-reverse;
-    justify-content: flex-end;
+    display: flex;
+    justify-content: flex-start;
     overflow: hidden;
     border-radius: 0px;
 }
-.match > .spototo-b > p {
+.match > .spototo-b > div {
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 5px;
+}
+.match > .spototo-b > div > p {
+    float: right;
     text-align: right;
     margin-right: 10px;
+}
+.match > .spototo-b > div > img {
+    float: right;
 }
 .match > .spototo-d {
     background-color: gray;

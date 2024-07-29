@@ -66,11 +66,5 @@ public class GameController extends HttpServlet {
 			service.getBasketDate(request, response);
 			
 		}
-		
-		else if(command.equals("/game/gaming.game")) { //진행중인 승부
-			GameService service = new GameServiceImpl();
-			service.getGaming(request, response);
-			
-		}
 	}
 }

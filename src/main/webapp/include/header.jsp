@@ -74,8 +74,31 @@
                         <p class="grade" data-grade="${sessionScope.grade_id}">등급</p>
                     </div>
                 </div>
-                <script src="${pageContext.request.contextPath}/js/header.js"></script>
+                <div class="modal" id="random-modal">
+                    <div class="modal_popup">
+                        <h3>출석 보상!!</h3>
+                        <div id="menu">
+                            <canvas width="300" height='300'></canvas>
+                        </div>
+                        <button id="random-btn" class="close_btn">돌려돌려 돌림판</button>
+                    </div>
+                </div>
+                <div class="modal" id="random-result-modal">
+                    <div class="modal_popup" >
+                        <h3>출석 보상 결과 !!!!</h3>
+                        <div id="random-result">축하드립니다. </div>
+                        <button type="button" id="modal-close-btn" class="close_btn">닫기</button>
+                    </div>
+                </div>
+            <script src="${pageContext.request.contextPath}/js/header.js"></script>
             </c:when>
+            <c:otherwise>
+                <div id="myInfo">
+                    <div class="float">
+                        <h3 class="name">회원가입하고 500p 받기</h3>
+                    </div>
+                </div>
+            </c:otherwise>
         </c:choose>
     </div>
 </div>

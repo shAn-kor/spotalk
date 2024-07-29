@@ -1,22 +1,28 @@
 @import url(default.css);
 
-
-
-
-.main { 
-    /* border: 1px solid black;  */
-    background-color: antiquewhite;
-    height: 600px;
-    margin: 0 auto;
-    display: flex; /*블록 컨테이너로 설정*/
-    justify-content: center;
-}
-
-.rankWrap {
-    /* border: 1px solid yellow; */
-    background-color: rgb(255,255,255,0.7);
-    width: 800px;
+.rank-white-wrap {
+    width: 1400px;
     height: 650px;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+}
+.white-background{
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    background-color: white;
+    opacity: 0.4;
+}
+.rankWrap {
+    position: absolute;
+    top: 0;
+    left: 300px;
+
+    /* border: 1px solid yellow; */
+    background-color: rgb(241, 215, 181);
+    width: 800px;
+    height: 100%;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
