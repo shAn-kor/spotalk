@@ -1,6 +1,7 @@
 package com.myweb.user.model;
 
 import java.sql.Date;
+import java.text.DecimalFormat;
 import java.util.Arrays;
 
 public class UserDTO {
@@ -192,5 +193,19 @@ public class UserDTO {
         }
 
         return dto;
+    }
+
+    public String getPointFmt() {
+        // 포맷된 숫자를 저장할 변수
+        String formattedPoint = "";
+
+        // 문자열을 숫자로 변환
+        Long number = Long.parseLong(point);
+
+        // 숫자를 포맷
+        DecimalFormat decimalFormat = new DecimalFormat("#,###");
+        formattedPoint = decimalFormat.format(number);
+
+        return formattedPoint;
     }
 }

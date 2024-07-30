@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-
 <%@ include file="include/header.jsp"%>
 
 <!-- body -->
@@ -142,7 +141,7 @@
 				                   <c:otherwise>rank-1</c:otherwise>
 				               </c:choose>" 
 	                    	value="${userDTO.nick}" disabled>
-	                    <input type="text" name="point" value="${userDTO.point} P" disabled>
+	                    <input type="text" name="point" value="${userDTO.pointFmt} P" disabled>
 	                </div>
 	            </c:forEach>
         	</div>

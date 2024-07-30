@@ -26,7 +26,7 @@
                     <p>${(status.count)+((page-1)*pageSize)}</p>
                     <p class="rank-user-grade" id="rank-${dto.gradeId}"> ${dto.gradeId} </p>
                     <p>${dto.nick} </p>
-                    <p>${dto.point} </p>
+                    <p>${dto.pointFmt}P </p>
                 </div>
             </c:forEach>
         </div>
