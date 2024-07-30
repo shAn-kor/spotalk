@@ -298,7 +298,7 @@
     position: relative;
 }
 .main-box .tabcontent2 {
-    padding: 20px;
+    padding-left: 20px;
     max-height: 210px;
     min-height: 210px;
     background-color: white;
@@ -320,8 +320,15 @@
 .sport-rank .team-rank-head {
     background-color: white;
     border-bottom: 1px solid #777;
-    text-align: center;
     height: 40px;
+    padding-left: 20px;
+    padding-right: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+.team-rank{
+	display: flex;
+    justify-content: space-between;
 }
 .sport-rank .team-rank-head > span,
 .sport-rank .team-rank-head > input,
@@ -331,15 +338,14 @@
     font-size: 2rem;
     background-color: none;
     outline: none;
-    width: 60px;
+    width: 70px;
     text-align: center;
 }
-.sport-rank .tabcontent2 .team-rank > input:nth-child(2) {
-    min-width: 60px;
-}
-.sport-rank .team-rank-head > input:nth-child(3) {
+.sport-rank .team-rank-head > input:nth-child(3),
+.sport-rank .tabcontent2 .team-rank > input:nth-child(3) {
     width: 90px;
 }
+.sport-rank .team-rank-head > input:last-child,
 .sport-rank .tabcontent2 .team-rank > input:last-child {
     width: 90px;
 }
