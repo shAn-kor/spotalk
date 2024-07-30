@@ -223,7 +223,10 @@ document.addEventListener('DOMContentLoaded', function() {
 				nick: nick.innerHTML,
 				point: resultNum
 			})
-		}).then(response => { return response.json(); })
+		}).then(response => { return response.json();})
+		.then(data => {
+			location.reload();
+		})
 
 	});
 });

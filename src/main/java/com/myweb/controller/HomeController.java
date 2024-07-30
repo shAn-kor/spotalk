@@ -44,10 +44,6 @@ public class HomeController extends HttpServlet {
     	UserService userService = new UserServiceImpl();
         List<UserDTO> userRank = userService.getUserRank(request, response);
 
-        if (userRank.size() > 10) {
-            userRank = userRank.subList(0, 10);
-        }
-
         userService.updateGrade();
 
     	GameService gameService = new GameServiceImpl();
