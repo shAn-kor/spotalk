@@ -13,7 +13,6 @@ import java.io.PrintWriter;
         // user controller
         "/user/myPage.user",
         "/user/changeNick.user",
-        "/user/updatePw.user",
         "/user/logout.user",
         "/user/outMember.user",
         "/user/delete.user",

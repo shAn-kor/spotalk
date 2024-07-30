@@ -89,6 +89,19 @@
 .main-box .sport-schedule{
     width: 440px;
 }
+.schedule{
+	width: 100%;
+}
+.schedule input{
+	text-align: center;
+}
+.scheduleTeam{
+	width: 25%;
+}
+.listNum{
+	display: inline-block;
+	width: 15px;
+}
 .user-rank-wrap {
     width: 100%;
     height: 321px;
