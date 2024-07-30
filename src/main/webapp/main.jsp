@@ -125,7 +125,7 @@
 	                <div class="main-ranker-user">
 	                    <span style="width:40px;"><%=userRankNum++%></span>
 	                    <p class="grade" data-grade="${userDTO.gradeId}">등급</p>
-	                    <%-- <input class="user-grade-id" type="text" name="grade" value="${userDTO.gradeId}" disabled> --%>
+	                    <input class="user-grade-id" style="display:none;" type="text" name="grade" value="${userDTO.gradeId}" disabled>
 	                    <input type="text" name="nick" value="${userDTO.nick}" disabled>
 	                    <input type="text" name="point" value="${userDTO.point} P" disabled>
 	                </div>
