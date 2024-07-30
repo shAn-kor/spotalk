@@ -51,28 +51,31 @@
 /* 축/야/농 메뉴 */
 
 .spototo-box > .miniMenu{
-   width: 110px;
+   width: 130px;
    height: 50px;
-   overflow: hidden;
+   overflow: hidden;  
    font-size: 20px;
 }
 .spototo-box > .miniMenu > ul {
-   width: 450px;
+   width: 520px;
    height: 50px;
+   line-height: 50px;
+}
+.spototo-box > .miniMenu > ul > img{
+	width: 20px;
 }
 .spototo-box > .miniMenu > ul > li {
    display: inline-block;
-   width: 32%;
+   width: 20%;
    height:50px;
    line-height: 50px;
-   text-align: center;
-   
+   text-align: left;
 }
 .spototo-box > .miniMenu > ul > li > a {
 	font-family: 'SDSamliphopangche_Outline';
 }
 .spototo-box > .miniMenu:hover {
-   width: 450px;
+   width: 520px;
    font-size:30px;
    transition: 0.5s ease-in-out; 
 }

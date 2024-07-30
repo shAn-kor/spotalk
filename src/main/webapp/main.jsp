@@ -102,6 +102,14 @@
     <div class="main-user-rank">
         <p><a href="#">승부사 랭킹</a></p>
         <div class="user-rank-wrap">
+        
+			<ul>
+				<li>순위</li>
+				<li>등급</li>
+				<li>닉네임</li>
+				<li>보유포인트</li>
+			</ul>
+        
             <% int userRankNum = 1; %>
             <c:forEach var="userDTO" items="${userRank}">
                 <div class="main-ranker-user">
@@ -109,7 +117,7 @@
                     <p class="grade" data-grade="${userDTO.gradeId}">등급</p>
                     <input class="user-grade-id" type="text" name="grade" value="${userDTO.gradeId}" disabled>
                     <input type="text" name="nick" value="${userDTO.nick}" disabled>
-                    <input type="text" name="point" value="${userDTO.point}" disabled>
+                    <input type="text" name="point" value="${userDTO.point} P" disabled>
                 </div>
             </c:forEach>
         </div>
