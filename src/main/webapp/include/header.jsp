@@ -5,10 +5,11 @@
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-
+    <title>SPOTALK</title>
+	<link rel="shortcut icon" href="${pageContext.request.contextPath}/img/logo_spotalk.png" type="image/x-icon">
+	
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
-
+	
     <%--  custom css  --%>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/default.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/header.css">

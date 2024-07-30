@@ -236,6 +236,32 @@ public class UserServiceImpl implements UserService{
 		UserDTO dto = getUserById(request.getSession().getAttribute("user_id").toString());
 
 		sqlSessionFactory.openSession(true).close();
+		
+		// 숫자의 자릿수에 따라 패턴 결정
+	    String pattern = "###,###,###,###,###,###"; // 기본 패턴
+	    switch (dto.getPoint().length()) {
+	        case 1: pattern = "#"; break;
+	        case 2: pattern = "##,###"; break;
+	        case 3: pattern = "###,###"; break;
+	        case 4: pattern = "####,###"; break;
+	        case 5: pattern = "##,###,###"; break;
+	        case 6: pattern = "###,###,###"; break;
+	        case 7: pattern = "####,###,###"; break;
+	        case 8: pattern = "##,###,###,###"; break;
+	        case 9: pattern = "###,###,###,###"; break;
+	        case 10: pattern = "####,###,###,###"; break;
+	        case 11: pattern = "##,###,###,###,###"; break;
+	        case 12: pattern = "###,###,###,###,###"; break;
+	        case 13: pattern = "####,###,###,###,###"; break;
+	        case 14: pattern = "##,###,###,###,###,###"; break;
+	        case 15: pattern = "###,###,###,###,###,###"; break;
+	        case 16: pattern = "####,###,###,###,###,###"; break;
+	        case 17: pattern = "##,###,###,###,###,###,###"; break;
+	        case 18: pattern = "###,###,###,###,###,###,###"; break;
+	        default: pattern = "###,###,###"; break;
+	    }
+	    request.setAttribute("formatPattern", pattern);
+	    
 		request.setAttribute("dto", dto);
 		request.getRequestDispatcher("mypage.jsp").forward(request, response);
 	}
