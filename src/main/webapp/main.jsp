@@ -109,7 +109,7 @@
 
 <div class="main-box">
     <div class="main-user-rank">
-        <p><a href="#">승부사 랭킹</a></p>
+        <p><a href="user/rank.user">승부사 랭킹</a></p>
         <div class="user-rank-wrap">
         
 			<ul>
