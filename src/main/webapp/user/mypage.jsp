@@ -22,8 +22,8 @@
                 </div>
                 <div>
                     <p class="left">닉 네 임</p>
-                    <input type="text" name="nick" value="${dto.nick}" id="nick">
-                    <button type="button" class="change-nick">수정</button>
+                    <input type="text" name="nick" value="${dto.nick}" id="nick" disabled>
+                    <button type="button" class="nick-btn change-nick">수정</button>
                 </div>
                 <div>
                     <p class="left">회 원 등 급</p>

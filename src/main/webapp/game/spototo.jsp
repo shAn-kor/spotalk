@@ -55,8 +55,15 @@
 	            </c:otherwise>
 	            </c:choose>
 	         </ul>
+	         
         </div>
       
+      <div class="icons">
+	      <img src="../img/soccer-icon.png" alt="s-icon">
+		  <img src="../img/baseball-icon.png" alt="bs-icon">
+		  <img src="../img/basketball-icon.png" alt="bk-icon">  	
+      </div>
+
       
       
       <div class="title">

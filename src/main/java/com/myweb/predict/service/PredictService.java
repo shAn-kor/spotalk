@@ -11,7 +11,9 @@ public interface PredictService {
 
     void betPoint(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
 
-    void closeGameSqlSession();
+    void closeSqlSession();
 
     void getPredictStatus(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
+
+    void predictUsers();
 }

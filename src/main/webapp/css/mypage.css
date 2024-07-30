@@ -99,9 +99,9 @@
 .myPage-box button:hover {
     background-color: #666666;
 }
-.pointBtn, .change-nick{
+.pointBtn, .nick-btn{
 	height: 26px;
-	width: 35px;
+	min-width: 35px;
 	vertical-align: middle;
 }
 .exitBtn:hover{

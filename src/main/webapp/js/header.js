@@ -96,26 +96,35 @@ document.addEventListener('DOMContentLoaded', function() {
 	let resultNum = 0;
 	let isAttendance = false;
 
+	console.log(nick);
+	let now = new Date();
+	let midnight = new Date();
+	midnight.setHours(24, 0, 0, 0);  // 오늘 밤 12시 설정
+	let timeUntilMidnight = midnight - now;
 
-	fetch('checkIsAttendance.user', {
-		method: 'POST',
-		contentType: 'application/json',
-		body: JSON.stringify({nick: nick.value})
-	}).then(response => { return response.json(); })
-		.then(data => {
-			if (data.msg === 'ok') isAttendance = true;
-		})
+// 정해진 시간 후에 세션 스토리지에서 데이터 제거
+	setTimeout(function() {
+		sessionStorage.removeItem('msg');
+	}, timeUntilMidnight);
 
-	if (isAttendance) {
+	if (sessionStorage.getItem("msg") == null || nick.value !== sessionStorage.getItem("nick")) {
+		fetch('checkIsAttendance.user', {
+			method: 'POST',
+			contentType: 'application/json',
+			body: JSON.stringify({nick: nick.innerHTML})
+		}).then(response => { return response.json() })
+			.then(data => {
+				console.log(data.msg);
+				sessionStorage.setItem("msg", data.msg);
+				sessionStorage.setItem("nick", nick.value);
+				/*if (data.msg === 'ok')*/ runRandomModal();
+			})
+	}
+
+	function runRandomModal() {
 		randomModal.classList.add('on');
 
 		console.log(Date.now());
-
-		let obj = {
-			value: nick.innerHTML,
-			expire: Date.now()
-		};
-		localStorage.setItem('nick', JSON.stringify(obj));
 
 		newMake();
 	}
@@ -174,9 +183,9 @@ document.addEventListener('DOMContentLoaded', function() {
 		let alpha = Math.floor(Math.random()*100);
 
 		setTimeout(() => {
-			let ran = Math.floor(Math.random() * points.length);
+			let ran = Math.floor(Math.random() * (points.length));
 			let arc = 360 / points.length;
-			let rotate = (ran * arc) + 3600 + (arc * 3) - (arc/4) + alpha;
+			let rotate = (ran * arc) + 36000 + (arc/2);
 
 			console.log(ran);
 			console.log(arc);
@@ -185,7 +194,7 @@ document.addEventListener('DOMContentLoaded', function() {
 			resultNum = points[ran-1];
 			console.log(resultNum);
 
-			canvas.style.transform = `rotate(-${rotate}deg`;
+			canvas.style.transform = `rotate(${rotate}deg)`;
 			canvas.style.transition = '2s';
 
 			setTimeout(() => {
@@ -203,5 +212,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
 		resultModal.display='none';
 		randomModal.display='none';
+
+		fetch('inputBonusPoint.user', {
+			method: 'POST',
+			contentType: 'application/json',
+			body: JSON.stringify({
+				nick: nick.innerHTML,
+				point: resultNum
+			})
+		}).then(response => { return response.json(); })
+
 	});
 });

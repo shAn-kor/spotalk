@@ -2,14 +2,17 @@
 
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 
+
 .game-date-header {margin: 0 auto;}
 
 .game-date-header > .wrap {
-   border-radius: 0px;
-   background-color: white;
+    border-radius: 0px;
+    background-color: white;
     width: 1400px;
     margin: 0 auto;
     overflow: hidden;
+    border-top: 10px double antiquewhite;
+    display: inline-block;
 }   
 
 /* 축/야/농 메뉴 */
@@ -17,11 +20,11 @@
 .sportMenu{
    width: 130px;
    height: 50px;
-   margin-top: 50px;
+   margin-top: 30px;
    margin-left: 50px;
    overflow: hidden;
    font-size:20px;
-   
+   float: left;
 }
 .sportMenu > ul {
    width: 520px;
@@ -37,7 +40,6 @@
    height:50px;
    line-height: 50px;
    text-align: left;
-   
 }
 .sportMenu > ul > li > a {
 	font-family: 'SDSamliphopangche_Outline';	
@@ -48,7 +50,17 @@
    /* border:1px solid black; */
     transition: 0.5s ease-in-out; 
 }
-
+.wrap > .icons {
+	width: 90px;
+	display: inline-block;
+	float:right;
+	margin-top: 50px;
+	margin-right: 50px;
+	margin-bottom: 20px;
+}
+.icons > img {
+	width: 25px;
+}
 /* --------------------------- */
 
 
@@ -60,8 +72,9 @@
 .toto-content .toto-mid {
    width: 1300px;
    margin-left: 50px;
+   
 }
-/* 우측 경기날짜, 시간, 경기, 비고 박스 */
+/* 경기날짜, 시간, 경기, 비고 박스 */
 .toto-mid .mid-top {
     display: inline-block;
     border-top: 1px solid #999; 
@@ -71,7 +84,6 @@
     width: 100%;
     height: 50px;
     background-color: white;
-	
     
 }   
 
@@ -108,7 +120,8 @@
     height: 60px;
     text-align: center;
     background-color: white;    
-   line-height:60px;
+   	line-height:60px;
+   	font-size:20px;
 }
 .game-match {
     display: flex;

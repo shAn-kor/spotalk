@@ -9,15 +9,17 @@ window.onload = function () {
   ckPwd.addEventListener('change', comparePwd);
 
   // 아이디 체크조건
+  let checkIdPatternResult = false;
   function checkId() {
     if (id.value.length > 15 || id.value.length < 4) {
       alert('4~15 자리의 아이디를 입력하세요 :)');
       id.select();
     }
-    if (onlyNumberAndEnglish(id.value) == false) {
+    else if (onlyNumberAndEnglish(id.value) == false) {
       alert('아이디는 영어, 숫자만 입력 가능합니다 :)');
       id.select();
     }
+    else checkIdPatternResult = true;
   }
 
   // 비밀번호 체크조건
@@ -54,6 +56,10 @@ window.onload = function () {
   let idResult = false;
 
   checkNickBtn.addEventListener('click', function() {
+    if (nick.value.length < 1) {
+      alert('닉네임을 입력해주세요');
+      return;
+    }
     fetch("checkDuplicateNick.user", {
       method: 'POST',
       contentType: 'application/json',
@@ -73,6 +79,10 @@ window.onload = function () {
   });
 
   checkIdBtn.addEventListener('click', function() {
+    if (!checkIdPatternResult) {
+      alert('아이디 입력 형식을 확인해주세요');
+      return;
+    }
     fetch("checkDuplicateId.user", {
       method: 'POST',
       contentType: 'application/json',

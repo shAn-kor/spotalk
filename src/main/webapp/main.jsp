@@ -50,6 +50,15 @@
                 <li><a href="#tab2-02">야구</a></li>
                 <li><a href="#tab2-03">농구</a></li>
             </ul>
+            <div class="team-rank-head">
+                <span>순위</span>
+                <input type="text" name="teamName" value="팀" disabled>
+                <input type="text" name="teamName" value="경기수" disabled>
+                <input type="text" name="teamName" value="승" disabled>
+                <input type="text" name="teamName" value="무" disabled>
+                <input type="text" name="teamName" value="패" disabled>
+                <input type="text" name="teamName" value="승률" disabled>
+            </div>
             <div class="tabcontent2">
                 <div id="tab2-01">
                     <% int soccerRankNum = 1; %>
@@ -109,17 +118,20 @@
 				<li>닉네임</li>
 				<li>보유포인트</li>
 			</ul>
-        
-            <% int userRankNum = 1; %>
-            <c:forEach var="userDTO" items="${userRank}">
-                <div class="main-ranker-user">
-                    <span><%=userRankNum++%></span>
-                    <p class="grade" data-grade="${userDTO.gradeId}">등급</p>
-                    <input class="user-grade-id" type="text" name="grade" value="${userDTO.gradeId}" disabled>
-                    <input type="text" name="nick" value="${userDTO.nick}" disabled>
-                    <input type="text" name="point" value="${userDTO.point} P" disabled>
-                </div>
-            </c:forEach>
+			
+        	<div class="rankBox">
+        		<% int userRankNum = 1; %>
+	            <c:forEach var="userDTO" items="${userRank}">
+	                <div class="main-ranker-user">
+	                    <span><%=userRankNum++%></span>
+	                    <p class="grade" data-grade="${userDTO.gradeId}">등급</p>
+	                    <input class="user-grade-id" type="text" name="grade" value="${userDTO.gradeId}" disabled>
+	                    <input type="text" name="nick" value="${userDTO.nick}" disabled>
+	                    <input type="text" name="point" value="${userDTO.point} P" disabled>
+	                </div>
+	            </c:forEach>
+        	</div>
+        	
         </div>
     </div>
     <div class="podium">

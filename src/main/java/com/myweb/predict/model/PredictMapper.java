@@ -10,4 +10,9 @@ public interface PredictMapper {
     int insertBatting(PredictDTO dto);
 
     List<PredictDTO> getTeamChoice(String gameId);
+
+    List<PredictDTO> getPredictResultDateNull();
+    void updatePredictGameResult();
+
+    void updateCDate(PredictDTO dto);
 }

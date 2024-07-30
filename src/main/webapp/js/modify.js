@@ -48,22 +48,42 @@ window.onload = function() {
     }
 
     let nick = document.getElementById('nick');
-    let btn = document.querySelector('.change-nick');
+    let btn = document.querySelector('.myPage-box > div > .nick-btn');
+    let oldValue = nick.value;
 
     btn.addEventListener('click', function() {
-        fetch('changeNick.user', {
-            method: 'POST',
-            contentType: 'application/json',
-            body: JSON.stringify({nick: nick.value})
-        })
-        .then(response => { return response.json() })
-        .then(data => {
-            if (data.msg === 'ok') {
-                alert('수정 완료');
+        if (btn.classList.contains('change-nick')) {
+            btn.classList.remove('change-nick');
+            btn.classList.add('submit-nick');
+            btn.innerHTML = '변경하기';
+            nick.disabled = false;
+        } else {
+
+            btn.classList.remove('submit-nick');
+            btn.classList.add('change-nick');
+            btn.innerHTML = '수정';
+            nick.disabled = true;
+
+            if (nick.value === "" || nick.value == null) {
+                alert('빈 문자는 보낼 수 없습니다.');
+                nick.value = oldValue;
+                return;
             }
-            else {
-                alert('중복되었습니다!');
-            }
-        })
+
+            fetch('changeNick.user', {
+                method: 'POST',
+                contentType: 'application/json',
+                body: JSON.stringify({nick: nick.value})
+            })
+                .then(response => { return response.json() })
+                .then(data => {
+                    if (data.msg === 'ok') {
+                        alert('수정 완료');
+                    }
+                    else {
+                        alert('중복되었습니다!');
+                    }
+                })
+        }
     })
 }

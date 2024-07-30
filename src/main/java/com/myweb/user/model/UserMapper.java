@@ -22,4 +22,6 @@ public interface UserMapper {
     void updateGrade(UserDTO dto);
 
     Date getDateByAttendance(String nick);
+
+    void updateAttendanceDate(String nick);
 }
