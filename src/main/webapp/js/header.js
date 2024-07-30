@@ -107,6 +107,9 @@ document.addEventListener('DOMContentLoaded', function() {
 		sessionStorage.removeItem('msg');
 	}, timeUntilMidnight);
 
+	// runRandomModal();
+
+
 	if (sessionStorage.getItem("msg") == null || nick.value !== sessionStorage.getItem("nick")) {
 		fetch('checkIsAttendance.user', {
 			method: 'POST',
@@ -117,7 +120,7 @@ document.addEventListener('DOMContentLoaded', function() {
 				console.log(data.msg);
 				sessionStorage.setItem("msg", data.msg);
 				sessionStorage.setItem("nick", nick.value);
-				/*if (data.msg === 'ok')*/ runRandomModal();
+				if (data.msg === 'ok') runRandomModal();
 			})
 	}
 
@@ -177,7 +180,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	randomBtn.addEventListener('click', rotate);
 
 	function rotate() {
-
+		randomBtn.disabled = true;
 		canvas.style.transform = 'initial';
 		canvas.style.transition = 'initial';
 		let alpha = Math.floor(Math.random()*100);

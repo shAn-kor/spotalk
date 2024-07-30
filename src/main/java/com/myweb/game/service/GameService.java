@@ -23,6 +23,4 @@ public interface GameService {
 	List<GameDTO> getSoccerList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
 	List<GameDTO> getBaseballList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
 	List<GameDTO> getBasketList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
-
-	void closeGameSqlSession();
 }

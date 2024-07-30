@@ -43,7 +43,7 @@ public class UserServiceImpl implements UserService{
 		UserMapper mapper = sql.getMapper(UserMapper.class);
 		String id = mapper.findId(dto);
 
-		sqlSessionFactory.openSession(true).close();
+		sql.close();
 		
 		if(id == null) {
 			request.setAttribute("msg", "아이디를 찾을 수 없습니다.");
@@ -71,7 +71,6 @@ public class UserServiceImpl implements UserService{
 		String id = request.getParameter("id");
 		String answer = request.getParameter("answer");
 		UserDTO dto = getUserById(id);
-		closeSqlSession();
 
 		if(!dto.getPwa().equals(answer)) {
 			request.setAttribute("dto", dto);
@@ -95,7 +94,7 @@ public class UserServiceImpl implements UserService{
 		HttpSession session = request.getSession();
 		if(session != null) session.invalidate();
 
-		closeSqlSession();
+		sql.close();
 		
 		response.setContentType("text/html;charset=utf-8");
         PrintWriter out = response.getWriter();
@@ -164,7 +163,7 @@ public class UserServiceImpl implements UserService{
 		UserMapper mapper = sql.getMapper(UserMapper.class);
 		mapper.createUser(dto);
 
-		sqlSessionFactory.openSession(true).close();
+		sql.close();
 
 		response.sendRedirect("createSuccess.user");
 	}
@@ -175,8 +174,6 @@ public class UserServiceImpl implements UserService{
 		String pw = request.getParameter("user_pw");
 		
 		UserDTO dto = getUserById(id);
-
-		closeSqlSession();
 		
 		if(dto == null) {
 			request.setAttribute("msg", "아이디가 존재하지 않습니다.");
@@ -206,8 +203,6 @@ public class UserServiceImpl implements UserService{
 
 		UserDTO dto = getUserById(id);
 
-		sqlSessionFactory.openSession(true).close();
-
 		System.out.println(id);
 		System.out.println(dto.toString());
 		System.out.println(pw);
@@ -228,8 +223,6 @@ public class UserServiceImpl implements UserService{
 		UserDTO dto = getUserById(request.getSession().getAttribute("user_id").toString());
 
 		System.out.println(dto.toString());
-
-		sqlSessionFactory.openSession(true).close();
 		
 		// 숫자의 자릿수에 따라 패턴 결정
 	    String pattern = "###,###,###,###,###,###"; // 기본 패턴
@@ -279,13 +272,14 @@ public class UserServiceImpl implements UserService{
 			UserMapper mapper = sql.getMapper(UserMapper.class);
 			dto.setNick(nick);
 			mapper.changeNick(dto);
+			sql.close();
+
+			session.setAttribute("nick", nick);
 
 			json.put("msg", "ok");
 		} else {
 			json.put("msg", "no");
 		}
-
-		sqlSessionFactory.openSession(true).close();
 
 		response.setContentType("application/json;charset=utf-8");
 		PrintWriter out = response.getWriter();
@@ -303,8 +297,6 @@ public class UserServiceImpl implements UserService{
 			pageNum = "1";
 		}
 
-		sqlSessionFactory.openSession(true).close();
-
 		request.setAttribute("list", list);
 		request.getRequestDispatcher("userRank.jsp").forward(request, response);
 	}
@@ -313,7 +305,9 @@ public class UserServiceImpl implements UserService{
 	public List<UserDTO> getUserRank(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		SqlSession sql = sqlSessionFactory.openSession(true);
 		UserMapper mapper = sql.getMapper(UserMapper.class);
-        return mapper.getUserList();
+		List<UserDTO> list = mapper.getUserList();
+		sql.close();
+        return list;
 	}
 
 	@Override
@@ -331,8 +325,6 @@ public class UserServiceImpl implements UserService{
 		} else {
 			json.put("msg", "no");
 		}
-
-		sqlSessionFactory.openSession(true).close();
 
 		response.setContentType("application/json;charset=utf-8");
 		PrintWriter out = response.getWriter();
@@ -356,8 +348,6 @@ public class UserServiceImpl implements UserService{
 			json.put("msg", "no");
 		}
 
-		sqlSessionFactory.openSession(true).close();
-
 		response.setContentType("application/json;charset=utf-8");
 		PrintWriter out = response.getWriter();
 		out.print(json.toJSONString());
@@ -367,6 +357,7 @@ public class UserServiceImpl implements UserService{
 		SqlSession sql = sqlSessionFactory.openSession(true);
 		UserMapper mapper = sql.getMapper(UserMapper.class);
 		UserDTO dto = mapper.getUserByNick(nick);
+		sql.close();
 
         return dto == null;
     }
@@ -374,19 +365,17 @@ public class UserServiceImpl implements UserService{
 	private UserDTO getUserById (String id) {
 		SqlSession sql = sqlSessionFactory.openSession(true);
 		UserMapper mapper = sql.getMapper(UserMapper.class);
-
-        return mapper.getUserById(id);
+		UserDTO dto = mapper.getUserById(id);
+		sql.close();
+        return dto;
 	}
 
 	private void deleteUser (String id) {
 		SqlSession sql = sqlSessionFactory.openSession(true);
 		UserMapper mapper = sql.getMapper(UserMapper.class);
 		mapper.deleteUser(id);
-	}
-
-	@Override
-	public void closeSqlSession() {
-		sqlSessionFactory.openSession(true).close();
+		sql.close();
+		sql.close();
 	}
 
 	@Override
@@ -425,6 +414,7 @@ public class UserServiceImpl implements UserService{
 
 			mapper.updateGrade(dto);
 		}
+		sql.close();
 	}
 
 	@Override
