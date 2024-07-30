@@ -2,66 +2,79 @@
 
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 
+
 .game-date-header {margin: 0 auto;}
 
 .game-date-header > .wrap {
-   border-radius: 0px;
-   background-color: white;
+    border-radius: 0px;
+    background-color: white;
     width: 1400px;
     margin: 0 auto;
     overflow: hidden;
+    border-top: 10px double antiquewhite;
 }   
 
 /* 축/야/농 메뉴 */
 
 .sportMenu{
-   width: 110px;
+   width: 130px;
    height: 50px;
-   margin-top: 50px;
+   margin-top: 30px;
    margin-left: 50px;
    overflow: hidden;
    font-size:20px;
-   
+   float: left;
 }
 .sportMenu > ul {
-   width: 450px;
+   width: 520px;
    height: 50px;
-   
+   line-height: 50px;
+}
+.sportMenu > ul > img {
+	width: 20px;
 }
 .sportMenu > ul > li {
    display: inline-block;
-   width: 32%;
+   width: 20%;
    height:50px;
    line-height: 50px;
-   text-align: center;
-   
+   text-align: left;
 }
 .sportMenu > ul > li > a {
 	font-family: 'SDSamliphopangche_Outline';	
 }
 .sportMenu:hover {
-   width: 450px;
+   width: 520px;
    font-size:30px;
    /* border:1px solid black; */
     transition: 0.5s ease-in-out; 
-    
-   
 }
-
+.wrap > .icons {
+	width: 90px;
+	display: inline-block;
+	float:right;
+	margin-top: 50px;
+	margin-right: 50px;
+	margin-bottom: 20px;
+}
+.icons > img {
+	width: 25px;
+}
 /* --------------------------- */
 
 
-.right {
+.toto-content {
    width: 100%;
    text-align: center;
    margin-top: 20px;
 }
-.right .mid-right {
+.toto-content .toto-mid {
    width: 1300px;
    margin-left: 50px;
+   
 }
-/* 우측 경기날짜, 시간, 경기, 비고 박스 */
-.mid-right .mid-top {
+/* 경기날짜, 시간, 경기, 비고 박스 */
+.toto-mid .mid-top {
     display: inline-block;
     border-top: 1px solid #999; 
     border-bottom: 1px solid #999; 
@@ -70,11 +83,10 @@
     width: 100%;
     height: 50px;
     background-color: white;
-	
     
 }   
 
-.mid-right .mid-top ul li {
+.toto-mid .mid-top ul li {
     display: inline-block;
     width: 33%;
     line-height: 50px;
@@ -89,7 +101,7 @@
 
 
 
-.mid-right .mid-bottom {
+.toto-mid .mid-bottom {
     /* margin-left: 50px; */
     margin-bottom: 20px;
     width: 100%;
@@ -101,13 +113,14 @@
     
 }
 /* 테이블 박스 */
-.mid-right .mid-bottom table tr td {
+.toto-mid .mid-bottom table tr td {
     border: 1px solid #999;
     width: 445px;
     height: 60px;
     text-align: center;
     background-color: white;    
-   line-height:60px;
+   	line-height:60px;
+   	font-size:20px;
 }
 .game-match {
     display: flex;
@@ -116,7 +129,7 @@
     padding: 2px 0;
     box-sizing: content-box;
 }
-.mid-right .mid-bottom table tr td:nth-child(3) > img {
+.toto-mid .mid-bottom table tr td:nth-child(3) > img {
     display: inline-block;
    width: 50px;
    height: 50px;

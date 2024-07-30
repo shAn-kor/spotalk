@@ -73,8 +73,8 @@ window.onload = function() {
 
     //grade 이미지 변환
     // .grade 요소를 가져옵니다.
-    var gradeElements = document.querySelectorAll('.main-user-rank .user-rank-wrap .main-ranker-user > .grade');
-    var grades = document.querySelectorAll('.main-user-rank .user-rank-wrap .main-ranker-user > .user-grade-id');
+    var gradeElements = document.querySelectorAll('.main-user-rank .user-rank-wrap .rankBox .main-ranker-user > .grade');
+    var grades = document.querySelectorAll('.main-user-rank .user-rank-wrap .rankBox .main-ranker-user > .user-grade-id');
     console.log(gradeElements);
 
     for (var i = 0; i < grades.length; i++) {

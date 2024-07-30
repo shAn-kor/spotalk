@@ -1,5 +1,8 @@
 package com.myweb.listener;
 
+import com.myweb.predict.model.PredictDTO;
+import com.myweb.predict.service.PredictService;
+import com.myweb.predict.service.PredictServiceImpl;
 import com.myweb.user.model.UserDTO;
 import com.myweb.user.service.UserService;
 import com.myweb.user.service.UserServiceImpl;
@@ -40,8 +43,11 @@ public class DailyTaskScheduler implements ServletContextListener {
             // 여기에 매일 자정에 실행할 코드를 작성
             System.out.println("매일 자정에 실행되는 작업");
 
-            UserService service = new UserServiceImpl();
-            service.updateGrade();
+            PredictService predictService = new PredictServiceImpl();
+            predictService.predictUsers();
+
+            UserService userService = new UserServiceImpl();
+            userService.updateGrade();
 
         }, initialDelay, TimeUnit.DAYS.toMillis(1), TimeUnit.MILLISECONDS);
     }

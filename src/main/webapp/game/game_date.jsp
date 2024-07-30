@@ -8,17 +8,15 @@
 <script src="../js/game_date.js" defer></script>
 <header class="game-date-header">
     <div class="wrap">
-        <div class="left">
-            <div class="top-left">
                <!-- 축/야/농 메뉴 -->
                 <c:set var="selectedSport" value="${param.sport}" />
 
                 <div class="sportMenu">
                     <ul>
+                    	<img src="../img/menubtn.png" alt="menubtn">
                         <c:choose>
                             <c:when test="${selectedSport == 'soccer'}">
                                 <li>
-                                   <img src="../img/soccer-icon.png" alt="soccer">
                                    <a href="/spotalk/game/soccerdate.game?sport=soccer">축 구</a>
                                 </li>
                                 <li><a href="/spotalk/game/basedate.game?sport=baseball">야 구</a></li>
@@ -26,7 +24,6 @@
                             </c:when>
                             <c:when test="${selectedSport == 'baseball'}">
                                 <li>
-                                   <img src="../img/baseball-icon.png" alt="baseball">
                                    <a href="/spotalk/game/basedate.game?sport=baseball">야 구</a>
                                 </li>
                                 <li><a href="/spotalk/game/soccerdate.game?sport=soccer">축 구</a></li>
@@ -34,7 +31,6 @@
                             </c:when>
                             <c:when test="${selectedSport == 'basketball'}">
                                 <li>
-                                   <img src="../img/basketball-icon.png" alt="basketball">
                                    <a href="/spotalk/game/basketdate.game?sport=basketball">농 구</a>
                                 </li>
                                 <li><a href="/spotalk/game/soccerdate.game?sport=soccer">축 구</a></li>
@@ -42,7 +38,6 @@
                             </c:when>
                             <c:otherwise>
                                 <li>
-                                   <img src="../img/soccer-icon.png" alt="soccer">
                                    <a href="/spotalk/game/soccerdate.game?sport=soccer">축 구</a>
                                 </li>
                                 <li><a href="/spotalk/game/basedate.game?sport=baseball">야 구</a></li>
@@ -50,12 +45,16 @@
                             </c:otherwise>
                         </c:choose>
                     </ul>
-                </div>
-                
              </div>
-        </div>
-        <div class="right">
-            <div class="mid-right">
+             
+             <div class="icons">
+			      <img src="../img/soccer-icon.png" alt="s-icon">
+				  <img src="../img/baseball-icon.png" alt="bs-icon">
+				  <img src="../img/basketball-icon.png" alt="bk-icon">  	
+		      </div>
+             
+        <div class="toto-content">
+            <div class="toto-mid">
                 <div class="mid-top">
                     <ul>
                         <li>경 기 날 짜</li>
@@ -77,31 +76,31 @@
                              <c:forEach var="game" items="${gamelist}">
                                   <tr>
                                       <td>${game.gameDate}</td>
-                                      <td><fmt:formatDate value="${game.gameDate}" pattern="HH    :    mm" /></td>
+                                      <td><fmt:formatDate value="${game.gameDate}" pattern="HH : mm" /></td>
                                       <td class="game-match">
 
                                          <c:choose>
 	                                        <c:when test="${selectedSport == 'soccer'}">
 	                                           <img src="../img/soccer/${game.teamA}.png" alt="${game.teamA }">
-	                                               ${game.teamA} vs ${game.teamB}
+	                                               ${game.teamA}&nbsp;&nbsp;&nbsp;vs&nbsp;&nbsp;&nbsp;${game.teamB}
 	                                           <img src="../img/soccer/${game.teamB}.png" alt="${game.teamB }">  
 	                                        </c:when>
 	                                        
 	                                        <c:when test="${selectedSport == 'baseball'}">
 	                                           <img src="../img/baseball/${game.teamA}.png" alt="${game.teamA }">
-	                                               ${game.teamA} vs ${game.teamB}
+	                                               ${game.teamA}&nbsp;&nbsp;&nbsp;vs&nbsp;&nbsp;&nbsp;${game.teamB}
 	                                           <img src="../img/baseball/${game.teamB}.png" alt="${game.teamB }">  
 	                                        </c:when>
 	                                        
 	                                        <c:when test="${selectedSport == 'basketball'}">
 	                                           <img src="../img/basketball/${game.teamA}.png" alt="${game.teamA }">
-	                                               ${game.teamA} vs ${game.teamB}
+	                                               ${game.teamA}&nbsp;&nbsp;&nbsp;vs&nbsp;&nbsp;&nbsp;${game.teamB}
 	                                           <img src="../img/basketball/${game.teamB}.png" alt="${game.teamB }">  
 	                                        </c:when>
 	                                        
 	                                        <c:otherwise>
 	                                           <img src="../img/soccer/${game.teamA}.png" alt="${game.teamA }">
-	                                               ${game.teamA} vs ${game.teamB}
+	                                               ${game.teamA}&nbsp;&nbsp;&nbsp;vs&nbsp;&nbsp;&nbsp;${game.teamB}
 	                                           <img src="../img/soccer/${game.teamB}.png" alt="${game.teamB }">  
 	                                        </c:otherwise>
                                          </c:choose>

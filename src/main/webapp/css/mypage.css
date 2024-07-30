@@ -19,7 +19,6 @@
     left: 400px;
     margin: 0 auto;
     background-color: rgb(241, 215, 181);
-    border-radius: 10px;
     width: 600px;
     height: 600px;
     display: flex;
@@ -41,17 +40,19 @@
 .myPage-box > div {
     overflow: hidden;
     width: 100%;
+    height: 40px;
+    line-height: 40px;
 }
 .myPage-box div .left {
     font-size: 20px;
     float: left;
     text-align: left;
-    width: 30%;
+    width: 100px;
+    border-right: 1px solid #777; 
 }
 .myPage-box div .right {
     font-size: 20px;
-    float: right;
-    width: 70%;
+    width: 390px;
 }
 .myPage-box div input {
     font-size: 20px;
@@ -68,23 +69,22 @@
     float: left;
 }
 .myPage-box div:nth-child(4) button {
-    display: block;
+    display: inline-block;
     text-align: center;
     font-size: 20px;
-    margin-left: 5px;
-    padding: 1px 2px;
-}
-.myPage-box div:nth-child(4) button:hover {
-    background-color: #666666;
 }
 .myPage-box .user-grade {
+	margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
+    width: 100px;
 }
 .myPage-box .user-grade > .grade-id {
     display: block;
     width: 30px;
+    line-height: 40px;
+    text-align: center;
 }
 .myPage-box .user-grade > .grade{
     float: right;
@@ -96,37 +96,24 @@
     background-repeat: no-repeat;
     text-indent: -999px;
 }
-.myPage-btn-box {
-    overflow: hidden;
-    width: 50%;
-
-}
-.myPage-btn-box > button {
-    display: block;
-    border-radius: 5px;
-    margin: 20px auto;
-    border: 1px solid #777;
-    line-height: 60px;
-    font-size: 20px;
-    padding: 0 10px;
-}
-.myPage-btn-box > button:hover {
+.myPage-box button:hover {
     background-color: #666666;
 }
-.myPage-btn-box > .left {
-    float: left;
-    width: 40%;
+.pointBtn, .nick-btn{
+	height: 26px;
+	min-width: 35px;
+	vertical-align: middle;
 }
-.myPage-btn-box > .right {
-    float: right;
-    width: 40%;
+.exitBtn:hover{
+	color: red;
+	text-decoration: underline;
 }
 
-
-
-
-
-
+#nick {
+	width: 250px;
+	text-align: center;
+	margin-left: 72px;
+}
 
 
 

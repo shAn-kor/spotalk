@@ -21,87 +21,127 @@
     left: 300px;
     width: 800px;
     background-color: rgb(241, 215, 181);
-    border-radius: 10px;
     height: 600px;
 }
-.top {
+.pointList-box .top {
     width: 100%;
     height: 150px;
     margin: 0 0 10px 0;
 }
-.top .top-title {
+.pointList-box .top .top-title {
     height: 30%;
     line-height: 50px;
     font-size: 30px;
     text-align: center;
 }
-.top .top-bottom {
+.pointList-box .top .top-bottom {
     height: 70%;
     font-size: 60px;
     text-align: center;
     border-bottom: 2px solid #f7f7f7;
 }
-
-.list > ul > select {
+.pointList-box .list > ul {
+    display: block;
+    width: 100%;
+    overflow: hidden;
+    border-bottom: 2px solid #f7f7f7;
+}
+.pointList-box .list > ul > li {
+    float: left;
+}
+.pointList-box .list > ul > li:first-child {
+    margin-left: 20px;
+}
+.pointList-box .list > ul > select {
     width: 90px;
     height: 30px;
     margin-top: 5px;
+    margin-right: 50px;
     text-align: center;
+    display: inline-block;
+    float: right;
 }
 
+.nav{
+    padding-left:0;
+    margin-bottom:0;
+    list-style:none;
+}
+.nav>li{
+    position:relative;
+    display:block;
+}
+.nav>li>a{
+    position:relative;
+    display:block;
+    padding:10px 15px;
+}
+.nav>li>a:focus,
+.nav>li>a.active,
+.nav>li>a:hover{
+    text-decoration:none;
+    background-color:#eee;
+}
+.nav>li.disabled>a{color:#777;}
+.nav>li.disabled>a:focus,
+.nav>li.disabled>a:hover,
+.nav>li.disabled>a:active{
+    /*color:#777;*/
+    /*text-decoration:none;*/
+    /*cursor:not-allowed;*/
+    /*background-color:transparent;*/
+}
 
-
-.tab-content {overflow-y: auto;}
-.tab-content .tab-pane {
+.pointList-box .tab-content {overflow-y: auto;overflow-x: none;resize: none; height: 360px;}
+.pointList-box .tab-content .tab-pane {
     margin: 20px 50px 0 20px;
     height: 360px;
 }
-.tab-content tr {
+.pointList-box .tab-content tr {
     margin: 20px;
     display: flex;    
 }
-.tab-content tr td {
+.pointList-box .tab-content tr td {
     text-align: center;
     vertical-align: top;
 }
-.tab-content tr td input {
+.pointList-box .tab-content tr td input {
     background-color: white;
 }
-.tab-content .s {
+.pointList-box .tab-content .s {
     color: green;
 }
-.tab-content .f {
+.pointList-box .tab-content .f {
     color: red;
 }
 
-
-.wrap > .btn {
-    font-size: 13px;
-    width: 100px;
-    margin-top: 35px;
-    margin-left: 370px;
-}
-.tab-pane .user {
+.pointList-box .tab-pane .all-box > tr > .user {
     width: 100%;
     display: flex;
-    justify-content: space-between;
-    margin: 5px auto;
-    font-size: 20px;
+    justify-content: flex-start;
 }
-.tab-pane .user > input {
-    display: block;
+.pointList-box .tab-pane .user > input {
+    display: inline-block;
     text-align: center;
+    font-size: 25px;
+    margin: 2px auto;
 }
-.tab-pane .user > .p-date {
-    width: 46%;
+.pointList-box .tab-pane .user > .p-date {
+    max-width: 46%;
+    min-width: 45%;
 }
-.tab-pane .user > .p-team {
-    width: 24%;
+.pointList-box .tab-pane .user > .p-team {
+    max-width: 20%;
+    min-width: 19%;
 }
-.tab-pane .user > .p-point {
-    width: 30%;
+.pointList-box .tab-pane .user > .p-point {
+    max-width: 33%;
+    min-width: 32%;
 }
 
-
+.pointList-box .nav {
+	margin: 0 auto;
+	width: 700px;
+}
 
 

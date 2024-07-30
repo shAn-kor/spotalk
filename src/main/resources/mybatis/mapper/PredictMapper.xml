@@ -28,8 +28,23 @@
     <select id="getTeamChoice" parameterType="string" resultType="com.myweb.predict.model.PredictDTO">
         SELECT * FROM PREDICT WHERE GAME_ID = #{gameId}
     </select>
+    <select id="getPredictResultDateNull" resultType="com.myweb.predict.model.PredictDTO">
+        SELECT *
+        FROM PREDICT
+        WHERE C_DATE IS NULL
+    </select>
 
     <insert id="insertBatting" parameterType="com.myweb.predict.model.PredictDTO">
         INSERT INTO PREDICT (USER_ID, GAME_ID, CHOICE, BET_POINT) VALUES (#{userId}, #{gameId}, #{choice}, #{betPoint})
     </insert>
+
+    <update id="updatePredictGameResult">
+        MERGE INTO PREDICT P
+        USING (SELECT * FROM GAMES WHERE GAME_RESULT IS NOT NULL AND GAME_DATE BETWEEN SYSDATE-3 AND SYSDATE) G
+        ON ( P.GAME_ID = G.GAME_ID )
+        WHEN MATCHED THEN UPDATE SET P.P_RESULT = G.GAME_RESULT
+    </update>
+    <update id="updateCDate" parameterType="com.myweb.predict.model.PredictDTO">
+        UPDATE PREDICT SET C_DATE=SYSDATE WHERE GAME_ID=#{gameId} AND USER_ID=#{userId}
+    </update>
 </mapper>

@@ -27,43 +27,51 @@ public class GameServiceImpl implements GameService{
 	public void getSoccer(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		List<GameDTO> gamelist = getSoccerList(request, response);
-		 System.out.println(gamelist);
+		System.out.println(gamelist);
 
-		closeGameSqlSession();
-
-		request.setAttribute("gamelist", gamelist);
+		request.setAttribute("gamelist", getPredictGameList(gamelist));
 		request.getRequestDispatcher("spototo.jsp").forward(request, response);
-		
+
 	}
 
 
 	@Override
 	public void getBase(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		 List<GameDTO> gamelist = getBaseballList(request, response);
-		 System.out.println(gamelist);
+		List<GameDTO> gamelist = getBaseballList(request, response);
+		System.out.println(gamelist);
 
-		closeGameSqlSession();
-
-		request.setAttribute("gamelist", gamelist);
+		request.setAttribute("gamelist", getPredictGameList(gamelist));
 		request.getRequestDispatcher("spototo.jsp").forward(request, response);
-		
+
 	}
-	
-	
+
+
 	@Override
 	public void getBasket(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		
-		 List<GameDTO> gamelist = getBasketList(request, response);
-		 System.out.println(gamelist);
 
-		closeGameSqlSession();
-		
-		request.setAttribute("gamelist", gamelist);
+		List<GameDTO> gamelist = getBasketList(request, response);
+		System.out.println(gamelist);
+
+		request.setAttribute("gamelist", getPredictGameList(gamelist));
 		request.getRequestDispatcher("spototo.jsp").forward(request, response);
-		
+
+	}
+
+	private List<GameDTO> getPredictGameList (List<GameDTO> gamelist) {
+		List<GameDTO> list = new ArrayList<>();
+
+		for (GameDTO dto : gamelist) {
+			if (dto.getGameDate().getTime() > (System.currentTimeMillis() + (86400000*4)) ||
+					dto.getGameDate().getTime() < (System.currentTimeMillis() + (86400000)))
+			{
+				continue;
+			}
+			list.add(dto);
+		}
+		return list;
 	}
 
 	@Override
@@ -71,8 +79,10 @@ public class GameServiceImpl implements GameService{
 			throws ServletException, IOException {
 		SqlSession sql = sqlSessionFactory.openSession(true);
 		GameMapper mapper = sql.getMapper(GameMapper.class);
+		List<GameDTO> list = mapper.getSoccer();
+		sql.close();
 
-		return mapper.getSoccer();
+		return list;
 	}
 
 	@Override
@@ -80,8 +90,10 @@ public class GameServiceImpl implements GameService{
 			throws ServletException, IOException {
 		SqlSession sql = sqlSessionFactory.openSession(true);
 		GameMapper mapper = sql.getMapper(GameMapper.class);
+		List<GameDTO> list = mapper.getBase();
+		sql.close();
 
-		return mapper.getBase();
+		return list;
 	}
 
 	@Override
@@ -89,8 +101,10 @@ public class GameServiceImpl implements GameService{
 			throws ServletException, IOException {
 		SqlSession sql = sqlSessionFactory.openSession(true);
 		GameMapper mapper = sql.getMapper(GameMapper.class);
+		List<GameDTO> list = mapper.getBasket();
+		sql.close();
 
-		return mapper.getBasket();
+		return list;
 	}
 
 
@@ -100,14 +114,13 @@ public class GameServiceImpl implements GameService{
 		SqlSession sql = sqlSessionFactory.openSession(true);
 		GameMapper mapper = sql.getMapper(GameMapper.class);
 
-		closeGameSqlSession();
-		
-		 List<GameDTO> gamelist = mapper.getSoccer();
-		 System.out.println("축구경기일정"+gamelist);
-		
+		List<GameDTO> gamelist = mapper.getSoccer();
+		System.out.println("축구경기일정"+gamelist);
+
+		sql.close();
 		request.setAttribute("gamelist", gamelist);
 		request.getRequestDispatcher("game_date.jsp").forward(request, response);
-		
+
 	}
 
 
@@ -117,13 +130,12 @@ public class GameServiceImpl implements GameService{
 		SqlSession sql = sqlSessionFactory.openSession(true);
 		GameMapper mapper = sql.getMapper(GameMapper.class);
 
-		closeGameSqlSession();
-		
-		 List<GameDTO> gamelist = mapper.getBase();
-		 System.out.println(gamelist);
-		
+		List<GameDTO> gamelist = mapper.getBase();
+		System.out.println(gamelist);
+
+		sql.close();
 		request.setAttribute("gamelist", gamelist);
-		request.getRequestDispatcher("game_date.jsp").forward(request, response);		
+		request.getRequestDispatcher("game_date.jsp").forward(request, response);
 	}
 
 
@@ -132,29 +144,31 @@ public class GameServiceImpl implements GameService{
 			throws ServletException, IOException {
 		SqlSession sql = sqlSessionFactory.openSession(true);
 		GameMapper mapper = sql.getMapper(GameMapper.class);
-		
-		 List<GameDTO> gamelist = mapper.getBasket();
-		 System.out.println("농구일정은 " + gamelist);
-		 if(gamelist.size()==0) {
-				System.out.println("농구는 경기없음");
-			}
 
-		closeGameSqlSession();
-		
+		List<GameDTO> gamelist = mapper.getBasket();
+		System.out.println("농구일정은 " + gamelist);
+		if(gamelist.size()==0) {
+			System.out.println("농구는 경기없음");
+		}
+
+		sql.close();
+
 		request.setAttribute("gamelist", gamelist);
-		request.getRequestDispatcher("game_date.jsp").forward(request, response);	
-		
+		request.getRequestDispatcher("game_date.jsp").forward(request, response);
+
 	}
 
 
-	//진행 중인 승부
+	//승부 예측
 	@Override
 	public List<GameDTO> getGames(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		SqlSession sql = sqlSessionFactory.openSession(true);
 		GameMapper mapper = sql.getMapper(GameMapper.class);
-		
-		return mapper.getGames();
+		List<GameDTO> list = mapper.getGames();
+		sql.close();
+
+		return list;
 	}
 
 	@Override
@@ -165,7 +179,7 @@ public class GameServiceImpl implements GameService{
 
 			if (
 					dto.getGameDate().getTime() > (System.currentTimeMillis() + (86400000*4)) ||
-					dto.getGameDate().getTime() < (System.currentTimeMillis() + (86400000))
+							dto.getGameDate().getTime() < (System.currentTimeMillis() + (86400000))
 			) {
 				continue;
 			}
@@ -177,12 +191,4 @@ public class GameServiceImpl implements GameService{
 
 		return games;
 	}
-
-	public void closeGameSqlSession() {
-		sqlSessionFactory.openSession(true).close();
-	}
-	
-
-
-
 }

@@ -1,58 +1,26 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../include/header.jsp"%>
-	
-	비밀번호 재설정
-	<form action="updatePw.user?id=${id }" method="post">
-		비밀번호 <input type="password" name="pw" id="user-pw1">
-		
-		재확인 <input type="password" name="check" id="user-pw2">
-		
-		<input type="text" id="msg" value="" readonly style="opacity:0;">
-		
-		<input type="submit" value="변경">
-	</form>
-	
-	<script>
-		let pwd = document.getElementById('user-pw1');
-	 	let ckPwd = document.getElementById('user-pw2');
-		let msg = document.getElementById('msg');
-	  	// 각 태그에 변화 시 체크 조건 실행
-	  pwd.addEventListener('change', checkPwd);
-	  ckPwd.addEventListener('change', comparePwd);
-	  
-
-	  // 비밀번호 체크조건
-	  function checkPwd() {
-	    if (strongPassword(pwd.value) == false) {
-	    	msg.style.opacity=1;
-	      msg.value = ("8 자리 이상 영문, 숫자, 특수문자 조합이어야 합니다 :)");
-	      document.querySelector("#user-pw1").value = "";
-	      pwd.focus();
-	    }
-
-	    else msg.style.opacity=0;
-	  }
-
-	  // 비밀번호 확인 체크조건
-	  function comparePwd() {
-	    if (pwd != null && ckPwd != null && pwd.value != ckPwd.value) {
-	    	msg.style.opacity=1;
-		      msg.value = ("비밀번호가 일치하지 않습니다 :)");
-	      document.querySelector("#user-pw2").value = "";
-	      ckPwd.focus();
-	    }
-	    else msg.style.opacity=0;
-	  }
-
-	  function onlyNumberAndEnglish(str) {
-	      return /^[A-Za-z0-9][A-Za-z0-9]*$/.test(str);
-	  }
-
-	  function strongPassword (str) {
-	      return /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/.test(str);
-	  }
-	
-	</script>
-	
+<script src="${pageContext.request.contextPath}/js/findPw3.js"></script>
+<div class="findPw-wrap">
+	<div class="white-background"></div>
+	<div class="findPw_wrap">
+		<h3>비밀번호 재설정</h3>
+		<form action="updatePw.user?id=${id }" method="post" class="resetPw_form" name="resetPwForm">
+			<div class="findId-area" style="margin-bottom: 0;">
+				<input type="password" name="pw" id="user-pw1" class="findId_input">
+				<span class="p-findId top">새 비밀번호</span>
+			</div>
+			<input type="text" id="msg1" value="" readonly style="opacity:0; width: 100%; background: none; text-align: center">
+			<div class="findId-area" style="margin-bottom: 0;">
+				<input type="password" name="check" id="user-pw2" class="findId_input">
+				<span class="p-findId top">비밀번호 재확인</span>
+			</div>	
+			
+			<input type="text" id="msg2" value="" readonly style="opacity:0; width: 100%; background: none; text-align: center">
+			
+			<input type="submit" value="변경" id="resetPw">
+		</form>
+	</div>
+</div>
 <%@ include file="../include/footer.jsp"%>

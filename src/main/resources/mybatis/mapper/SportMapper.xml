@@ -27,13 +27,7 @@
 		VALUES (#{team_name}, #{sports}, #{game_cnt}, #{win_cnt} , #{draw_cnt}, #{lose_cnt}, #{win_rate})
 	</insert>
 
-	<select id="getFootballRank" resultType="com.myweb.team.model.SportDTO">
-		SELECT * FROM TEAM WHERE SPORTS='soccer' ORDER BY WIN_RATE DESC
-	</select>
-	<select id="getBaseballRank" resultType="com.myweb.team.model.SportDTO">
-		SELECT * FROM TEAM WHERE SPORTS='baseball' ORDER BY WIN_RATE DESC
-	</select>
-	<select id="getBasketballRank" resultType="com.myweb.team.model.SportDTO">
-		SELECT * FROM TEAM WHERE SPORTS='basketball' ORDER BY WIN_RATE DESC
+	<select id="getTeamRank" resultType="com.myweb.team.model.SportDTO">
+		SELECT * FROM TEAM ORDER BY WIN_RATE DESC
 	</select>
 </mapper>	

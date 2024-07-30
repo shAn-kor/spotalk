@@ -31,9 +31,11 @@ public interface UserService {
 
 
     void deleteUser(HttpServletRequest request, HttpServletResponse response) throws IOException;
-    void closeSqlSession();
+
 
     void updateGrade();
 
     void checkAttendance(HttpServletRequest request, HttpServletResponse response) throws IOException;
+
+    void inputBonusPoint(HttpServletRequest request, HttpServletResponse response) throws IOException;
 }

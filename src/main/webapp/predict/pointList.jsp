@@ -1,44 +1,51 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <%@ include file="../include/header.jsp"%>
+<%@ page import="java.text.DecimalFormat"%>
+<%
+    // 문자열로 저장된 숫자
+    String point = (String)session.getAttribute("point");
 
-<!-- 부트스트랩 css링크 -->
-<link rel="stylesheet" href="${pageContext.request.contextPath}/bootstrap/css/bootstrap.min.css">
+    // 포맷된 숫자를 저장할 변수
+    String formattedPoint = "";
 
-<!-- 제이쿼리(부트스트랩보다 먼저 링크) -->
-<script src="${pageContext.request.contextPath}/bootstrap/js/jquery-3.7.1.min.js"></script>
+    // 문자열을 숫자로 변환
+    Long number = Long.parseLong(point);
 
-<!-- Popper.js (부트스트랩보다 먼저 링크) -->
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    // 숫자를 포맷
+    DecimalFormat decimalFormat = new DecimalFormat("#,###");
+    formattedPoint = decimalFormat.format(number);
 
-<!-- 부트스트랩 js링크 -->
-<script src="${pageContext.request.contextPath}/bootstrap/js/bootstrap.min.js"></script>
+%>
+
+
+<script src="${pageContext.request.contextPath}/js/pointList.js"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/pointlist.css">
+
 
 <div class="pointList-wrap">
     <div class=white-background></div>
     <div class="pointList-box">
         <div class="top">
             <div class="top-title">
-                <p><strong>SPO</strong>TALK 포인트</p>
+                <p>SPOTALK 포인트</p>
             </div>
             <div class="top-bottom">
-                <p><span>${sessionScope.point}</span> P</p>
-                <button type="button" class="btn btn-default" onclick="location.href='${pageContext.request.contextPath}/user/myPage.user';">마이페이지</button>
+                <p><span><%= formattedPoint %></span> P</p>
             </div>
         </div>
 
         <div class="list">
 
-            <select>
-                <option value="2024">2024년</option>
-                <option value="2023">2023년</option>
-            </select>
             <ul class="nav nav-tabs">
 
-                <li class="active"><a data-toggle="tab" href="#all">전체</a></li>
+                <li ><a class="active" data-toggle="tab" href="#all">전체</a></li>
                 <li><a data-toggle="tab" href="#success">성공 내역</a></li>
                 <li><a data-toggle="tab" href="#fail">실패 내역</a></li>
+	            <select class="pointList-year">
+	                <option value="2024">2024년</option>
+	                <option value="2023">2023년</option>
+	            </select>
             </ul>
 
             <div class="tab-content">

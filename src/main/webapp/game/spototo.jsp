@@ -19,10 +19,11 @@
     	<input type="text" id="user-id-spototo" name="user-id" value="${sessionScope.user_id}" hidden="hidden">
         <div class="miniMenu">
 	          <ul>
+	          <img src="../img/menubtn.png" alt="menubtn">
 	           <c:choose>
 	              <c:when test="${selectedSport == 'soccer'}">
 	                  <li>
-	                      <img src="../img/soccer-icon.png" alt="soccer">
+	                      
 	                  <a href="/spotalk/game/soccerlist.game?sport=soccer">축 구</a>
 	               </li>
 	               <li><a href="/spotalk/game/baselist.game?sport=baseball">야 구</a></li>
@@ -30,7 +31,7 @@
 	            </c:when>
 	            <c:when test="${selectedSport == 'baseball'}">
 	               <li>
-	                  <img src="../img/baseball-icon.png" alt="baseball">
+	                  
 	                  <a href="/spotalk/game/baselist.game?sport=baseball">야 구</a>
 	               </li>
 	               <li><a href="/spotalk/game/soccerlist.game?sport=soccer">축 구</a></li>
@@ -38,7 +39,7 @@
 	            </c:when>
 	            <c:when test="${selectedSport == 'basketball'}">
 	               <li>
-	                  <img src="../img/basketball-icon.png" alt="basketball">
+	                  
 	                  <a href="/spotalk/game/basketlist.game?sport=basketball">농 구</a>
 	               </li>
 	               <li><a href="/spotalk/game/soccerlist.game?sport=soccer">축 구</a></li>
@@ -46,7 +47,7 @@
 	            </c:when>
 	            <c:otherwise>
 	               <li>
-	                  <img src="../img/soccer-icon.png" alt="soccer">
+	                  
 	                  <a href="/spotalk/game/soccerlist.game?sport=soccer">축 구</a>
 	               </li>
 	               <li><a href="/spotalk/game/baselist.game?sport=baseball">야 구</a></li>
@@ -54,8 +55,15 @@
 	            </c:otherwise>
 	            </c:choose>
 	         </ul>
+	         
         </div>
       
+      <div class="icons">
+	      <img src="../img/soccer-icon.png" alt="s-icon">
+		  <img src="../img/baseball-icon.png" alt="bs-icon">
+		  <img src="../img/basketball-icon.png" alt="bk-icon">  	
+      </div>
+
       
       
       <div class="title">

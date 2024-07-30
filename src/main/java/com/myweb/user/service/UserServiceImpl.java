@@ -21,6 +21,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Date;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
 
@@ -42,7 +43,7 @@ public class UserServiceImpl implements UserService{
 		UserMapper mapper = sql.getMapper(UserMapper.class);
 		String id = mapper.findId(dto);
 
-		sqlSessionFactory.openSession(true).close();
+		sql.close();
 		
 		if(id == null) {
 			request.setAttribute("msg", "아이디를 찾을 수 없습니다.");
@@ -93,7 +94,7 @@ public class UserServiceImpl implements UserService{
 		HttpSession session = request.getSession();
 		if(session != null) session.invalidate();
 
-		sqlSessionFactory.openSession(true).close();
+		sql.close();
 		
 		response.setContentType("text/html;charset=utf-8");
         PrintWriter out = response.getWriter();
@@ -118,7 +119,7 @@ public class UserServiceImpl implements UserService{
 		UserMapper mapper = sql.getMapper(UserMapper.class);
 		UserDTO dto = mapper.checkPhone(phone);
 
-		sqlSessionFactory.openSession(true).close();
+		sql.close();
 		
 		response.setContentType("text/html;charset=utf-8");
         PrintWriter out = response.getWriter();
@@ -157,14 +158,12 @@ public class UserServiceImpl implements UserService{
 		dto.setPw(pw);
 		dto.setPwq(pwq);
 		dto.setPwa(pwa);
-		dto.setPoint("500");
-		dto.setGradeId("1");
 
 		SqlSession sql = sqlSessionFactory.openSession(true);
 		UserMapper mapper = sql.getMapper(UserMapper.class);
 		mapper.createUser(dto);
 
-		sqlSessionFactory.openSession(true).close();
+		sql.close();
 
 		response.sendRedirect("createSuccess.user");
 	}
@@ -175,8 +174,6 @@ public class UserServiceImpl implements UserService{
 		String pw = request.getParameter("user_pw");
 		
 		UserDTO dto = getUserById(id);
-
-		sqlSessionFactory.openSession(true).close();
 		
 		if(dto == null) {
 			request.setAttribute("msg", "아이디가 존재하지 않습니다.");
@@ -206,8 +203,6 @@ public class UserServiceImpl implements UserService{
 
 		UserDTO dto = getUserById(id);
 
-		sqlSessionFactory.openSession(true).close();
-
 		System.out.println(id);
 		System.out.println(dto.toString());
 		System.out.println(pw);
@@ -235,7 +230,33 @@ public class UserServiceImpl implements UserService{
 	public void getMyPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		UserDTO dto = getUserById(request.getSession().getAttribute("user_id").toString());
 
-		sqlSessionFactory.openSession(true).close();
+		System.out.println(dto.toString());
+		
+		// 숫자의 자릿수에 따라 패턴 결정
+	    String pattern = "###,###,###,###,###,###"; // 기본 패턴
+	    switch (dto.getPoint().length()) {
+	        case 1: pattern = "#"; break;
+	        case 2: pattern = "##,###"; break;
+	        case 3: pattern = "###,###"; break;
+	        case 4: pattern = "####,###"; break;
+	        case 5: pattern = "##,###,###"; break;
+	        case 6: pattern = "###,###,###"; break;
+	        case 7: pattern = "####,###,###"; break;
+	        case 8: pattern = "##,###,###,###"; break;
+	        case 9: pattern = "###,###,###,###"; break;
+	        case 10: pattern = "####,###,###,###"; break;
+	        case 11: pattern = "##,###,###,###,###"; break;
+	        case 12: pattern = "###,###,###,###,###"; break;
+	        case 13: pattern = "####,###,###,###,###"; break;
+	        case 14: pattern = "##,###,###,###,###,###"; break;
+	        case 15: pattern = "###,###,###,###,###,###"; break;
+	        case 16: pattern = "####,###,###,###,###,###"; break;
+	        case 17: pattern = "##,###,###,###,###,###,###"; break;
+	        case 18: pattern = "###,###,###,###,###,###,###"; break;
+	        default: pattern = "###,###,###"; break;
+	    }
+	    request.setAttribute("formatPattern", pattern);
+	    
 		request.setAttribute("dto", dto);
 		request.getRequestDispatcher("mypage.jsp").forward(request, response);
 	}
@@ -259,13 +280,14 @@ public class UserServiceImpl implements UserService{
 			UserMapper mapper = sql.getMapper(UserMapper.class);
 			dto.setNick(nick);
 			mapper.changeNick(dto);
+			sql.close();
+
+			session.setAttribute("nick", nick);
 
 			json.put("msg", "ok");
 		} else {
 			json.put("msg", "no");
 		}
-
-		sqlSessionFactory.openSession(true).close();
 
 		response.setContentType("application/json;charset=utf-8");
 		PrintWriter out = response.getWriter();
@@ -276,7 +298,12 @@ public class UserServiceImpl implements UserService{
 	public void getUserRankPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		List<UserDTO> list = getUserRank(request, response);
 
-		sqlSessionFactory.openSession(true).close();
+		int pageSize = 10;
+
+		String pageNum = request.getParameter("pageNum");
+		if (pageNum == null) {
+			pageNum = "1";
+		}
 
 		request.setAttribute("list", list);
 		request.getRequestDispatcher("userRank.jsp").forward(request, response);
@@ -287,7 +314,8 @@ public class UserServiceImpl implements UserService{
 		SqlSession sql = sqlSessionFactory.openSession(true);
 		UserMapper mapper = sql.getMapper(UserMapper.class);
 		List<UserDTO> list = mapper.getUserList();
-		return list;
+		sql.close();
+        return list;
 	}
 
 	@Override
@@ -305,8 +333,6 @@ public class UserServiceImpl implements UserService{
 		} else {
 			json.put("msg", "no");
 		}
-
-		sqlSessionFactory.openSession(true).close();
 
 		response.setContentType("application/json;charset=utf-8");
 		PrintWriter out = response.getWriter();
@@ -330,8 +356,6 @@ public class UserServiceImpl implements UserService{
 			json.put("msg", "no");
 		}
 
-		sqlSessionFactory.openSession(true).close();
-
 		response.setContentType("application/json;charset=utf-8");
 		PrintWriter out = response.getWriter();
 		out.print(json.toJSONString());
@@ -341,6 +365,7 @@ public class UserServiceImpl implements UserService{
 		SqlSession sql = sqlSessionFactory.openSession(true);
 		UserMapper mapper = sql.getMapper(UserMapper.class);
 		UserDTO dto = mapper.getUserByNick(nick);
+		sql.close();
 
         return dto == null;
     }
@@ -348,19 +373,17 @@ public class UserServiceImpl implements UserService{
 	private UserDTO getUserById (String id) {
 		SqlSession sql = sqlSessionFactory.openSession(true);
 		UserMapper mapper = sql.getMapper(UserMapper.class);
-
-        return mapper.getUserById(id);
+		UserDTO dto = mapper.getUserById(id);
+		sql.close();
+        return dto;
 	}
 
 	private void deleteUser (String id) {
 		SqlSession sql = sqlSessionFactory.openSession(true);
 		UserMapper mapper = sql.getMapper(UserMapper.class);
 		mapper.deleteUser(id);
-	}
-
-	@Override
-	public void closeSqlSession() {
-		sqlSessionFactory.openSession(true).close();
+		sql.close();
+		sql.close();
 	}
 
 	@Override
@@ -399,6 +422,7 @@ public class UserServiceImpl implements UserService{
 
 			mapper.updateGrade(dto);
 		}
+		sql.close();
 	}
 
 	@Override
@@ -415,17 +439,48 @@ public class UserServiceImpl implements UserService{
 		UserMapper mapper = sql.getMapper(UserMapper.class);
 		Date date = mapper.getDateByAttendance(nick);
 
-		LocalDate localDate = LocalDate.now();
-
-		String jsonStr = "";
-
 		if (date == null) {
-			jsonStr = "{'msg':'ok'}";
+			date = new Date(0L);
+		}
+		System.out.println(date.toLocalDate());
+		LocalDate local = LocalDate.from(date.toLocalDate());
+
+		LocalDateTime nowDate = LocalDateTime.now();
+
+		JSONObject jsonObject = new JSONObject();
+
+		if (local.getDayOfYear() < nowDate.getDayOfYear() || local.getYear() < nowDate.getYear()) {
+			jsonObject.put("msg", "ok");
+			mapper.updateAttendanceDate(nick);
+		} else {
+			jsonObject.put("msg", "no");
 		}
 
-		if (date.equals(localDate)) {
-			jsonStr = "{'msg':'no'}";
+		sql.close();
+
+		response.setContentType("application/json;charset=utf-8");
+		PrintWriter out = response.getWriter();
+		out.print(jsonObject.toJSONString());
+	}
+
+    @Override
+    public void inputBonusPoint(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		JSONObject json = null;
+		try {
+			json = getJSONSObjectByReader(request.getReader());
+		} catch (ParseException | IOException e) {
+			throw new RuntimeException(e);
 		}
+		String nick = json.get("nick").toString();
+		long point = Long.parseLong(json.get("point").toString());
+
+		SqlSession sql = sqlSessionFactory.openSession(true);
+		UserMapper mapper = sql.getMapper(UserMapper.class);
+
+		UserDTO dto = mapper.getUserByNick(nick);
+		dto.setPoint(Long.toString(point + Long.parseLong(dto.getPoint())));
+
+		mapper.setPoint(dto);
 
 		sql.close();
 

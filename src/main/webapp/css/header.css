@@ -37,8 +37,9 @@ input[type='number'] {
     height: 100px;
     margin: 0 auto;
     padding: 0px 15px 0px 7.5px;
-    overflow: hidden;
+    /*overflow: hidden;*/
     background-color: white;
+    position: relative;
 }
 /* 로고 */
 .header .left {
@@ -89,7 +90,7 @@ input[type='number'] {
 .header .right {
     float: right;
     width: 200px; height: 100px;
-    overflow: hidden;
+    /*overflow: hidden;*/
 }
 .right .auth-btn {
     text-align: right;
@@ -138,13 +139,12 @@ input[type='number'] {
     /*팝업 배경*/
     display: none; /*평소에는 보이지 않도록*/
     position: absolute;
-    top:100px;
-    left:0;
+    top:100px; left: 0;
     width: 1400px;
-    height: 100vh;
+    height: 1265px;
     overflow: hidden;
     background: rgba(0,0,0,0.5);
-    z-index: 10;
+    z-index: 200;
 }
 .modal.on {
     display: block;
@@ -152,19 +152,29 @@ input[type='number'] {
 .modal .modal_popup {
     /*팝업*/
     position: absolute;
-    top: 50%;
+    top: 20%;
     left: 50%;
     transform: translate(-50%, -50%);
     padding: 20px;
     background: #ffffff;
     border-radius: 20px;
+    align-items: center;
+
+}
+.modal .modal_popup .modal-btn-box {
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }
 .modal .modal_popup .close_btn {
+    margin-top: 10px;
     display: block;
     padding: 10px 20px;
     background-color: rgb(116, 0, 0);
     border: none;
     border-radius: 5px;
+    max-width: 50%;
+    min-width: 30%;
     color: #fff;
     cursor: pointer;
     transition: box-shadow 0.2s;
@@ -174,20 +184,7 @@ input[type='number'] {
     transition: 2s;
 }
 
-.modal .modal_popup .button {
-    z-index : 1000;
-    background: #febf00;
-    margin-top: 1rem;
-    padding: .8rem 1.8rem;
-    border: none;
-    font-size: 1.5rem;
-    font-weight: bold;
-    border-radius: 5px;
-    transition: .2s;
-    cursor: pointer;
-}
-
-.modal .modal_popup .button:active {
+.modal .modal_popup .close-btn:active {
     background: #444;
     color: #f9f9f9;
 }
