@@ -126,7 +126,22 @@
 	                    <span style="width:40px;"><%=userRankNum++%></span>
 	                    <p class="grade" data-grade="${userDTO.gradeId}">등급</p>
 	                    <input class="user-grade-id" style="display:none;" type="text" name="grade" value="${userDTO.gradeId}" disabled>
-	                    <input type="text" name="nick" value="${userDTO.nick}" disabled>
+	                    <input type="text" name="nick" 
+	                    	class="nick 
+	                    		<c:choose>
+				                   <c:when test="${userDTO.gradeId == 1}">rank-1</c:when>
+				                   <c:when test="${userDTO.gradeId == 2}">rank-2</c:when>
+				                   <c:when test="${userDTO.gradeId == 3}">rank-3</c:when>
+				                   <c:when test="${userDTO.gradeId == 4}">rank-4</c:when>
+				                   <c:when test="${userDTO.gradeId == 5}">rank-5</c:when>
+				                   <c:when test="${userDTO.gradeId == 6}">rank-6</c:when>
+				                   <c:when test="${userDTO.gradeId == 7}">rank-7</c:when>
+				                   <c:when test="${userDTO.gradeId == 8}">rank-8</c:when>
+				                   <c:when test="${userDTO.gradeId == 9}">rank-9</c:when>
+				                   <c:when test="${userDTO.gradeId == 10}">rank-10</c:when>
+				                   <c:otherwise>rank-1</c:otherwise>
+				               </c:choose>" 
+	                    	value="${userDTO.nick}" disabled>
 	                    <input type="text" name="point" value="${userDTO.point} P" disabled>
 	                </div>
 	            </c:forEach>
