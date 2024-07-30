@@ -37,8 +37,9 @@ input[type='number'] {
     height: 100px;
     margin: 0 auto;
     padding: 0px 15px 0px 7.5px;
-    overflow: hidden;
+    /*overflow: hidden;*/
     background-color: white;
+    position: relative;
 }
 /* 로고 */
 .header .left {
@@ -89,7 +90,7 @@ input[type='number'] {
 .header .right {
     float: right;
     width: 200px; height: 100px;
-    overflow: hidden;
+    /*overflow: hidden;*/
 }
 .right .auth-btn {
     text-align: right;
@@ -138,13 +139,12 @@ input[type='number'] {
     /*팝업 배경*/
     display: none; /*평소에는 보이지 않도록*/
     position: absolute;
-    top:100px;
-    left:0;
+    top:100px; left: 0;
     width: 1400px;
-    height: 100vh;
+    height: 1265px;
     overflow: hidden;
     background: rgba(0,0,0,0.5);
-    z-index: 10;
+    z-index: 200;
 }
 .modal.on {
     display: block;
@@ -152,14 +152,12 @@ input[type='number'] {
 .modal .modal_popup {
     /*팝업*/
     position: absolute;
-    top: 50%;
+    top: 20%;
     left: 50%;
     transform: translate(-50%, -50%);
     padding: 20px;
     background: #ffffff;
     border-radius: 20px;
-    /*display: flex;*/
-    /*justify-content: center;*/
     align-items: center;
 
 }
