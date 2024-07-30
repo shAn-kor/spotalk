@@ -89,6 +89,11 @@ public class HomeController extends HttpServlet {
                     baseballRank.add(sportDTO);
                     break;
                 case "basketball":
+                	if(sportDTO.getTeamName().contains("서울")) {
+                		sportDTO.setTeamName(sportDTO.getTeamName().substring(3, 5));
+                	} else {
+                		sportDTO.setTeamName(sportDTO.getTeamName().substring(0, 2));                		
+                	}
                     basketballRank.add(sportDTO);
                     break;
             }

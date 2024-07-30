@@ -196,7 +196,7 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
-	public void deleteUser(HttpServletRequest request, HttpServletResponse response) throws IOException {
+	public void deleteUser(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		HttpSession session = request.getSession();
 		String id = session.getAttribute("user_id").toString();
 		String pw = request.getParameter("user-pw");
@@ -210,19 +210,11 @@ public class UserServiceImpl implements UserService{
 		if (dto.getPw().equals(pw)) {
 			session.invalidate();
 			deleteUser(id);
-			response.setContentType("text/html;charset=utf-8");
-			PrintWriter out = response.getWriter();
-			out.println("<script>");
-			out.println("alert('계정 삭제 되었습니다.');");
-			out.println("location.href='/spotalk/spotalk.do';");
-			out.println("</script>");
+			request.setAttribute("result", "success");
+			request.getRequestDispatcher("outMember.user").forward(request, response);
 		} else {
-			response.setContentType("text/html;charset=utf-8");
-			PrintWriter out = response.getWriter();
-			out.println("<script>");
-			out.println("alert('비밀번호가 일치하지 않습니다.');");
-			out.println("location.href='/spotalk/user/outMember.user';");
-			out.println("</script>");
+			request.setAttribute("result", "failure");
+			request.getRequestDispatcher("outMember.user").forward(request, response);
 		}
 	}
 
