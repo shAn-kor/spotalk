@@ -8,42 +8,45 @@
 %>
 
 <%@ include file="../include/header.jsp"%>
-
 <div class="rank-white-wrap">
     <div class=white-background></div>
     <div class="rankWrap">
 
-        <div class="boxtitle">
-            <p>순위</p>
-            <p>등급</p>
-            <p>닉네임</p>
-            <p>포인트</p>
-        </div>
-
         <div class="rank-box">
-
-            <div class="content">
-                <c:forEach var="dto" items="${list}">
-                    <p><%=num++%></p>
-                    <div class="user">
-                        <input type="text" name="grade" value="${dto.gradeId}" disabled>
-                        <input type="text" name="nick" value="${dto.nick}" disabled>
-                        <input type="number" name="point" value="${dto.point}" disabled>
-                    </div>
-                </c:forEach>
+            <div class="head-wrap">
+                <div class="boxtitle">
+                    <p>순위</p>
+                    <p>등급</p>
+                    <p>닉네임</p>
+                    <p>포인트</p>
+                </div>
             </div>
+            <c:forEach var="dto" items="${list}" varStatus="status">
+                <div class="user">
+                    <p>${(status.count)+((page-1)*pageSize)}</p>
+                    <p class="rank-user-grade"> ${dto.gradeId} </p>
+                    <p>${dto.nick} </p>
+                    <p>${dto.point} </p>
+                </div>
+            </c:forEach>
+            <script src=${pageContext.request.contextPath}/js/userRank.js"></script>
         </div>
 
         <div class="page">
-
-            <a href="#" class="first-page">처음</a>
-            <a href="#" class="pre-page">◀</a>
-            <a href="#" class="num-on">1</a>
-            <a href="#" class="num">2</a>
-            <a href="#" class="num">3</a>
-            <a href="#" class="next-page">▶</a>
-            <a href="#" class="last-page">마지막</a>
-
+            <a href="${pageContext.request.contextPath}/user/rank.user" class="first-page">처음</a>
+            <a href="${pageContext.request.contextPath}/user/rank.user?pageNum=${page-1}" class="pre-page">◀</a>
+            <c:forEach var="num" items="${pageNumList}">
+                <c:choose >
+                    <c:when test="${num eq page}">
+                        <a href="${pageContext.request.contextPath}/user/rank.user?pageNum=${num}" class="num-on">${num}</a>
+                    </c:when>
+                    <c:otherwise>
+                        <a href="${pageContext.request.contextPath}/user/rank.user?pageNum=${num}" class="num">${num}</a>
+                    </c:otherwise>
+                </c:choose>
+            </c:forEach>
+            <a href="${pageContext.request.contextPath}/user/rank.user?pageNum=${page+1}" class="next-page">▶</a>
+            <a href="${pageContext.request.contextPath}/user/rank.user?pageNum=${totalEndPage}" class="last-page">마지막</a>
         </div>
     </div>
 </div>

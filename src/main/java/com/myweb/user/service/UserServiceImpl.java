@@ -22,6 +22,8 @@ import java.io.PrintWriter;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -282,7 +284,7 @@ public class UserServiceImpl implements UserService{
 			mapper.changeNick(dto);
 			sql.close();
 
-			session.setAttribute("nick", nick);
+			session.setAttribute("user_nick", nick);
 
 			json.put("msg", "ok");
 		} else {
@@ -296,16 +298,48 @@ public class UserServiceImpl implements UserService{
 
 	@Override
 	public void getUserRankPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		List<UserDTO> list = getUserRank(request, response);
+		SqlSession sql = sqlSessionFactory.openSession(true);
+		UserMapper mapper = sql.getMapper(UserMapper.class);
+		int userCnt = mapper.getUserCnt();
 
 		int pageSize = 10;
 
-		String pageNum = request.getParameter("pageNum");
-		if (pageNum == null) {
-			pageNum = "1";
+		int totalEndPage = (userCnt / pageSize) + (userCnt % pageSize == 0 ? 0 : 1);
+
+		String reqPageNum = request.getParameter("pageNum");
+		if (reqPageNum == null) {
+			reqPageNum = "1";
 		}
 
+		int pageNum = Integer.parseInt(reqPageNum);
+		if (pageNum > totalEndPage) {
+			pageNum = totalEndPage;
+		}
+		if (pageNum <= 0) {
+			pageNum = 1;
+		}
+		int startPageNum = pageNum - 2 > 0 ? pageNum - 2 : 1;
+		int endPageNum = pageNum + 2 > totalEndPage ? totalEndPage : pageNum;
+
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		map.put("first", (pageNum - 1) * pageSize + 1);
+		map.put("second", pageNum * pageSize);
+
+		List<UserDTO> list = mapper.getRankByRN(map);
+		List<Integer> pageNumList = new ArrayList<Integer>();
+		for (int i = startPageNum; i <= endPageNum; i++) {
+			pageNumList.add(i);
+		}
+
+		sql.close();
+
+		request.setAttribute("pageSize", pageSize);
+		request.setAttribute("startPage", startPageNum);
+		request.setAttribute("page", pageNum);
+		request.setAttribute("endPage", endPageNum);
+		request.setAttribute("totalEndPage", totalEndPage);
 		request.setAttribute("list", list);
+		request.setAttribute("pageNumList", pageNumList);
 		request.getRequestDispatcher("userRank.jsp").forward(request, response);
 	}
 

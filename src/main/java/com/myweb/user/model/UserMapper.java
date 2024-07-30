@@ -1,7 +1,9 @@
 package com.myweb.user.model;
 
 import java.sql.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public interface UserMapper {
     String getPw(String user_id);
@@ -11,6 +13,8 @@ public interface UserMapper {
     void updatePw(UserDTO dto);
     UserDTO checkPhone(String phone);
     List<UserDTO> getUserList();
+    List<UserDTO> getRankByRN(Map page);
+    int getUserCnt();
     void createUser(UserDTO dto);
 
     int changeNick(UserDTO dto);

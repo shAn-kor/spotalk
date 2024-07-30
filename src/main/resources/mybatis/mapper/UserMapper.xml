@@ -29,7 +29,13 @@
 		SELECT * FROM MEMBER WHERE PHONE = TO_NUMBER(#{phone})
 	</select>
 	<select id="getUserList" resultType="com.myweb.user.model.UserDTO">
-		SELECT * FROM MEMBER WHERE GRADE_ID != 11 ORDER BY POINT DESC
+		SELECT * FROM (SELECT * FROM MEMBER WHERE GRADE_ID != 11 ORDER BY POINT DESC) WHERE ROWNUM BETWEEN 1 AND 10
+	</select>
+	<select id="getRankByRN" parameterType="hashMap" resultType="com.myweb.user.model.UserDTO">
+		SELECT * FROM (SELECT ROWNUM RN, M.* FROM (SELECT * FROM MEMBER A WHERE A.GRADE_ID != 11 ORDER BY POINT DESC) M) WHERE RN BETWEEN #{first} AND #{second}
+	</select>
+	<select id="getUserCnt" resultType="int">
+		SELECT COUNT(*) FROM MEMBER WHERE GRADE_ID != 11
 	</select>
 
 	<select id="getDateByAttendance" parameterType="string">
