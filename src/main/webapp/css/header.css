@@ -177,6 +177,7 @@ input[type='number'] {
 .modal .modal_popup .button {
     z-index : 1000;
     background: #febf00;
+    margin: 0 auto;
     margin-top: 1rem;
     padding: .8rem 1.8rem;
     border: none;

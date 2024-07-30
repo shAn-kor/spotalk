@@ -90,26 +90,22 @@ document.addEventListener('DOMContentLoaded', function() {
 	let resultNum = 0;
 	let isAttendance = false;
 
+	console.log(nick);
 
 	fetch('checkIsAttendance.user', {
 		method: 'POST',
 		contentType: 'application/json',
-		body: JSON.stringify({nick: nick.value})
+		body: JSON.stringify({nick: nick.innerHTML})
 	}).then(response => { return response.json(); })
 		.then(data => {
-			if (data.msg === 'ok') isAttendance = true;
+			console.log(data.msg);
+			if (data.msg === 'ok') runRandomModal();
 		})
 
-	if (isAttendance) {
+	function runRandomModal() {
 		randomModal.classList.add('on');
 
 		console.log(Date.now());
-
-		let obj = {
-			value: nick.innerHTML,
-			expire: Date.now()
-		};
-		localStorage.setItem('nick', JSON.stringify(obj));
 
 		newMake();
 	}
@@ -168,9 +164,9 @@ document.addEventListener('DOMContentLoaded', function() {
 		let alpha = Math.floor(Math.random()*100);
 
 		setTimeout(() => {
-			let ran = Math.floor(Math.random() * points.length);
+			let ran = Math.floor(Math.random() * (points.length));
 			let arc = 360 / points.length;
-			let rotate = (ran * arc) + 3600 + (arc * 3) - (arc/4) + alpha;
+			let rotate = (ran * arc) + 36000 + (arc/2);
 
 			console.log(ran);
 			console.log(arc);
@@ -179,7 +175,7 @@ document.addEventListener('DOMContentLoaded', function() {
 			resultNum = points[ran-1];
 			console.log(resultNum);
 
-			canvas.style.transform = `rotate(-${rotate}deg`;
+			canvas.style.transform = `rotate(${rotate}deg)`;
 			canvas.style.transition = '2s';
 
 			setTimeout(() => {
@@ -197,5 +193,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
 		resultModal.display='none';
 		randomModal.display='none';
+
+		fetch('inputBonusPoint.user', {
+			method: 'POST',
+			contentType: 'application/json',
+			body: JSON.stringify({
+				nick: nick.innerHTML,
+				point: resultNum
+			})
+		}).then(response => { return response.json(); })
+
 	});
 });

@@ -21,6 +21,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Date;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
 
@@ -415,17 +416,46 @@ public class UserServiceImpl implements UserService{
 		UserMapper mapper = sql.getMapper(UserMapper.class);
 		Date date = mapper.getDateByAttendance(nick);
 
-		LocalDate localDate = LocalDate.now();
-
-		String jsonStr = "";
-
 		if (date == null) {
-			jsonStr = "{'msg':'ok'}";
+			date = new Date(0L);
 		}
 
-		if (date.equals(localDate)) {
-			jsonStr = "{'msg':'no'}";
+		LocalDateTime local = LocalDateTime.from(date.toLocalDate());
+
+		LocalDateTime localDate = LocalDateTime.now();
+
+		JSONObject jsonObject = new JSONObject();
+
+		if (local.isBefore(localDate)) {
+			jsonObject.put("msg", "ok");
+			mapper.updateAttendanceDate(nick);
 		}
+
+		sql.close();
+
+		response.setContentType("application/json;charset=utf-8");
+		PrintWriter out = response.getWriter();
+		out.print(jsonObject.toJSONString());
+	}
+
+    @Override
+    public void inputBonusPoint(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		JSONObject json = null;
+		try {
+			json = getJSONSObjectByReader(request.getReader());
+		} catch (ParseException | IOException e) {
+			throw new RuntimeException(e);
+		}
+		String nick = json.get("nick").toString();
+		long point = Long.parseLong(json.get("point").toString());
+
+		SqlSession sql = sqlSessionFactory.openSession(true);
+		UserMapper mapper = sql.getMapper(UserMapper.class);
+
+		UserDTO dto = mapper.getUserByNick(nick);
+		dto.setPoint(Long.toString(point + Long.parseLong(dto.getPoint())));
+
+		mapper.setPoint(dto);
 
 		sql.close();
 

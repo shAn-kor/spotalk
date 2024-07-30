@@ -51,6 +51,12 @@
 		UPDATE MEMBER SET POINT = #{gradeId} WHERE ID = #{id}
 	</update>
 
+	<update id="updateAttendanceDate" parameterType="string">
+		MERGE INTO ATTENDANCE A USING DUAL ON (A.NICK=#{nick})
+		WHEN MATCHED THEN UPDATE SET A_DATE=SYSDATE WHERE NICK=#{nick}
+		WHEN NOT MATCHED THEN INSERT VALUES(#{nick}, SYSDATE)
+	</update>
+
 	<insert id="createUser" parameterType="com.myweb.user.model.UserDTO">
 		INSERT INTO MEMBER VALUES (#{id}, #{pw}, #{pwq}, #{pwa}, #{name}, #{bDate}, #{gender}, #{phone}, #{nick}, #{point}, #{gradeId}, SYSDATE)
 	</insert>

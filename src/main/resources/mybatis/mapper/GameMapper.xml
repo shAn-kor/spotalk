@@ -23,7 +23,7 @@
 		SELECT * FROM GAMES WHERE (GAME_ID LIKE '4%') AND (GAME_DATE >= SYSDATE)
 	</select>
 	<select id="getGames" resultType="com.myweb.game.model.GameDTO"> <!-- 경기일자 4일 전 <= 오늘 날짜 <= 1일 전 (=예측 진행 중인 경기), 해당 경기 모두 가져오기 -->
-		SELECT * FROM GAMES
+		SELECT * FROM GAMES WHERE GAME_DATE > SYSDATE ORDER BY GAME_DATE
 	</select> 
 
 	
