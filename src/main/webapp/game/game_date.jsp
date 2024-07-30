@@ -47,6 +47,12 @@
                     </ul>
              </div>
              
+             <div class="icons">
+			      <img src="../img/soccer-icon.png" alt="s-icon">
+				  <img src="../img/baseball-icon.png" alt="bs-icon">
+				  <img src="../img/basketball-icon.png" alt="bk-icon">  	
+		      </div>
+             
         <div class="toto-content">
             <div class="toto-mid">
                 <div class="mid-top">
@@ -70,31 +76,31 @@
                              <c:forEach var="game" items="${gamelist}">
                                   <tr>
                                       <td>${game.gameDate}</td>
-                                      <td><fmt:formatDate value="${game.gameDate}" pattern="HH    :    mm" /></td>
+                                      <td><fmt:formatDate value="${game.gameDate}" pattern="HH : mm" /></td>
                                       <td class="game-match">
 
                                          <c:choose>
 	                                        <c:when test="${selectedSport == 'soccer'}">
 	                                           <img src="../img/soccer/${game.teamA}.png" alt="${game.teamA }">
-	                                               ${game.teamA} vs ${game.teamB}
+	                                               ${game.teamA}&nbsp;&nbsp;&nbsp;vs&nbsp;&nbsp;&nbsp;${game.teamB}
 	                                           <img src="../img/soccer/${game.teamB}.png" alt="${game.teamB }">  
 	                                        </c:when>
 	                                        
 	                                        <c:when test="${selectedSport == 'baseball'}">
 	                                           <img src="../img/baseball/${game.teamA}.png" alt="${game.teamA }">
-	                                               ${game.teamA} vs ${game.teamB}
+	                                               ${game.teamA}&nbsp;&nbsp;&nbsp;vs&nbsp;&nbsp;&nbsp;${game.teamB}
 	                                           <img src="../img/baseball/${game.teamB}.png" alt="${game.teamB }">  
 	                                        </c:when>
 	                                        
 	                                        <c:when test="${selectedSport == 'basketball'}">
 	                                           <img src="../img/basketball/${game.teamA}.png" alt="${game.teamA }">
-	                                               ${game.teamA} vs ${game.teamB}
+	                                               ${game.teamA}&nbsp;&nbsp;&nbsp;vs&nbsp;&nbsp;&nbsp;${game.teamB}
 	                                           <img src="../img/basketball/${game.teamB}.png" alt="${game.teamB }">  
 	                                        </c:when>
 	                                        
 	                                        <c:otherwise>
 	                                           <img src="../img/soccer/${game.teamA}.png" alt="${game.teamA }">
-	                                               ${game.teamA} vs ${game.teamB}
+	                                               ${game.teamA}&nbsp;&nbsp;&nbsp;vs&nbsp;&nbsp;&nbsp;${game.teamB}
 	                                           <img src="../img/soccer/${game.teamB}.png" alt="${game.teamB }">  
 	                                        </c:otherwise>
                                          </c:choose>
