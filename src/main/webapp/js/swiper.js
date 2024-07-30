@@ -12,18 +12,23 @@ document.addEventListener("DOMContentLoaded", function() {
 			var baseballTeam = ['KIA', 'NC', 'KT', 'LG', 'SSG', '두산', '삼성', '키움', '한화', '롯데'];
 			var basketballTeam = ['고양 소노', '대구 한국가스공사', '부산 KCC', '서울 SK', '서울 삼성', '수원 KT', '울산 현대모비스', '원주 DB', '창원 LG'];
 			
+			var linkUrl = '';
+			
 			if(soccerTeam.includes(teamA)){
 				sport = 'soccer';
+				linkUrl = '/spotalk/game/soccerlist.game?sport=soccer';
 			} else if(baseballTeam.includes(teamA)){
 				sport = 'baseball';
+				linkUrl = '/spotalk/game/baselist.game?sport=baseball';
 			} else if(basketballTeam.includes(teamA)){
 				sport = 'basketball';
+				linkUrl = '/spotalk/game/basketlist.game?sport=basketball';
 			}
 			
 			var backgroundImage = 'url(img/' + sport + '.jpg)';
 
             str += '<div class="swiper-slide" style="background-image: ' + backgroundImage + ';">';
-            str += '<div class="white-background"></div>';
+            str += '<div class="white-background" onclick="location.href=\'' + linkUrl + '\'"></div>';
             str += '<div class="vs"><img src="img/vs.png" alt="vs"></div>';
             str += '<div class="teamA">';
             str += '<img src="img/' + sport + '/' + teamA + '.png" alt="team">';

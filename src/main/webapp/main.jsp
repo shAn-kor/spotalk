@@ -52,12 +52,12 @@
             </ul>
             <div class="team-rank-head">
                 <span>순위</span>
-                <input type="text" name="teamName" value="팀" disabled>
-                <input type="text" name="teamName" value="경기수" disabled>
-                <input type="text" name="teamName" value="승" disabled>
-                <input type="text" name="teamName" value="무" disabled>
-                <input type="text" name="teamName" value="패" disabled>
-                <input type="text" name="teamName" value="승률" disabled>
+                <input type="text" value="팀" disabled>
+                <input type="text" value="경기" disabled>
+                <input type="text" value="승" disabled>
+                <input type="text" value="무" disabled>
+                <input type="text" value="패" disabled>
+                <input type="text" value="승률" disabled>
             </div>
             <div class="tabcontent2">
                 <div id="tab2-01">
@@ -109,7 +109,7 @@
 
 <div class="main-box">
     <div class="main-user-rank">
-        <p><a href="#">승부사 랭킹</a></p>
+        <p><a href="user/rank.user">승부사 랭킹</a></p>
         <div class="user-rank-wrap">
         
 			<ul>
@@ -123,9 +123,9 @@
         		<% int userRankNum = 1; %>
 	            <c:forEach var="userDTO" items="${userRank}">
 	                <div class="main-ranker-user">
-	                    <span><%=userRankNum++%></span>
+	                    <span style="width:40px;"><%=userRankNum++%></span>
 	                    <p class="grade" data-grade="${userDTO.gradeId}">등급</p>
-	                    <input class="user-grade-id" type="text" name="grade" value="${userDTO.gradeId}" disabled>
+	                    <input class="user-grade-id" style="display:none;" type="text" name="grade" value="${userDTO.gradeId}" disabled>
 	                    <input type="text" name="nick" value="${userDTO.nick}" disabled>
 	                    <input type="text" name="point" value="${userDTO.point} P" disabled>
 	                </div>

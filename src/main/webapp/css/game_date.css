@@ -9,6 +9,7 @@
     border-radius: 0px;
     background-color: white;
     width: 1400px;
+    height: 650px;
     margin: 0 auto;
     overflow: hidden;
     border-top: 10px double antiquewhite;
@@ -105,8 +106,9 @@
     /* margin-left: 50px; */
     margin-bottom: 20px;
     width: 100%;
-    min-height: 650px;
-    max-height: 650px;
+	height: 450px;
+	border-bottom: 1px solid;
+	border-top: 1px solid;
     overflow-x: none;
     overflow-y: auto;
     background-color: white;

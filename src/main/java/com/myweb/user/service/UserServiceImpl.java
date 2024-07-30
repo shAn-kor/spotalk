@@ -198,7 +198,7 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
-	public void deleteUser(HttpServletRequest request, HttpServletResponse response) throws IOException {
+	public void deleteUser(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		HttpSession session = request.getSession();
 		String id = session.getAttribute("user_id").toString();
 		String pw = request.getParameter("user-pw");
@@ -212,19 +212,11 @@ public class UserServiceImpl implements UserService{
 		if (dto.getPw().equals(pw)) {
 			session.invalidate();
 			deleteUser(id);
-			response.setContentType("text/html;charset=utf-8");
-			PrintWriter out = response.getWriter();
-			out.println("<script>");
-			out.println("alert('계정 삭제 되었습니다.');");
-			out.println("location.href='/spotalk/spotalk.do';");
-			out.println("</script>");
+			request.setAttribute("result", "success");
+			request.getRequestDispatcher("outMember.user").forward(request, response);
 		} else {
-			response.setContentType("text/html;charset=utf-8");
-			PrintWriter out = response.getWriter();
-			out.println("<script>");
-			out.println("alert('비밀번호가 일치하지 않습니다.');");
-			out.println("location.href='/spotalk/user/outMember.user';");
-			out.println("</script>");
+			request.setAttribute("result", "failure");
+			request.getRequestDispatcher("outMember.user").forward(request, response);
 		}
 	}
 
@@ -429,30 +421,28 @@ public class UserServiceImpl implements UserService{
 
 		for (UserDTO dto : list) {
 			long point = Long.parseLong(dto.getPoint());
-			String grade = dto.getGradeId();
 
 			if (point >= 1000000000) {
 				dto.setGradeId("10");
-			} else if (point >= 500000000) {
-				dto.setGradeId("9");
-			} else if (point >= 100000000) {
-				dto.setGradeId("8");
 			} else if (point >= 50000000) {
-				dto.setGradeId("7");
+				dto.setGradeId("9");
 			} else if (point >= 10000000) {
+				dto.setGradeId("8");
+			} else if (point >= 3000000) {
+				dto.setGradeId("7");
+			} else if (point >= 600000) {
 				dto.setGradeId("6");
-			} else if (point >= 5000000) {
+			} else if (point >= 125000) {
 				dto.setGradeId("5");
-			} else if (point >= 1000000) {
+			} else if (point >= 25000) {
 				dto.setGradeId("4");
-			} else if (point >= 500000) {
+			} else if (point >= 5000) {
 				dto.setGradeId("3");
-			} else if (point >= 100000) {
+			} else if (point >= 1000) {
 				dto.setGradeId("2");
 			} else {
 				dto.setGradeId("1");
 			}
-			dto.setGradeId(grade);
 
 			mapper.updateGrade(dto);
 		}
@@ -513,13 +503,17 @@ public class UserServiceImpl implements UserService{
 
 		UserDTO dto = mapper.getUserByNick(nick);
 		dto.setPoint(Long.toString(point + Long.parseLong(dto.getPoint())));
-
+		
 		mapper.setPoint(dto);
-
+		
+		HttpSession session = request.getSession();
+		session.setAttribute("point", dto.getPoint());
+		
 		sql.close();
 
 		response.setContentType("application/json;charset=utf-8");
 		PrintWriter out = response.getWriter();
 		out.print(json.toJSONString());
 	}
+
 }
