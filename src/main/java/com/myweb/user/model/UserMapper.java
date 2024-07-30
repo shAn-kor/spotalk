@@ -12,6 +12,7 @@ public interface UserMapper {
     UserDTO getUserByNick(String nick);
     void updatePw(UserDTO dto);
     UserDTO checkPhone(String phone);
+    List<UserDTO> getAllUserList();
     List<UserDTO> getUserList();
     List<UserDTO> getRankByRN(Map page);
     int getUserCnt();

@@ -24,13 +24,13 @@
             <c:forEach var="dto" items="${list}" varStatus="status">
                 <div class="user">
                     <p>${(status.count)+((page-1)*pageSize)}</p>
-                    <p class="rank-user-grade"> ${dto.gradeId} </p>
+                    <p class="rank-user-grade" id="rank-${dto.gradeId}"> ${dto.gradeId} </p>
                     <p>${dto.nick} </p>
                     <p>${dto.point} </p>
                 </div>
             </c:forEach>
-            <script src=${pageContext.request.contextPath}/js/userRank.js"></script>
         </div>
+<script src="../js/userRank.js"></script>
 
         <div class="page">
             <a href="${pageContext.request.contextPath}/user/rank.user" class="first-page">처음</a>

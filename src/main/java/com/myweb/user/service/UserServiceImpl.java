@@ -417,7 +417,7 @@ public class UserServiceImpl implements UserService{
 		SqlSession sql = sqlSessionFactory.openSession(true);
 		UserMapper mapper = sql.getMapper(UserMapper.class);
 
-		List<UserDTO> list = mapper.getUserList();
+		List<UserDTO> list = mapper.getAllUserList();
 
 		for (UserDTO dto : list) {
 			long point = Long.parseLong(dto.getPoint());
