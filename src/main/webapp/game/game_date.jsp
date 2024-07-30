@@ -84,25 +84,25 @@
 	                                        <c:when test="${selectedSport == 'soccer'}">
 	                                           <img src="../img/soccer/${game.teamA}.png" alt="${game.teamA }">
 	                                               ${game.teamA} vs ${game.teamB}
-	                                               <img src="../img/soccer/${game.teamB}.png" alt="${game.teamB }">  
+	                                           <img src="../img/soccer/${game.teamB}.png" alt="${game.teamB }">  
 	                                        </c:when>
 	                                        
 	                                        <c:when test="${selectedSport == 'baseball'}">
 	                                           <img src="../img/baseball/${game.teamA}.png" alt="${game.teamA }">
 	                                               ${game.teamA} vs ${game.teamB}
-	                                               <img src="../img/baseball/${game.teamB}.png" alt="${game.teamB }">  
+	                                           <img src="../img/baseball/${game.teamB}.png" alt="${game.teamB }">  
 	                                        </c:when>
 	                                        
 	                                        <c:when test="${selectedSport == 'basketball'}">
 	                                           <img src="../img/basketball/${game.teamA}.png" alt="${game.teamA }">
 	                                               ${game.teamA} vs ${game.teamB}
-	                                               <img src="../img/basketball/${game.teamB}.png" alt="${game.teamB }">  
+	                                           <img src="../img/basketball/${game.teamB}.png" alt="${game.teamB }">  
 	                                        </c:when>
 	                                        
 	                                        <c:otherwise>
 	                                           <img src="../img/soccer/${game.teamA}.png" alt="${game.teamA }">
 	                                               ${game.teamA} vs ${game.teamB}
-	                                               <img src="../img/soccer/${game.teamB}.png" alt="${game.teamB }">  
+	                                           <img src="../img/soccer/${game.teamB}.png" alt="${game.teamB }">  
 	                                        </c:otherwise>
                                          </c:choose>
                                           

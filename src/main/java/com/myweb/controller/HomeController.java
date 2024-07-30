@@ -72,6 +72,7 @@ public class HomeController extends HttpServlet {
         request.setAttribute("footballRank", footballRank);
         request.setAttribute("baseballRank", baseballRank);
         request.setAttribute("basketballRank", basketballRank);
+
         request.setAttribute("soccerGames", soccerGames);
         request.setAttribute("baseballGames", baseballGames);
         request.setAttribute("basketballGames", basketballGames);
