@@ -15,5 +15,25 @@ public interface BoardMapper {
 	List<BoardDTO> getBasketballPosts(BoardCheck check);
 	int getTotalPosts();
 	BoardDTO sortPosts(String postId);
+	List<BoardDTO> getComments(String postId);
+	void insertComment(BoardDTO dto);
+	void updatePost(BoardDTO dto);
+	void deletePost(Map<String, Object> params);
+	void updateComment(BoardDTO dto);
+	void deleteComment(Map<String, Object> params);
+	BoardDTO updateComment(String commentId);
+	BoardDTO getComment(String commentId);
+	List<BoardDTO> searchPosts(String query);
+	List<BoardDTO> searchPosts(Map<String, Object> params);
+	int hasUserVotedOnPost(Map<String, Object> params);
+	void increasePostLike(Map<String, Object> params);
+	void increasePostDislike(Map<String, Object> params);
+	int hasUserVotedOnComment(Map<String, Object> params);
+	void increaseCommentLike(Map<String, Object> params);
+	void increaseCommentDislike(Map<String, Object> params);
+	void insertPostLikeDislike(LikeDislikeRecord likeDislikeRecord);
+	void insertCommentLikeDislike(LikeDislikeRecord likeDislikeRecord);
+	void increaseHit(String postId);
+	
 	
 }

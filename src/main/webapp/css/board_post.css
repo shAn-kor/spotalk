@@ -26,40 +26,76 @@
 .item2 {
     overflow: hidden;
     width: 100%;
-    height: 450px;
+    min-height: 450px;
     border-top: 3px solid #000;
     border-bottom: 3px solid #000;
     padding: 10px;
 }
 /* 프로필, 작성자, 작성시간, 조회수 */
 .item2 > .top {
-    height: 100px;
+	overflow: hidden;
+    height: 60px;
     padding: 5px;
 }
-.item2 > .top > .left,
+.item2 > .top > .left {
+	float: left;
+    width: 40px;
+    height: 40px;
+}
 .item2 > .top > .right {
     float: left;
     margin: 0;
-}
-.item2 >	 .top  a {
-    color: #000;
+    width: 500px;
+    height: 40px;
 }
 
-.item2 > .top > .right > a {
+.item2 > .top > .left > img {
+	margin-top: 3px;
+}
+
+
+.item2 > .top > .right > .info > a,
+.item2 > .top > .right > .info > span {
+	float: left;
     margin-left: 5px;
 }
-.item2 > .top > .right > .hits > span:nth-child(1) {
-    margin-left: 5px;
-    font-size: 13px;
+
+.item2 > .top > .right > .hit {
+	width: 40px;
+	height: 32px;
+} 
+.item2 > .top > .right > .hit > span {
+	margin-left: 5px;
+}
+
+/* 글 수정 삭제 버튼 */
+
+.item2 > .top > .edit {
+	width: 150px;
+	height: 50px;
+	float: right;
+}
+.item2 > .top > .edit > form {
+	overflow: hidden;
+}
+.item2 > .top > .edit > form {
+	float: right;
+}
+.item2 > .top > .edit > form > .btn {
+	background-color: antiquewhite;
+}
+.item2 > .top > .edit > .btn {
+	float: right;
 }
 
 /* 글 제목 */
 .item2 > .title {
-    height: 100px;
+    height: 80px;
     padding: 5px;
+    border: 0px;
 }
 .item2 > .title > h3 {
-    font-weight: 900;
+    font-weight: 600;
 }
 
 /* 글 내용 */
@@ -72,23 +108,25 @@
 /* 추천 비추천 */
 .item2 > .bottom {
     overflow: hidden;
-    height: 35px;
-}
-.item2 > .bottom > .right {
-    float: right;
-    padding: 5px;
+    height: 50px;
 }
 
+.item2 > .bottom > .right {
+	float: right;
+	width: 60px;
+}
 /* 추천 */
-.item2 > .bottom > .right > .up {
+.item2 > .bottom > .right> #likePostBtn {
 	background-image: url("../img/up.png");
+	background-repeat: no-repeat;
 	background-color: antiquewhite;
 	width: 16px;
 	height: 16px;
 }
 /* 비추천 */
-.item2 > .bottom > .right > .down {
+.item2 > .bottom > .right> #dislikePostBtn {
 	background-image: url("../img/down.png");
+	background-repeat: no-repeat;
 	background-color: antiquewhite;
 	width: 16px;
 	height: 16px;
@@ -129,7 +167,6 @@
     float: left;
     width: 750px;
     height: 100px;
-  
     margin: 15px 10px;
     padding: 5px;
 }
@@ -153,6 +190,20 @@
 	text-decoration: underline;
 }
 
+.item3 > .box >.top > .right > .login {
+	width: 100%;
+    height: 100%;
+    border: 1px solid #777;
+    border-radius: 5px;
+    font-size: 15px;
+    padding: 10px;
+}
+
+.item3 > .box >.top > .right > .login > a {
+	color: blue;
+}
+
+
 
 
 /* 댓글 쓰기 */
@@ -167,91 +218,106 @@
 	box-shadow: none;
 }
 
+.item3 > .box > .bottom > a {
+	float: right;
+    width: 100px;
+    height: 34px;
+    line-height:34px;
+    text-align: center;
+    background-color: antiquewhite;
+    margin-right: 50px;
+    border-radius: 5px;
+}
+
 
 /* ================================== 댓글들 ================================== */
-.item4 {
+
+
+.comment {
     overflow: hidden;
     width: 100%;
-    height: 100px;
+    min-height: 70px;
     border-bottom: 2px solid #000;
-    padding: 10px;
+    padding: 5px;
 }
 
-/* 댓글 */
-/* 프로필 , 작성자, 작성시간 , 조회수 */
-.item4 .box {overflow: hidden;}
-.item4 > .box > .top {
-    float: left;
-}
-.item4 > .box > .bottom {
-    float: right;
+.comment > .top {
+	overflow: hidden;
+	height: 35px;
 }
 
-.item4 > .box > .top > .left,
-.item4 > .box > .top > .right {
-    float: left;
+/* 수정 삭제 버튼 */
+.comment > .top .btn {
+	float: right;
 }
 
-.item4 > .box > .top > .right > a {
-    margin-left: 5px;
-}
-.item4 > .box > .top > .right > .hits > span:nth-child(1) {
-    margin-left: 5px;
-    font-size: 13px;
+.comment > .bottom {
+	overflow: hidden;
+	min-height: 40px;
+	line-height: 40px;
 }
 
 /* 댓글 내용 */
-.item4 > .comments {
-    height: 50px;
-    margin: 0 40px;
+.comment > .bottom > .left {
+	float: left;
+	width: 50%;
+	min-height: 60px;
+	line-height: 60px;
+	margin-left: 35px;
+}
+
+.comment > .bottom > .right {
+	float: right;
+	width: 15%;
+}
+
+/* 추천 비추천 버튼 */
+.comment > .bottom > .right .bt {
+	text-align: right;
+}
+.comment > .bottom > .right .bt span {
+	margin-right: 10px;
 }
 
 /* 추천 */
-.item4 > .box > .bottom > .right > .up {
+.comment > .bottom > .right > .bt > #likeCommentBtn {
 	background-image: url("../img/up.png");
+	background-repeat: no-repeat;
 	background-color: antiquewhite;
 	width: 16px;
 	height: 16px;
 }
+
 /* 비추천 */
-.item4 > .box > .bottom > .right > .down {
+.comment > .bottom > .right > .bt > #dislikeCommentBtn {
 	background-image: url("../img/down.png");
+	background-repeat: no-repeat;
 	background-color: antiquewhite;
 	width: 16px;
 	height: 16px;
 }
 
 
-/* 댓글 페이지 */
-/* 하단 페이지 */
-.comments-page {margin: 10px;}
-
-/* 중앙 숫자 페이지 버튼 */
-.comments-page > ul > p {
-    display: inline;
-    font-size: 20px;
-    margin: 0 7px 0 0;
+/* 이전, 중앙, 다음 페이지 버튼 */
+.pager > li > a {
+	background-color: antiquewhite;
+	border: 0px;
 }
-.comments-page > ul > button {
-    width: 32px;
-    height: 32px;
-    background-color: antiquewhite;
-    border: none;
-}
-.comments-page > ul > button > a {
-    color: #000;
-    font-size: 15px;
+.pager > li > a:hover,
+.pager > li > a:focus {
+	text-decoration: none;
+	background-color: antiquewhite;
+	color: blue;
 }
 
-/* 이전, 다음 페이지 버튼 */
-.comments-page > ul > li > a {
-    color: #000;
-    border: none;
-    background-color: antiquewhite;
+/* 생략 표시 */
+.pager .disabled > span {
+	border: 0;
+	background-color: antiquewhite;
 }
-.comments-page > ul > li > a:hover {
-    background-color: antiquewhite;
-    text-decoration: underline;
 
+/* 현재 페이지 버튼 */
+.pager .active a:visited {
+	color: blue;
 }
 
