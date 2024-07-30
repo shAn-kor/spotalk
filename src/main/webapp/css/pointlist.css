@@ -21,7 +21,6 @@
     left: 300px;
     width: 800px;
     background-color: rgb(241, 215, 181);
-    border-radius: 10px;
     height: 600px;
 }
 .top {
@@ -102,6 +101,9 @@
     width: 30%;
 }
 
-
+.nav {
+	margin: 0 auto;
+	width: 700px;
+}
 
 

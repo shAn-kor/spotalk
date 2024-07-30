@@ -1,6 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <%@ include file="../include/header.jsp"%>
+<%@ page import="java.text.DecimalFormat"%>
+<%
+    // 문자열로 저장된 숫자
+    String point = (String)session.getAttribute("point");
+
+    // 포맷된 숫자를 저장할 변수
+    String formattedPoint = "";
+
+    // 문자열을 숫자로 변환
+    Long number = Long.parseLong(point);
+
+    // 숫자를 포맷
+    DecimalFormat decimalFormat = new DecimalFormat("#,###");
+    formattedPoint = decimalFormat.format(number);
+
+%>
 
 <!-- 부트스트랩 css링크 -->
 <link rel="stylesheet" href="${pageContext.request.contextPath}/bootstrap/css/bootstrap.min.css">
@@ -15,30 +31,31 @@
 <script src="${pageContext.request.contextPath}/bootstrap/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/pointlist.css">
 
+
 <div class="pointList-wrap">
     <div class=white-background></div>
     <div class="pointList-box">
         <div class="top">
             <div class="top-title">
-                <p><strong>SPO</strong>TALK 포인트</p>
+                <p>SPOTALK 포인트</p>
             </div>
             <div class="top-bottom">
-                <p><span>${sessionScope.point}</span> P</p>
+                <p><span><%= formattedPoint %></span> P</p>
                 <button type="button" class="btn btn-default" onclick="location.href='${pageContext.request.contextPath}/user/myPage.user';">마이페이지</button>
             </div>
         </div>
 
         <div class="list">
 
-            <select>
-                <option value="2024">2024년</option>
-                <option value="2023">2023년</option>
-            </select>
             <ul class="nav nav-tabs">
 
                 <li class="active"><a data-toggle="tab" href="#all">전체</a></li>
                 <li><a data-toggle="tab" href="#success">성공 내역</a></li>
                 <li><a data-toggle="tab" href="#fail">실패 내역</a></li>
+	            <select>
+	                <option value="2024">2024년</option>
+	                <option value="2023">2023년</option>
+	            </select>
             </ul>
 
             <div class="tab-content">

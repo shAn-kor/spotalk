@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <%@ include file="include/header.jsp"%>
 
@@ -136,35 +137,45 @@
                 <div id="tab01">
                     <% int soccerGameListNum = 1; %>
                     <c:forEach var="soccerGameDTO" items="${soccerGames}">
-                        <div class="team-rank">
-                            <span><%=soccerGameListNum++%></span>
+                        <div class="schedule">
+                            <span class="listNum"><%=soccerGameListNum++%></span>
                             <input type="text" name="teamName" value="${soccerGameDTO.gameDate}" disabled>
-                            <input type="text" name="teamName" value="${soccerGameDTO.teamA}" disabled>
-                            <input type="text" name="teamName" value="${soccerGameDTO.teamB}" disabled>
+                            <input type="text" name="teamName" class="scheduleTeam" value="${soccerGameDTO.teamA}" disabled>
+                            <span>vs</span>
+                            <input type="text" name="teamName" class="scheduleTeam" value="${soccerGameDTO.teamB}" disabled>
                         </div>
                     </c:forEach>
                 </div>
                 <div id="tab02">
                     <% int baseGameListNum = 1; %>
                     <c:forEach var="baseGameDTO" items="${baseballGames}">
-                        <div class="team-rank">
-                            <span><%=baseGameListNum++%></span>
+                        <div class="schedule">
+                            <span class="listNum"><%=baseGameListNum++%></span>
                             <input type="text" name="teamName" value="${baseGameDTO.gameDate}" disabled>
-                            <input type="text" name="teamName" value="${baseGameDTO.teamA}" disabled>
-                            <input type="text" name="teamName" value="${baseGameDTO.teamB}" disabled>
+                            <input type="text" name="teamName" class="scheduleTeam" value="${baseGameDTO.teamA}" disabled>
+                            <span>vs</span>
+                            <input type="text" name="teamName" class="scheduleTeam" value="${baseGameDTO.teamB}" disabled>
                         </div>
                     </c:forEach>
                 </div>
                 <div id="tab03">
                     <% int basketGameListNum = 1; %>
-                    <c:forEach var="basketGameDTO" items="${basketballGames}">
-                        <div class="team-rank">
-                            <span><%=basketGameListNum++%></span>
-                            <input type="text" name="teamName" value="${basketGameDTO.gameDate}" disabled>
-                            <input type="text" name="teamName" value="${basketGameDTO.teamA}" disabled>
-                            <input type="text" name="teamName" value="${basketGameDTO.teamB}" disabled>
-                        </div>
-                    </c:forEach>
+                    <c:choose>
+                    	<c:when test="${fn:length(basketballGames) == 0 }">
+                    		경기가 없습니다.
+                    	</c:when>
+	                    <c:otherwise>
+		                    <c:forEach var="basketGameDTO" items="${basketballGames}">
+		                        <div class="schedule">
+		                            <span class="listNum"><%=basketGameListNum++%></span>
+		                            <input type="text" name="teamName" value="${basketGameDTO.gameDate}" disabled>
+		                            <input type="text" name="teamName" class="scheduleTeam" value="${basketGameDTO.teamA}" disabled>
+		                            <span>vs</span>
+		                            <input type="text" name="teamName" class="scheduleTeam" value="${basketGameDTO.teamB}" disabled>
+		                        </div>
+		                    </c:forEach>
+	                    </c:otherwise>
+                    </c:choose>
                 </div>
             </div>
         </div>
