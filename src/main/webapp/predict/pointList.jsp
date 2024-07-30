@@ -15,9 +15,7 @@
     // 숫자를 포맷
     DecimalFormat decimalFormat = new DecimalFormat("#,###");
     formattedPoint = decimalFormat.format(number);
-
 %>
-
 
 <script src="${pageContext.request.contextPath}/js/pointList.js"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/pointlist.css">
@@ -103,7 +101,7 @@
                             </div>
                         </tr>
                         <c:forEach var="minusDTO" items="${minusDTO}">
-                            <tr class="column s" id="2020">
+                            <tr class="column s" id="2024">
                                 <div class="user">
                                     <input class="p-date" type="text" name="grade" value="${minusDTO.cDate}" disabled>
                                     <input class="p-team" type="text" name="nick" value="${minusDTO.pResult}" disabled>

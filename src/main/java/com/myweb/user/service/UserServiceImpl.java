@@ -22,6 +22,8 @@ import java.io.PrintWriter;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -196,7 +198,7 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
-	public void deleteUser(HttpServletRequest request, HttpServletResponse response) throws IOException {
+	public void deleteUser(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		HttpSession session = request.getSession();
 		String id = session.getAttribute("user_id").toString();
 		String pw = request.getParameter("user-pw");
@@ -210,19 +212,11 @@ public class UserServiceImpl implements UserService{
 		if (dto.getPw().equals(pw)) {
 			session.invalidate();
 			deleteUser(id);
-			response.setContentType("text/html;charset=utf-8");
-			PrintWriter out = response.getWriter();
-			out.println("<script>");
-			out.println("alert('계정 삭제 되었습니다.');");
-			out.println("location.href='/spotalk/spotalk.do';");
-			out.println("</script>");
+			request.setAttribute("result", "success");
+			request.getRequestDispatcher("outMember.user").forward(request, response);
 		} else {
-			response.setContentType("text/html;charset=utf-8");
-			PrintWriter out = response.getWriter();
-			out.println("<script>");
-			out.println("alert('비밀번호가 일치하지 않습니다.');");
-			out.println("location.href='/spotalk/user/outMember.user';");
-			out.println("</script>");
+			request.setAttribute("result", "failure");
+			request.getRequestDispatcher("outMember.user").forward(request, response);
 		}
 	}
 
@@ -282,7 +276,7 @@ public class UserServiceImpl implements UserService{
 			mapper.changeNick(dto);
 			sql.close();
 
-			session.setAttribute("nick", nick);
+			session.setAttribute("user_nick", nick);
 
 			json.put("msg", "ok");
 		} else {
@@ -296,16 +290,48 @@ public class UserServiceImpl implements UserService{
 
 	@Override
 	public void getUserRankPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		List<UserDTO> list = getUserRank(request, response);
+		SqlSession sql = sqlSessionFactory.openSession(true);
+		UserMapper mapper = sql.getMapper(UserMapper.class);
+		int userCnt = mapper.getUserCnt();
 
 		int pageSize = 10;
 
-		String pageNum = request.getParameter("pageNum");
-		if (pageNum == null) {
-			pageNum = "1";
+		int totalEndPage = (userCnt / pageSize) + (userCnt % pageSize == 0 ? 0 : 1);
+
+		String reqPageNum = request.getParameter("pageNum");
+		if (reqPageNum == null) {
+			reqPageNum = "1";
 		}
 
+		int pageNum = Integer.parseInt(reqPageNum);
+		if (pageNum > totalEndPage) {
+			pageNum = totalEndPage;
+		}
+		if (pageNum <= 0) {
+			pageNum = 1;
+		}
+		int startPageNum = pageNum - 2 > 0 ? pageNum - 2 : 1;
+		int endPageNum = pageNum + 2 > totalEndPage ? totalEndPage : pageNum;
+
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		map.put("first", (pageNum - 1) * pageSize + 1);
+		map.put("second", pageNum * pageSize);
+
+		List<UserDTO> list = mapper.getRankByRN(map);
+		List<Integer> pageNumList = new ArrayList<Integer>();
+		for (int i = startPageNum; i <= endPageNum; i++) {
+			pageNumList.add(i);
+		}
+
+		sql.close();
+
+		request.setAttribute("pageSize", pageSize);
+		request.setAttribute("startPage", startPageNum);
+		request.setAttribute("page", pageNum);
+		request.setAttribute("endPage", endPageNum);
+		request.setAttribute("totalEndPage", totalEndPage);
 		request.setAttribute("list", list);
+		request.setAttribute("pageNumList", pageNumList);
 		request.getRequestDispatcher("userRank.jsp").forward(request, response);
 	}
 
@@ -391,34 +417,32 @@ public class UserServiceImpl implements UserService{
 		SqlSession sql = sqlSessionFactory.openSession(true);
 		UserMapper mapper = sql.getMapper(UserMapper.class);
 
-		List<UserDTO> list = mapper.getUserList();
+		List<UserDTO> list = mapper.getAllUserList();
 
 		for (UserDTO dto : list) {
 			long point = Long.parseLong(dto.getPoint());
-			String grade = dto.getGradeId();
 
 			if (point >= 1000000000) {
 				dto.setGradeId("10");
-			} else if (point >= 500000000) {
-				dto.setGradeId("9");
-			} else if (point >= 100000000) {
-				dto.setGradeId("8");
 			} else if (point >= 50000000) {
-				dto.setGradeId("7");
+				dto.setGradeId("9");
 			} else if (point >= 10000000) {
+				dto.setGradeId("8");
+			} else if (point >= 3000000) {
+				dto.setGradeId("7");
+			} else if (point >= 600000) {
 				dto.setGradeId("6");
-			} else if (point >= 5000000) {
+			} else if (point >= 125000) {
 				dto.setGradeId("5");
-			} else if (point >= 1000000) {
+			} else if (point >= 25000) {
 				dto.setGradeId("4");
-			} else if (point >= 500000) {
+			} else if (point >= 5000) {
 				dto.setGradeId("3");
-			} else if (point >= 100000) {
+			} else if (point >= 1000) {
 				dto.setGradeId("2");
 			} else {
 				dto.setGradeId("1");
 			}
-			dto.setGradeId(grade);
 
 			mapper.updateGrade(dto);
 		}
@@ -479,13 +503,17 @@ public class UserServiceImpl implements UserService{
 
 		UserDTO dto = mapper.getUserByNick(nick);
 		dto.setPoint(Long.toString(point + Long.parseLong(dto.getPoint())));
-
+		
 		mapper.setPoint(dto);
-
+		
+		HttpSession session = request.getSession();
+		session.setAttribute("point", dto.getPoint());
+		
 		sql.close();
 
 		response.setContentType("application/json;charset=utf-8");
 		PrintWriter out = response.getWriter();
 		out.print(json.toJSONString());
 	}
+
 }

@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-
 <%@ include file="include/header.jsp"%>
 
 <!-- body -->
@@ -52,12 +51,12 @@
             </ul>
             <div class="team-rank-head">
                 <span>순위</span>
-                <input type="text" name="teamName" value="팀" disabled>
-                <input type="text" name="teamName" value="경기수" disabled>
-                <input type="text" name="teamName" value="승" disabled>
-                <input type="text" name="teamName" value="무" disabled>
-                <input type="text" name="teamName" value="패" disabled>
-                <input type="text" name="teamName" value="승률" disabled>
+                <input type="text" value="팀" disabled>
+                <input type="text" value="경기" disabled>
+                <input type="text" value="승" disabled>
+                <input type="text" value="무" disabled>
+                <input type="text" value="패" disabled>
+                <input type="text" value="승률" disabled>
             </div>
             <div class="tabcontent2">
                 <div id="tab2-01">
@@ -109,7 +108,7 @@
 
 <div class="main-box">
     <div class="main-user-rank">
-        <p><a href="#">승부사 랭킹</a></p>
+        <p><a href="user/rank.user">승부사 랭킹</a></p>
         <div class="user-rank-wrap">
         
 			<ul>
@@ -123,11 +122,26 @@
         		<% int userRankNum = 1; %>
 	            <c:forEach var="userDTO" items="${userRank}">
 	                <div class="main-ranker-user">
-	                    <span><%=userRankNum++%></span>
+	                    <span style="width:40px;"><%=userRankNum++%></span>
 	                    <p class="grade" data-grade="${userDTO.gradeId}">등급</p>
-	                    <input class="user-grade-id" type="text" name="grade" value="${userDTO.gradeId}" disabled>
-	                    <input type="text" name="nick" value="${userDTO.nick}" disabled>
-	                    <input type="text" name="point" value="${userDTO.point} P" disabled>
+	                    <input class="user-grade-id" style="display:none;" type="text" name="grade" value="${userDTO.gradeId}" disabled>
+	                    <input type="text" name="nick" 
+	                    	class="nick 
+	                    		<c:choose>
+				                   <c:when test="${userDTO.gradeId == 1}">rank-1</c:when>
+				                   <c:when test="${userDTO.gradeId == 2}">rank-2</c:when>
+				                   <c:when test="${userDTO.gradeId == 3}">rank-3</c:when>
+				                   <c:when test="${userDTO.gradeId == 4}">rank-4</c:when>
+				                   <c:when test="${userDTO.gradeId == 5}">rank-5</c:when>
+				                   <c:when test="${userDTO.gradeId == 6}">rank-6</c:when>
+				                   <c:when test="${userDTO.gradeId == 7}">rank-7</c:when>
+				                   <c:when test="${userDTO.gradeId == 8}">rank-8</c:when>
+				                   <c:when test="${userDTO.gradeId == 9}">rank-9</c:when>
+				                   <c:when test="${userDTO.gradeId == 10}">rank-10</c:when>
+				                   <c:otherwise>rank-1</c:otherwise>
+				               </c:choose>" 
+	                    	value="${userDTO.nick}" disabled>
+	                    <input type="text" name="point" value="${userDTO.pointFmt} P" disabled>
 	                </div>
 	            </c:forEach>
         	</div>

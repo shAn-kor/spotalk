@@ -128,8 +128,87 @@ input[type='number'] {
     font-size: 15px;
     margin: 0;
 }
+@keyframes blink {
+    0% {
+        color: #000;
+        text-shadow: 0 0 5px rgba(255, 0, 0, 0.8);
+    }
+    25% {
+        color: #f00; /* 빨간색 */
+        text-shadow: 0 0 10px rgba(255, 0, 0, 0.8);
+    }
+    50% {
+        color: #0f0; /* 초록색 */
+        text-shadow: 0 0 15px rgba(0, 255, 0, 0.8);
+    }
+    75% {
+        color: #00f; /* 파란색 */
+        text-shadow: 0 0 20px rgba(0, 0, 255, 0.8);
+    }
+    100% {
+        color: #000;
+        text-shadow: 0 0 5px rgba(255, 0, 0, 0.8);
+    }
+}
+@keyframes fadeEffect {
+    0% {
+        opacity: 0.7;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0.7;
+    }
+}
+.rank-1 { 
+    color: #ff0000; /* 레드 */
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.8); /* 검정색 오라 */
+} 
+.rank-2 { 
+    color: #ff5500; /* 오렌지 */
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.8); /* 검정색 오라 */
+} 
+.rank-3 { 
+    color: #ff8c00; /* 다크 오렌지 */
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.8); /* 검정색 오라 */
+} 
+.rank-4 { 
+    color: #32cd32; /* 라임 그린 */
+    text-shadow: 0 0 10px rgba(0, 128, 0, 0.8); /* 다크 그린 오라 */
+} 
+.rank-5 { 
+    color: #00ff00; /* 라이트 그린 */
+    text-shadow: 0 0 10px rgba(0, 128, 0, 0.8); /* 다크 그린 오라 */
+} 
+.rank-6 { 
+    color: #00b2a9; /* 다크 청록색 */
+    text-shadow: 0 0 10px rgba(0, 102, 102, 0.8); /* 다크 청록색 오라 */
+} 
+.rank-7 { 
+    color: #007bff; /* 블루 */
+    text-shadow: 0 0 10px rgba(0, 51, 102, 0.8); /* 다크 블루 오라 */
+} 
+.rank-8 { 
+    color: #8a2be2; /* 블루 바이올렛 */
+    text-shadow: 0 0 10px rgba(51, 0, 102, 0.8); /* 다크 퍼플 오라 */
+} 
+.rank-9 { 
+    color: #d300d2; /* 핫핑크 */
+    text-shadow: 0 0 10px rgba(255, 105, 180, 0.8); /* 핫핑크 오라 */
+} 
+.rank-10, .rank-11 { 
+    color: #ffd700; /* 골드 */
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.8); /* 골드 오라 */
+}
 #myInfo .name{
+	animation: fadeEffect 2s infinite;
     text-align: center;
+}
+#myInfo .joinMsg{
+    margin-top: 10px;
+    animation: blink 2s infinite;
+    cursor: pointer;	
 }
 #myInfo .point{
     text-align: right;

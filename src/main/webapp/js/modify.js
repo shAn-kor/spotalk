@@ -70,6 +70,12 @@ window.onload = function() {
                 return;
             }
 
+            if (nick.value.length > 10) {
+                alert('닉네임은 최대 10글자 입니다.');
+                nick.value = oldValue;
+                return;
+            }
+
             fetch('changeNick.user', {
                 method: 'POST',
                 contentType: 'application/json',
@@ -83,6 +89,8 @@ window.onload = function() {
                     else {
                         alert('중복되었습니다!');
                     }
+
+                    location.reload();
                 })
         }
     })

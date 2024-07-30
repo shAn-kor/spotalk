@@ -75,7 +75,13 @@ document.addEventListener('DOMContentLoaded', function() {
 	        gradeElement.style.backgroundPosition = '5px 0px'; // 기본값 설정
 	        break;
     }
-
+	
+	var rankClass = 'rank-' + gradeId;
+    // .name 요소에 클래스 추가
+    var nameElement = document.querySelector('.name');
+    if (nameElement) {
+        nameElement.classList.add(rankClass);
+    }
 
 	let nick = document.querySelector('#myInfo > .float > .name');
 	let randomModal = document.querySelector('.right > #random-modal');
@@ -217,7 +223,10 @@ document.addEventListener('DOMContentLoaded', function() {
 				nick: nick.innerHTML,
 				point: resultNum
 			})
-		}).then(response => { return response.json(); })
+		}).then(response => { return response.json();})
+		.then(data => {
+			location.reload();
+		})
 
 	});
 });
