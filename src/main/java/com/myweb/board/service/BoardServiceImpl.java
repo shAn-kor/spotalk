@@ -1,6 +1,7 @@
 package com.myweb.board.service;
 
 import java.io.IOException;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -62,9 +63,14 @@ public class BoardServiceImpl implements BoardService {
 		
 	}
 	
+	
+	private static final int SESSION_MAX_AGE = 180;
+	
 	@Override
 	public void getPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String postId = (String) request.getAttribute("postId");
+		String a = request.getParameter("a");
+		if(a == null || a.isEmpty()) a = "0";
 		if(postId == null) {
 			postId = request.getParameter("postId");			
 		}
@@ -74,14 +80,38 @@ public class BoardServiceImpl implements BoardService {
 		BoardMapper mapper = sql.getMapper(BoardMapper.class);
 		
 		BoardDTO dto = mapper.getPost(postId);
-		List<BoardDTO> comments = mapper.getComments(postId); // 댓글 목록 조회 메서드 추가	
+		List<BoardDTO> comments = mapper.getComments(postId); // 댓글 목록 조회 메서드 추가
+		
+		if (shouldIncreaseHit(request.getSession(), postId)) {
+	            mapper.increaseHit(postId);
+	        }
 		
 		sql.close();
 		
 		request.setAttribute("dto", dto);
 		request.setAttribute("comments", comments);
-		request.getRequestDispatcher("post.board").forward(request, response);
+		request.setAttribute("postId", postId);
+		if (a.equals("1")) {
+			request.getRequestDispatcher("modifyPost.board").forward(request, response);
+		} else {
+			request.getRequestDispatcher("post.board").forward(request, response);
+		}
 	}
+
+
+	private boolean shouldIncreaseHit(HttpSession session, String postId) {
+	    Long lastVisit = (Long) session.getAttribute("postHit_" + postId);
+        long currentTime = Instant.now().getEpochSecond();
+
+        if (lastVisit != null && currentTime - lastVisit < SESSION_MAX_AGE) {
+            return false; // 조회수 증가 조건 미충족
+        }
+
+        // 세션에 새로 저장
+        session.setAttribute("postHit_" + postId, currentTime);
+        return true; // 조회수 증가 조건 충족
+    }
+	
 
 
 	@Override
@@ -89,6 +119,7 @@ public class BoardServiceImpl implements BoardService {
         SqlSession sql = sqlSessionFactory.openSession(true);
         BoardMapper mapper = sql.getMapper(BoardMapper.class);
         
+        String postId = request.getParameter("postId");
         // 페이지 번호를 파라미터에서 가져옵니다. 기본값은 1로 설정합니다.
         String pageParam = request.getParameter("page");
         int page = (pageParam != null && !pageParam.isEmpty()) ? Integer.parseInt(pageParam) : 1;
@@ -112,6 +143,7 @@ public class BoardServiceImpl implements BoardService {
         
         sql.close();
 
+        request.setAttribute("postId", postId);
         request.setAttribute("posts", posts);
         request.setAttribute("totalPages", totalPages);
         request.setAttribute("currentPage", page);
@@ -126,6 +158,7 @@ public class BoardServiceImpl implements BoardService {
 	public void listPostsByCategory(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String category = request.getParameter("category");
+		if(category == null || category.isEmpty()) category = (String) request.getAttribute("category");
 		String order = request.getParameter("order");
 		
         SqlSession sql = sqlSessionFactory.openSession(true);
@@ -232,7 +265,7 @@ public class BoardServiceImpl implements BoardService {
 
 	    mapper.updatePost(dto);
 	    sql.close();
-	    response.sendRedirect("getPost.board?postId=" + postId);
+	    request.getRequestDispatcher("getPost.board?postId=" + postId).forward(request, response);
 	}
 
 
@@ -264,7 +297,8 @@ public class BoardServiceImpl implements BoardService {
 
 	    mapper.deletePost(params);
 	    sql.close();
-	    response.sendRedirect("boardMain.board");
+	    request.setAttribute("category", "전체글");
+	    request.getRequestDispatcher("category.board").forward(request, response);
 	}
 
 

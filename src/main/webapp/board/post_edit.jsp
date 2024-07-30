@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../include/header.jsp"%>
+<%@ page import="com.myweb.board.model.BoardDTO" %>
 
 <!-- 부트스트랩 css링크 -->
 <link rel="stylesheet" href="../css/bootstrap.min.css" type="text/css">
@@ -14,17 +15,18 @@
 <div class="container">
     <h2>게시글 수정</h2>
     <form action="updatePost.board" method="post">
-        <input type="hidden" name="postId" value="${dto.postId}"/>
+        <input type="hidden" name="postId" value="${dto.postId }"/>
         <div class="form-group">
-            <label for="postTitle">제목</label>
-            <input type="text" id="postTitle" name="postTitle" class="form-control" value="${dto.postTitle}" required>
+            <label for="postTitle"></label>
+            <input type="text" id="postTitle" name="postTitle" class="form-control" value="${dto.postTitle }" required>
         </div>
         <div class="form-group">
-            <label for="postContent">내용</label>
-            <textarea id="postContent" name="postContent" class="form-control" rows="10" required>${dto.postContent}</textarea>
+            <label for="postContent"></label>
+            <textarea id="postContent" name="postContent" class="form-control" rows="10" required>${dto.postContent }</textarea>
         </div>
         <button type="submit" class="btn btn-primary">수정 완료</button>
         <a href="getPost.board?postId=${dto.postId}" class="btn btn-secondary">취소</a>
+        
     </form>
 </div>
 

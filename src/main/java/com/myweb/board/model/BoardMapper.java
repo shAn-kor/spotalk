@@ -33,7 +33,7 @@ public interface BoardMapper {
 	void increaseCommentDislike(Map<String, Object> params);
 	void insertPostLikeDislike(LikeDislikeRecord likeDislikeRecord);
 	void insertCommentLikeDislike(LikeDislikeRecord likeDislikeRecord);
-
+	void increaseHit(String postId);
 	
 	
 }

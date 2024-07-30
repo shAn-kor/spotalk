@@ -13,11 +13,12 @@
 
 <div class="container">
     <h2>댓글 수정</h2>
+  
     <form action="modifyComment.board" method="post">
         <input type="hidden" name="commentId" value="${dto.commentId}" />
         <input type="hidden" name="postId" value="${dto.postId}" />
         <div class="form-group">
-            <label for="commentContent">내용</label>
+            <label for="commentContent">${dto.postContent}</label>
             <textarea id="commentContent" name="commentContent" class="form-control" rows="5" required>${dto.commentContent}</textarea>
         </div>
         <button type="submit" class="btn btn-primary">수정 완료</button>

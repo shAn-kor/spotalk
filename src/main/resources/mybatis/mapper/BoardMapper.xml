@@ -268,4 +268,10 @@
         WHERE user_id = #{userId} AND comment_id = #{commentId}
     </select>
 
+	<!-- 게시글 조회수 증가 -->
+    <update id="increaseHit" parameterType="string">
+        UPDATE POSTS
+        SET HIT = HIT + 1
+        WHERE post_id = #{postId}
+    </update>
 </mapper>

@@ -1,3 +1,5 @@
+<%@page import="com.myweb.board.model.BoardDTO"%>
+<%@page import="org.apache.ibatis.reflection.SystemMetaObject"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../include/header.jsp"%>
@@ -16,7 +18,6 @@
   	<div class="item item1">
     	<p>커뮤니티 / <a href="#">${dto.getCategory() }</a></p>
     </div>
-	<input type="hidden" name="postId" value="${postId}"/>
     <div class="item item2">
         <div class="top">
             <div class="left">
@@ -33,11 +34,9 @@
             </div>
             <c:if test="${sessionScope.user_id == dto.userId || sessionScope.user_id == 'admin'}">
 		        <div class="edit">
-		            <a href="deletePost.board?postId=${dto.postId}" class="btn">삭제</a>
-		        	<form action="modifyPost.board?postId="${postId } method="post">
-		        		<input type="hidden" name="postId" value="${postId}"/>
-		            	<input type="submit" class="btn" value="수정">
-		            </form>
+		            <a href="deletePost.board?postId=${dto.postId }" class="btn">삭제</a>
+			        <button type="button" class="btn" onclick="location.href='getPost.board?postId=${dto.postId }&a=1'">수정</button>
+		         	
 		        </div>
 		    </c:if>
         </div>
@@ -75,30 +74,30 @@
 	                   <div class="right">
 			                <input type="hidden" name="postId" value="${dto.postId}" />
 	                   		<c:choose>
-	                   			<c:when test="${sessionScope.user_id == dto.userId }">
-	                         		<textarea name="comment_content" placeholder="댓글을 입력해주세요."></textarea>
-	                   			</c:when>
-	                   			<c:otherwise>
+	                   			<c:when test="${sessionScope.user_id == null }">
 	                   				<div class="login">
 				                      	<img src="../img/question.png" alt="물음표">
 				                        댓글을 쓰려면
 				                        <a href="../user/login.user">로그인</a>
 				                        이 필요합니다
 	                   				</div>
+	                   			</c:when>
+	                   			<c:otherwise>
+	                         		<textarea name="comment_content" placeholder="댓글을 입력해주세요."></textarea>
 	                   			</c:otherwise>
 	                   		</c:choose>
 	                    </div>
 	
 	                </div>
 	                <c:choose>
-	                	<c:when test="${sessionScope.user_id == dto.userId }">
-			                <div class="bottom">
-			                	<input type="submit" class="btn" value="댓글 작성">
+	                	<c:when test="${sessionScope.user_id == null }">
+	                		 <div class="bottom">
+			                	<a href="../user/login.user"><strong>로그인</strong></a>
 			                </div>
 	                	</c:when>
 	                	<c:otherwise>
-	                		 <div class="bottom">
-			                	<a href="../user/login.user"><strong>로그인</strong></a>
+			                <div class="bottom">
+			                	<input type="submit" class="btn" value="댓글 작성">
 			                </div>
 	                	</c:otherwise>
 	                </c:choose>
@@ -121,7 +120,7 @@
 			        	
 			        	<div class="bottom">
 			        		<div class="left">
-					        	${comment.commentContent}}
+					        	${comment.commentContent}
 			        		</div>
 			        		<div class="right">
 				        		<div class="bt">
