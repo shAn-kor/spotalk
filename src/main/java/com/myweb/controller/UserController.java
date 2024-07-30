@@ -147,6 +147,11 @@ public class UserController extends HttpServlet{
 			UserService service = new UserServiceImpl();
 			service.checkAttendance(request, response);
 		}
+		// 출석 보너스 입력
+		if (command.equals("/inputBonusPoint.user")) {
+			UserService service = new UserServiceImpl();
+			service.inputBonusPoint(request, response);
+		}
 	}
 	
 }

@@ -1,7 +1,6 @@
 package com.myweb.team.service;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -14,7 +13,6 @@ import org.jsoup.select.Elements;
 import com.myweb.team.model.SportDTO;
 import com.myweb.team.model.SportMapper;
 
-import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import util.mybatis.MybatisUtil;
@@ -135,27 +133,13 @@ public class SportServiceImpl implements SportService {
 	}
 
 	@Override
-	public List<SportDTO> getFootballRak(HttpServletRequest request, HttpServletResponse response) {
+	public List<SportDTO> getTeamRank(HttpServletRequest request, HttpServletResponse response) {
 		SqlSession sql = sqlSessionFactory.openSession(true);
 		SportMapper mapper = sql.getMapper(SportMapper.class);
-		return mapper.getFootballRank();
+		return mapper.getTeamRank();
 	}
 
-	@Override
-	public List<SportDTO> getBaseballRak(HttpServletRequest request, HttpServletResponse response) {
-		SqlSession sql = sqlSessionFactory.openSession(true);
-		SportMapper mapper = sql.getMapper(SportMapper.class);
-		return mapper.getBaseballRank();
-	}
-
-	@Override
-	public List<SportDTO> getBasketballRak(HttpServletRequest request, HttpServletResponse response) {
-		SqlSession sql = sqlSessionFactory.openSession(true);
-		SportMapper mapper = sql.getMapper(SportMapper.class);
-		return mapper.getBasketballRank();
-	}
-
-	public void closeGameSqlSession() {
+	public void closeSqlSession() {
 		sqlSessionFactory.openSession(true).close();
 	}
 }

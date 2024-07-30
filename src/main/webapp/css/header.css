@@ -158,13 +158,25 @@ input[type='number'] {
     padding: 20px;
     background: #ffffff;
     border-radius: 20px;
+    /*display: flex;*/
+    /*justify-content: center;*/
+    align-items: center;
+
+}
+.modal .modal_popup .modal-btn-box {
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }
 .modal .modal_popup .close_btn {
+    margin-top: 10px;
     display: block;
     padding: 10px 20px;
     background-color: rgb(116, 0, 0);
     border: none;
     border-radius: 5px;
+    max-width: 50%;
+    min-width: 30%;
     color: #fff;
     cursor: pointer;
     transition: box-shadow 0.2s;
@@ -174,20 +186,7 @@ input[type='number'] {
     transition: 2s;
 }
 
-.modal .modal_popup .button {
-    z-index : 1000;
-    background: #febf00;
-    margin-top: 1rem;
-    padding: .8rem 1.8rem;
-    border: none;
-    font-size: 1.5rem;
-    font-weight: bold;
-    border-radius: 5px;
-    transition: .2s;
-    cursor: pointer;
-}
-
-.modal .modal_popup .button:active {
+.modal .modal_popup .close-btn:active {
     background: #444;
     color: #f9f9f9;
 }

@@ -31,7 +31,7 @@ public class GameServiceImpl implements GameService{
 
 		closeGameSqlSession();
 
-		request.setAttribute("gamelist", gamelist);
+		request.setAttribute("gamelist", getPredictGameList(gamelist));
 		request.getRequestDispatcher("spototo.jsp").forward(request, response);
 		
 	}
@@ -45,7 +45,7 @@ public class GameServiceImpl implements GameService{
 
 		closeGameSqlSession();
 
-		request.setAttribute("gamelist", gamelist);
+		request.setAttribute("gamelist", getPredictGameList(gamelist));
 		request.getRequestDispatcher("spototo.jsp").forward(request, response);
 		
 	}
@@ -61,9 +61,23 @@ public class GameServiceImpl implements GameService{
 
 		closeGameSqlSession();
 		
-		request.setAttribute("gamelist", gamelist);
+		request.setAttribute("gamelist", getPredictGameList(gamelist));
 		request.getRequestDispatcher("spototo.jsp").forward(request, response);
 		
+	}
+
+	private List<GameDTO> getPredictGameList (List<GameDTO> gamelist) {
+		List<GameDTO> list = new ArrayList<>();
+
+		for (GameDTO dto : gamelist) {
+			if (dto.getGameDate().getTime() > (System.currentTimeMillis() + (86400000*4)) ||
+					dto.getGameDate().getTime() < (System.currentTimeMillis() + (86400000)))
+			{
+				continue;
+			}
+			list.add(dto);
+		}
+		return list;
 	}
 
 	@Override

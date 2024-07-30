@@ -36,4 +36,6 @@ public interface UserService {
     void updateGrade();
 
     void checkAttendance(HttpServletRequest request, HttpServletResponse response) throws IOException;
+
+    void inputBonusPoint(HttpServletRequest request, HttpServletResponse response) throws IOException;
 }
