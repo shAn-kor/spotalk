@@ -40,17 +40,59 @@
     text-align: center;
     border-bottom: 2px solid #f7f7f7;
 }
-
+.pointList-box .list > ul {
+    display: block;
+    width: 100%;
+    overflow: hidden;
+    border-bottom: 2px solid #f7f7f7;
+}
+.pointList-box .list > ul > li {
+    float: left;
+}
+.pointList-box .list > ul > li:first-child {
+    margin-left: 20px;
+}
 .pointList-box .list > ul > select {
     width: 90px;
     height: 30px;
     margin-top: 5px;
+    margin-right: 50px;
     text-align: center;
+    display: inline-block;
+    float: right;
 }
 
+.nav{
+    padding-left:0;
+    margin-bottom:0;
+    list-style:none;
+}
+.nav>li{
+    position:relative;
+    display:block;
+}
+.nav>li>a{
+    position:relative;
+    display:block;
+    padding:10px 15px;
+}
+.nav>li>a:focus,
+.nav>li>a.active,
+.nav>li>a:hover{
+    text-decoration:none;
+    background-color:#eee;
+}
+.nav>li.disabled>a{color:#777;}
+.nav>li.disabled>a:focus,
+.nav>li.disabled>a:hover,
+.nav>li.disabled>a:active{
+    /*color:#777;*/
+    /*text-decoration:none;*/
+    /*cursor:not-allowed;*/
+    /*background-color:transparent;*/
+}
 
-
-.pointList-box .tab-content {overflow-y: auto;}
+.pointList-box .tab-content {overflow-y: auto;overflow-x: none;resize: none; height: 360px;}
 .pointList-box .tab-content .tab-pane {
     margin: 20px 50px 0 20px;
     height: 360px;
@@ -73,27 +115,28 @@
     color: red;
 }
 
-
-
-.pointList-box .tab-pane .user {
+.pointList-box .tab-pane .all-box > tr > .user {
     width: 100%;
     display: flex;
-    justify-content: space-between;
-    margin: 5px auto;
-    font-size: 20px;
+    justify-content: flex-start;
 }
 .pointList-box .tab-pane .user > input {
-    display: block;
+    display: inline-block;
     text-align: center;
+    font-size: 25px;
+    margin: 2px auto;
 }
 .pointList-box .tab-pane .user > .p-date {
-    width: 46%;
+    max-width: 46%;
+    min-width: 45%;
 }
 .pointList-box .tab-pane .user > .p-team {
-    width: 24%;
+    max-width: 20%;
+    min-width: 19%;
 }
 .pointList-box .tab-pane .user > .p-point {
-    width: 30%;
+    max-width: 33%;
+    min-width: 32%;
 }
 
 .pointList-box .nav {

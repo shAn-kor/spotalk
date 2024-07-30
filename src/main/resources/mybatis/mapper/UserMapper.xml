@@ -26,7 +26,7 @@
 		SELECT * FROM MEMBER WHERE NICK = #{nick}
 	</select>
 	<select id="checkPhone" parameterType="string" resultType="com.myweb.user.model.UserDTO">
-		SELECT * FROM MEMBER WHERE PHONE = #{phone}
+		SELECT * FROM MEMBER WHERE PHONE = TO_NUMBER(#{phone})
 	</select>
 	<select id="getUserList" resultType="com.myweb.user.model.UserDTO">
 		SELECT * FROM MEMBER WHERE GRADE_ID != 11 ORDER BY POINT DESC
@@ -48,7 +48,7 @@
 		UPDATE MEMBER SET POINT = #{point} WHERE ID = #{id}
 	</update>
 	<update id="updateGrade" parameterType="com.myweb.user.model.UserDTO">
-		UPDATE MEMBER SET POINT = #{gradeId} WHERE ID = #{id}
+		UPDATE MEMBER SET GRADE_ID = #{gradeId} WHERE ID = #{id}
 	</update>
 
 	<update id="updateAttendanceDate" parameterType="string">
@@ -58,7 +58,7 @@
 	</update>
 
 	<insert id="createUser" parameterType="com.myweb.user.model.UserDTO">
-		INSERT INTO MEMBER VALUES (#{id}, #{pw}, #{pwq}, #{pwa}, #{name}, #{bDate}, #{gender}, #{phone}, #{nick}, #{point}, #{gradeId}, SYSDATE)
+		INSERT INTO MEMBER VALUES (#{id}, #{pw}, #{pwq}, #{pwa}, #{name}, #{bDate}, #{gender}, #{phone}, #{nick}, 500, 1, SYSDATE)
 	</insert>
 
 	<delete id="deleteUser" parameterType="string">

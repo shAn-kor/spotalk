@@ -101,7 +101,7 @@ public class PredictServiceImpl implements PredictService{
         sql.close();
     }
 
-    public void closeGameSqlSession() {
+    public void closeSqlSession() {
         sqlSessionFactory.openSession(true).close();
     }
 
@@ -160,6 +160,7 @@ public class PredictServiceImpl implements PredictService{
             }
             predictMapper.updateCDate(dto);
         }
+
     }
 
 }

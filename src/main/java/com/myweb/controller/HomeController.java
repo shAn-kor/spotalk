@@ -1,6 +1,8 @@
 package com.myweb.controller;
 
 import com.myweb.game.model.GameDTO;
+import com.myweb.predict.service.PredictService;
+import com.myweb.predict.service.PredictServiceImpl;
 import com.myweb.team.model.SportDTO;
 import com.myweb.team.service.SportService;
 import com.myweb.team.service.SportServiceImpl;
@@ -18,6 +20,7 @@ import com.myweb.game.service.GameService;
 import com.myweb.game.service.GameServiceImpl;
 import com.myweb.user.service.UserService;
 import com.myweb.user.service.UserServiceImpl;
+import util.mybatis.MybatisUtil;
 
 public class HomeController extends HttpServlet {
     private static final long serialVersionUID = 1L;
@@ -35,16 +38,22 @@ public class HomeController extends HttpServlet {
     }
 
     protected void doAction(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        PredictService predictService = new PredictServiceImpl();
+        predictService.predictUsers();
 
     	UserService userService = new UserServiceImpl();
         List<UserDTO> userRank = userService.getUserRank(request, response);
+
+        if (userRank.size() > 10) {
+            userRank = userRank.subList(0, 10);
+        }
+
         userService.updateGrade();
-        userService.closeSqlSession();
 
     	GameService gameService = new GameServiceImpl();
         List<GameDTO> gameList = gameService.getGames(request, response);
+
     	List<String> games = gameService.getGaming(gameList);
-        gameService.closeGameSqlSession();
         List<GameDTO> soccerGames = new ArrayList<>();
         List<GameDTO> baseballGames = new ArrayList<>();
         List<GameDTO> basketballGames = new ArrayList<>();
@@ -63,10 +72,27 @@ public class HomeController extends HttpServlet {
 
 
         SportService sportService = new SportServiceImpl();
-        List<SportDTO> footballRank = sportService.getFootballRak(request, response);
-        List<SportDTO> baseballRank = sportService.getBaseballRak(request, response);
-        List<SportDTO> basketballRank = sportService.getBasketballRak(request, response);
-        sportService.closeGameSqlSession();
+        List<SportDTO> teamRank = sportService.getTeamRank(request, response);
+
+        List<SportDTO> footballRank = new ArrayList<>();
+        List<SportDTO> baseballRank = new ArrayList<>();
+        List<SportDTO> basketballRank = new ArrayList<>();
+
+        for (SportDTO sportDTO : teamRank) {
+            String sport = sportDTO.getSports();
+
+            switch (sport) {
+                case "soccer":
+                    footballRank.add(sportDTO);
+                    break;
+                case "baseball":
+                    baseballRank.add(sportDTO);
+                    break;
+                case "basketball":
+                    basketballRank.add(sportDTO);
+                    break;
+            }
+        }
 
         request.setAttribute("userRank", userRank);
         request.setAttribute("footballRank", footballRank);

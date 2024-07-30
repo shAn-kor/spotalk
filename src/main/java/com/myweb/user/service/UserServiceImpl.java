@@ -71,6 +71,7 @@ public class UserServiceImpl implements UserService{
 		String id = request.getParameter("id");
 		String answer = request.getParameter("answer");
 		UserDTO dto = getUserById(id);
+		closeSqlSession();
 
 		if(!dto.getPwa().equals(answer)) {
 			request.setAttribute("dto", dto);
@@ -94,7 +95,7 @@ public class UserServiceImpl implements UserService{
 		HttpSession session = request.getSession();
 		if(session != null) session.invalidate();
 
-		sqlSessionFactory.openSession(true).close();
+		closeSqlSession();
 		
 		response.setContentType("text/html;charset=utf-8");
         PrintWriter out = response.getWriter();
@@ -119,7 +120,7 @@ public class UserServiceImpl implements UserService{
 		UserMapper mapper = sql.getMapper(UserMapper.class);
 		UserDTO dto = mapper.checkPhone(phone);
 
-		sqlSessionFactory.openSession(true).close();
+		sql.close();
 		
 		response.setContentType("text/html;charset=utf-8");
         PrintWriter out = response.getWriter();
@@ -158,8 +159,6 @@ public class UserServiceImpl implements UserService{
 		dto.setPw(pw);
 		dto.setPwq(pwq);
 		dto.setPwa(pwa);
-		dto.setPoint("500");
-		dto.setGradeId("1");
 
 		SqlSession sql = sqlSessionFactory.openSession(true);
 		UserMapper mapper = sql.getMapper(UserMapper.class);
@@ -177,7 +176,7 @@ public class UserServiceImpl implements UserService{
 		
 		UserDTO dto = getUserById(id);
 
-		sqlSessionFactory.openSession(true).close();
+		closeSqlSession();
 		
 		if(dto == null) {
 			request.setAttribute("msg", "아이디가 존재하지 않습니다.");
@@ -235,6 +234,8 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public void getMyPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		UserDTO dto = getUserById(request.getSession().getAttribute("user_id").toString());
+
+		System.out.println(dto.toString());
 
 		sqlSessionFactory.openSession(true).close();
 		
@@ -303,6 +304,13 @@ public class UserServiceImpl implements UserService{
 	public void getUserRankPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		List<UserDTO> list = getUserRank(request, response);
 
+		int pageSize = 10;
+
+		String pageNum = request.getParameter("pageNum");
+		if (pageNum == null) {
+			pageNum = "1";
+		}
+
 		sqlSessionFactory.openSession(true).close();
 
 		request.setAttribute("list", list);
@@ -313,8 +321,7 @@ public class UserServiceImpl implements UserService{
 	public List<UserDTO> getUserRank(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		SqlSession sql = sqlSessionFactory.openSession(true);
 		UserMapper mapper = sql.getMapper(UserMapper.class);
-		List<UserDTO> list = mapper.getUserList();
-		return list;
+        return mapper.getUserList();
 	}
 
 	@Override

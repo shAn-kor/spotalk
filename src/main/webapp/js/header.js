@@ -91,8 +91,17 @@ document.addEventListener('DOMContentLoaded', function() {
 	let isAttendance = false;
 
 	console.log(nick);
+	let now = new Date();
+	let midnight = new Date();
+	midnight.setHours(24, 0, 0, 0);  // 오늘 밤 12시 설정
+	let timeUntilMidnight = midnight - now;
 
-	if (sessionStorage.getItem("msg") == null) {
+// 정해진 시간 후에 세션 스토리지에서 데이터 제거
+	setTimeout(function() {
+		sessionStorage.removeItem('msg');
+	}, timeUntilMidnight);
+
+	if (sessionStorage.getItem("msg") == null || nick.value !== sessionStorage.getItem("nick")) {
 		fetch('checkIsAttendance.user', {
 			method: 'POST',
 			contentType: 'application/json',
@@ -101,8 +110,8 @@ document.addEventListener('DOMContentLoaded', function() {
 			.then(data => {
 				console.log(data.msg);
 				sessionStorage.setItem("msg", data.msg);
-				sessionStorage.setItem("msg", data.msg);
-				if (data.msg === 'ok') runRandomModal();
+				sessionStorage.setItem("nick", nick.value);
+				/*if (data.msg === 'ok')*/ runRandomModal();
 			})
 	}
 

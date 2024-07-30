@@ -18,17 +18,8 @@
 
 %>
 
-<!-- 부트스트랩 css링크 -->
-<link rel="stylesheet" href="${pageContext.request.contextPath}/bootstrap/css/bootstrap.min.css">
 
-<!-- 제이쿼리(부트스트랩보다 먼저 링크) -->
-<script src="${pageContext.request.contextPath}/bootstrap/js/jquery-3.7.1.min.js"></script>
-
-<!-- Popper.js (부트스트랩보다 먼저 링크) -->
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-
-<!-- 부트스트랩 js링크 -->
-<script src="${pageContext.request.contextPath}/bootstrap/js/bootstrap.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/pointList.js"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/pointlist.css">
 
 
@@ -48,7 +39,7 @@
 
             <ul class="nav nav-tabs">
 
-                <li class="active"><a data-toggle="tab" href="#all">전체</a></li>
+                <li ><a class="active" data-toggle="tab" href="#all">전체</a></li>
                 <li><a data-toggle="tab" href="#success">성공 내역</a></li>
                 <li><a data-toggle="tab" href="#fail">실패 내역</a></li>
 	            <select class="pointList-year">
