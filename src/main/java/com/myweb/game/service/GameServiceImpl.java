@@ -161,7 +161,7 @@ public class GameServiceImpl implements GameService{
 	}
 
 
-	//진행 중인 승부
+	//승부 예측
 	@Override
 	public List<GameDTO> getGames(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {

@@ -106,8 +106,6 @@
     width: 100%;
     height: 321px;
     background-color: antiquewhite;
-    overflow-y: auto;
-    overflow-x: none;
     resize: none;
     padding: 10px;
 }
@@ -135,14 +133,19 @@
 .user-rank-wrap > ul > li:nth-child(4) {
 	width: 70px;
 }
-
-.user-rank-wrap > .main-ranker-user {
+.user-rank-wrap > .rankBox {
+	width: 100%;
+	max-height: 260px;
+	overflow-y: auto;
+}
+.user-rank-wrap > .rankBox > .main-ranker-user {
     background-color: white;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 5px 10px;
     margin-top: 10px;
+    height: 40px;
 }
 .main-ranker-user > img {
     display: block;
@@ -156,10 +159,7 @@
 .main-ranker-user > p:nth-child(1) {
     text-align: left;
 }
-/* .main-ranker-user > p:nth-child(2) {
-    text-align: right;
-} */
-.main-ranker-user > input {
+.user-rank-wrap > .rankBox > .main-ranker-user > input {
 	background-color: white;
 }
 
@@ -352,18 +352,18 @@
     resize: none;
     margin: 2px auto;
 }
-.main-user-rank .user-rank-wrap .main-ranker-user{
+.main-user-rank .user-rank-wrap .rankBox .main-ranker-user{
 
     width: 100%;
 }
-.main-user-rank .user-rank-wrap .main-ranker-user > span,
-.main-user-rank .user-rank-wrap .main-ranker-user > input {
+.main-user-rank .user-rank-wrap .rankBox .main-ranker-user > span,
+.main-user-rank .user-rank-wrap .rankBox .main-ranker-user > input {
     background-color: none;
     outline: none;
     width: 60px;
     text-align: center;
 }
-.main-user-rank > .user-rank-wrap > .main-ranker-user > .grade {
+.main-user-rank > .user-rank-wrap > .rankBox > .main-ranker-user > .grade {
     display: inline-block;
     width: 40px;
     height: 40px;
