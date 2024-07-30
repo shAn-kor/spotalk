@@ -136,11 +136,9 @@ public class SportServiceImpl implements SportService {
 	public List<SportDTO> getTeamRank(HttpServletRequest request, HttpServletResponse response) {
 		SqlSession sql = sqlSessionFactory.openSession(true);
 		SportMapper mapper = sql.getMapper(SportMapper.class);
-		return mapper.getTeamRank();
-	}
-
-	public void closeSqlSession() {
-		sqlSessionFactory.openSession(true).close();
+		List<SportDTO> list = mapper.getTeamRank();
+		sql.close();
+		return list;
 	}
 }
 

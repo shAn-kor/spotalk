@@ -101,10 +101,6 @@ public class PredictServiceImpl implements PredictService{
         sql.close();
     }
 
-    public void closeSqlSession() {
-        sqlSessionFactory.openSession(true).close();
-    }
-
     @Override
     public void getPredictStatus(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         JSONObject json = null;
@@ -160,7 +156,7 @@ public class PredictServiceImpl implements PredictService{
             }
             predictMapper.updateCDate(dto);
         }
-
+        sql.close();
     }
 
 }
