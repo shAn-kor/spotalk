@@ -25,3 +25,17 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+
+
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    const titles = document.querySelectorAll('.truncate');
+    titles.forEach(title => {
+        const maxLength = 50;
+        if (title.textContent.length > maxLength) {
+            title.textContent = title.textContent.substring(0, maxLength - 3) + '...';
+        }
+    });
+});
+

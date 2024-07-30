@@ -18,6 +18,9 @@ public class BoardDTO {
 	String commentDate; //디폴트 시스데이트
 	String commentLike; //디폴트 0
 	String commentDislike; //디폴트 0
+	String commentCount;
+	
+	String searchTerm;
 	
 	public BoardDTO() {
 		
@@ -25,7 +28,8 @@ public class BoardDTO {
 
 	public BoardDTO(String postId, String userId, String category, String postTitle, String postContent,
 			String postDate, String hit, String postLike, String postDislike, String gradeId, String commentId,
-			String commentContent, String commentDate, String commentLike, String commentDislike) {
+			String commentContent, String commentDate, String commentLike, String commentDislike, String commentCount,
+			String searchTerm) {
 		this.postId = postId;
 		this.userId = userId;
 		this.category = category;
@@ -41,6 +45,8 @@ public class BoardDTO {
 		this.commentDate = commentDate;
 		this.commentLike = commentLike;
 		this.commentDislike = commentDislike;
+		this.commentCount = commentCount;
+		this.searchTerm = searchTerm;
 	}
 
 	public String getPostId() {
@@ -162,6 +168,23 @@ public class BoardDTO {
 	public void setCommentDislike(String commentDislike) {
 		this.commentDislike = commentDislike;
 	}
+
+	public String getCommentCount() {
+		return commentCount;
+	}
+
+	public void setCommentCount(String commentCount) {
+		this.commentCount = commentCount;
+	}
+
+	public String getSearchTerm() {
+		return searchTerm;
+	}
+
+	public void setSearchTerm(String searchTerm) {
+		this.searchTerm = searchTerm;
+	}
+	
 	
 	
 	

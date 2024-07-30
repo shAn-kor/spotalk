@@ -75,15 +75,38 @@ public class BoardController extends HttpServlet {
 			service.commentWrite(request, response);
 		}
 		
+		if (command.equals("/board/modifyPost.board")) { // 게시글 수정 화면
+			request.getRequestDispatcher("post_edit.jsp").forward(request, response);
+		}
+		
+		if (command.equals("/board/updatePost.board")) { // 게시글 수정
+		    service = new BoardServiceImpl();
+		    service.updatePost(request, response);
+		}
+		
+		if (command.equals("/board/deletePost.board")) { // 게시글 삭제
+		    service = new BoardServiceImpl();
+		    service.deletePost(request, response);
+		}
+		
+		if (command.equals("/board/modifyComment.board")) { // 댓글 수정 화면
+			request.getRequestDispatcher("comment_edit.jsp").forward(request, response);
+		}
+		if (command.equals("/board/updateComment.board")) { // 댓글 수정
+		    service = new BoardServiceImpl();
+		    service.updateComment(request, response);
+		}
+		if (command.equals("/board/deleteComment.board")) { // 댓글 삭제
+		    service = new BoardServiceImpl();
+		    service.deleteComment(request, response);
+		}
 
-		
-	
-		
-	
-	
-		
+		if (command.equals("/board/searchPosts.board")) { // 게시글 검색
+		    service = new BoardServiceImpl();
+		    service.searchPosts(request, response);
+		}
 		
 		
-	
 	}
+	
 }

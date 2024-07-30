@@ -12,7 +12,7 @@
 	마이바티스의 매개변수는 일단 꼭 1개여야만 함
 	parameterType에는 매개변수의 타입이 들어감(string, int, double, dto풀경로)
 	단 parameterType은 생략가능
-	?값 == #{DTO의 getter명}(대소문자 구분함)
+	?값 == #{DTO의 ge	tter명}(대소문자 구분함)
 	?가 단일값인 경우는 #{매개변수명}
 -->
 <mapper namespace="com.myweb.board.model.BoardMapper">
@@ -28,77 +28,244 @@
 	SELECT * FROM POSTS WHERE POST_ID = #{postId}
 </select>	
 
- <select id="getPosts" parameterType="com.myweb.board.model.BoardCheck" resultType="com.myweb.board.model.BoardDTO">
-	SELECT *
-	FROM (
-	    SELECT p.*, 
-	           COALESCE(c.comment_count, 0) AS comment_count
-	           
-	           <if test="order == 최신순">
-	           	
-	           </if>
-	           
-	           <if test="order == '인기순' ">
-	           ,ROW_NUMBER() OVER (ORDER BY (p.post_like - p.post_dislike + COALESCE(c.comment_count, 0)) DESC) AS rn
-			    FROM POSTS p
-			    LEFT JOIN (
-			        SELECT post_id, COUNT(*) AS comment_count
-			        FROM COMMENTS
-			        GROUP BY post_id
-			    ) c ON p.post_id = c.post_id
-	           </if>
-	           
-	           <if test="category == '조회순' ">
-	           ,ROW_NUMBER() OVER (ORDER BY #{order} DESC, p.post_id) AS rn
-	           </if>
-	           
-	           <if test="dto에getter == '~~~' ">
-	           ,ROW_NUMBER() OVER (ORDER BY #{order} DESC, p.post_id) AS rn
-	           </if>
-	           
-	           
-	           
-	    FROM POSTS p
-	    LEFT JOIN (
-	        SELECT post_id, COUNT(*) AS comment_count
-	        FROM COMMENTS
-	        GROUP BY post_id
-	    ) c ON p.post_id = c.post_id
-	    where
-	) 
-	WHERE rn BETWEEN #{params.offset} AND #{params.offset} + #{params.limit} - 1
+<select id="getPosts" parameterType="com.myweb.board.model.BoardCheck" resultType="com.myweb.board.model.BoardDTO">
+    SELECT *
+    FROM (
+        SELECT p.*, 
+               COALESCE(c.comment_count, 0) AS comment_count,
+               ROW_NUMBER() OVER (
+                   <choose>
+                       <when test="order == '최신순'">ORDER BY p.post_date DESC</when>
+                       <when test="order == '인기순'">ORDER BY (p.post_like - p.post_dislike + COALESCE(c.comment_count, 0)) DESC</when>
+                       <otherwise>ORDER BY p.hit DESC</otherwise>
+                   </choose>
+               ) AS rn
+        FROM POSTS p
+        LEFT JOIN (
+            SELECT post_id, COUNT(*) AS comment_count
+            FROM COMMENTS
+            GROUP BY post_id
+        ) c ON p.post_id = c.post_id
+    ) 
+    WHERE rn BETWEEN #{params.offset} AND #{params.offset} + #{params.limit} - 1
 </select>
 
-<select id="getAnnPosts" parameterType="map" resultType="com.myweb.board.model.BoardDTO">
-	SELECT * FROM (
-	SELECT POSTS.*, ROW_NUMBER() OVER (#{order}) AS rn
-	FROM POSTS WHERE CATEGORY = '공지사항'
-	) WHERE rn BETWEEN #{params.offset} AND #{params.offset} + #{params.limit} - 1
-</select>
-<select id="getSoccerPosts" parameterType="map" resultType="com.myweb.board.model.BoardDTO">
-	SELECT * FROM (
-	SELECT POSTS.*, ROW_NUMBER() OVER (#{order}) AS rn
-	FROM POSTS WHERE CATEGORY = '축구'
-	) WHERE rn BETWEEN #{params.offset} AND #{params.offset} + #{params.limit} - 1
-</select>
-<select id="getBaseballPosts" parameterType="map" resultType="com.myweb.board.model.BoardDTO">
-	SELECT * FROM (
-	SELECT POSTS.*, ROW_NUMBER() OVER (#{order}) AS rn
-	FROM POSTS WHERE CATEGORY = '야구'
-	) WHERE rn BETWEEN #{params.offset} AND #{params.offset} + #{params.limit} - 1
-								 <!-- 한 페이지에 표시할 글 수 -->
-</select>
-<select id="getBasketballPosts" parameterType="map" resultType="com.myweb.board.model.BoardDTO">
-	SELECT * FROM (
-	SELECT POSTS.*, ROW_NUMBER() OVER (#{order}) AS rn
-	FROM POSTS WHERE CATEGORY = '농구'
-	) WHERE rn BETWEEN #{params.offset} AND #{params.offset} + #{params.limit} - 1
+<select id="getAnnPosts" parameterType="com.myweb.board.model.BoardCheck" resultType="com.myweb.board.model.BoardDTO">
+    SELECT *
+    FROM (
+        SELECT p.*, 
+               ROW_NUMBER() OVER (
+                   <choose>
+                       <when test="order == '최신순'">ORDER BY p.post_date DESC</when>
+                       <when test="order == '인기순'">ORDER BY (p.post_like - p.post_dislike + COALESCE(c.comment_count, 0)) DESC</when>
+                       <otherwise>ORDER BY p.hit DESC</otherwise>
+                   </choose>
+               ) AS rn
+        FROM POSTS p
+        LEFT JOIN (
+            SELECT post_id, COUNT(*) AS comment_count
+            FROM COMMENTS
+            GROUP BY post_id
+        ) c ON p.post_id = c.post_id
+        WHERE p.category = '공지'
+    ) 
+    WHERE rn BETWEEN #{params.offset} AND #{params.offset} + #{params.limit} - 1
 </select>
 
-    
+<select id="getSoccerPosts" parameterType="com.myweb.board.model.BoardCheck" resultType="com.myweb.board.model.BoardDTO">
+    SELECT *
+    FROM (
+        SELECT p.*, 
+               ROW_NUMBER() OVER (
+                   <choose>
+                       <when test="order == '최신순'">ORDER BY p.post_date DESC</when>
+                       <when test="order == '인기순'">ORDER BY (p.post_like - p.post_dislike + COALESCE(c.comment_count, 0)) DESC</when>
+                       <otherwise>ORDER BY p.hit DESC</otherwise>
+                   </choose>
+               ) AS rn
+        FROM POSTS p
+        LEFT JOIN (
+            SELECT post_id, COUNT(*) AS comment_count
+            FROM COMMENTS
+            GROUP BY post_id
+        ) c ON p.post_id = c.post_id
+        WHERE p.category = '축구'
+    ) 
+    WHERE rn BETWEEN #{params.offset} AND #{params.offset} + #{params.limit} - 1
+</select>
+
+<select id="getBaseballPosts" parameterType="com.myweb.board.model.BoardCheck" resultType="com.myweb.board.model.BoardDTO">
+    SELECT *
+    FROM (
+        SELECT p.*, 
+               ROW_NUMBER() OVER (
+                   <choose>
+                       <when test="order == '최신순'">ORDER BY p.post_date DESC</when>
+                       <when test="order == '인기순'">ORDER BY (p.post_like - p.post_dislike + COALESCE(c.comment_count, 0)) DESC</when>
+                       <otherwise>ORDER BY p.hit DESC</otherwise>
+                   </choose>
+               ) AS rn
+        FROM POSTS p
+        LEFT JOIN (
+            SELECT post_id, COUNT(*) AS comment_count
+            FROM COMMENTS
+            GROUP BY post_id
+        ) c ON p.post_id = c.post_id
+        WHERE p.category = '야구'
+    ) 
+    WHERE rn BETWEEN #{params.offset} AND #{params.offset} + #{params.limit} - 1
+</select>
+
+<select id="getBasketballPosts" parameterType="com.myweb.board.model.BoardCheck" resultType="com.myweb.board.model.BoardDTO">
+    SELECT *
+    FROM (
+        SELECT p.*, 
+               ROW_NUMBER() OVER (
+                   <choose>
+                       <when test="order == '최신순'">ORDER BY p.post_date DESC</when>
+                       <when test="order == '인기순'">ORDER BY (p.post_like - p.post_dislike + COALESCE(c.comment_count, 0)) DESC</when>
+                       <otherwise>ORDER BY p.hit DESC</otherwise>
+                   </choose>
+               ) AS rn
+        FROM POSTS p
+        LEFT JOIN (
+            SELECT post_id, COUNT(*) AS comment_count
+            FROM COMMENTS
+            GROUP BY post_id
+        ) c ON p.post_id = c.post_id
+        WHERE p.category = '농구'
+    ) 
+    WHERE rn BETWEEN #{params.offset} AND #{params.offset} + #{params.limit} - 1
+</select>
+
 <select id="getTotalPosts" resultType="int">
-	SELECT COUNT(*) FROM POSTS
+    SELECT COUNT(*) FROM POSTS
 </select>
 
+
+<insert id="insertComment" parameterType="com.myweb.board.model.BoardDTO">
+    INSERT INTO COMMENTS (comment_id, post_id, user_id, comment_content, comment_date) 
+    VALUES (comment_seq.nextval, #{postId}, #{userId}, #{commentContent}, SYSDATE)
+</insert>
+
+<select id="getComments" parameterType="string" resultType="com.myweb.board.model.BoardDTO">
+    SELECT * FROM COMMENTS WHERE POST_ID = #{postId} ORDER BY COMMENT_DATE DESC
+</select>
+
+<!-- 게시글 수정 -->
+<update id="updatePost" parameterType="com.myweb.board.model.BoardDTO">
+    UPDATE POSTS
+    SET post_title = #{postTitle},
+        post_content = #{postContent},
+        post_date = SYSDATE
+    WHERE post_id = #{postId} AND user_id = #{userId}
+</update>
+
+<!-- 게시글 삭제 -->
+<delete id="deletePost" parameterType="map">
+    DELETE FROM POSTS
+    WHERE post_id = #{postId} 
+    AND (user_id = #{userId} OR #{isAdmin} = 'true')
+</delete>
+
+
+<!-- 댓글 수정 -->
+<update id="updateComment" parameterType="com.myweb.board.model.BoardDTO">
+    UPDATE COMMENTS
+    SET comment_content = #{commentContent},
+        comment_date = SYSDATE
+    WHERE comment_id = #{commentId} AND user_id = #{userId}
+</update>
+
+  <select id="getComment" parameterType="string" resultType="com.myweb.board.model.BoardDTO">
+        SELECT * FROM COMMENTS WHERE COMMENT_ID = #{commentId}
+    </select>
+    
+<!-- 댓글 삭제 -->
+<delete id="deleteComment" parameterType="map">
+    DELETE FROM COMMENTS
+    WHERE comment_id = #{commentId} 
+    AND (user_id = #{userId} OR #{isAdmin} = 'true')
+</delete>
+
+
+
+<!-- 검색된 게시글 조회 -->
+<select id="searchPosts" parameterType="map" resultType="com.myweb.board.model.BoardDTO">
+    SELECT *
+    FROM (
+        SELECT p.*, 
+               COALESCE(c.comment_count, 0) AS comment_count,
+               ROW_NUMBER() OVER (
+                   <choose>
+                       <when test="order == '최신순'">ORDER BY p.post_date DESC</when>
+                       <when test="order == '인기순'">ORDER BY (p.post_like - p.post_dislike + COALESCE(c.comment_count, 0)) DESC</when>
+                       <otherwise>ORDER BY p.hit DESC</otherwise>
+                   </choose>
+               ) AS rn
+        FROM POSTS p
+        LEFT JOIN (
+            SELECT post_id, COUNT(*) AS comment_count
+            FROM COMMENTS
+            GROUP BY post_id
+        ) c ON p.post_id = c.post_id
+        WHERE p.post_title LIKE '%' || #{searchTerm} || '%'
+    ) 
+    WHERE rn BETWEEN #{offset} AND #{offset} + #{limit} - 1
+</select>
+
+ 	<!-- 게시글 추천수 증가 -->
+    <update id="increasePostLike" parameterType="map">
+        UPDATE POSTS
+        SET post_like = post_like + 1
+        WHERE post_id = #{postId}
+    </update>
+
+    <!-- 게시글 비추천수 증가 -->
+    <update id="increasePostDislike" parameterType="map">
+        UPDATE POSTS
+        SET post_dislike = post_dislike + 1
+        WHERE post_id = #{postId}
+    </update>
+
+    <!-- 댓글 추천수 증가 -->
+    <update id="increaseCommentLike" parameterType="map">
+        UPDATE COMMENTS
+        SET comment_like = comment_like + 1
+        WHERE comment_id = #{commentId}
+    </update>
+
+    <!-- 댓글 비추천수 증가 -->
+    <update id="increaseCommentDislike" parameterType="map">
+        UPDATE COMMENTS
+        SET comment_dislike = comment_dislike + 1
+        WHERE comment_id = #{commentId}
+    </update>
+
+    <!-- 게시글 추천 및 비추천 기록 추가 -->
+    <insert id="insertPostLikeDislike" parameterType="com.myweb.board.model.LikeDislikeRecord">
+        INSERT INTO POST_LIKES_DISLIKES (id, user_id, post_id, is_like)
+        VALUES (post_like_dislike_seq.nextval, #{userId}, #{postId}, #{isLike})
+    </insert>
+
+    <!-- 댓글 추천 및 비추천 기록 추가 -->
+    <insert id="insertCommentLikeDislike" parameterType="com.myweb.board.model.LikeDislikeRecord">
+        INSERT INTO COMMENT_LIKES_DISLIKES (id, user_id, comment_id, is_like)
+        VALUES (comment_like_dislike_seq.nextval, #{userId}, #{commentId}, #{isLike})
+    </insert>
+
+    <!-- 유저가 게시글에 추천 또는 비추천을 했는지 확인 -->
+    <select id="hasUserVotedOnPost" parameterType="map" resultType="int">
+        SELECT COUNT(*) 
+        FROM POST_LIKES_DISLIKES 
+        WHERE user_id = #{userId} AND post_id = #{postId}
+    </select>
+
+    <!-- 유저가 댓글에 추천 또는 비추천을 했는지 확인 -->
+    <select id="hasUserVotedOnComment" parameterType="map" resultType="int">
+        SELECT COUNT(*) 
+        FROM COMMENT_LIKES_DISLIKES 
+        WHERE user_id = #{userId} AND comment_id = #{commentId}
+    </select>
 
 </mapper>

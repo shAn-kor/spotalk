@@ -13,12 +13,15 @@
   <link rel="stylesheet" href="../css/board_write.css" type="text/css">
   
    <div class="container">
-        <div class="item">
-            <h3>글 쓰기</h3>
-            <form action="postWrite.board" method="post">
+        <form action="postWrite.board" method="post">
+        	<div class="item">
+            	<h3>글 쓰기</h3>
   				<div class="category">
                		<select class="form-control" id="categorySelect" name="category">
                     	<option value="">카테고리를 선택해주세요.</option>
+                    	<c:if test="${sessionScope.user_id == 'admin'}">
+	                    	<option value="공지">공지사항</option>
+                    	</c:if>
                     	<option value="축구">축구</option>
                     	<option value="야구">야구</option>
                     	<option value="농구">농구</option>
@@ -31,10 +34,10 @@
 	              <textarea name="post_content" placeholder="내용을 입력해주세요."></textarea>
 	            </div>
 	            <div class="right">
-	                <input type="submit" class="btn" formaction="boardMain.board" formmethod="post" value="취소">
 	                <input type="submit" class="btn" value="등록">
+	                <input type="submit" class="btn" formaction="boardMain.board" formmethod="post" value="취소">
 	            </div>
-            </form>
-        </div>
+	        </div>
+    	</form>
     </div>
 <%@ include file="../include/footer.jsp"%>

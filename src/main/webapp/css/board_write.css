@@ -16,6 +16,7 @@
 
 .item {
     width: 100%;
+    min-height: 800px;
     margin: 0 auto;
 }
 .item h3 {
@@ -82,24 +83,27 @@
 }
 
 /* 취소, 등록 버튼 */
-.item {overflow: hidden;}
 .item .right {
-    float: right;
+	overflow: hidden;
     margin-top: 30px;
 }
 
 /* 취소 */
-.right > input:nth-child(1) {
+.right > input:nth-child(2) {
+	float: right;
     background-color: #e5e5e5;
     width: 100px;
     height: 30px;
+    
 }
 
 /* 등록 */
-.right > input:nth-child(2) {
+.right > input:nth-child(1) {
+	float: right;
     background-color: #8ecae6;
     width: 100px;
     height: 30px;
+    margin: 0 5px;
 }
 
 

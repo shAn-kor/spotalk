@@ -4,19 +4,18 @@
     display: flex;
     flex-direction: column;
     width: 930px;
+    min-height: 930px;
     background-color: antiquewhite;
 	border-top: 1px solid #777;
 	border-bottom: 1px solid #777;
 }
 
-
 .item1 {
     overflow: hidden;
     width: 100%;
-    height: 130px;
+    height: 140px;
     border-bottom: 2px solid #000;
 }
-
 
 
 /* ======= 글 작성하기 ======= */
@@ -34,8 +33,8 @@
     height: 40px;
     background: url("../img/pen.png");
     background-repeat: no-repeat;
-    background-position: 5px 7px;
-
+    background-position: 10px 7px;
+    text-align: right;
 }
 .write > a:hover {
     color: white;
@@ -53,8 +52,8 @@
 
 
 /* ======= 검색바 ======= */
-.search {float: left; margin-left: 145px; margin-top: 10px;}
-.search-bar {
+#search {float: left; margin-left: 145px; margin-top: 10px;}
+#search-bar {
     overflow: hidden;
     border: 2px solid #777;
     border-radius: 10px;
@@ -62,7 +61,7 @@
     height: 40px;
     background-color: white;
 }
-.search-bar > button {
+#search-bar > .btn {
     float: left;
     border: none;
     width: 24px;
@@ -73,7 +72,7 @@
     margin: 7px 3px;
     background-color: white;
 }
-.search-bar > input {
+#search-bar > input {
     float: left;
     border: none;
     width: 300px;
@@ -93,7 +92,7 @@
     margin-top: 10px;
 }
 .sort > img {
-    margin: 2px 0 0 5px;
+    margin: 2px 5px 0 5px;
 }
 .sort > button {
     border: none;
@@ -128,7 +127,6 @@
 	padding-right: 1px;
 }
  
-
 .category > button img {
 	width: 16px;
 	height: 16px;
@@ -148,9 +146,9 @@
 
 .top {margin: 5px;}
 /* 작성자 이름 */
-.top > a:nth-child(2) {
+.top > a {
     color: #000;
-    font-size: 12px;
+    font-size: 15px;
     
 } 
 /* 작성시간 */
@@ -159,62 +157,68 @@
 }
 
 
-.item2 .bottom {overflow: hidden; margin: 5px;}
-.item2 .bottom .left {float: left; margin: 5px;}
-.item2 .bottom .right {float: right; margin: 15px 5px;}
+.item2 .bottom {
+	overflow: hidden;
+	margin: 5px;
+	height: 30px;
+}
+.item2 .bottom .left {
+	float: left;
+	width: 750px;
+	height: 30px;
+	
+}
+.item2 .bottom .right {
+	float: right;
+	width:100px;
+	height: 20px;
+	padding-top: 10px;
+}
 
 /* 카테고리 */
-bottom .left > a:nth-child(1) {
+.bottom .left > a > .truncate {
     color: #000;
-    font-size: 12px;
-    margin-right: 10px;
+    font-size: 20px;
+    margin: 0 30px 0 10px;
 }
 
 /* 글 제목 */   
 .bottom .left > a:nth-child(2) {
     color: #000;
-    font-size: 20px;
+    font-size: 30px;
 }
 
 /* 조회수 */
 .bottom .right .hits {
-    display: inline;
+    display: inline-block;
 } 
 .bottom .right .comments {
-    display: inline;
+    display: inline-block;
 }
 .bottom .right .good {
-    display: inline;
+    display: inline-block;
 }
 
 
-/* 하단 페이지 */
-.bottom-page {margin: 10px;}
-
-/* 중앙 숫자 페이지 버튼 */
-.bottom-page > ul > p {
-    display: inline;
-    font-size: 20px;
-    margin: 0 7px 0 0;
+/* 이전, 중앙, 다음 페이지 버튼 */
+.pager > li > a {
+	background-color: antiquewhite;
+	border: 0px;
 }
-.bottom-page > ul > button {
-    width: 32px;
-    height: 32px;
-    background-color: antiquewhite;
-}
-.bottom-page > ul > button > a {
-    color: #000;
-    font-size: 15px;
+.pager > li > a:hover,
+.pager > li > a:focus {
+	text-decoration: none;
+	background-color: antiquewhite;
+	color: blue;
 }
 
-/* 이전, 다음 페이지 버튼 */
-.bottom-page > ul > li > a {
-    color: #000;
-    border: none;
-    background-color: antiquewhite;
+/* 생략 표시 */
+.pager .disabled > span {
+	border: 0;
+	background-color: antiquewhite;
 }
-.bottom-page > ul > li > a:hover {
-    background-color: antiquewhite;
-    text-decoration: underline;
 
+/* 현재 페이지 버튼 */
+.pager .active a:visited {
+	color: blue;
 }
