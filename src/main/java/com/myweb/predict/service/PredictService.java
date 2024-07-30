@@ -14,4 +14,6 @@ public interface PredictService {
     void closeGameSqlSession();
 
     void getPredictStatus(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
+
+    void predictUsers();
 }

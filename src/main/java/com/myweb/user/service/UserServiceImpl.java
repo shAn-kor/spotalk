@@ -419,14 +419,14 @@ public class UserServiceImpl implements UserService{
 		if (date == null) {
 			date = new Date(0L);
 		}
+		System.out.println(date.toLocalDate());
+		LocalDate local = LocalDate.from(date.toLocalDate());
 
-		LocalDateTime local = LocalDateTime.from(date.toLocalDate());
-
-		LocalDateTime localDate = LocalDateTime.now();
+		LocalDateTime nowDate = LocalDateTime.now();
 
 		JSONObject jsonObject = new JSONObject();
 
-		if (local.isBefore(localDate)) {
+		if (local.getDayOfYear() < nowDate.getDayOfYear() || local.getYear() < nowDate.getYear()) {
 			jsonObject.put("msg", "ok");
 			mapper.updateAttendanceDate(nick);
 		}

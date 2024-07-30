@@ -80,14 +80,14 @@
                         <div id="menu">
                             <canvas width="300" height='300'></canvas>
                         </div>
-                        <button id="random-btn" class="close_btn">돌려돌려 돌림판</button>
+                        <div class="modal-btn-box"><button id="random-btn" class="close_btn">돌려돌려 돌림판</button></div>
                     </div>
                 </div>
                 <div class="modal" id="random-result-modal">
                     <div class="modal_popup" >
                         <h3>출석 보상 결과 !!!!</h3>
                         <div id="random-result">축하드립니다. </div>
-                        <button type="button" id="modal-close-btn" class="close_btn">닫기</button>
+                        <div class="modal-btn-box"><button type="button" id="modal-close-btn" class="close_btn">닫기</button></div>
                     </div>
                 </div>
             <script src="${pageContext.request.contextPath}/js/header.js"></script>

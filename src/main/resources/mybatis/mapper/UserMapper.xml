@@ -32,7 +32,7 @@
 		SELECT * FROM MEMBER WHERE GRADE_ID != 11 ORDER BY POINT DESC
 	</select>
 
-	<select id="getDateByAttendance" parameterType="string" resultType="date">
+	<select id="getDateByAttendance" parameterType="string">
 		SELECT A_DATE FROM ATTENDANCE WHERE NICK=#{nick}
 	</select>
 

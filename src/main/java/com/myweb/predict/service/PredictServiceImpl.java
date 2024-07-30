@@ -1,18 +1,13 @@
 package com.myweb.predict.service;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 import com.myweb.predict.model.PredictDTO;
 import com.myweb.predict.model.PredictMapper;
 import com.myweb.user.model.UserDTO;
 import com.myweb.user.model.UserMapper;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.json.simple.JSONObject;
@@ -146,6 +141,25 @@ public class PredictServiceImpl implements PredictService{
         out.print(jsonObject.toJSONString());
 
         sql.close();
+    }
+
+    @Override
+    public void predictUsers() {
+        SqlSession sql = sqlSessionFactory.openSession(true);
+        PredictMapper predictMapper = sql.getMapper(PredictMapper.class);
+        predictMapper.updatePredictGameResult();
+
+        List<PredictDTO> list = predictMapper.getPredictResultDateNull();
+
+        UserMapper userMapper = sql.getMapper(UserMapper.class);
+        for (PredictDTO dto : list) {
+            if (dto.getChoice().equals(dto.getpResult())) {
+                UserDTO userDTO = userMapper.getUserById(dto.getUserId());
+                userDTO.setPoint(Long.toString(Long.parseLong(userDTO.getPoint()) + dto.getBetPoint()*2));
+                userMapper.setPoint(userDTO);
+            }
+            predictMapper.updateCDate(dto);
+        }
     }
 
 }
