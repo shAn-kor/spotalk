@@ -12,5 +12,4 @@ public interface SportService {
 
     List<SportDTO> getTeamRank(HttpServletRequest request, HttpServletResponse response);
 
-    void closeSqlSession();
 }
