@@ -98,12 +98,38 @@
     resize: none;
     padding: 10px;
 }
+
+.user-rank-wrap > ul {
+	height: 40px;
+	line-height: 40px;
+	background-color: rgb(241, 215, 181); 
+	color: white;
+}
+.user-rank-wrap > ul > li {
+	display: inline-block;
+	text-align: center;
+	
+}
+.user-rank-wrap > ul > li:nth-child(1) {
+	width: 80px;
+}
+.user-rank-wrap > ul > li:nth-child(2) {
+	width: 140px;
+}
+.user-rank-wrap > ul > li:nth-child(3) {
+	width: 110px;
+}
+.user-rank-wrap > ul > li:nth-child(4) {
+	width: 70px;
+}
+
 .user-rank-wrap > .main-ranker-user {
     background-color: white;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 5px 10px;
+    margin-top: 10px;
 }
 .main-ranker-user > img {
     display: block;
@@ -117,9 +143,13 @@
 .main-ranker-user > p:nth-child(1) {
     text-align: left;
 }
-.main-ranker-user > p:nth-child(2) {
+/* .main-ranker-user > p:nth-child(2) {
     text-align: right;
+} */
+.main-ranker-user > input {
+	background-color: white;
 }
+
 .podium-wrap{
     width: 100%;
     height: 321px;

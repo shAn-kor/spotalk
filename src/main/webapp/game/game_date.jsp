@@ -8,17 +8,15 @@
 <script src="../js/game_date.js" defer></script>
 <header class="game-date-header">
     <div class="wrap">
-        <div class="left">
-            <div class="top-left">
                <!-- 축/야/농 메뉴 -->
                 <c:set var="selectedSport" value="${param.sport}" />
 
                 <div class="sportMenu">
                     <ul>
+                    	<img src="../img/menubtn.png" alt="menubtn">
                         <c:choose>
                             <c:when test="${selectedSport == 'soccer'}">
                                 <li>
-                                   <img src="../img/soccer-icon.png" alt="soccer">
                                    <a href="/spotalk/game/soccerdate.game?sport=soccer">축 구</a>
                                 </li>
                                 <li><a href="/spotalk/game/basedate.game?sport=baseball">야 구</a></li>
@@ -26,7 +24,6 @@
                             </c:when>
                             <c:when test="${selectedSport == 'baseball'}">
                                 <li>
-                                   <img src="../img/baseball-icon.png" alt="baseball">
                                    <a href="/spotalk/game/basedate.game?sport=baseball">야 구</a>
                                 </li>
                                 <li><a href="/spotalk/game/soccerdate.game?sport=soccer">축 구</a></li>
@@ -34,7 +31,6 @@
                             </c:when>
                             <c:when test="${selectedSport == 'basketball'}">
                                 <li>
-                                   <img src="../img/basketball-icon.png" alt="basketball">
                                    <a href="/spotalk/game/basketdate.game?sport=basketball">농 구</a>
                                 </li>
                                 <li><a href="/spotalk/game/soccerdate.game?sport=soccer">축 구</a></li>
@@ -42,7 +38,6 @@
                             </c:when>
                             <c:otherwise>
                                 <li>
-                                   <img src="../img/soccer-icon.png" alt="soccer">
                                    <a href="/spotalk/game/soccerdate.game?sport=soccer">축 구</a>
                                 </li>
                                 <li><a href="/spotalk/game/basedate.game?sport=baseball">야 구</a></li>
@@ -50,12 +45,10 @@
                             </c:otherwise>
                         </c:choose>
                     </ul>
-                </div>
-                
              </div>
-        </div>
-        <div class="right">
-            <div class="mid-right">
+             
+        <div class="toto-content">
+            <div class="toto-mid">
                 <div class="mid-top">
                     <ul>
                         <li>경 기 날 짜</li>

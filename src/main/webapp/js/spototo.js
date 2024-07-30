@@ -2,7 +2,7 @@ window.onload = function() {
 	
 	/*POPUP*/
 	if(findCookie("spototoPopup")==false){
-		window.open("popup.jsp","팝업창","width=500, height=260, top=100, left=100, location=no");
+		window.open("popup.jsp","팝업창","width=650, height=330, top=200, left=450, location=no");
 		
 	}
 	
