@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <%@ include file="include/header.jsp"%>
 
@@ -160,8 +161,8 @@
                 <div id="tab03">
                     <% int basketGameListNum = 1; %>
                     <c:choose>
-                    	<c:when test="${empty basketballGames} ">
-                    		<c:out value="경기가 없습니다."></c:out>
+                    	<c:when test="${fn:length(basketballGames) == 0 }">
+                    		경기가 없습니다.
                     	</c:when>
 	                    <c:otherwise>
 		                    <c:forEach var="basketGameDTO" items="${basketballGames}">

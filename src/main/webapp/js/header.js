@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function() {
    }
    
    // 포맷팅된 포인트 값을 설정
-   var formattedPointValue = formatNumber(numericValue) + ' pt';
+   var formattedPointValue = formatNumber(numericValue) + ' P';
    pointElement.textContent = formattedPointValue;
 	
 	
