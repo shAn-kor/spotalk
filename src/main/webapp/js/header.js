@@ -92,15 +92,19 @@ document.addEventListener('DOMContentLoaded', function() {
 
 	console.log(nick);
 
-	fetch('checkIsAttendance.user', {
-		method: 'POST',
-		contentType: 'application/json',
-		body: JSON.stringify({nick: nick.innerHTML})
-	}).then(response => { return response.json(); })
-		.then(data => {
-			console.log(data.msg);
-			if (data.msg === 'ok') runRandomModal();
-		})
+	if (sessionStorage.getItem("msg") == null) {
+		fetch('checkIsAttendance.user', {
+			method: 'POST',
+			contentType: 'application/json',
+			body: JSON.stringify({nick: nick.innerHTML})
+		}).then(response => { return response.json() })
+			.then(data => {
+				console.log(data.msg);
+				sessionStorage.setItem("msg", data.msg);
+				sessionStorage.setItem("msg", data.msg);
+				if (data.msg === 'ok') runRandomModal();
+			})
+	}
 
 	function runRandomModal() {
 		randomModal.classList.add('on');

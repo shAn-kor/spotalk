@@ -41,7 +41,6 @@
             </div>
             <div class="top-bottom">
                 <p><span><%= formattedPoint %></span> P</p>
-                <button type="button" class="btn btn-default" onclick="location.href='${pageContext.request.contextPath}/user/myPage.user';">마이페이지</button>
             </div>
         </div>
 
@@ -52,7 +51,7 @@
                 <li class="active"><a data-toggle="tab" href="#all">전체</a></li>
                 <li><a data-toggle="tab" href="#success">성공 내역</a></li>
                 <li><a data-toggle="tab" href="#fail">실패 내역</a></li>
-	            <select>
+	            <select class="pointList-year">
 	                <option value="2024">2024년</option>
 	                <option value="2023">2023년</option>
 	            </select>

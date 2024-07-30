@@ -455,6 +455,8 @@ public class UserServiceImpl implements UserService{
 		if (local.getDayOfYear() < nowDate.getDayOfYear() || local.getYear() < nowDate.getYear()) {
 			jsonObject.put("msg", "ok");
 			mapper.updateAttendanceDate(nick);
+		} else {
+			jsonObject.put("msg", "no");
 		}
 
 		sql.close();
