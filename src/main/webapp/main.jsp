@@ -52,12 +52,12 @@
             </ul>
             <div class="team-rank-head">
                 <span>순위</span>
-                <input type="text" name="teamName" value="팀" disabled>
-                <input type="text" name="teamName" value="경기수" disabled>
-                <input type="text" name="teamName" value="승" disabled>
-                <input type="text" name="teamName" value="무" disabled>
-                <input type="text" name="teamName" value="패" disabled>
-                <input type="text" name="teamName" value="승률" disabled>
+                <input type="text" value="팀" disabled>
+                <input type="text" value="경기" disabled>
+                <input type="text" value="승" disabled>
+                <input type="text" value="무" disabled>
+                <input type="text" value="패" disabled>
+                <input type="text" value="승률" disabled>
             </div>
             <div class="tabcontent2">
                 <div id="tab2-01">
