@@ -39,8 +39,27 @@
                 </div>
     </div>
                 <div style="text-align: right; padding-right: 50px; width: 100%;">
-                	<a href="outMember.user" class="exitBtn">회원탈퇴</a>               
+                	<a href="#" class="exitBtn" id="deleteAccountLink">회원탈퇴</a>               
                 </div>
+                <script>
+	                document.getElementById('deleteAccountLink').addEventListener('click', function(event) {
+	                    // 기본 링크 동작을 막음
+	                    event.preventDefault();
+	                    
+	                    // 창 크기와 위치를 변수로 정의
+	                    var width = 400;
+	                    var height = 300;
+	                    var top = (window.innerHeight / 2) - (height / 2) + window.screenY;
+	                    var left = (window.innerWidth / 2) - (width / 2) + window.screenX;
+	
+	                    // 새 창을 열어 비밀번호 입력 폼을 표시
+	                    window.open(
+	                        'outMember.user', // 컨트롤러 URL 경로
+	                        'popupWindow',
+	                        'width=' + width + ',height=' + height + ',top=' + top + ',left=' + left + ',scrollbars=no,menubar=no,toolbar=no,location=no,status=no'
+	                    );
+	                });
+			    </script>
 	</div>
 </div>
 <%@include file="../include/footer.jsp"%>

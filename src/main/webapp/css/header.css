@@ -127,8 +127,57 @@ input[type='number'] {
     font-size: 15px;
     margin: 0;
 }
+@keyframes blink {
+    0% {
+        color: #000;
+        text-shadow: 0 0 5px rgba(255, 0, 0, 0.8);
+    }
+    25% {
+        color: #f00; /* 빨간색 */
+        text-shadow: 0 0 10px rgba(255, 0, 0, 0.8);
+    }
+    50% {
+        color: #0f0; /* 초록색 */
+        text-shadow: 0 0 15px rgba(0, 255, 0, 0.8);
+    }
+    75% {
+        color: #00f; /* 파란색 */
+        text-shadow: 0 0 20px rgba(0, 0, 255, 0.8);
+    }
+    100% {
+        color: #000;
+        text-shadow: 0 0 5px rgba(255, 0, 0, 0.8);
+    }
+}
+@keyframes fadeEffect {
+    0% {
+        opacity: 0.7;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0.7;
+    }
+}
+.rank-1 { color: #ff0000; text-shadow: 2px 2px 4px rgba(255, 0, 0, 0.5); } /* 레드 */
+        .rank-2 { color: #ff5500; text-shadow: 2px 2px 4px rgba(255, 85, 0, 0.5); } /* 오렌지 */
+        .rank-3 { color: #ffaa00; text-shadow: 2px 2px 4px rgba(255, 170, 0, 0.5); } /* 노란색 */
+        .rank-4 { color: #aaff00; text-shadow: 2px 2px 4px rgba(170, 255, 0, 0.5); } /* 연두색 */
+        .rank-5 { color: #00ff00; text-shadow: 2px 2px 4px rgba(0, 255, 0, 0.5); } /* 그린 */
+        .rank-6 { color: #00ffaa; text-shadow: 2px 2px 4px rgba(0, 255, 170, 0.5); } /* 청록색 */
+        .rank-7 { color: #00aaff; text-shadow: 2px 2px 4px rgba(0, 170, 255, 0.5); } /* 블루 */
+        .rank-8 { color: #5500ff; text-shadow: 2px 2px 4px rgba(85, 0, 255, 0.5); } /* 퍼플 */
+        .rank-9 { color: #aa00ff; text-shadow: 2px 2px 4px rgba(170, 0, 255, 0.5); } /* 핑크 */
+        .rank-10, .rank-11 { color: #b8860b; text-shadow: 3px 3px 6px rgba(184, 134, 11, 0.8); } /* 다크 골드 */
 #myInfo .name{
+	animation: fadeEffect 2s infinite;
     text-align: center;
+}
+#myInfo .joinMsg{
+    margin-top: 10px;
+    animation: blink 2s infinite;
+    cursor: pointer;	
 }
 #myInfo .point{
     text-align: right;

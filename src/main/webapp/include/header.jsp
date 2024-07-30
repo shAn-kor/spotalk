@@ -96,7 +96,7 @@
             <c:otherwise>
                 <div id="myInfo">
                     <div class="float">
-                        <h3 class="name">회원가입하고 500p 받기</h3>
+                        <h3 class="joinMsg" onclick="location.href='${pageContext.request.contextPath}/user/agree.user'">회원가입하고 500p 받기</h3>
                     </div>
                 </div>
             </c:otherwise>

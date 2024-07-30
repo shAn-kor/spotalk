@@ -30,7 +30,7 @@ public interface UserService {
     void changeNick(HttpServletRequest request, HttpServletResponse response) throws IOException;
 
 
-    void deleteUser(HttpServletRequest request, HttpServletResponse response) throws IOException;
+    void deleteUser(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException;
     void closeSqlSession();
 
     void updateGrade();
