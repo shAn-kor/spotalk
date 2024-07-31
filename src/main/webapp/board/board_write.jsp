@@ -11,9 +11,10 @@
   <script src="../js/bootstrap.min.js" type="text/javascript"></script>
 
   <link rel="stylesheet" href="../css/board_write.css" type="text/css">
-  
+
+<div style="width: 1400px; background-color:rgb(255,255,255,0.4);margin: 0 auto;">
    <div class="container">
-        <form action="postWrite.board" method="post">
+        <form action="postWrite.board" method="post" name="boardForm">
         	<div class="item">
             	<h3>글 쓰기</h3>
   				<div class="category">
@@ -34,10 +35,12 @@
 	              <textarea name="post_content" placeholder="내용을 입력해주세요."></textarea>
 	            </div>
 	            <div class="right">
-	                <input type="submit" class="btn" value="등록">
+	                <input type="submit" class="btn" value="등록" id="submit-btn">
 	                <input type="submit" class="btn" formaction="boardMain.board" formmethod="post" value="취소">
 	            </div>
 	        </div>
     	</form>
     </div>
+    </div>
+<script src="../js/boardWrite.js"></script>
 <%@ include file="../include/footer.jsp"%>

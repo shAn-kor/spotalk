@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="../css/board_main.css" type="text/css">
   <script src="../js/board_main.js" type="text/javascript"></script>
   
-  
+  <div style="width: 1400px; background-color:rgb(255,255,255,0.4);margin: 0 auto;">
   <div class="container box">
   	<div class="item item1">
 	   	<form action="boardWrite.board" method="post">
@@ -200,7 +200,7 @@
     	</ul>
 	</div>
 </div>
-
+</div>
 <%@ include file="../include/footer.jsp"%>
 
 
