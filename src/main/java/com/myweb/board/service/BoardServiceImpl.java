@@ -213,8 +213,8 @@ public class BoardServiceImpl implements BoardService {
 	    String userId = (String) session.getAttribute("user_id");
 	    String gradeId = (String) session.getAttribute("grade_id");
 	    String postId = request.getParameter("postId");
-	    String postTitle = request.getParameter("postTitle");
-	    String postContent = request.getParameter("postContent");
+	    String postTitle = request.getParameter("post_title");
+	    String postContent = request.getParameter("post_content");
 
 	    SqlSession sql = sqlSessionFactory.openSession(true);
 	    BoardMapper mapper = sql.getMapper(BoardMapper.class);
