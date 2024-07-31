@@ -24,14 +24,14 @@
             </div>
             <div class="right">
 	            <div class="info">
-		            <a href="#">${dto.userId }</a>
+		            <a href="#">${dto.userNick }</a>
 		            <span>${dto.postDate }</span>
 	            </div>
                 <div class="hit">
 	                <img src="../img/eye.png" alt="조회수"><span>${dto.hit}</span>
                 </div>
             </div>
-            <c:if test="${sessionScope.user_id == dto.userId || sessionScope.user_id == 'admin'}">
+            <c:if test="${sessionScope.user_nick == dto.userNick || sessionScope.user_nick == 'admin'}">
 		        <div class="edit">
 		            <a href="deletePost.board?postId=${dto.postId }" class="btn">삭제</a>
 			        <button type="button" class="btn" onclick="location.href='getPost.board?postId=${dto.postId }&a=1'">수정</button>
@@ -73,7 +73,7 @@
 	                   <div class="right">
 			                <input type="hidden" name="postId" value="${dto.postId}" />
 	                   		<c:choose>
-	                   			<c:when test="${sessionScope.user_id == null }">
+	                   			<c:when test="${sessionScope.user_nick == null }">
 	                   				<div class="login">
 				                      	<img src="../img/question.png" alt="물음표">
 				                        댓글을 쓰려면
@@ -89,7 +89,7 @@
 	
 	                </div>
 	                <c:choose>
-	                	<c:when test="${sessionScope.user_id == null }">
+	                	<c:when test="${sessionScope.user_nick == null }">
 	                		 <div class="bottom">
 			                	<a href="../user/login.user"><strong>로그인</strong></a>
 			                </div>
@@ -109,9 +109,9 @@
 
 			        	<div class="top">
 				        	<img src="../img/profile32.png" alt="프로필">
-				            <strong>${comment.userId}</strong>
-				            <span>${comment.commentDate}</span>
-				            <c:if test="${sessionScope.user_id == comment.userId || sessionScope.user_id == 'admin'}">
+				            <strong>${comment.userNick}</strong> 
+				            <span>${comment.commentDate}</span> 
+				            <c:if test="${sessionScope.user_nick == comment.userNick || sessionScope.user_nick == 'admin'}">
 			                	<a href="deleteComment.board?commentId=${comment.commentId}&postId=${dto.postId}" class="btn">삭제</a>
 			                    <a href="comment_edit.jsp?commentId=${comment.commentId}&postId=${dto.postId}" class="btn">수정</a>
 			                </c:if>

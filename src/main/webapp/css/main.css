@@ -393,3 +393,42 @@
     text-indent: -999px;
     font-size: 0;
 }
+
+
+.postLine{
+	background-color: #f7f7f7;
+	overflow: hidden;
+	margin-bottom: 1px;
+}
+.post-title:hover, .post-category:hover {
+	text-decoration: underline;
+	color: #777;
+}
+
+.post-category, .post-title, .post-hit, .post-commentCount, .post-like, .post-date{
+	float: left;
+}
+
+/* 총 610px */
+.post-category{
+	display: inline-block;
+	width: 50px;
+}
+.post-title{
+	display: inline-block;
+	width: 300px;
+	text-align: left;
+}
+.post-hit, .post-commentCount, .post-like{
+	display: inline-block;
+	width: 45px;
+	overflow: hidden;
+}
+.post-hit > img, .post-commentCount > img, .post-like > img{
+	display: block;
+	float: left;
+}
+.post-date{
+	display: inline-block;
+	width: 100px;
+}

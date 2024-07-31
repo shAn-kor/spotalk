@@ -4,6 +4,7 @@ public class BoardDTO {
 	
 	String postId; //자동
 	String userId; //세션
+	String userNick;//닉네임
 	String category;
 	String postTitle;
 	String postContent;
@@ -26,12 +27,16 @@ public class BoardDTO {
 		
 	}
 
-	public BoardDTO(String postId, String userId, String category, String postTitle, String postContent,
-			String postDate, String hit, String postLike, String postDislike, String gradeId, String commentId,
-			String commentContent, String commentDate, String commentLike, String commentDislike, String commentCount,
-			String searchTerm) {
+	
+
+	public BoardDTO(String postId, String userId, String userNick, String category, String postTitle,
+			String postContent, String postDate, String hit, String postLike, String postDislike, String gradeId,
+			String commentId, String commentContent, String commentDate, String commentLike, String commentDislike,
+			String commentCount, String searchTerm) {
+		super();
 		this.postId = postId;
 		this.userId = userId;
+		this.userNick = userNick;
 		this.category = category;
 		this.postTitle = postTitle;
 		this.postContent = postContent;
@@ -48,6 +53,20 @@ public class BoardDTO {
 		this.commentCount = commentCount;
 		this.searchTerm = searchTerm;
 	}
+
+	
+
+	public String getUserNick() {
+		return userNick;
+	}
+
+
+
+	public void setUserNick(String userNick) {
+		this.userNick = userNick;
+	}
+
+
 
 	public String getPostId() {
 		return postId;
