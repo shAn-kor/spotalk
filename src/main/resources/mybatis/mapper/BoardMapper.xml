@@ -27,7 +27,31 @@
 <select id="getPost" parameterType="string" resultType="com.myweb.board.model.BoardDTO">
 	SELECT * FROM POSTS WHERE POST_ID = #{postId}
 </select>	
-
+<select id="getHomePosts" resultType="com.myweb.board.model.BoardDTO">
+    SELECT p.*, 
+       COALESCE(c.comment_count, 0) AS comment_count
+	FROM posts p
+	LEFT JOIN (
+	    SELECT post_id, COUNT(*) AS comment_count
+	    FROM comments
+	    GROUP BY post_id
+	) c ON p.post_id = c.post_id
+	WHERE p.category = '공지'
+	UNION ALL
+	SELECT * FROM (
+	    SELECT p.*, 
+	           COALESCE(c.comment_count, 0) AS comment_count
+	    FROM posts p
+	    LEFT JOIN (
+	        SELECT post_id, COUNT(*) AS comment_count
+	        FROM comments
+	        GROUP BY post_id
+	    ) c ON p.post_id = c.post_id
+	    WHERE p.category != '공지'
+	    ORDER BY (p.post_like - p.post_dislike + COALESCE(c.comment_count, 0)) DESC
+	)
+	WHERE ROWNUM BETWEEN 1 AND 10
+</select>
 <select id="getPosts" parameterType="com.myweb.board.model.BoardCheck" resultType="com.myweb.board.model.BoardDTO">
     SELECT *
     FROM (

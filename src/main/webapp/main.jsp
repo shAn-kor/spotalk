@@ -35,8 +35,32 @@
                 <li><a href="#tab3-02">인기글</a></li>
             </ul>
             <div class="tabcontent3">
-                <div id="tab3-01">tab1 content</div>
-                <div id="tab3-02">tab2 content</div>
+                <div id="tab3-01">
+                	<c:forEach var="annPosts" items="${annPosts }">
+		            	<c:set var="formattedDate" value="${fn:substring(annPosts.postDate, 0, 10)}" />
+                		<div class="postLine">
+                			<a href="board/category.board?category=${annPosts.category}" class="post-category">[${annPosts.category}]</a>
+                			<a href="board/getPost.board?postId=${annPosts.postId}"class="post-title">${annPosts.postTitle}</a>
+                			<span class="post-hit"><img src="img/eye.png" alt="조회수"> ${annPosts.hit}</span>
+                			<span class="post-commentCount"><img src="img/comment.png" alt="댓글수"> ${annPosts.commentCount}</span>
+                			<span class="post-like"><img src="img/up.png" alt="추천수"> ${annPosts.postLike}</span>
+                			<span class="post-date">${formattedDate}</span>
+                		</div>
+                	</c:forEach>
+                </div>
+                <div id="tab3-02">
+                	<c:forEach var="popPosts" items="${popPosts}">
+                		<c:set var="formattedDate" value="${fn:substring(popPosts.postDate, 0, 10)}" />
+                		<div class="postLine">
+                			<a href="board/category.board?category=${popPosts.category}" class="post-category">[${popPosts.category}]</a>
+                			<a href="board/getPost.board?postId=${popPosts.postId}" class="post-title">${popPosts.postTitle}</a>
+                			<span class="post-hit"><img src="img/eye.png" alt="조회수"> ${popPosts.hit}</span>
+                			<span class="post-commentCount"><img src="img/comment.png" alt="댓글수"> ${popPosts.commentCount}</span>
+                			<span class="post-like"><img src="img/up.png" alt="추천수"> ${popPosts.postLike}</span>
+                			<span class="post-date">${formattedDate}</span>
+                		</div>
+                	</c:forEach>
+                </div>
             </div>
         </div>
     </div>
