@@ -12,7 +12,8 @@
 
   <link rel="stylesheet" href="../css/board_post.css" type="text/css">
   <script src="../js/boadr_post.js" type="text/javascript"></script>
-  
+
+<div style="width: 1400px; background-color:rgb(255,255,255,0.4);margin: 0 auto;">
   <div class="container">
   	<div class="item item1">
     	<p>커뮤니티 / <a href="#">${dto.getCategory() }</a></p>
@@ -135,5 +136,5 @@
 			</div>
         </form>
 		<script src="../js/commentWrite.js"></script>
-
+  </div>
 <%@ include file="../include/footer.jsp"%>

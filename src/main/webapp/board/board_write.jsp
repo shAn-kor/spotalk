@@ -11,7 +11,8 @@
   <script src="../js/bootstrap.min.js" type="text/javascript"></script>
 
   <link rel="stylesheet" href="../css/board_write.css" type="text/css">
-  
+
+<div style="width: 1400px; background-color:rgb(255,255,255,0.4);margin: 0 auto;">
    <div class="container">
         <form action="postWrite.board" method="post" name="boardForm">
         	<div class="item">
@@ -39,6 +40,7 @@
 	            </div>
 	        </div>
     	</form>
+    </div>
     </div>
 <script src="../js/boardWrite.js"></script>
 <%@ include file="../include/footer.jsp"%>

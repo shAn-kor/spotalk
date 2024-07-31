@@ -12,6 +12,7 @@
 
 <link rel="stylesheet" href="../css/board_post.css" type="text/css">
 
+<div style="width: 1400px; background-color:rgb(255,255,255,0.4);margin: 0 auto;">
 <div class="container">
     <h2>게시글 수정</h2>
     <form action="updatePost.board" method="post" name="boardForm">
@@ -28,6 +29,7 @@
         <a href="getPost.board?postId=${dto.postId}" class="btn btn-secondary">취소</a>
         
     </form>
+</div>
 </div>
 <script src="../js/boardWrite.js"></script>
 <%@ include file="../include/footer.jsp"%>

@@ -12,6 +12,7 @@
     font-weight: 400;
     border: none;
     font-size: 13.3333px;
+    text-align: center;
 }
 button, input, select, textarea {
     font-family: "Do Hyeon", sans-serif;
