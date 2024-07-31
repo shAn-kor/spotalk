@@ -11,7 +11,7 @@
   <script src="../js/bootstrap.min.js" type="text/javascript"></script>
 
   <link rel="stylesheet" href="../css/board_post.css" type="text/css">
-  <script src="../js/boadr_post.js" type="text/javascript"></script>
+  <script src="../js/board_post.js" type="text/javascript"></script>
 
 <div style="width: 1400px; background-color:rgb(255,255,255,0.4);margin: 0 auto;">
   <div class="container">
@@ -32,7 +32,7 @@
 	                <img src="../img/eye.png" alt="조회수"><span>${dto.hit}</span>
                 </div>
             </div>
-            <c:if test="${sessionScope.user_nick == dto.userNick || sessionScope.user_nick == 'admin'}">
+            <c:if test="${sessionScope.user_id eq dto.userId || sessionScope.user_id eq 'admin'}">
 		        <div class="edit">
 		            <a href="deletePost.board?postId=${dto.postId }" class="btn">삭제</a>
 			        <button type="button" class="btn" onclick="location.href='getPost.board?postId=${dto.postId }&a=1'">수정</button>
