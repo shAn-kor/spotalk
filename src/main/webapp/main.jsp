@@ -28,7 +28,7 @@
 
 <div class="main-box">
     <div class="main-community">
-        <p><a href="#">커뮤니티</a></p>
+        <p><a href="board/category.board?category=전체글">커뮤니티</a></p>
         <div class="tab">
             <ul class="tabnav3">
                 <li><a href="#tab3-01">공지사항</a></li>
@@ -66,7 +66,7 @@
     </div>
 
     <div class="sport-rank">
-        <p><a href="#">리그순위</a></p>
+        <p><a href="#" style="cursor: default;">리그순위</a></p>
         <div class="tab">
             <ul class="tabnav2">
                 <li><a href="#tab2-01">축구</a></li>
