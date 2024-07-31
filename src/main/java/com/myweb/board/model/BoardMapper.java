@@ -8,6 +8,7 @@ public interface BoardMapper {
 	void insertPost(BoardDTO dto);
 	String getPostId(String userId);
 	BoardDTO getPost(String postId);
+	List<BoardDTO> getHomePosts();
 	List<BoardDTO> getPosts(BoardCheck check);
 	List<BoardDTO> getAnnPosts(BoardCheck check);
 	List<BoardDTO> getSoccerPosts(BoardCheck check);

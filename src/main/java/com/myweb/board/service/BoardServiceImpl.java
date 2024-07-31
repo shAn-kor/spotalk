@@ -115,41 +115,12 @@ public class BoardServiceImpl implements BoardService {
 
 
 	@Override
-    public void listPosts(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public List<BoardDTO> homePosts(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         SqlSession sql = sqlSessionFactory.openSession(true);
         BoardMapper mapper = sql.getMapper(BoardMapper.class);
-        
-        String postId = request.getParameter("postId");
-        // 페이지 번호를 파라미터에서 가져옵니다. 기본값은 1로 설정합니다.
-        String pageParam = request.getParameter("page");
-        int page = (pageParam != null && !pageParam.isEmpty()) ? Integer.parseInt(pageParam) : 1;
-
-        int limit = 10;
-        int offset = (page - 1) * limit;
-
-        // Map에 페이징 정보 추가
-        Map<String, Integer> params = new HashMap<>();
-        params.put("limit", limit);
-        params.put("offset", offset);
-
-        List<BoardDTO> posts = mapper.getPosts((BoardCheck) params);
-
-        int totalPosts = mapper.getTotalPosts("전체글");
-        int totalPages = (int) Math.ceil(totalPosts / (double) limit);
-        
-        int pageRange = 5; // 페이지 버튼 개수
-        int startPage = Math.max(1, (page - 1) / pageRange * pageRange + 1);
-        int endPage = Math.min(startPage + pageRange - 1, totalPages);
-        
+        List<BoardDTO> homePosts = mapper.getHomePosts();
         sql.close();
-
-        request.setAttribute("postId", postId);
-        request.setAttribute("posts", posts);
-        request.setAttribute("totalPages", totalPages);
-        request.setAttribute("currentPage", page);
-        request.setAttribute("startPage", startPage);
-        request.setAttribute("endPage", endPage);
-        request.getRequestDispatcher("board_main.jsp").forward(request, response);
+		return homePosts;
     }
 
 

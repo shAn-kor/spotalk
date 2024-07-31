@@ -78,7 +78,7 @@
                 <li>
                     <div class="top">
                         <a href="#"><img src="../img/profile.png" alt="작성자 프로필"></a>
-                        <a href="#"><c:out value="${post.userId}"/></a>
+                        <a href="#"><c:out value="${post.userNick}"/></a>
                         <span><c:out value="${post.postDate}" /></span>
                     </div>
                     <div class="bottom">
