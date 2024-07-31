@@ -138,8 +138,11 @@
     WHERE rn BETWEEN #{params.offset} AND #{params.offset} + #{params.limit} - 1
 </select>
 
-<select id="getTotalPosts" resultType="int">
+<select id="getTotalPosts" parameterType="string" resultType="int">
     SELECT COUNT(*) FROM POSTS
+        <if test= 'category!="전체글"'>
+            WHERE CATEGORY=#{category}
+        </if>
 </select>
 
 
