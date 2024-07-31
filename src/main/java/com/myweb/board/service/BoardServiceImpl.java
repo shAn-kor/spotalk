@@ -87,7 +87,7 @@ public class BoardServiceImpl implements BoardService {
 	        }
 		
 		sql.close();
-		
+
 		request.setAttribute("dto", dto);
 		request.setAttribute("comments", comments);
 		request.setAttribute("postId", postId);

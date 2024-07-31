@@ -21,9 +21,10 @@
             <label for="commentContent">${dto.postContent}</label>
             <textarea id="commentContent" name="commentContent" class="form-control" rows="5" required>${dto.commentContent}</textarea>
         </div>
-        <button type="submit" class="btn btn-primary">수정 완료</button>
+        <button type="submit" class="btn btn-primary" id="comment-submit-btn">수정 완료</button>
         <a href="getPost.board?postId=${dto.postId}" class="btn btn-secondary">취소</a>
     </form>
 </div>
 
+<script src="../js/commentWrite.js"></script>
 <%@ include file="../include/footer.jsp"%>

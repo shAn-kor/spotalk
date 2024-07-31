@@ -14,20 +14,20 @@
 
 <div class="container">
     <h2>게시글 수정</h2>
-    <form action="updatePost.board" method="post">
+    <form action="updatePost.board" method="post" name="boardForm">
         <input type="hidden" name="postId" value="${dto.postId }"/>
         <div class="form-group">
             <label for="postTitle"></label>
-            <input type="text" id="postTitle" name="postTitle" class="form-control" value="${dto.postTitle }" required>
+            <input type="text" id="postTitle" name="post_title" class="form-control" value="${dto.postTitle }" required>
         </div>
         <div class="form-group">
             <label for="postContent"></label>
-            <textarea id="postContent" name="postContent" class="form-control" rows="10" required>${dto.postContent }</textarea>
+            <textarea id="postContent" name="post_content" class="form-control" rows="10" required>${dto.postContent }</textarea>
         </div>
-        <button type="submit" class="btn btn-primary">수정 완료</button>
+        <button type="submit" class="btn btn-primary" id="submit-btn">수정 완료</button>
         <a href="getPost.board?postId=${dto.postId}" class="btn btn-secondary">취소</a>
         
     </form>
 </div>
-
+<script src="../js/boardWrite.js"></script>
 <%@ include file="../include/footer.jsp"%>
