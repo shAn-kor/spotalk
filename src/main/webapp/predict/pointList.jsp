@@ -53,7 +53,7 @@
                         <tr class="column s" id="2024">
                             <div class="user">
                                 <input class="p-date" type="text" name="grade" value="날짜" disabled>
-                                <input class="p-team" type="text" name="nick" value="예측 승팀" disabled>
+                                <input class="p-team" type="text" name="nick" value="경기예측 승팀" disabled>
                                 <input class="p-point" type="text" name="point" value="배팅 포인트" disabled>
                             </div>
                         </tr>
@@ -61,7 +61,7 @@
                             <tr class="column s" id="2024">
                                 <div class="user">
                                     <input class="p-date" type="text" name="grade" value="${dto.cDate}" disabled>
-                                    <input class="p-team" type="text" name="nick" value="${dto.pResult}" disabled>
+                                    <input class="p-team" type="text" name="nick" value="${dto.choice}" disabled>
                                     <input class="p-point" type="number" name="point" value="${dto.betPoint}" disabled>
                                 </div>
                             </tr>
@@ -83,7 +83,7 @@
                             <tr class="column s" id="2024">
                                 <div class="user">
                                     <input class="p-date" type="text" name="grade" value="${plusDTO.cDate}" disabled>
-                                    <input class="p-team" type="text" name="nick" value="${plusDTO.pResult}" disabled>
+                                    <input class="p-team" type="text" name="nick" value="${plusdto.choice}" disabled>
                                     <input class="p-point" type="number" name="point" value="${plusDTO.betPoint}" disabled>
                                 </div>
                             </tr>
@@ -104,7 +104,7 @@
                             <tr class="column s" id="2024">
                                 <div class="user">
                                     <input class="p-date" type="text" name="grade" value="${minusDTO.cDate}" disabled>
-                                    <input class="p-team" type="text" name="nick" value="${minusDTO.pResult}" disabled>
+                                    <input class="p-team" type="text" name="nick" value="${minusdto.choice}" disabled>
                                     <input class="p-point" type="number" name="point" value="${minusDTO.betPoint}" disabled>
                                 </div>
                             </tr>

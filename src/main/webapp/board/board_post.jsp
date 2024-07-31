@@ -3,7 +3,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../include/header.jsp"%>
-
   <!-- 부트스트랩 css링크 -->
   <link rel="stylesheet" href="../css/bootstrap.min.css" type="text/css">
   <!-- 제이쿼리(부스트랩보다 먼저 링크) -->
@@ -13,7 +12,8 @@
 
   <link rel="stylesheet" href="../css/board_post.css" type="text/css">
   <script src="../js/boadr_post.js" type="text/javascript"></script>
-  
+
+<div style="width: 1400px; background-color:rgb(255,255,255,0.4);margin: 0 auto;">
   <div class="container">
   	<div class="item item1">
     	<p>커뮤니티 / <a href="#">${dto.getCategory() }</a></p>
@@ -60,7 +60,7 @@
 	</div>
 
       
-		<form action="commentWrite.board" method="post">
+		<form action="commentWrite.board" method="post" name="commentForm">
         	<div class="item item3">
         	
 	            <div class="comments">
@@ -83,7 +83,7 @@
 	                   				</div>
 	                   			</c:when>
 	                   			<c:otherwise>
-	                         		<textarea name="comment_content" placeholder="댓글을 입력해주세요."></textarea>
+	                         		<textarea name="comment_content" placeholder="댓글을 입력해주세요." id="commentContent"></textarea>
 	                   			</c:otherwise>
 	                   		</c:choose>
 	                    </div>
@@ -97,17 +97,17 @@
 	                	</c:when>
 	                	<c:otherwise>
 			                <div class="bottom">
-			                	<input type="submit" class="btn" value="댓글 작성">
+			                	<input type="submit" class="btn" value="댓글 작성" id="comment-submit-btn">
 			                </div>
 	                	</c:otherwise>
 	                </c:choose>
 	            </div>
         	</div>
-        	
+
       		<div class="comments-container">
 			    <c:forEach var="comment" items="${comments}">
 			        <div class="comment">
-			        
+
 			        	<div class="top">
 				        	<img src="../img/profile32.png" alt="프로필">
 				            <strong>${comment.userNick}</strong> 
@@ -117,7 +117,7 @@
 			                    <a href="comment_edit.jsp?commentId=${comment.commentId}&postId=${dto.postId}" class="btn">수정</a>
 			                </c:if>
 			        	</div>
-			        	
+
 			        	<div class="bottom">
 			        		<div class="left">
 					        	${comment.commentContent}
@@ -135,90 +135,6 @@
 			    </c:forEach>
 			</div>
         </form>
-        
-  <!-- 페이지네이션 -->
- <div class="comments-page">
- <!-- 페이지 버튼 생성 -->
-
-  <ul class="pager">
-      <!-- 이전 페이지 버튼 -->
-    <c:if test="${currentPage > 1}">
-        <li class="previous">
-            <a href="category.board?page=${currentPage - 1}&category=${category}&order=${order }">Previous</a>
-        </li>
-    </c:if>
-
-    <!-- 페이지 버튼 범위 계산 -->
-    <c:choose>
-        <c:when test="${totalPages <= 5}">
-            <!-- 페이지 수가 5개 이하인 경우 -->
-            <c:forEach var="i" begin="1" end="${totalPages}">
-                <li class="${i == currentPage ? 'active' : ''}">
-                    <a href="category.board?page=${i}&category=${category}&order=${order }">${i}</a>
-                </li>
-            </c:forEach>
-        	</c:when>
-        	<c:otherwise>
-	            <!-- 페이지 수가 5개 초과인 경우 -->
-	            <c:choose>
-	                <c:when test="${currentPage - 2 > 0}">
-	                    <c:set var="startPage" value="${currentPage - 2}" />
-	                </c:when>
-	                <c:otherwise>
-	                    <c:set var="startPage" value="1" />
-	                </c:otherwise>
-	            </c:choose>
-
-	            <c:choose>
-	                <c:when test="${currentPage + 2 <= totalPages}">
-	                    <c:set var="endPage" value="${currentPage + 2}" />
-	                </c:when>
-	                <c:otherwise>
-	                    <c:set var="endPage" value="${totalPages}" />
-	                </c:otherwise>
-	            </c:choose>
-	            
-	            <!-- 생략 표시 처리 -->
-	            <c:if test="${startPage > 1}">
-	                <li><a href="category.board?page=1&category=${category}&order=${order }">1</a></li>
-	                <li class="disabled"><span>...</span></li>
-	            </c:if>
-
-            	 <!-- 페이지 버튼 범위 조정 -->
-           		 <c:if test="${endPage - startPage < 4}">
-               	 	<c:choose>
-	                    <c:when test="${startPage > 1}">
-	                        <c:set var="startPage" value="${endPage - 4}" />
-	                    </c:when>
-	                    <c:otherwise>
-	                        <c:set var="endPage" value="${startPage + 4}" />
-	                    </c:otherwise>
-                	</c:choose>
-            	</c:if>
-            	
-            	
-	            <c:forEach var="i" begin="${startPage}" end="${endPage}">
-	                <li class="${i == currentPage ? 'active' : ''}">
-	                    <a href="category.board?page=${i}&category=${category}&order=${order }">${i}</a>
-	                </li>
-	            </c:forEach>
-
-	            <!-- 생략 표시 처리 -->
-	            <c:if test="${endPage < totalPages}">
-	                <li class="disabled"><span>...</span></li>
-	                <li><a href="category.board?page=${totalPages}&category=${category}&order=${order }">${totalPages}</a></li>
-	            </c:if>
-        	</c:otherwise>
-    	</c:choose>
-
-    	<!-- 다음 페이지 버튼 -->
-    	<c:if test="${currentPage < totalPages}">
-	        <li class="next">
-	            <a href="category.board?page=${currentPage + 1}&category=${category}&order=${order }">Next</a>
-	        </li>
-        </c:if>
-    	</ul>
-	</div>
-</div>
-    
+		<script src="../js/commentWrite.js"></script>
+  </div>
 <%@ include file="../include/footer.jsp"%>

@@ -11,6 +11,7 @@
 
 <link rel="stylesheet" href="../css/board_post.css" type="text/css">
 
+<div style="width: 1400px; background-color:rgb(255,255,255,0.4);margin: 0 auto;">
 <div class="container">
     <h2>댓글 수정</h2>
   
@@ -21,9 +22,11 @@
             <label for="commentContent">${dto.postContent}</label>
             <textarea id="commentContent" name="commentContent" class="form-control" rows="5" required>${dto.commentContent}</textarea>
         </div>
-        <button type="submit" class="btn btn-primary">수정 완료</button>
+        <button type="submit" class="btn btn-primary" id="comment-submit-btn">수정 완료</button>
         <a href="getPost.board?postId=${dto.postId}" class="btn btn-secondary">취소</a>
     </form>
 </div>
+</div>
 
+<script src="../js/commentWrite.js"></script>
 <%@ include file="../include/footer.jsp"%>

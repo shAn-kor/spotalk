@@ -122,6 +122,7 @@ document.addEventListener('DOMContentLoaded', function() {
 				sessionStorage.setItem("nick", nick.value);
 				if (data.msg === 'ok') runRandomModal();
 			})
+			.catch((reason) => console.log(reason));
 	}
 
 	function runRandomModal() {

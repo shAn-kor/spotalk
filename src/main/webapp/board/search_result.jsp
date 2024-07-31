@@ -11,6 +11,7 @@
 
 <link rel="stylesheet" href="../css/board_post.css" type="text/css">
 
+<div style="width: 1400px; background-color:rgb(255,255,255,0.4);margin: 0 auto;">
 <div class="container">
     <h2>검색 결과</h2>
 
@@ -58,5 +59,6 @@
         </ul>
     </div>
 </div>
+
 
 <%@ include file="../include/footer.jsp"%>
