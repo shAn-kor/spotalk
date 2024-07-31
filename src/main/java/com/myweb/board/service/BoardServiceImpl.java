@@ -134,7 +134,7 @@ public class BoardServiceImpl implements BoardService {
 
         List<BoardDTO> posts = mapper.getPosts((BoardCheck) params);
 
-        int totalPosts = mapper.getTotalPosts();
+        int totalPosts = mapper.getTotalPosts("전체글");
         int totalPages = (int) Math.ceil(totalPosts / (double) limit);
         
         int pageRange = 5; // 페이지 버튼 개수
@@ -193,9 +193,10 @@ public class BoardServiceImpl implements BoardService {
         	posts = mapper.getBasketballPosts(check); 
 		}
 
-        int totalPosts = mapper.getTotalPosts();
+        int totalPosts = mapper.getTotalPosts(category);
         int totalPages = (int) Math.ceil(totalPosts / (double) limit);
-        
+
+
         
         sql.close();
         
@@ -387,7 +388,7 @@ public class BoardServiceImpl implements BoardService {
 
 	    List<BoardDTO> posts = mapper.searchPosts(params);
 
-	    int totalPosts = mapper.getTotalPosts(); // 전체 게시글 수를 가져오는 메서드 필요
+	    int totalPosts = mapper.getTotalPosts("전체글"); // 전체 게시글 수를 가져오는 메서드 필요
 	    int totalPages = (int) Math.ceil(totalPosts / (double) limit);
 
 	    int pageRange = 5; // 페이지 버튼 개수

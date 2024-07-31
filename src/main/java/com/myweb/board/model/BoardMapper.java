@@ -13,7 +13,7 @@ public interface BoardMapper {
 	List<BoardDTO> getSoccerPosts(BoardCheck check);
 	List<BoardDTO> getBaseballPosts(BoardCheck check);
 	List<BoardDTO> getBasketballPosts(BoardCheck check);
-	int getTotalPosts();
+	int getTotalPosts(String category);
 	BoardDTO sortPosts(String postId);
 	List<BoardDTO> getComments(String postId);
 	void insertComment(BoardDTO dto);
